@@ -43,6 +43,7 @@ $CMD $BINDIR/fix \
 	   $BINDIR/tmx.sh \
 	   $BINDIR/egpu.sh \
 	   $BINDIR/gitUp.sh \
+	   $BINDIR/gifwall.sh \
 	   $BINDIR/sysinfo.sh \
 	   $BINDIR/sysinfo \
 	   $BINDIR/shutdown.sh \
