@@ -1,0 +1,65 @@
+#! /bin/sh
+
+#	8""""
+#	8     e  e    e
+#	8eeee 8  8    8
+#	88    8e eeeeee
+#	88    88 88   8
+#	88    88 88   8
+
+MON=`xrandr | grep connected | grep -v disconnected | wc -l`
+
+xinput --set-prop "SYNA2B31:00 06CB:7F8B Touchpad" "libinput Accel Speed" 0.2
+xinput --set-prop "SYNA2B31:00 06CB:7F8B Touchpad" "libinput Disable While Typing Enabled" 0
+
+case $MON in
+	1)
+		#bspc monitor -d code web music
+
+		setxkbmap -layout se -option ctrl:nocaps
+		xmodmap -e 'clear lock'
+		xmodmap -e 'keycode 0x7e = Control_R'
+		xmodmap -e 'add Control = Control_R'
+		;;
+	2)
+		xinput --map-to-output "Wacom HID 5113 Pen stylus" eDP1
+		xinput --map-to-output "Wacom HID 5113 Finger touch" eDP1
+
+		#~/.screenlayout/2.sh
+		#bspc monitor eDP1 -d music
+		#bspc monitor HDMI-0 -d code web
+
+		setxkbmap -layout se -option ctrl:nocaps
+		xmodmap -e 'clear lock'
+		xmodmap -e 'keycode 0x7e = Control_R'
+		xmodmap -e 'add Control = Control_R'
+
+		nitrogen --restore
+		gifwall.sh ~/Freetime/Pictures/gifWallpaper/portrait_trainEvening.gif
+		;;
+
+	3)
+		xinput --map-to-output "Wacom HID 5113 Pen stylus" eDP1
+		xinput --map-to-output "Wacom HID 5113 Finger touch" eDP1
+
+		#~/.screenlayout/temp.sh
+		#bspc monitor eDP1 -d music
+		#bspc monitor DP1 -d code
+		#bspc monitor DP2 -d web
+		# change depending on outputs
+		# bspc monitor DP-1 -d web
+		#bspc rule -a calcurse state=floating rectangle=600x600+370+50
+		#bspc rule -a sysinfo state=floating rectangle=350x350+370+50
+
+		setxkbmap -layout se -option ctrl:nocaps
+		xmodmap -e 'clear lock'
+		xmodmap -e 'keycode 0x7e = Control_R'
+		xmodmap -e 'add Control = Control_R'
+
+		nitrogen --restore
+		gifwall.sh ~/Freetime/Pictures/gifWallpaper/portrait_trainEvening.gif
+		;;
+esac
+
+#~/.config/polybar/launch.sh
+unclutter -idle 0.01 -root &

@@ -1,0 +1,289 @@
+[colors]
+transparent = #00a0000a
+background = $transparent ; #3a3a3a
+foreground = #ffffff
+black = #7c6f64
+darkGray = #303030
+darkRed = #cc241d
+red = #fb4934
+darkGreen = #98971a
+green = #b8bb26
+darkYellow = #d79921
+yellow = #fabd2f
+darkBlue = #458588
+lightBlue = #add8e6
+blue = #83a598
+darkMagenta = #b16286
+darkTurquoise = #00ced1
+turquoise = #00fffa
+magenta = #d3869b
+darkCyan = #689d6a
+lightCyan = #e0ffff
+cyan = #8ec07c
+lightGrey = #a89984
+white = #ffffff
+
+
+[global/wm]
+margin-top = 5
+margin-bottom = 5
+
+locale = us_US.UTF-8
+
+backround = ${colors.black}
+foreground = ${colors.foreground}
+
+
+
+[module/date]
+type = custom/script
+exec = date | awk '{print $4}' | cut -b 1-5
+
+interval = 60
+
+; label-background = ${colors.darkGray}
+; label-underline = ${colors.turquoise}
+format = <label>
+click-left = termite --class Cal 50 x 70 -e test.sh
+click-right = termite --class Calcurse -e calcurse
+
+
+[module/memory]
+type = internal/memory
+interval = 2
+
+label =  %gb_used%
+label-padding = 2
+
+format = <label>
+; format-background = ${colors.darkGray}
+; format-underline = ${colors.turquoise}
+
+
+
+[module/cpu]
+type = internal/cpu
+
+label =  %percentage%%
+label-padding = 2
+
+format = <label>
+; format-background = ${colors.darkGray}
+; format-underline = ${colors.turquoise}
+
+
+
+[module/network]
+type = custom/script
+exec = check-network
+tail = true
+format-padding = 2
+; format-underline = ${colors.turquoise}
+; format-background = ${colors.darkGray}
+click-left = networkmanager_dmenu &
+
+
+
+[module/volume]
+type = internal/volume
+speaker-soundcard = Speaker
+headphone-soundcard = Headphone
+
+ramp-volume-0 = 
+ramp-volume-1 = 
+ramp-volume-2 = 
+
+bar-volume-width = 10
+bar-volume-empty = -
+bar-volume-fill = -
+bar-volume-indicator = |
+
+ramp-headphones-0 = 
+
+label-muted = 
+label-volume = %percentage%%
+
+format-muted = <label-muted>
+format-muted-padding = 2
+; format-muted-background = ${colors.darkGray}
+; format-muted-underline = ${colors.turquoise}
+
+format-volume = <ramp-volume> <bar-volume>
+format-volume-padding = 2
+; format-volume-background = ${colors.darkGray}
+; format-volume-underline = ${colors.turquoise}
+
+format-headphones = <ramp-headphones> <label-volume>
+format-headphones-padding = 2
+; format-headphones-background = ${colors.darkGray}
+; format-headphones-underline = ${colors.turquoise}
+
+
+
+
+[module/i3]
+type = internal/i3
+strip-wsnumbers = true
+
+ws-icon-default = 
+
+label-focused = 
+label-focused-foreground = ${colors.foreground}
+; label-focused-background = ${colors.darkGray}
+; label-focused-underline = ${colors.turquoise}
+label-focused-padding = 2
+
+label-unfocused = %icon%
+label-unfocused-padding = 2
+
+label-visible = %icon%
+;label-visible-underline = #555555
+label-visible-padding = 2
+
+label-urgent = %icon%
+label-urgent-foreground = #000000
+label-urgent-background = #bd2c40
+label-urgent-padding = 2
+
+
+
+[module/battery]
+type = internal/battery
+battery = BAT1
+adapter = AC
+full-at = 100
+
+time-format = %H:%M
+
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-3 = 
+ramp-capacity-4 = 
+
+animation-charging-0 = 
+animation-charging-1 = 
+animation-charging-2 = 
+animation-charging-3 = 
+animation-charging-4 = 
+animation-charging-framerate = 300
+
+label-discharging = %percentage%%: %time%
+label-charging = %percentage%%: %time%
+; label-background = ${colors.darkgray}
+label-padding = 2
+
+format-charging = <animation-charging> <label-charging>
+; format-charging-background = ${colors.darkGray}
+; format-charging-underline = ${colors.turquoise}
+format-charging-padding = 2
+
+format-discharging = <ramp-capacity> <label-discharging>
+; format-discharging-background = ${colors.darkGray}
+; format-discharging-underline = ${colors.turquoise}
+format-discharging-padding = 2
+
+
+
+[module/menu]
+type = custom/menu
+format-padding = 3
+border-left = ${colors.transparent}
+
+menu-0-0-font = 18
+menu-0-0 = 
+menu-0-0-exec = systemctl poweroff
+menu-0-0-padding = 3
+;menu-0-0-underline = ${colors.turquoise}
+menu-0-1 = 
+menu-0-1-exec = dm-tool lock
+menu-0-1-pedding = 3
+;menu-0-1-underline = ${colors.turquoise}
+menu-0-2 = 
+menu-0-2-exec = systemctl reboot
+menu-0-2-padding-left = 3
+;menu-0-2-underline = ${colors.turquoise}
+
+label-open = 
+;label-open-underline = ${colors.turquoise}
+label-close = 
+;label-close-underline = ${colors.turquoise}
+
+; format-underline = ${colors.turquoise}
+; format-background = ${colors.darkGray}
+
+[module/rotate]
+type = custom/text
+content = 
+click-left = exec rotate.sh
+
+; format-underline = ${colors.turquoise}
+format-background = ${colors.darkGray}
+
+
+[module/keyboard]
+type = internal/xkeyboard
+format = <label-layout> <label-indicator>
+format-spacing = 0
+label-layout = %name%
+
+; label-layout-background = ${colors.darkGray}
+; label-layout-underline = ${colors.turquoise}
+label-layout-padding = 2
+
+label-indicator = %name%
+label-indicator-padding = 2
+; label-indicator-background = ${colors.darkGray}
+label-indicator-underline = ${colors.turquoise}
+
+
+
+
+;###########single config##########
+[bar/edp]
+width = 100%
+height = 25
+
+enable-ipc = true
+monitor = eDP1
+
+line-size = 3
+
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+font-0 = FontAwesome:size=10;0
+font-1 = Roboto:size=10;0
+font-2 = MaterialDesignIcons:size=12;0
+
+spacing = 1
+separator = " "
+
+modules-left = i3
+modules-center = date keyboard
+modules-right = network volume cpu memory battery rotate menu
+
+
+
+
+;###########multi config##########
+[bar/dp1]
+inherit = edp
+
+monitor = DP1
+
+modules-left = i3
+modules-center =
+modules-right = volume cpu memory
+
+
+
+
+[bar/dp2]
+inherit = bar/dp1
+
+monitor = DP2
+
+modules-left = date
+modules-right = network menu

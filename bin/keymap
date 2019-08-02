@@ -1,0 +1,17 @@
+#! /bin/sh
+
+#	8   8
+#	8   8  eeee e    e eeeeeee eeeee eeeee
+#	8eee8e 8    8    8 8  8  8 8   8 8   8
+#	88   8 8eee 8eeee8 8e 8  8 8eee8 8eee8
+#	88   8 88     88   88 8  8 88  8 88
+#	88   8 88ee   88   88 8  8 88  8 88
+
+
+if [ $(setxkbmap -v | grep symbols | cut -d '+' -f 2) = "se" ]; then
+	setxkbmap us
+	notify-send "US keymap"
+else
+	setxkbmap se
+	notify-send "SE keymap"
+fi

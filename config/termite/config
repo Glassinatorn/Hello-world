@@ -1,0 +1,99 @@
+
+
+[options]
+scroll_on_output = false
+scroll_on_keystroke = true
+audible_bell = false
+mouse_autohide = false
+allow_bold = true
+dynamic_title = true
+urgent_on_bell = true
+clickable_url = true
+scrollback_lines = 10000
+search_wrap = true
+icon_name = utilities-terminal
+clickable_url = true
+cursor_blink = system
+cursor_shape = block
+browser = exo-open
+filter_unmatched_urls = true
+font = Unscii 12
+
+
+###############
+###   Blur  ###
+###############
+
+####	[colors]
+####	foreground = #ffffff
+####	foreground_bold = #ffffff
+####	background = #3f3f3f
+
+####	highlight = #2f2f2f
+
+####	[colors]
+####	cursor = #d8dee9
+####	cursor_foreground = #2e3440
+
+####	foreground = #FFFFFF
+####	foreground_bold = #FFFFFF
+####	background = rgba(66, 64, 71,0.6)
+####	highlight = #4c566a
+
+####	color0  = #3b4252
+####	color1  = #bf616a
+####	color2  = #a3be8c
+####	color3  = #ebcb8b
+####	color4  = #81a1c1
+####	color5  = #b48ead
+####	color6  = #88c0d0
+####	color7  = #e5e9f0
+####	color8  = #4c566a
+####	color9  = #bf616a
+####	color10 = #a3be8c
+####	color11 = #ebcb8b
+####	color12 = #81a1c1
+####	color13 = #b48ead
+####	color14 = #8fbcbb
+####	color15 = #eceff4
+
+
+
+##################
+###  Non-blur  ###
+##################
+[colors]
+background = #262626
+foreground = #c0c5ce
+foreground_bold = #c0c5ce
+cursor = #c0c5ce
+
+# Black, Gray, Silver, White
+color0 = #2b303b
+color8 = #65737e
+color7 = #F6F6F6
+color15 = #c0c5ce
+
+# Red
+color1 = #bf616a
+color9 = #bf616a
+
+# Green
+color2 = #a3be8c
+color10 = #a3be8c
+
+# Yellow
+color3 = #ebcb8b
+color11 = #ebcb8b
+
+# Blue
+color4 = #8fa1b3
+color12 = #8fa1b3
+
+# Purple
+color5 = #b48ead
+color13 = #b48ead
+
+# Teal
+color6 = #96b5b4
+color14 = #96b5b4

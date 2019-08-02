@@ -1,0 +1,25 @@
+doc_.txt 	Nvim
+
+			VIM REFERENCE MANUAL 	 by Axel GB
+
+This document is for documenting the various snippets and funnctions I have
+created for having a more comfortable and quicker workflow for editing and
+creating LaTeX documents.
+
+The documentation links to the following:
+		1. LaTeX introduction							|intro|
+
+=============================================================================
+1. LaTeX introduction									|intro|
+
+LaTeX is a syntax based language for creating documents, these are more often
+than not compiled into PDFs. LaTeX have more or less become the standard for
+writing scientific literature.
+
+=============================================================================
+
+2. LaTeX Snippets										|snippets|
+
+
+
+vim:tw=80:tabstop=4:ft=help:norl:

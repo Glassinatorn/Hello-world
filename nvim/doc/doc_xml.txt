@@ -1,0 +1,14 @@
+doc_KVM.txt 	Nvim
+
+			KVM REFERENCE MANUAL 	 by Axel GB
+
+This document is primarily for documenting the use of xml files with kvm
+virtualisation.
+
+The documentation links to the following:
+		1. KVM introduction								|html-intro|
+
+=============================================================================
+1. KVM introduction										*html-intro*
+
+vim:tw=80:tabstop=4:ft=help:norl:

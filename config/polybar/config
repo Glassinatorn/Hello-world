@@ -1,0 +1,289 @@
+[global/wm]
+margin-top = 5
+margin-bottom = 5
+
+locale = us_US.UTF-8
+
+[colors]
+transparent = #00a0000a
+black = #000000
+
+gruv-dark = #282828
+gruv-red = #BF616A
+gruv-green = #AEBE8C
+gruv-yellow = #EBCB8B
+gruv-blue = #8FA1B3
+gruv-darkBlue = #3E4F60
+gruv-white = #F6F6F6
+cyan = #50E3E3
+
+background = $black
+foreground = $white
+
+
+[module/bspwm]
+type = internal/bspwm
+
+ws-icon-0 = code; 
+ws-icon-1 = music; 
+ws-icon-2 = web; 
+
+label-empty = %icon%
+label-empty-background = ${colors.gruv-blue}
+label-empty-underline = ${colors.gruv-blue}
+label-empty-padding = 1
+
+label-focused = %icon%
+label-focused-foreground = ${colors.gruv-dark}
+label-focused-background = ${colors.gruv-blue}
+label-focused-underline = ${colors.cyan}
+label-focused-padding = 1
+
+label-occupied = %icon%
+label-occupied-foreground = ${colors.gruv-dark}
+label-occupied-background = ${colors.gruv-blue}
+label-occupied-underline = ${colors.gruv-dark}
+label-occupied-padding = 1
+
+format-padding = 1
+format-overline = ${colors.gruv-dark}
+format-underline = ${colors.gruv-dark}
+
+
+[module/time]
+type = custom/script
+exec = date | awk '{print $4}' | cut -b 1-5
+format-padding = 2
+format-background = ${colors.gruv-blue}
+format-underline = ${colors.gruv-dark}
+format-overline = ${colors.gruv-dark}
+click-left = termite -e sysinfo.sh --class=sysinfo
+
+interval = 30
+
+format = <label>
+
+[module/date]
+type = custom/script
+exec = date | awk '{print $3}'
+click-left = termite -e calinfo.sh --class=sysinfo
+click-right = termite -e calcurse --class=calcurse
+
+interval = 60
+
+format = <label>
+format-padding = 2
+format-background = ${colors.gruv-blue}
+format-underline = ${colors.gruv-dark}
+format-overline = ${colors.gruv-dark}
+
+
+[module/network]
+type = custom/script
+exec = check-network
+tail = true
+format-padding = 2
+format-background = ${colors.gruv-blue}
+format-underline = ${colors.gruv-dark}
+format-overline = ${colors.gruv-dark}
+click-left = networkmanager_dmenu &
+
+
+
+[module/volume]
+type = internal/volume
+speaker-soundcard = Speaker
+headphone-soundcard = Headphone
+
+bar-volume-width = 5
+bar-volume-empty = 
+bar-volume-fill = 
+bar-volume-indicator = 
+
+label-volume =
+label-muted =
+
+format-muted =  <bar-volume>
+format-muted-padding = 2
+format-muted-background = ${colors.gruv-blue}
+format-muted-underline = ${colors.gruv-dark}
+format-muted-overline = ${colors.gruv-dark}
+
+format-volume =  <bar-volume>
+format-volume-padding = 2
+format-volume-background = ${colors.gruv-blue}
+format-volume-underline = ${colors.gruv-dark}
+format-volume-overline = ${colors.gruv-dark}
+
+[module/cpu]
+type = internal/cpu
+interval = 1
+
+left-click = checkCpu.sh grafical
+
+label = 
+format-padding = 2
+format-background = ${colors.gruv-blue}
+format-underline = ${colors.gruv-dark}
+format-overline = ${colors.gruv-dark}
+
+
+
+[module/battery]
+type = internal/battery
+battery = BAT1
+adapter = AC
+full-at = 100
+
+time-format = %H:%M
+
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-3 = 
+ramp-capacity-4 = 
+
+animation-charging-0 = 
+animation-charging-1 = 
+animation-charging-2 = 
+animation-charging-3 = 
+animation-charging-4 = 
+animation-charging-framerate = 300
+
+format-charging = <animation-charging>
+format-charging-padding = 2
+format-charging-background = ${colors.gruv-blue}
+format-charging-underline = ${colors.gruv-dark}
+format-charging-overline = ${colors.gruv-dark}
+
+format-discharging = <ramp-capacity>
+format-discharging-padding = 2
+format-discharging-background = ${colors.gruv-blue}
+format-discharging-underline = ${colors.gruv-dark}
+format-discharging-overline = ${colors.gruv-dark}
+
+format-full = Full
+format-full-padding = 2
+format-full-background = ${colors.gruv-blue}
+format-full-underline = ${colors.gruv-dark}
+format-full-overline = ${colors.gruv-dark}
+
+
+
+[module/power]
+type = custom/text
+content-padding = 3
+content-background = ${colors.gruv-blue}
+content-underline = ${colors.gruv-dark}
+content-overline = ${colors.gruv-dark}
+
+content = 
+click-left = /home/glass/bin/shutdown.sh
+
+
+[module/rotate]
+type = custom/text
+content = 
+content-padding = 2
+content-background = ${colors.gruv-blue}
+content-underline = ${colors.gruv-dark}
+content-overline = ${colors.gruv-dark}
+click-left = exec rotate.sh
+
+
+;  ____
+; /\  _`\
+; \ \ \L\ \     __     _ __   ____
+;  \ \  _ <'  /'__`\  /\`'__\/',__\
+; 	\ \ \L\ \/\ \L\.\_\ \ \//\__, `\
+; 	 \ \____/\ \__/.\_\\ \_\\/\____/
+;	  \/___/  \/__/\/_/ \/_/ \/___/
+
+
+[bar/edp-1]
+wm-restack = bspwm
+override-redirect = true
+width = 3.6%
+height = 25
+offset-y = 0.3%
+offset-x = 0.3%
+
+enable-ipc = true
+monitor = eDP1
+
+line-size = 3
+
+background = ${colors.gruv-dark}
+foreground = ${colors.gruv-dark}
+
+font-0 = FontAwesome:size=10;2
+font-1 = Roboto:size=10;2
+font-2 = MaterialDesignIcons:size=12;0
+
+spacing = 1
+separator = " "
+modules-center = bspwm
+
+[bar/edp-2]
+inherit = bar/edp-1
+width = 4.7%
+offset-x = 47.5%
+modules-center = time date
+
+[bar/edp-3]
+inherit = bar/edp-1
+width = 9.1%
+offset-x = 90.5%
+modules-center = network volume rotate power
+
+
+[bar/4k-1]
+line-size = 5
+font-0 = FontAwesome:size=13;4
+font-1 = Roboto:size=12;3
+inherit = bar/edp-1
+width = 3.5%
+height = 40
+monitor = HDMI-0
+
+[bar/4k-2]
+inherit = bar/4k-1
+width = 3%
+offset-x = 48.5%
+modules-center = time date
+
+[bar/4k-3]
+inherit = bar/4k-1
+width = 8%
+offset-x = 91.5%
+modules-center = network volume rotate power
+
+
+
+[bar/dp1-1]
+inherit = bar/edp-1
+offset-x = 48%
+width = 3.8%
+monitor = DP-0
+background = ${colors.gruv-dark}
+modules-center = date
+
+[bar/dp1-2]
+inherit = bar/dp1-1
+offset-x = 91.8%
+width = 7.7%
+modules-center= volume
+
+
+[bar/dp2-1]
+inherit = bar/dp1-1
+offset-x = 48%
+width = 5%
+monitor = HDMI-0
+modules-center = time
+
+[bar/dp2-2]
+inherit = bar/dp2-1
+offset-x = 0.5%
+width = 6%
+modules-center = network power

@@ -1,0 +1,11 @@
+*doc_html.txt*	Nvim
+
+
+				VIM REFERENCE MANUAL	by Axel GB
+
+=============================================================================
+
+This file is for documenting things that might be worth remembering with HTML
+and for future references on how to do things.
+
+vim:tw=80:ts=4:ft=help:norl:

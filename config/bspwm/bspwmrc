@@ -1,0 +1,26 @@
+#! /bin/sh
+conf="bspc config"
+rule="bspc rule"
+
+sxhkd &
+compton &
+
+$conf pointer_modifier		mod4
+$conf pointer_action1		move
+$conf pointer_action2		resize_corner
+$conf focused_border_color	"#05E3E3"
+$conf border_width			5
+$conf window_gap			40
+
+$conf split_ratio			0.50
+$conf presel_feedback		false
+$conf borderless_monocle	true
+$conf gapless_monocle		true
+
+$rule -a qutebrowser desktop=^2 follow=on
+$rule -a spotify desktop=^3 follow=on
+$rule -a sysinfo state=floating rectangle=310x350+800+30
+$rule -a calinfo state=floating rectangle=300x250+800+30
+$rule -a calcurse state=floating rectangle=600x600+630+30
+
+fix

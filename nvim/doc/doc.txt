@@ -1,0 +1,125 @@
+*doc.txt*		Nvim
+
+
+			VIM REFERENCE MANUAL	by Axel GB
+
+Documentation for what I add to my vim enviroment or whatever to call it.
+Mostly in order to not forget any of it.
+
+The documentation links to the following:
+1. Snippets
+	1.1 Snippets for every filetype         |snippets|
+	1.2 Snippets for writing LaTex          |latex-snippets|
+	1.3 Snippets for writing XML files      |xml-snippets|
+	1.4 Snippets for writing html files     |html-snippets|
+
+=============================================================================
+1. Snippets
+
+	The following sections have been made to document custom made snippets.
+
+1.1 Global snippets											*snippets*
+
+	Below are the global snippets that are meant for creating new snippets.
+	They are available for every filetype.
+
+`,inoremap`:			autocmd FileType inoremap  ,
+
+`,map`:					autocmd Filetype map <leader>
+
+`,\`:						\ <CR>
+
+
+1.2 LaTex snippets											*latex-snippets*
+
+	These snippets are for making it easier to write tex documents.
+	They are oobviosly loaded and available when writing .tex files.
+
+`,document`:			\documentclass[a4paper, oneside]{} %article/others
+						\usepackage[utf8]{inputenc}
+						\usepackage{listings}
+						\usepackage{url}
+						\title{}
+						\author{}
+						\afil{}
+						\date{}
+
+						\begin{document}
+						\maketitle
+
+
+						\end{document}
+
+
+`,bf`:					\textbf{}
+
+`,item`:				\begin{itemize}
+							\item
+						\end{itemize}
+
+`,sec`:					\section{}
+
+`,sub`:					\subsection{}
+
+`,code`:				\begin{lstlisting}
+
+						\end{lstlisting}
+
+`,pic`:					\begin{figure}[!h]
+							\centering
+							\includegraphics[width=0.9\textwidth]{.png}
+							\caption{}
+						\end{figure}
+
+
+`,table`:				\begin{tabular}{}
+							 \textbf{} & \textbf{} \\
+							 \hline \\
+							  & \\
+							 \hline
+						 \end{tabular}
+
+
+
+1.3 XML snippets											*xml-snippets*
+
+	These snippets are for writing xml files. At the moment they are primarily
+	meant for xml configs for kvm and virsh.
+	Loaded when editing .xml files.
+
+|,gradef|:				<graphics type='spice' autoport='yes'>
+							<listen type='spice'/>
+							<image compression='off'/>
+						</graphics>
+
+|,gra|:					<graphics type='' autoport='yes'>
+							<listen type=''/>
+						</graphics>
+
+|,conDef|:				<console type='pty'>
+							<target type='serial' port='0'/>
+						</console>
+
+|,con|:					<console type=''>
+							<target type='' port='0'/>
+						</console>
+
+|,memDef|:				<memory unit='GB'>2</memory>
+						<currentMemoryunit='GB'>2</memory>
+
+|,mem|:					<memory unit='GB'></memory>
+						<currentMemory unit='GB'></memory>
+
+
+
+1.4 HTML snippets											*html-snippets*
+
+	These are to make it easier to write html files.
+	Loaded when editing .html files.
+
+|,b|:					<b></b>
+
+|,script|:				<script></script>
+
+
+vim:tw=80:ts=4:ft=help:norl:
