@@ -12,4 +12,4 @@ notify-send \
     $(acpi | cut -d ' ' -f 5)\n \
     $(pamixer --get-volume) \n \
     $(nmcli | grep "connected to" | cut -d ' ' -f 4) \n\n \
-VMs: \n $(virsh list)"
+VMs: \n $(virsh list --all)"

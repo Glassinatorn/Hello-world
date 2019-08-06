@@ -12,9 +12,8 @@ runtime! archlinux.vim
 
 " setting general line formatting
 set expandtab
-set tabstop=2
 set shiftwidth=2
-set noexpandtab
+set softtabstop=2
 set smarttab
 set bg=dark
 set tw=80
@@ -96,6 +95,9 @@ autocmd FileType * inoremap ,map
 	\ <Esc>bh<Del><Esc>2hi<Space>
 autocmd FileType * inoremap  ,\
 	\ <Tab>\ <CR ><Esc>hxA
+
+" to write file with sudo
+command W :execute ':silent w !sudo tee % > /dev/null' | :edit!
 
 " shortcut to jump to next step in snippets
 noremap <Space><Space> <Esc>/<++><Enter>"_c4l
