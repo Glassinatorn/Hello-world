@@ -12,8 +12,8 @@ runtime! archlinux.vim
 
 " setting general line formatting
 set expandtab
-set shiftwidth=2
-set softtabstop=2
+set shiftwidth=4
+set softtabstop=4
 set smarttab
 set bg=dark
 set tw=80
