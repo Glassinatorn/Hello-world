@@ -61,6 +61,7 @@ $CMD --exclude '.git' $SUCKLESS/st $BACKUPFOLDER/suckless/
 # nvim
 $CMD $CONFDIR/nvim/init.vim $BACKUPFOLDER/nvim/
 $CMD $NVIMRUNTIME/plugin/map_* $BACKUPFOLDER/nvim/plugin/
+$CMD $NVIMRUNTIME/skeletons/ $BACKUPFOLDER/nvim/skeletons/
 $CMD $NVIMRUNTIME/doc/doc.txt \
      $NVIMRUNTIME/doc/doc_* $BACKUPFOLDER/nvim/doc/
 

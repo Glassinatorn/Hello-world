@@ -72,23 +72,12 @@ endfunction
 command! -nargs=1 Figlet call s:figlet(<f-args>)
 
 
-" zen mode
-function! s:zen()
-	leftabove vnew
-	wincmd l
-	vnew
-	wincmd h
-	highlight VertSplit guifg=bg guibg=bg
-	highlight NonText   guifg=bg
-endfunction
-command! -nargs=0 Zen call s:zen()
-
 " global snippets
 autocmd FileType * inoremap ,imap
-	\ autocmd FileType inoremap ,
+	\ autocmd FileType inoremap ,<++>
 	\ <Esc>2bi
 autocmd FileType * inoremap ,nmap
-	\ autocmd FileType nnoremap ,
+	\ autocmd FileType nnoremap ,<++>
 	\ <Esc>2bi
 autocmd FileType * inoremap ,map
 	\ autocmd FileType map < leader>
@@ -96,15 +85,20 @@ autocmd FileType * inoremap ,map
 autocmd FileType * inoremap  ,\
 	\ <Tab>\ <CR ><Esc>hxA
 
-" to write file with sudo
-command W :execute ':silent w !sudo tee % > /dev/null' | :edit!
-
 " shortcut to jump to next step in snippets
 noremap <Space><Space> <Esc>/<++><Enter>"_c4l
 
 " skeletons
 autocmd BufNewFile	*.tex		0r	/usr/share/nvim/runtime/skeletons/skeleton.tex
-autocmd BufNewFile	*.c			0r	/usr/share/nvim/runtime/skeletons/skeleton.c
-autocmd BufNewFile	*.h			0r	/usr/share/nvim/runtime/skeletons/skeleton.h
+autocmd BufNewFile	*.c		0r	/usr/share/nvim/runtime/skeletons/skeleton.c
+autocmd BufNewFile	*.h		0r	/usr/share/nvim/runtime/skeletons/skeleton.h
 autocmd BufNewFile	*.cpp		0r	/usr/share/nvim/runtime/skeletons/skeleton.cpp
 autocmd BufNewFile	doc_*		0r	/usr/share/nvim/runtime/skeletons/documentation.txt
+
+
+" plugins
+call plug#begin()
+Plug 'ycm-core/YouCompleteMe'
+call plug#end()
+
+nnoremap <F5> :call VimWriteRoom()<CR>

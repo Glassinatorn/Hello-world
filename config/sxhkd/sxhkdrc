@@ -78,7 +78,7 @@ super + Return
 
 # program launcher
 super + @space
-  	dmenu_center --run
+    dmenu_center --run
 
 # make sxhkd reload its configuration files:
 super + shift + r
@@ -86,7 +86,7 @@ super + shift + r
 
 # make bspwm reload its config
 super + ctrl + r
-		~/.config/bspwm/bpswmrc
+    ~/.config/bspwm/bpswmrc
 
 
 
@@ -96,43 +96,43 @@ super + ctrl + r
 
 # shutdown
 super + x
-		shutdown.sh
+    shutdown.sh
 
 # attach to tmux session
 ctrl + t
-		st -e tmx.sh
+    st -e tmx.sh
 
 # show info
 ctrl + i
-		sysinfo
+    sysinfo
 
 # show calendar info
 ctrl + shift + i
-		calinfo
+    calinfo
 
 # fix screens and touchpad
 ctrl + shift + f
-		fix
+    fix
 
 # switch between igpu and egpu
 ctrl + e
-		pk_eGPU
+    pk_eGPU
 
 # rotating screen
 ctrl + shift + r
-		rotate.sh
+    rotate.sh
 
 # toggling keyboard layout
 ctrl + space
-		keymap
+    keymap
 
 # volume control keys
 XF86AudioMute
     pamixer -t
 XF86AudioRaiseVolume
-    pamixer -i 2
+    pamixer -i 5
 XF86AudioLowerVolume
-    pamixer -d 2
+    pamixer -d 5
 XF86MonBrightnessUp
     xbacklight +10
 XF86MonBrightnessDown
