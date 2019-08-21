@@ -27,7 +27,6 @@ static const Rule rules[] = {
 	 *	WM_CLASS(STRING) = instance, class
 	 *	WM_NAME(STRING) = title
 	 */
-
 	/* class      instance    title       tags mask     iscentered     isfloating   monitor */
 	{ "gimp",     NULL,       NULL,       0,            1,             1,           -1 },
 	{ "mpv",     NULL,       NULL,       0,            1,             1,           -1 },
@@ -110,7 +109,7 @@ static Key keys[] = {
 	TAGKEYS(                        XK_8,                      7)
 	TAGKEYS(                        XK_9,                      8)
 	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
-
+	{ MODKEY|ControlMask|ShiftMask, XK_q,      quit,           {1} },
 };
 
 /* button definitions */
