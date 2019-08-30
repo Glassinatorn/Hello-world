@@ -32,7 +32,7 @@ $CMD $CONFDIR/qutebrowser/config.py $BACKUPFOLDER/config/qutebrowser/
 $CMD /etc/tmux.conf $BACKUPFOLDER/etc/
 
 # zsh
-$CMD $USR/.zshrc $BACKUPFOLDER/
+$CMD $USR/.zshrc $BACKUPFOLDER/zshrc
 
 # xorg
 $CMD /etc/X11/xorg.conf.d/20-* \
