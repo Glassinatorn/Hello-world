@@ -10,12 +10,12 @@
 MON=`xrandr | grep connected | grep -v disconnected | wc -l`
 
 case $MON in
-	1) CENTER='-i -x 730 -y 430 -h 20 -l 10 -w 500' ;;
-	2) CENTER='-i -x 730 -y 430 -h 20 -l 10 -w 500' ;;
-	3) CENTER='-i -x 350 -y 730 -h 20 -l 10 -w 400' ;;
+    1) CENTER='-x 730 -y 430 -h 20 -l 10 -w 500' ;;
+    2) CENTER='-x 730 -y 430 -h 20 -l 10 -w 500' ;;
+    3) CENTER='-x 350 -y 730 -h 20 -l 10 -w 400' ;;
 esac
 
 case $@ in
-	--run) dmenu_run $CENTER ;;
-	*) dmenu $CENTER $@ ;;
+    --run) dmenu_run $CENTER ;;
+    *) dmenu $CENTER $@ ;;
 esac

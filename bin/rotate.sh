@@ -8,7 +8,7 @@
 #	88   8 8eee8   88  88  8   88  88ee
 
 
-temp=`xinput | grep Finger | cut -d "=" -f 2 | cut -b 1-2`
+temp=`xinput | grep "Finger" | awk '{print $7}' | cut -b 4-6`
 
 if [ `xrandr | grep eDP | awk '{print $5}'` == "(normal" ]; then
 		xrandr --output eDP1 --rotate left

@@ -23,7 +23,7 @@ $CMD $CONFDIR/i3 \
      $CONFDIR/polybar \
      $CONFDIR/termite \
      $CONFDIR/gtk-3.0/ \
-     $CONFDIR/compton.conf $BACKUPFOLDER/config/
+     $CONFDIR/compton.conf	$BACKUPFOLDER/config/
 
 # qutebrowser
 $CMD $CONFDIR/qutebrowser/config.py $BACKUPFOLDER/config/qutebrowser/
@@ -32,7 +32,7 @@ $CMD $CONFDIR/qutebrowser/config.py $BACKUPFOLDER/config/qutebrowser/
 $CMD /etc/tmux.conf $BACKUPFOLDER/etc/
 
 # zsh
-$CMD $USR/.zshrc $BACKUPFOLDER/zshrc
+$CMD $USR/.zshrc $BACKUPFOLDER/
 
 # xorg
 $CMD /etc/X11/xorg.conf.d/20-* \
@@ -43,7 +43,6 @@ $CMD $BINDIR/fix \
      $BINDIR/tmx.sh \
      $BINDIR/egpu.sh \
      $BINDIR/gitUp.sh \
-     $BINDIR/gifwall.sh \
      $BINDIR/sysinfo.sh \
      $BINDIR/sysinfo \
      $BINDIR/shutdown.sh \
@@ -61,7 +60,6 @@ $CMD --exclude '.git' $SUCKLESS/st $BACKUPFOLDER/suckless/
 # nvim
 $CMD $CONFDIR/nvim/init.vim $BACKUPFOLDER/nvim/
 $CMD $NVIMRUNTIME/plugin/map_* $BACKUPFOLDER/nvim/plugin/
-$CMD $NVIMRUNTIME/skeletons/ $BACKUPFOLDER/nvim/skeletons/
 $CMD $NVIMRUNTIME/doc/doc.txt \
      $NVIMRUNTIME/doc/doc_* $BACKUPFOLDER/nvim/doc/
 
@@ -69,8 +67,8 @@ echo "upload? y?"
 read UPLOAD
 
 if [ $UPLOAD ]; then
-  cd $BACKUPFOLDER
-  git add *
-  git commit
-  git push
+    cd $BACKUPFOLDER
+    git add *
+    git commit
+    git push
 fi
