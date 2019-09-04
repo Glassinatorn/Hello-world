@@ -37,7 +37,7 @@ case $MON in
         xinput --map-to-output "Wacom HID 5113 Pen stylus" eDP1
         xinput --map-to-output "Wacom HID 5113 Finger touch" eDP1
 
-        setxkbmap -layout se -option ctrl:nocaps
+        setxkbmap -layout us -option ctrl:nocaps
         xmodmap -e 'clear lock'
         xmodmap -e 'keycode 0x7e = Control_R'
         xmodmap -e 'add Control = Control_R'

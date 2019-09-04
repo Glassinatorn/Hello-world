@@ -11,8 +11,8 @@
 ANS="$(echo -e "Lock \nSign out \nReboot \nShutdown" | dmenu_center)"
 
 case "$ANS" in
-		Lock) echo test1 && dm-tool lock ;;
-		'Sign out') echo test2 && dm-tool switch-to-greeter ;;
-		Reboot) echo test3 && reboot ;;
-		Shutdown) echo test4 && shutdown now ;;
+    'Lock ') dm-tool lock ;;
+    'Sign out') dm-tool switch-to-greeter ;;
+    'Reboot ') reboot ;;
+    'Shutdown') shutdown now ;;
 esac
