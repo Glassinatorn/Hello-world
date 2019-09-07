@@ -43,47 +43,47 @@ set foldmethod=manual
 set clipboard=unnamedplus
 
 function! s:reload()
-	source /usr/share/nvim/runtime/plugin/map_c.vim
-	source /usr/share/nvim/runtime/plugin/map_doc.vim
-	source /usr/share/nvim/runtime/plugin/map_html.vim
-	source /usr/share/nvim/runtime/plugin/map_tex.vim
-	source /usr/share/nvim/runtime/plugin/map_xml.vim
-	source /home/glass/.config/nvim/init.vim
+    source /usr/share/nvim/runtime/plugin/map_c.vim
+    source /usr/share/nvim/runtime/plugin/map_doc.vim
+    source /usr/share/nvim/runtime/plugin/map_html.vim
+    source /usr/share/nvim/runtime/plugin/map_tex.vim
+    source /usr/share/nvim/runtime/plugin/map_xml.vim
+    source /home/glass/.config/nvim/init.vim
 endfunction
 command! -nargs=0 Reload call s:reload()
 
 function! s:figlet(...)
-	put=system('figlet -f /home/glass/Freetime/Figlet/computer.flf',  a:1)
-	for i in [1, 2, 3, 4, 5, 6]
-		if &filetype == 'vim'
-			norm! k>>0i"
-		elseif &filetype == 'tex'
-			norm! k>>0i%
-		elseif &filetype == 'sh'
-			norm! k>>0i#
-		endif
-	endfor
-	if &filetype == 'sh'
-		norm! ggO#! /bin/sh
-	else
-		norm! ggdd
-	endif
+    put=system('figlet -f /home/glass/Freetime/Figlet/computer.flf',  a:1)
+    for i in [1, 2, 3, 4, 5, 6]
+        if &filetype == 'vim'
+            norm! k>>0i"
+        elseif &filetype == 'tex'
+            norm! k>>0i%
+        elseif &filetype == 'sh'
+            norm! k>>0i#
+        endif
+    endfor
+    if &filetype == 'sh'
+        norm! ggO#! /bin/sh
+    else
+        norm! ggdd
+    endif
 endfunction
 command! -nargs=1 Figlet call s:figlet(<f-args>)
 
 
 " global snippets
 autocmd FileType * inoremap ,imap
-	\ autocmd FileType inoremap ,<++>
-	\ <Esc>2bi
+    \ autocmd FileType inoremap ,<++>
+    \ <Esc>2bi
 autocmd FileType * inoremap ,nmap
-	\ autocmd FileType nnoremap ,<++>
-	\ <Esc>2bi
+    \ autocmd FileType nnoremap ,<++>
+    \ <Esc>2bi
 autocmd FileType * inoremap ,map
-	\ autocmd FileType map < leader>
-	\ <Esc>bh<Del><Esc>2hi<Space>
+    \ autocmd FileType map < leader>
+    \ <Esc>bh<Del><Esc>2hi<Space>
 autocmd FileType * inoremap  ,\
-	\ <Tab>\ <CR ><Esc>hxA
+    \ <Tab>\ <CR ><Esc>hxA
 
 " shortcut to jump to next step in snippets
 noremap <Space><Space> <Esc>/<++><Enter>"_c4l
@@ -100,5 +100,8 @@ autocmd BufNewFile	doc_*		0r	/usr/share/nvim/runtime/skeletons/documentation.txt
 call plug#begin()
 Plug 'ycm-core/YouCompleteMe'
 call plug#end()
+
+" auto-closing preview
+let g:ycm_autoclose_preview_window_after_completion = "1"
 
 nnoremap <F5> :call VimWriteRoom()<CR>
