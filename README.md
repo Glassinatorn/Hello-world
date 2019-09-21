@@ -3,8 +3,8 @@ These be my dot-files, and the suckless thingies I use. Sadly you have no say in
 But awfully nice of you to pop by.
 
 ## Used programs
-- [Ranger](https://github.com/ranger/ranger) file manager
-- [st](https://st.suckless.org/) terminal
+- [Ranger](https://github.com/ranger/ranger) (file manager)
+- [st](https://st.suckless.org/) (terminal)
     Patches:
     - [anysize](https://st.suckless.org/patches/anysize/st-anysize-0.8.1.diff)
     - [boxdraw](https://st.suckless.org/patches/boxdraw/st-boxdraw_v2-0.8.2.diff)
