@@ -58,3 +58,5 @@ c.url.searchengines = {"DEFAULT": "https://qwant.com/?l=en&q={}&",
 
 ## Keybindings
 config.bind('Q', 'hint images spawn -u qt-chap {hint-url}')
+config.bind('j', 'scroll-px 0 40')
+config.bind('k', 'scroll-px 0 -40')

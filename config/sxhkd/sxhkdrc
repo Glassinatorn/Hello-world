@@ -115,7 +115,7 @@ ctrl + shift + f
     fix
 
 # switch between igpu and egpu
-ctrl + e
+ctrl + shift + e
     pk_eGPU
 
 # rotating screen
