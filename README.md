@@ -9,7 +9,7 @@ But awfully nice of you to pop by.
     - [anysize](https://st.suckless.org/patches/anysize/st-anysize-0.8.1.diff)
     - [boxdraw](https://st.suckless.org/patches/boxdraw/st-boxdraw_v2-0.8.2.diff)
     - [scrollback](https://st.suckless.org/patches/scrollback/st-scrollback-0.8.2.diff)
-- [dwm](https://dwm.suckless.org/) window manager
+- [dwm](https://dwm.suckless.org/) (window manager)
     Patches:
     - [attachaside](https://dwm.suckless.org/patches/attachaside/dwm-attachaside-20180126-db22360.diff)
     - [autostart](https://dwm.suckless.org/patches/autostart/dwm-autostart-20161205-bb3bd6f.diff)
@@ -17,7 +17,7 @@ But awfully nice of you to pop by.
     - [movestack](https://dwm.suckless.org/patches/movestack/dwm-movestack-6.1.diff<Paste>)
     - [ru_bottomstack](https://dwm.suckless.org/patches/bottomstack/dwm-bottomstack-6.1.diff)
     - [ru_gaps](https://dwm.suckless.org/patches/ru_gaps/dwm-ru_gaps-6.2.diff)
-- [dmenu](https://tools.suckless.org/dmenu/) launcher
+- [dmenu](https://tools.suckless.org/dmenu/) (launcher)
     Patches:
     - [border](https://tools.suckless.org/dmenu/patches/border/dmenu-border-4.9.diff)
     - [fuzzymatch](vertful://tools.suckless.org/dmenu/patches/fuzzymatch/dmenu-fuzzymatch-4.9.diff)
@@ -26,5 +26,5 @@ But awfully nice of you to pop by.
     - [vertfull](https://tools.suckless.org/dmenu/patches/vertfull/dmenu-vertfull-4.6.diff)
     - [xyw](https://tools.suckless.org/dmenu/patches/xyw/dmenu-xyw-4.7.diff)
     - [vertfull](https://tools.suckless.org/dmenu/patches/vertfull/dmenu-vertfull-4.6.diff)
-- [qutebrowser](https://www.qutebrowser.org/) web browser
-- [zathura](https://github.com/pwmt/zathura) pdf viewer
+- [qutebrowser](https://www.qutebrowser.org/) (web browser)
+- [zathura](https://github.com/pwmt/zathura) (pdf viewer)
