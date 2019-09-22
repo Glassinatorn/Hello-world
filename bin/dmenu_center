@@ -16,6 +16,6 @@ case $MON in
 esac
 
 case $@ in
-    --run) dmenu_run $CENTER ;;
-    *) dmenu $CENTER $@ ;;
+    --run) dmenu_run -i $CENTER ;;
+    *) dmenu $CENTER -i $@ ;;
 esac
