@@ -7,7 +7,7 @@ created for having a more comfortable and quicker workflow for editing and
 creating LaTeX documents.
 
 The documentation links to the following:
-		1. LaTeX introduction							|intro|
+    1. LaTeX introduction							    |intro|
 
 =============================================================================
 1. LaTeX introduction									|intro|

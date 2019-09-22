@@ -6,7 +6,7 @@ This document is primarily for documenting the use of xml files with kvm
 virtualisation.
 
 The documentation links to the following:
-		1. KVM introduction								|html-intro|
+    1. KVM introduction							    	|html-intro|
 
 =============================================================================
 1. KVM introduction										*html-intro*

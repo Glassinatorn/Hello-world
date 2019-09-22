@@ -1,7 +1,7 @@
 *doc_html.txt*	Nvim
 
 
-				VIM REFERENCE MANUAL	by Axel GB
+                    VIM REFERENCE MANUAL	by Axel GB
 
 =============================================================================
 

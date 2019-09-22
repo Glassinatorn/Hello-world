@@ -10,20 +10,20 @@ autocmd BufWritePost help :helptags /usr/share/nvim/runtime/doc/
 
 " beginning new helpfile
 autocmd FileType help inoremap ,helpdef
-	\ doc_.txt <Tab>Nvim
-	\<CR>
-	\<CR>VIM REFERENCE MANUAL <Tab> by <++><CR>
-	\<CR>This document is for <++><CR>
-	\<CR>The documentation links to the following:
-	\<CR>1. <++><CR>
-	\<CR>=============================================================================
-	\<CR>1. <++><CR>
-	\<CR>vim:tw=80:tabstop=4:ft=help:norl:
-	\<Esc>3G>>..8G>>.ggf.i
+    \ doc_.txt <Tab>Nvim
+    \<CR>
+    \<CR>VIM REFERENCE MANUAL <Tab> by <++><CR>
+    \<CR>This document is for <++><CR>
+    \<CR>The documentation links to the following:
+    \<CR>1. <++><CR>
+    \<CR>=============================================================================
+    \<CR>1. <++><CR>
+    \<CR>vim:tw=80:tabstop=4:ft=help:norl:
+    \<Esc>3G>>..8G>>.ggf.i
 
 
 autocmd FileType help inoremap ,==
-	\ =============================================================================<CR>
+    \ =============================================================================<CR>
 
 autocmd FileType help inoremap ,tex
-	\ LaTeX
+    \ LaTeX

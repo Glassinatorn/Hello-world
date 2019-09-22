@@ -8,7 +8,7 @@ Mostly in order to not forget any of it.
 
 The documentation links to the following:
 1. Snippets
-	1.1 Snippets for every filetype         |snippets|
+    1.1 Snippets for every filetype         |snippets|
 	1.2 Snippets for writing LaTex          |latex-snippets|
 	1.3 Snippets for writing XML files      |xml-snippets|
 	1.4 Snippets for writing html files     |html-snippets|
