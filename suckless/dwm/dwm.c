@@ -242,8 +242,10 @@ static int xerror(Display *dpy, XErrorEvent *ee);
 static int xerrordummy(Display *dpy, XErrorEvent *ee);
 static int xerrorstart(Display *dpy, XErrorEvent *ee);
 static void zoom(const Arg *arg);
+static void fifo();
 
 /* variables */
+static char fifoFile[] = "/tmp/dwmfifo";
 static const char broken[] = "broken";
 static char stext[256];
 static int screen;
@@ -282,6 +284,21 @@ static Window root, wmcheckwin;
 
 /* compile-time check if all tags fit into an unsigned int bit array. */
 struct NumTags { char limitexceeded[LENGTH(tags) > 31 ? -1 : 1]; };
+
+/* function to script dwm actions with the help of a fifo file */
+void
+fifo()
+{
+	FILE *fp;
+	char toRun[512];
+	/* reading the fifo file */
+	if (fp = fopen(fifoFile, "r+")) {
+		while ((fscanf(fp, "%s", &content)) == 1) {
+
+			keys[keysum]
+		}
+	}
+}
 
 /* function implementations */
 void

@@ -71,10 +71,10 @@ autocmd FileType tex inoremap ,bf
     \ \textbf{}<Esc>i
 
 autocmd FileType tex inoremap ,item
-    \ \begin{itemize}
+\ \begin{itemize}
     \ <CR>\item
     \ <CR>\end{itemize}
-    \ <Esc>kI<Tab><Esc>A
+    \ <Esc>kA
 
 autocmd FileType tex inoremap ,it
     \ <CR>\item
@@ -98,12 +98,12 @@ autocmd FileType tex inoremap ,pic
     \ <CR>\end{figure}<Esc>{<Space><Space>
 
 autocmd FileType tex inoremap ,table
-    \ \begin{tabular}[!h]
-    \ <CR>\textbf{} & \textbf{<++>} \\
+    \ \begin{tabular}{}[!h]
+    \ <CR>\textbf{<++>} & \textbf{<++>} \\
     \ <CR>\hline \\
     \ <CR> & \\
     \ <CR>\hline
-    \ <CR>\end{tabular}<Esc>4ki
+    \ <CR>\end{tabular}<Esc>5k0f{f{a
 
 autocmd FileType tex inoremap ,math
     \ \begin{equation}
@@ -133,3 +133,13 @@ autocmd FileType tex inoremap ,bt
 
 autocmd FileType tex inoremap ,c
     \ \cite{}<Esc>i
+
+autocmd FileType tex inoremap ,"
+    \ ``"<Esc>i
+
+autocmd FileType tex inoremap ,frac
+    \ \frac{}{<++>}<Esc>ba
+
+autocmd FileType tex inoremap ,center
+    \ \begin{center}
+    \ <CR>\end{center}<Esc>O

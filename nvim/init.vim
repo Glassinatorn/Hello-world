@@ -14,6 +14,7 @@ runtime! archlinux.vim
 set expandtab
 set shiftwidth=4
 set softtabstop=4
+let g:currentTabbing="soft"
 set smarttab
 set bg=dark
 set tw=80
@@ -42,34 +43,40 @@ set foldmethod=manual
 " setting paste
 set clipboard=unnamedplus
 
-function! s:reload()
-    source /usr/share/nvim/runtime/plugin/map_c.vim
-    source /usr/share/nvim/runtime/plugin/map_doc.vim
-    source /usr/share/nvim/runtime/plugin/map_html.vim
-    source /usr/share/nvim/runtime/plugin/map_tex.vim
-    source /usr/share/nvim/runtime/plugin/map_xml.vim
-    source /home/glass/.config/nvim/init.vim
-endfunction
-command! -nargs=0 Reload call s:reload()
-
 function! s:figlet(...)
-    put=system('figlet -f /home/glass/Freetime/Figlet/computer.flf',  a:1)
+    put=system("figlet -f /home/glass/Freetime/Figlet/computer.flf",  a:1)
     for i in [1, 2, 3, 4, 5, 6]
-        if &filetype == 'vim'
+        if &filetype == "vim"
             norm! k>>0i"
-        elseif &filetype == 'tex'
+        elseif &filetype == "tex"
             norm! k>>0i%
-        elseif &filetype == 'sh'
+        elseif &filetype == "sh"
             norm! k>>0i#
         endif
     endfor
-    if &filetype == 'sh'
+    if &filetype == "sh"
         norm! ggO#! /bin/sh
     else
         norm! ggdd
     endif
 endfunction
 command! -nargs=1 Figlet call s:figlet(<f-args>)
+
+function! s:tabbing(...)
+    if g:currentTabbing == "soft"
+        echo g:currentTabbing
+        set shiftwidth&
+        set softtabstop&
+        set noexpandtab
+        let g:currentTabbing="hard"
+    else
+        set shiftwidth=2
+        set softtabstop=2
+        set expandtab
+        let g:currentTabbing="soft"
+    endif
+endfunction
+command! -nargs=0 Tabbing call s:tabbing()
 
 
 " global snippets
