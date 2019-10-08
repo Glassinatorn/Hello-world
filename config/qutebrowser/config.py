@@ -5,6 +5,8 @@
 #    8 ___8 88  8   88  88   88   8 88   8 8   8 88  8  8    88 88   88   8
 #    8e8888 88ee8   88  88ee 88eee8 88   8 8eee8 88ee8ee8 8ee88 88ee 88   8
 
+import sys, os
+
 ## Colors
 teal = "#00F2FF"
 darkGray = "#282828"
@@ -42,7 +44,8 @@ c.scrolling.smooth = True
 c.url.start_pages = ["/home/glass/.homepage/home.html"]
 
 ## Search engines
-c.url.searchengines = {"DEFAULT": "https://qwant.com/?l=en&q={}&",
+c.url.searchengines = {"DEFAULT": "https://duckduckgo.com/?q={}",
+                        "q": "https://qwant.com/?l=en&q={}&",
                         "aw": "https://wiki.archlinux.org/?search={}",
                         "duck": "https://duckduckgo.com/?q={}",
                         "w": "https://en.wikipedia.org/wiki/{}",

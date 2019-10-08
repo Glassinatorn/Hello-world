@@ -19,3 +19,4 @@ source ~/.profile
 bindkey '^[[1;5C'	forward-word
 bindkey '^[[1;5D'	backward-word
 bindkey '^L'		clear-screen
+bindkey '^R'            history-incremental-search-backward

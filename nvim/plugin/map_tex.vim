@@ -50,21 +50,21 @@ autocmd FileType tex inoremap ,BTH
     \ <CR><CR><CR>\end{document}<Esc>gg
 
 autocmd FileType tex inoremap ,titlepage
-	\ \begin{document}
-	\ <CR>\begin{titlepage}
-	\ <CR>\centering
-	\ <CR>{\huge\bfseries <++>\par}
-	\ <CR>\vspace{1cm}
-	\ <CR>{\scshape\Large BTH, (\today) \par}
-	\ <CR>{\scshape\Large Author: Axel Gehlin Björnberg, Gusten.1@hotmail.com \par}
-	\ <CR>{\scshape\Large Course: <++>\par}
-	\ <CR>\vspace{1cm}
-	\ <CR>\includegraphics[width=0.3\textwidth]{bthlogo_svart_new.png}\par\vspace{1cm}
-	\ <CR>\vspace*{\fill}
-	\ <CR>Blekinge Institute of Technology\\
-	\ <CR>SE - 371 79 Karlskrona\\
-	\ <CR>Sweden
-	\ <CR>\end{titlepage}
+    \ \begin{document}
+    \ <CR>\begin{titlepage}
+    \ <CR>\centering
+    \ <CR>{\huge\bfseries <++>\par}
+    \ <CR>\vspace{1cm}
+    \ <CR>{\scshape\Large BTH, (\today) \par}
+    \ <CR>{\scshape\Large Author: Axel Gehlin Björnberg, Gusten.1@hotmail.com \par}
+    \ <CR>{\scshape\Large Course: <++>\par}
+    \ <CR>\vspace{1cm}
+    \ <CR>\includegraphics[width=0.3\textwidth]{bthlogo_svart_new.png}\par\vspace{1cm}
+    \ <CR>\vspace*{\fill}
+    \ <CR>Blekinge Institute of Technology\\
+    \ <CR>SE - 371 79 Karlskrona\\
+    \ <CR>Sweden
+    \ <CR>\end{titlepage}
 
 
 autocmd FileType tex inoremap ,bf
@@ -98,12 +98,11 @@ autocmd FileType tex inoremap ,pic
     \ <CR>\end{figure}<Esc>{<Space><Space>
 
 autocmd FileType tex inoremap ,table
-    \ \begin{tabular}{}[!h]
-    \ <CR>\textbf{<++>} & \textbf{<++>} \\
-    \ <CR>\hline \\
-    \ <CR> & \\
+    \ \begin{tabular}{}
     \ <CR>\hline
-    \ <CR>\end{tabular}<Esc>5k0f{f{a
+    \ <CR>\textbf{<++>} & \textbf{<++>} \\ \hline
+    \ <CR>& \\ \hline
+    \ <CR>\end{tabular}<Esc>4k$hi
 
 autocmd FileType tex inoremap ,math
     \ \begin{equation}

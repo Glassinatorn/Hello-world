@@ -242,7 +242,7 @@ static int xerror(Display *dpy, XErrorEvent *ee);
 static int xerrordummy(Display *dpy, XErrorEvent *ee);
 static int xerrorstart(Display *dpy, XErrorEvent *ee);
 static void zoom(const Arg *arg);
-static void fifo();
+static void readfifo();
 
 /* variables */
 static char fifoFile[] = "/tmp/dwmfifo";
@@ -287,16 +287,33 @@ struct NumTags { char limitexceeded[LENGTH(tags) > 31 ? -1 : 1]; };
 
 /* function to script dwm actions with the help of a fifo file */
 void
-fifo()
+readfifo()
 {
 	FILE *fp;
-	char toRun[512];
+	FILE *log;
+	char toRun;
 	/* reading the fifo file */
 	if (fp = fopen(fifoFile, "r+")) {
-		while ((fscanf(fp, "%s", &content)) == 1) {
-
-			keys[keysum]
+		log = fopen("/home/glass/log.txt", "w");
+		while ((toRun = fgetc(fp)) != EOF) {
+			if (toRun == '0') {
+				char tmp, args[512];
+				int len = 0;
+				while ((tmp = fgetc(fp)) != '\n') {
+					args[len] = tmp;
+					len++;
+                                }
+                                args[len] = '\0';
+				fprintf(log, args);
+				fclose(log);
+				//keys[toRun].func(args);
+			} else {
+				fprintf(log, toRun);
+				fclose(log);
+				//keys[toRun].func(&(keys[toRun].arg));
+			}
 		}
+	fclose(fp);
 	}
 }
 
