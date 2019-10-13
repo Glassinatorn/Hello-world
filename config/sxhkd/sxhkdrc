@@ -99,7 +99,7 @@ super + x
     shutdown.sh
 
 # attach to tmux session
-ctrl + t
+ctrl + shift + t
     st -e tmx.sh
 
 # show info

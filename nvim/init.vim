@@ -108,7 +108,10 @@ call plug#begin()
 Plug 'ycm-core/YouCompleteMe'
 call plug#end()
 
+
 " auto-closing preview
 let g:ycm_autoclose_preview_window_after_completion = "1"
+let g:ycm_global_ycm_extra_conf = '~.config/nvim/plugged/YouCompleteMe/ycm_extra_conf.py'
+let g:ycm_enable_diagnostic_signs = 0
 
 nnoremap <F5> :call VimWriteRoom()<CR>

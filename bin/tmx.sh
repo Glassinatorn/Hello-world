@@ -9,6 +9,6 @@
 
 
 ANS=`tmux ls | awk '{print $1}' | cut -d ":" -f1 | \
-	dmenu_center -p Tmux`
+     dmenu_center -p Tmux`
 
 tmux a -t $ANS
