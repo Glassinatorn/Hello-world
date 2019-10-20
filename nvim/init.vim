@@ -1,3 +1,4 @@
+
 "  88   8
 "  88   8 e  eeeeeee eeeee  eeee
 "  88  e8 8  8  8  8 8   8  8  8
@@ -102,16 +103,17 @@ autocmd BufNewFile	*.h		0r	/usr/share/nvim/runtime/skeletons/skeleton.h
 autocmd BufNewFile	*.cpp		0r	/usr/share/nvim/runtime/skeletons/skeleton.cpp
 autocmd BufNewFile	doc_*		0r	/usr/share/nvim/runtime/skeletons/documentation.txt
 
+" the prefix to use for leader commands
+let g:mapleader="<space>"
 
-" plugins
-call plug#begin()
-Plug 'ycm-core/YouCompleteMe'
+" Use vim-plug to manage your plugins:
+" https://github.com/junegunn/vim-plug
+call plug#begin('~/.vim/vendor')
+Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
+Plug 'neoclide/coc-prettier', {'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc-highlight', {'do': 'yarn install --frozen-lockfile'} " color highlighting
+Plug 'neoclide/coc-texlab', {'do': 'yarn install --frozen-lockfile'} " color highlighting
+Plug 'neoclide/coc-java', {'do': 'yarn install --frozen-lockfile'} " color highlighting
+Plug 'neoclide/coc-python', {'do': 'yarn install --frozen-lockfile'} " color highlighting
+Plug 'neoclide/coc-ccls', {'do': 'yarn install --frozen-lockfile'} " color highlighting
 call plug#end()
-
-
-" auto-closing preview
-let g:ycm_autoclose_preview_window_after_completion = "1"
-let g:ycm_global_ycm_extra_conf = '~.config/nvim/plugged/YouCompleteMe/ycm_extra_conf.py'
-let g:ycm_enable_diagnostic_signs = 0
-
-nnoremap <F5> :call VimWriteRoom()<CR>

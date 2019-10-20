@@ -8,10 +8,11 @@
 #	8eee88 88  8 88ee8   88  88ee8 8eee8 88ee8ee8 88  8
 
 
-ANS="$(echo -e "Lock \nSign out \nReboot \nShutdown" | dmenu_center)"
+ANS="$(echo -e "Lock \nSuspend \nSign out \nReboot \nShutdown" | dmenu_center)"
 
 case "$ANS" in
     'Lock ') dm-tool lock ;;
+    'Suspend ') pkexec $(systemctl suspend) ;;
     'Sign out ') dm-tool switch-to-greeter ;;
     'Reboot ') reboot ;;
     'Shutdown') shutdown now ;;
