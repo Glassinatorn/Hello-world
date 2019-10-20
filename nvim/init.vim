@@ -106,8 +106,7 @@ autocmd BufNewFile	doc_*		0r	/usr/share/nvim/runtime/skeletons/documentation.txt
 " the prefix to use for leader commands
 let g:mapleader="<space>"
 
-" Use vim-plug to manage your plugins:
-" https://github.com/junegunn/vim-plug
+" plugins
 call plug#begin('~/.vim/vendor')
 Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
 Plug 'neoclide/coc-prettier', {'do': 'yarn install --frozen-lockfile'}
