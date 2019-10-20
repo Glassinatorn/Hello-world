@@ -20,10 +20,6 @@
            "directory": "/tmp/ccls"
          }
        }
-    },
-    "vimtex": {
-      "command": "vimtex",
-      "filetypes": ["tex", "plaintex", "context"]
     }
   }
 }
