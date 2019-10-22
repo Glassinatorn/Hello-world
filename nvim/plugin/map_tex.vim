@@ -108,7 +108,7 @@ autocmd FileType tex inoremap ,math
     \ \begin{equation}
     \ <CR>\end{equation}<Esc>O
 
-autocmd FileType tex inoremap n<Tab>
+autocmd FileType tex inoremap ,<Tab>
     \ \noindent<Space>
 
 autocmd FileType tex inoremap ,\\
@@ -135,8 +135,6 @@ autocmd FileType tex inoremap ,c
 
 autocmd FileType tex inoremap ,"
     \ ``''<Esc>hi
-
-autocmd FileType tex inoremap ,frac
     \ \frac{}{<++>}<Esc>ba
 
 autocmd FileType tex inoremap ,center

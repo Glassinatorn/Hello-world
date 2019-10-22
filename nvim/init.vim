@@ -115,4 +115,5 @@ Plug 'neoclide/coc-texlab', {'do': 'yarn install --frozen-lockfile'} " color hig
 Plug 'neoclide/coc-java', {'do': 'yarn install --frozen-lockfile'} " color highlighting
 Plug 'neoclide/coc-python', {'do': 'yarn install --frozen-lockfile'} " color highlighting
 Plug 'neoclide/coc-ccls', {'do': 'yarn install --frozen-lockfile'} " color highlighting
+Plug 'junegunn/goyo.vim'
 call plug#end()
