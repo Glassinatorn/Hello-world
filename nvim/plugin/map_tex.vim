@@ -134,7 +134,7 @@ autocmd FileType tex inoremap ,c
     \ \cite{}<Esc>i
 
 autocmd FileType tex inoremap ,"
-    \ ``"<Esc>i
+    \ ``''<Esc>hi
 
 autocmd FileType tex inoremap ,frac
     \ \frac{}{<++>}<Esc>ba
