@@ -33,9 +33,8 @@ case $MON in
         ;;
 
     3)
-        CHOICE=$(echo -e "y\nn" | dmenu_center -p "Game?")
-        if [[ $CHOICE == 'y' ]]
-        then
+        CHOICE=$(echo -e "n\ny" | dmenu_center -p "Game?")
+        if [ $CHOICE == 'y' ]; then
             ~/.screenlayout/game.sh
         else
             ~/.screenlayout/3.sh
