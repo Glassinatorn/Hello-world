@@ -45,21 +45,22 @@ c.url.start_pages = ["/home/glass/.homepage/home.html"]
 
 ## Search engines
 c.url.searchengines = {"DEFAULT": "https://duckduckgo.com/?q={}",
-                        "q": "https://qwant.com/?l=en&q={}&",
-                        "aw": "https://wiki.archlinux.org/?search={}",
-                        "duck": "https://duckduckgo.com/?q={}",
-                        "w": "https://en.wikipedia.org/wiki/{}",
-                        "tra": "https://translate.google.com/?text={}",
-                        "yt": "https://www.youtube.com/results?search_query={}",
-                        "lv": "https://wiki.libvirt.org/page/{}",
-                        "web": "https://developer.mozilla.org/en-US/search?q={}",
-                        "tex": "https://ctan.org/search?phrase={}",
-                        "vi": "https://vim.fandom.com/wiki/Special:Search?query={}",
-                        "g": "https://www.google.se/search?q={}",
-                        "m": "https://www.google.co.uk/maps/place/{}"}
+                       "q": "https://qwant.com/?l=en&q={}&",
+                       "aw": "https://wiki.archlinux.org/?search={}",
+                       "duck": "https://duckduckgo.com/?q={}",
+                       "w": "https://en.wikipedia.org/wiki/{}",
+                       "tra": "https://translate.google.com/?text={}",
+                       "yt": "https://www.youtube.com/results?search_query={}",
+                       "lv": "https://wiki.libvirt.org/page/{}",
+                       "web": "https://developer.mozilla.org/en-US/search?q={}",
+                       "tex": "https://ctan.org/search?phrase={}",
+                       "vi": "https://vim.fandom.com/wiki/Special:Search?query={}",
+                       "g": "https://www.google.se/search?q={}",
+                       "m": "https://www.google.se/maps/place/{}"}
 
 
-## Keybindings
-config.bind('Q', 'hint images spawn -u qt-chap {hint-url}')
-config.bind('j', 'scroll-px 0 40')
-config.bind('k', 'scroll-px 0 -40')
+# Temporary keybindings,
+c.bindings.commands["normal"] = {"Q": "hint images spawn -u qt-chap {hint-url}",
+                                 "M": "hint images spawn -u mpv {hint-url}",
+                                 "j": "scroll-px 0 40",
+                                 "k": "scroll-px 0 -40"}
