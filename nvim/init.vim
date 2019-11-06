@@ -110,7 +110,6 @@ let g:mapleader="<space>"
 call plug#begin('~/.vim/vendor')
 Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
 Plug 'neoclide/coc-prettier', {'do': { -> coc#util#install()}}
-"Plug 'neoclide/coc-highlight', {'do': { -> coc#util#install()}}
 Plug 'neoclide/coc-texlab', {'do': { -> coc#util#install()}}
 Plug 'neoclide/coc-java', {'do': { -> coc#util#install()}}
 Plug 'neoclide/coc-ccls', {'do': { -> coc#util#install()}}
