@@ -128,7 +128,7 @@ drawitem(struct item *item, int x, int y, int w)
 	else
 		drw_setscheme(drw, scheme[SchemeNorm]);
 
-	return drw_text(drw, 0, y, w, bh, lrpad / 2, item->text, 0);
+	return drw_text(drw, x, y, w, bh, lrpad / 2, item->text, 0);
 }
 
 static void
@@ -793,8 +793,8 @@ static void
 usage(void)
 {
 	fputs("usage: dmenu [-bfiv] [-l lines] [-p prompt] [-fn font] [-m monitor]\n"
-              "[-h height] [-x xoffset] [-y yoffset] [-w width]\n"
-	      "[-nb color] [-nf color] [-sb color] [-sf color] [-w windowid]\n", stderr);
+          "             [-h height] [-x xoffset] [-y yoffset] [-w width]\n"
+	      "             [-nb color] [-nf color] [-sb color] [-sf color] [-w windowid]\n", stderr);
 	exit(1);
 }
 

@@ -109,11 +109,10 @@ let g:mapleader="<space>"
 " plugins
 call plug#begin('~/.vim/vendor')
 Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
-Plug 'neoclide/coc-prettier', {'do': 'yarn install --frozen-lockfile'}
-Plug 'neoclide/coc-highlight', {'do': 'yarn install --frozen-lockfile'} " color highlighting
-Plug 'neoclide/coc-texlab', {'do': 'yarn install --frozen-lockfile'} " color highlighting
-Plug 'neoclide/coc-java', {'do': 'yarn install --frozen-lockfile'} " color highlighting
-Plug 'neoclide/coc-python', {'do': 'yarn install --frozen-lockfile'} " color highlighting
-Plug 'neoclide/coc-ccls', {'do': 'yarn install --frozen-lockfile'} " color highlighting
+Plug 'neoclide/coc-prettier', {'do': { -> coc#util#install()}}
+"Plug 'neoclide/coc-highlight', {'do': { -> coc#util#install()}}
+Plug 'neoclide/coc-texlab', {'do': { -> coc#util#install()}}
+Plug 'neoclide/coc-java', {'do': { -> coc#util#install()}}
+Plug 'neoclide/coc-ccls', {'do': { -> coc#util#install()}}
 Plug 'junegunn/goyo.vim'
 call plug#end()

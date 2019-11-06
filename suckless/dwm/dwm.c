@@ -178,7 +178,6 @@ static long getstate(Window w);
 static int gettextprop(Window w, Atom atom, char *text, unsigned int size);
 static void grabbuttons(Client *c, int focused);
 static void grabkeys(void);
-static void incnmaster(const Arg *arg);
 static void keypress(XEvent *e);
 static void killclient(const Arg *arg);
 static void manage(Window w, XWindowAttributes *wa);
@@ -242,10 +241,8 @@ static int xerror(Display *dpy, XErrorEvent *ee);
 static int xerrordummy(Display *dpy, XErrorEvent *ee);
 static int xerrorstart(Display *dpy, XErrorEvent *ee);
 static void zoom(const Arg *arg);
-static void readfifo();
 
 /* variables */
-static char fifoFile[] = "/tmp/dwmfifo";
 static const char broken[] = "broken";
 static char stext[256];
 static int screen;
@@ -284,38 +281,6 @@ static Window root, wmcheckwin;
 
 /* compile-time check if all tags fit into an unsigned int bit array. */
 struct NumTags { char limitexceeded[LENGTH(tags) > 31 ? -1 : 1]; };
-
-/* function to script dwm actions with the help of a fifo file */
-void
-readfifo()
-{
-	FILE *fp;
-	FILE *log;
-	char toRun;
-	/* reading the fifo file */
-	if (fp = fopen(fifoFile, "r+")) {
-		log = fopen("/home/glass/log.txt", "w");
-		while ((toRun = fgetc(fp)) != EOF) {
-			if (toRun == '0') {
-				char tmp, args[512];
-				int len = 0;
-				while ((tmp = fgetc(fp)) != '\n') {
-					args[len] = tmp;
-					len++;
-                                }
-                                args[len] = '\0';
-				fprintf(log, args);
-				fclose(log);
-				//keys[toRun].func(args);
-			} else {
-				fprintf(log, toRun);
-				fclose(log);
-				//keys[toRun].func(&(keys[toRun].arg));
-			}
-		}
-	fclose(fp);
-	}
-}
 
 /* function implementations */
 void
@@ -1017,13 +982,6 @@ grabkeys(void)
 					XGrabKey(dpy, code, keys[i].mod | modifiers[j], root,
 						True, GrabModeAsync, GrabModeAsync);
 	}
-}
-
-void
-incnmaster(const Arg *arg)
-{
-	selmon->nmaster = MAX(selmon->nmaster + arg->i, 0);
-	arrange(selmon);
 }
 
 #ifdef XINERAMA

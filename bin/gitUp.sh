@@ -12,8 +12,8 @@ CONFDIR="$USR/.config"
 BINDIR="$USR/bin/own"
 SUCKLESS="$USR/bin/suckless"
 NVIMRUNTIME="/usr/share/nvim/runtime"
-BACKUPFOLDER="$USR/Backup/Hello-world"
-SUCKLESS="$USR/bin/suckless"
+BACKUPFOLDER="$USR/backup/Hello-world"
+SUCKLESS="$USR/freetime/code/c/git/suckless"
 CMD="sudo rsync -razP"
 
 # .config
@@ -45,6 +45,7 @@ $CMD $BINDIR/fix \
      $BINDIR/gitUp.sh \
      $BINDIR/sysinfo.sh \
      $BINDIR/sysinfo \
+     $BINDIR/xdg-file \
      $BINDIR/shutdown.sh \
      $BINDIR/dmenu_center \
      $BINDIR/keymap \
@@ -67,7 +68,8 @@ $CMD $NVIMRUNTIME/doc/doc.txt \
 echo "upload? y?"
 read UPLOAD
 
-if [ $UPLOAD ]; then
+if [ $UPLOAD ];
+then
     cd $BACKUPFOLDER
     git add *
     git commit

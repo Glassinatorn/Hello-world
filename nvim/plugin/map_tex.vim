@@ -135,6 +135,8 @@ autocmd FileType tex inoremap ,c
 
 autocmd FileType tex inoremap ,"
     \ ``''<Esc>hi
+
+autocmd FileType tex inoremap ,fra
     \ \frac{}{<++>}<Esc>ba
 
 autocmd FileType tex inoremap ,center
