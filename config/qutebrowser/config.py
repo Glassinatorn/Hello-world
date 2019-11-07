@@ -61,6 +61,6 @@ c.url.searchengines = {"DEFAULT": "https://duckduckgo.com/?q={}",
 
 # Temporary keybindings,
 c.bindings.commands["normal"] = {"Q": "hint images spawn -u qt-chap {hint-url}",
-                                 "M": "hint images spawn -u mpv {hint-url}",
+                                 "M": "hint links spawn mpv {hint-url}",
                                  "j": "scroll-px 0 40",
                                  "k": "scroll-px 0 -40"}
