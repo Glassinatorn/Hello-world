@@ -23,10 +23,14 @@ $CMD $CONFDIR/i3 \
      $CONFDIR/polybar \
      $CONFDIR/termite \
      $CONFDIR/gtk-3.0/ \
-     $CONFDIR/compton.conf	$BACKUPFOLDER/config/
+     $CONFDIR/compton.conf	        $BACKUPFOLDER/config/
+
+# nnn
+$CMD $CONFDIR/nnn/plugins \
+     $CONFDIR/nnn/rc                    $BACKUPFOLDER/config/nnn/
 
 # qutebrowser
-$CMD $CONFDIR/qutebrowser/config.py $BACKUPFOLDER/config/qutebrowser/
+$CMD $CONFDIR/qutebrowser/config.py     $BACKUPFOLDER/config/qutebrowser/
 
 # tmux
 $CMD /etc/tmux.conf $BACKUPFOLDER/etc/
@@ -36,7 +40,7 @@ $CMD $USR/.zshrc $BACKUPFOLDER/zshrc
 
 # xorg
 $CMD /etc/X11/xorg.conf.d/20-* \
-     /etc/X11/20-* $BACKUPFOLDER/etc/X11/
+     /etc/X11/20-*                      $BACKUPFOLDER/etc/X11/
 
 # bin
 $CMD $BINDIR/fix \
@@ -51,19 +55,20 @@ $CMD $BINDIR/fix \
      $BINDIR/keymap \
      $BINDIR/qutebrowser_session \
      $BINDIR/shutdown.sh \
-     $BINDIR/rotate.sh $BACKUPFOLDER/bin/
+     $BINDIR/rotate.sh                  $BACKUPFOLDER/bin/
 
 # suckless
-$CMD --exclude '.git' $SUCKLESS/dmenu $BACKUPFOLDER/suckless/
-$CMD --exclude '.git' $SUCKLESS/dwm $BACKUPFOLDER/suckless/
-$CMD --exclude '.git' $SUCKLESS/st $BACKUPFOLDER/suckless/
+$CMD --exclude '.git' $SUCKLESS/dmenu   $BACKUPFOLDER/suckless/
+$CMD --exclude '.git' $SUCKLESS/dwm     $BACKUPFOLDER/suckless/
+$CMD --exclude '.git' $SUCKLESS/st      $BACKUPFOLDER/suckless/
 
 # nvim
 $CMD $CONFDIR/nvim/init.vim \
-     $CONFDIR/nvim/coc-settings.json $BACKUPFOLDER/nvim/
-$CMD $NVIMRUNTIME/plugin/map_* $BACKUPFOLDER/nvim/plugin/
+     $CONFDIR/nvim/coc-settings.json    $BACKUPFOLDER/nvim/
+
+$CMD $NVIMRUNTIME/plugin/map_*          $BACKUPFOLDER/nvim/plugin/
 $CMD $NVIMRUNTIME/doc/doc.txt \
-     $NVIMRUNTIME/doc/doc_* $BACKUPFOLDER/nvim/doc/
+     $NVIMRUNTIME/doc/doc_*             $BACKUPFOLDER/nvim/doc/
 
 echo "upload? y?"
 read UPLOAD

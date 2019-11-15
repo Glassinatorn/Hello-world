@@ -1,0 +1,4 @@
+#! /bin/sh
+#FILES=$(cat /tmp/.nnn* | uniq)
+#mpv $FILES
+mpv $1

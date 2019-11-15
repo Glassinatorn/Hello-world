@@ -1,0 +1,15 @@
+export NNN_USE_EDITOR=1
+
+# bookmarks
+export NNN_BMS="h:~/;"\
+"m:~/school/master/semester1/machineLearning/;"\
+"i:~/school/master/semester1/introCloudComputing/;"\
+"a:~/school/master/semester1/ai/;"\
+"c:~/freetime/code/;"\
+"n:~/freetime/music/weeb/nightcore/;"
+
+# plugins
+export NNN_PLUG="p:sxiv;"\
+"t:transfer;"\
+"m:playlist;"\
+"x:xdg-update;"
