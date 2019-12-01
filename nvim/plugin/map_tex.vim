@@ -142,3 +142,16 @@ autocmd FileType tex inoremap ,fra
 autocmd FileType tex inoremap ,center
     \ \begin{center}
     \ <CR>\end{center}<Esc>O
+
+autocmd FileType tex inoremap ,matr
+    \ $\begin{matrix} %v-/bmatrix
+    \ <CR>&
+    \ <CR>\end{<++>matrix}$
+    \ <Esc>2kF{a
+
+autocmd FileType tex inoremap ,ref
+    \ \ref{}<Esc>i
+
+autocmd FileType tex inoremap ,href
+    \ \hyperref[]{''<++>''}
+    \ <Esc>F]i

@@ -9,7 +9,7 @@ autocmd FileType c inoremap ,inc
     \ #include <.h><Esc>F.i
 
 autocmd FileType c inoremap ,main
-    \ int main (int argv, char **argc) {
+    \ int main (int argc, char **argv) {
     \ <CR>return 0;
     \ <CR>}<Esc>kO
 

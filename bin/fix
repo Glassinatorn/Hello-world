@@ -33,12 +33,7 @@ case $MON in
         ;;
 
     3)
-        CHOICE=$(echo -e "n\ny" | dmenu_center -p "Game?")
-        if [ $CHOICE == 'y' ]; then
-            ~/.screenlayout/game.sh
-        else
-            ~/.screenlayout/3.sh
-        fi
+        ~/.screenlayout/3.sh
         xinput --map-to-output "Wacom HID 5113 Pen stylus" eDP1
         xinput --map-to-output "Wacom HID 5113 Finger touch" eDP1
 

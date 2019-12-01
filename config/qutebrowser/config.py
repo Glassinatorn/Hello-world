@@ -53,7 +53,7 @@ c.url.searchengines = {"DEFAULT": "https://duckduckgo.com/?q={}",
                        "yt": "https://www.youtube.com/results?search_query={}",
                        "lv": "https://wiki.libvirt.org/page/{}",
                        "web": "https://developer.mozilla.org/en-US/search?q={}",
-                       "tex": "https://ctan.org/search?phrase={}",
+                       "tex": "https://latex.wikia.org/wiki/Special:Search?query={}",
                        "vi": "https://vim.fandom.com/wiki/Special:Search?query={}",
                        "g": "https://www.google.se/search?q={}",
                        "m": "https://www.google.se/maps/place/{}"}
@@ -63,4 +63,8 @@ c.url.searchengines = {"DEFAULT": "https://duckduckgo.com/?q={}",
 c.bindings.commands["normal"] = {"Q": "hint images spawn -u qt-chap {hint-url}",
                                  "M": "hint links spawn mpv {hint-url}",
                                  "j": "scroll-px 0 40",
-                                 "k": "scroll-px 0 -40"}
+                                 "k": "scroll-px 0 -40",
+                                 "gf": "open feber.se",
+                                 "gd": "open discordapp.com/channels/@me",
+                                 "gy": "open youtube.com",
+                                 "gc": "open bth.se/canvas"}

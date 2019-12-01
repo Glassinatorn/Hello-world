@@ -165,6 +165,7 @@ static unsigned int mousebg = 0;
 static unsigned int defaultattr = 11;
 
 /*
+<<<<<<< HEAD
  * Xresources preferences to load at startup
  */
 ResourcePref resources[] = {

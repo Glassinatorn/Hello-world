@@ -35,6 +35,9 @@ set nohlsearch
 map <leader>us :setlocal spell! spelllang=en<CR>
 map <leader>se :setlocal spell! spelllang=sv<CR>
 
+" save file
+nnoremap <silent> <C-S> :w<CR>
+inoremap <silent> <C-S> <Esc>:w<CR>
 " automatically delete trailing whitespaces on filesave
 autocmd BufWritePre * %s/\s\+$//e
 
