@@ -157,17 +157,17 @@ autocmd FileType tex inoremap ,href
     \ <Esc>F]i
 
 autocmd FileType tex inoremap ,graph
-\begin{tikzpicture}
-    \begin{axis}[
-    title={<++>},
-    xlabel={<++>},
-    ylabel={<++>},
-    xtick=data,
-    xmin=1,
-    xmax=8,
-    ]
-        \addplot[color=blue] coordinates {
-        (<++>, <++>)
-        };
-    \end{axis}
+    \ \begin{tikzpicture}
+    \ <CR>\begin{axis}[
+    \ <CR>title={<++>},
+    \ <CR>xlabel={<++>},
+    \ <CR>ylabel={<++>},
+    \ <CR>xtick=data,
+    \ <CR>xmin=1,
+    \ <CR>xmax=8,
+    \ <CR>]
+    \ <CR>   \addplot[color=blue] coordinates {
+    \ <CR>   (<++>, <++>)
+    \ <CR>   };
+    \ <CR>\end{axis}
 \end{tikzpicture}
