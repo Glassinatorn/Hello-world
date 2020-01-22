@@ -13,7 +13,7 @@ BINDIR="$USR/bin"
 NVIMRUNTIME="/usr/share/nvim/runtime"
 BACKUPFOLDER="$USR/backup/Hello-world"
 SUCKLESS="$USR/freetime/code/c/git/suckless"
-CMD="sudo rsync -razP"
+CMD="sudo rsync -razzP"
 
 # .config
 $CMD $CONFDIR/i3 \
@@ -50,7 +50,6 @@ $CMD $BINDIR/fix \
      $BINDIR/gitUp.sh \
      $BINDIR/sysinfo.sh \
      $BINDIR/sysinfo \
-     $BINDIR/xdg-file \
      $BINDIR/shutdown.sh \
      $BINDIR/dmenu_center \
      $BINDIR/keymap \
