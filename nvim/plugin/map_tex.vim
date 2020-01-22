@@ -155,3 +155,19 @@ autocmd FileType tex inoremap ,ref
 autocmd FileType tex inoremap ,href
     \ \hyperref[]{''<++>''}
     \ <Esc>F]i
+
+autocmd FileType tex inoremap ,graph
+\begin{tikzpicture}
+    \begin{axis}[
+    title={<++>},
+    xlabel={<++>},
+    ylabel={<++>},
+    xtick=data,
+    xmin=1,
+    xmax=8,
+    ]
+        \addplot[color=blue] coordinates {
+        (<++>, <++>)
+        };
+    \end{axis}
+\end{tikzpicture}

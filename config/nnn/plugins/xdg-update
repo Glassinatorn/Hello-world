@@ -6,10 +6,11 @@
 
 TYPE=$(xdg-mime query filetype $1)
 DEFAULT=$(xdg-mime query default $TYPE)
-echo -e "Filetype: $TYPE \nDefault: $DEFAULT\ny/n"
+echo -e "Filetype: $TYPE \nDefault: $DEFAULT\nchange: y/n"
 read CHOICE
 
-if [ $CHOICE = "y" ]; then
+if [ $CHOICE = "y" ]
+then
     xdg-mime default $(ls /usr/share/applications/ | fzf) $TYPE
     echo -e "new default: $(xdg-mime query default $TYPE)"
 fi

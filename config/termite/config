@@ -1,5 +1,3 @@
-
-
 [options]
 scroll_on_output = false
 scroll_on_keystroke = true

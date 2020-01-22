@@ -56,6 +56,7 @@ c.url.searchengines = {"DEFAULT": "https://duckduckgo.com/?q={}",
                        "tex": "https://latex.wikia.org/wiki/Special:Search?query={}",
                        "vi": "https://vim.fandom.com/wiki/Special:Search?query={}",
                        "g": "https://www.google.se/search?q={}",
+                       "p": "https://www.prisjakt.nu/search?search={}",
                        "m": "https://www.google.se/maps/place/{}"}
 
 
@@ -67,4 +68,5 @@ c.bindings.commands["normal"] = {"Q": "hint images spawn -u qt-chap {hint-url}",
                                  "gf": "open feber.se",
                                  "gd": "open discordapp.com/channels/@me",
                                  "gy": "open youtube.com",
+                                 "gu": "open reddit.com/r/unixporn",
                                  "gc": "open bth.se/canvas"}

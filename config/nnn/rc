@@ -3,10 +3,9 @@ export NNN_USE_EDITOR=1
 # bookmarks
 export NNN_BMS="h:~/;"\
 "m:~/school/master/semester1/machineLearning/;"\
-"i:~/school/master/semester1/introCloudComputing/;"\
-"a:~/school/master/semester1/ai/;"\
-"c:~/freetime/code/;"\
-"n:~/freetime/music/weeb/nightcore/;"
+"r:~/school/master/semester2/researchMethodologies/;"\
+"s:~/school/master/semester2/secureSoftwareEngieering/;"\
+"c:~/freetime/code/;"
 
 # plugins
 export NNN_PLUG="p:sxiv;"\

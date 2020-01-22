@@ -1,5 +1,5 @@
-
 {
+  "python.linting.pylintPath":"/usr/local/bin/pylint",
   "prettier.requireConfig": true,
   "coc.preferences.formatOnSaveFiletypes": [
     "css",

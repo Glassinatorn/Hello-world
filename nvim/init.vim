@@ -1,4 +1,3 @@
-
 "  88   8
 "  88   8 e  eeeeeee eeeee  eeee
 "  88  e8 8  8  8  8 8   8  8  8
@@ -110,11 +109,10 @@ autocmd BufNewFile	doc_*		0r	/usr/share/nvim/runtime/skeletons/documentation.txt
 let g:mapleader="<space>"
 
 " plugins
-call plug#begin('~/.vim/vendor')
+call plug#begin('~/.config/nvim/vendor')
 Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
 Plug 'neoclide/coc-prettier', {'do': { -> coc#util#install()}}
 Plug 'neoclide/coc-texlab', {'do': { -> coc#util#install()}}
 Plug 'neoclide/coc-java', {'do': { -> coc#util#install()}}
-Plug 'neoclide/coc-ccls', {'do': { -> coc#util#install()}}
 Plug 'junegunn/goyo.vim'
 call plug#end()
