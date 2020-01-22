@@ -7,15 +7,31 @@
 #	88ee8 88 8  8 88ee 88  8 88ee8
 
 
-MON=`xrandr | grep connected | grep -v disconnected | wc -l`
+MON=$(xrandr | grep connected | grep -v disconnected | wc -l)
 
 case $MON in
-    1) CENTER='-x 730 -y 430 -h 20 -l 10 -w 500' ;;
-    2) CENTER='-x 730 -y 430 -h 20 -l 10 -w 500' ;;
-    3) CENTER='-x 350 -y 730 -h 20 -l 10 -w 400' ;;
+    1) CENTER="-x 730 -y 430 -h 20 -l 10 -w 500" ;;
+    4)
+        CORNER=$(xprop -root _NET_ACTIVE_WINDOW | cut -d ' ' -f 5 | \
+                 xargs xwininfo -id | grep Corners | cut -d ' ' -f 5)
+        X=$(echo $CORNER | cut -d '+' -f 2)
+        Y=$(echo $CORNER | cut -d '+' -f 3)
+
+        if [ $Y -gt 4080 ]
+        then
+            CENTER="-x 700 -y 200 -h 20 -l 10 -w 500"
+        elif [ $Y -gt 1920 ]
+        then
+            CENTER="-x 1650 -y 1000 -h 20 -l 10 -w 500"
+        elif [ $Y -gt 0 ]
+        then
+            CENTER="-x 300 -y 1000 -h 20 -l 10 -w 500"
+        fi
+        ;;
+    *) CENTER="-x 730 -y 430 -h 20 -l 10 -w 500" ;;
 esac
 
 case $@ in
-    --run)  dmenu_run -i $CENTER ;;
-    *)      dmenu $CENTER -i $@ ;;
+    --run) dmenu_run -i $CENTER ;;
+    *) dmenu $CENTER -i $@ ;;
 esac

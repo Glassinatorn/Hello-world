@@ -12,8 +12,8 @@ ANS="$(echo -e "Lock \nSuspend \nSign out \nReboot \nShutdown" | dmenu_center)"
 
 case "$ANS" in
     'Lock ') dm-tool lock ;;
-    'Suspend ') pkexec $(systemctl suspend) ;;
-    'Sign out ') dm-tool switch-to-greeter ;;
+    'Suspend ') systemctl suspend ;;
+    'Sign out ') systemctl restart lightdm ;;
     'Reboot ') reboot ;;
     'Shutdown') shutdown now ;;
 esac
