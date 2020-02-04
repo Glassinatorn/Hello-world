@@ -20,6 +20,15 @@
            "directory": "/tmp/ccls"
          }
        }
+    },
+    "flow": {
+      "command": "flow",
+      "args": ["lsp"],
+      "filetypes": ["javascript", "javascriptreact"],
+      "initializationOptions": {},
+      "requireRootPattern": true,
+      "settings": {},
+      "rootPatterns": [".flowconfig"]
     }
   },
   "java.errors.incompleteClasspath.severity": "ignore"

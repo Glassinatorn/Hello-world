@@ -33,7 +33,6 @@ c.colors.hints.bg = darkGray
 c.colors.hints.fg = teal
 c.hints.border = "3px solid #515151"
 c.fonts.hints = "12pt Unscii"
-c.fonts.monospace = "DejaVu Sans Mono"
 c.prompt.radius = 0
 c.completion.shrink = True
 
