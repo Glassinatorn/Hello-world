@@ -5,6 +5,10 @@
 #    8 ___8 88  8   88  88   88   8 88   8 8   8 88  8  8    88 88   88   8
 #    8e8888 88ee8   88  88ee 88eee8 88   8 8eee8 88ee8ee8 8ee88 88ee 88   8
 
+# pylint: disable=C0111
+c = c  # noqa: F821 pylint: disable=E0602,C0103
+config = config  # noqa: F821 pylint: disable=E0602,C0103
+
 import sys, os
 
 ## Colors
