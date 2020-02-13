@@ -105,9 +105,6 @@ autocmd BufNewFile	*.h		0r	/usr/share/nvim/runtime/skeletons/skeleton.h
 autocmd BufNewFile	*.cpp		0r	/usr/share/nvim/runtime/skeletons/skeleton.cpp
 autocmd BufNewFile	doc_*		0r	/usr/share/nvim/runtime/skeletons/documentation.txt
 
-" the prefix to use for leader commands
-let g:mapleader="<space>"
-
 " manual sourcing snippets
 nnoremap <leader>tex :set filetype=tex
 
