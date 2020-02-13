@@ -108,6 +108,9 @@ autocmd BufNewFile	doc_*		0r	/usr/share/nvim/runtime/skeletons/documentation.txt
 " the prefix to use for leader commands
 let g:mapleader="<space>"
 
+" manual sourcing snippets
+nnoremap <leader>tex :set filetype=tex
+
 " plugins
 call plug#begin('~/.config/nvim/vendor')
 Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}

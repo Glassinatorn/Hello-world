@@ -13,8 +13,14 @@ autocmd FileType tex inoremap ,article
     \ \documentclass[a4paper, oneside]{article} %article/others
     \ <CR>\usepackage[utf8]{inputenc}
     \ <CR>\usepackage{listings}
-    \ <CR>\usepackage{url}
+    \ <CR>\usepackage{hyperref}
     \ <CR>\usepackage{graphicx}
+    \ <CR>\hypersetup{
+    \ <CR>    colorlinks=true,
+    \ <CR>    linkcolor=blue,
+    \ <CR>    filecolor=magenta,
+    \ <CR>    urlcolor=blue,
+    \ <CR>}
     \ <CR>\title{<++>}
     \ <CR>\author{<++>}
     \ <CR>\date{<++>}
@@ -28,8 +34,14 @@ autocmd FileType tex inoremap ,BTH
     \ \documentclass[a4paper, oneside]{article} %article/others
     \ <CR>\usepackage[utf8]{inputenc}
     \ <CR>\usepackage{listings}
-    \ <CR>\usepackage{url}
+    \ <CR>\usepackage{hyperref}
     \ <CR>\usepackage{graphicx}
+    \ <CR>\hypersetup{
+    \ <CR>    colorlinks=true,
+    \ <CR>    linkcolor=blue,
+    \ <CR>    filecolor=magenta,
+    \ <CR>    urlcolor=blue,
+    \ <CR>}
     \ <CR><CR><CR>
     \ <CR>\begin{document}
     \ <CR>\begin{titlepage}
@@ -171,3 +183,6 @@ autocmd FileType tex inoremap ,graph
     \ <CR>   };
     \ <CR>\end{axis}
 \end{tikzpicture}
+
+autocmd FileType tex inoremap ,href
+    \ \href{}{<++>}<Esc>ba

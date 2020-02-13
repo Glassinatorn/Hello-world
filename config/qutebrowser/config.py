@@ -43,6 +43,9 @@ c.completion.shrink = True
 ## Features
 c.scrolling.smooth = True
 
+#placeholder for when the commands is not overwritten bt settings.yml
+#c.editor.command: ["st", "-e", "nvim", "{}"]
+
 ## Start page
 c.url.start_pages = ["/home/glass/.homepage/home.html"]
 
