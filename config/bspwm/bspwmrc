@@ -20,7 +20,7 @@ $conf presel_feedback		false
 $conf borderless_monocle	true
 $conf gapless_monocle		true
 
-$rule -a mpv desktop=^4 follow=off
+#$rule -a mpv desktop=^4 follow=off
 $rule -a spotify desktop=^3 follow=on
 $rule -a sysinfo state=floating rectangle=310x350+800+30
 $rule -a calinfo state=floating rectangle=300x250+800+30
