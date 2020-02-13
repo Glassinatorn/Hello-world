@@ -106,7 +106,12 @@ autocmd BufNewFile	*.cpp		0r	/usr/share/nvim/runtime/skeletons/skeleton.cpp
 autocmd BufNewFile	doc_*		0r	/usr/share/nvim/runtime/skeletons/documentation.txt
 
 " manual sourcing snippets
-nnoremap <leader>tex :set filetype=tex
+nnoremap <leader>tex :set filetype=tex<CR>
+nnoremap <leader>xml :set filetype=xml<CR>
+nnoremap <leader>css :set filetype=css<CR>
+nnoremap <leader>js :set filetype=javascript<CR>
+nnoremap <leader>c :set filetype=c<CR>
+nnoremap <leader>py :set filetype=python<CR>
 
 " plugins
 call plug#begin('~/.config/nvim/vendor')
