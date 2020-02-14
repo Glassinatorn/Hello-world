@@ -14,8 +14,12 @@ autocmd FileType c inoremap ,main
     \ <CR>}<Esc>kO
 
 autocmd FileType c inoremap ,for
-    \ <CR>for(int i = 0; i < ; i++) {
+    \ for(int i = 0; i < ; i++) {
     \ <CR>}<Esc>o
+
+autocmd FileType c inoremap ,if
+    \ if () {
+    \ <CR>}<Esc>kf(a
 
 autocmd FileType c inoremap ,switch
     \ switch() {

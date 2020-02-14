@@ -11,8 +11,5 @@ autocmd FileType css inoremap ,a
 autocmd FileType css inoremap ,p
     \ p {<CR>}<ESC>O
 
-autocmd FileType css inoremap ,span
-    \ p {<CR>}<ESC>O
-
-autocmd FileType css inoremap ,{}
+autocmd FileType css inoremap ,{
     \ {<CR>}<ESC>O
