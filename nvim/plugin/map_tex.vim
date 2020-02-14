@@ -4,6 +4,7 @@
 "	  88  8eee eeeeee
 "	  88  88   88   8
 "	  88  88ee 88   8
+"
 
 
 autocmd BufWritePost *.tex :! pdflatex %:p && rm %:r.log %:r.aux

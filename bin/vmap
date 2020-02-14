@@ -10,4 +10,4 @@
 FILES="/usr/share/nvim/runtime/plugin"
 FILE=$(ls $FILES | grep map_ | fzf)
 
-sudo -e nvim $FILES/$FILE
+sudo nvim $FILES/$FILE

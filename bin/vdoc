@@ -11,4 +11,4 @@
 FILES="/usr/share/nvim/runtime/doc"
 FILE=$(ls $FILES | grep doc | fzf)
 
-sudo -e nvim $FILES/$FILE
+sudo nvim $FILES/$FILE
