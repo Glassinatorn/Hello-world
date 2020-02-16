@@ -36,3 +36,6 @@ autocmd FileType c inoremap ,case
 autocmd FileType c inoremap ,struct
     \ struct {
     \ <CR>};<Esc>kea<Space>
+
+autocmd FileType c inoremap ,print
+    \ printf("%", <++>);<Esc>F%a
