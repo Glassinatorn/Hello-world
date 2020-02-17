@@ -73,7 +73,7 @@ $CMD $NVIMRUNTIME/doc/doc.txt \
 echo "upload? y?"
 read UPLOAD
 
-if [ $UPLOAD ];
+if [ $UPLOAD = 'y' ]
 then
     cd $BACKUPFOLDER
     git add *
