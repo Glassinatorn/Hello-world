@@ -106,7 +106,7 @@ super + c
 
 # opens mail
 super + m
-    st -e neomutt -c calcurse
+    st -c calcurse -e neomutt
 
 # show calendar info
 ctrl + shift + i
