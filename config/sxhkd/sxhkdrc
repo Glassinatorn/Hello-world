@@ -61,7 +61,7 @@ super + q
 
 # make bspwm reload its config
 super + ctrl + r
-    ./~/.config/bspwm/bpswmrc
+    ~/.config/bspwm/bpswmrc
 
 
 # web browser
@@ -99,6 +99,14 @@ ctrl + shift + t
 # show info
 ctrl + i
     sysinfo
+
+# opens calcurse
+super + c
+    st -c calcurse -e calcurse
+
+# opens mail
+super + m
+    st -e neomutt -c calcurse
 
 # show calendar info
 ctrl + shift + i
