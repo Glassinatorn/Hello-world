@@ -47,7 +47,6 @@ do
     end)
 end
 -- }}}
---awful.spawn.with_shell("~/.config/awesome/start.sh")
 
 -- {{{ Variable definitions
 beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
@@ -305,8 +304,8 @@ globalkeys = gears.table.join(
 -- test            awful.spawn(calinfo)
 -- test        end,
 -- test        {description = "open a terminal", group = "launcher"}),
--- test    awful.key({ modkey, "Control" }, "r", awesome.restart,
--- test              {description = "reload awesome", group = "awesome"}),
+    awful.key({ modkey, "Control" }, "r", awesome.restart,
+              {description = "reload awesome", group = "awesome"})
 -- test    awful.key({ modkey, "Shift"   }, "q", awesome.quit,
 -- test              {description = "quit awesome", group = "awesome"}),
 -- test
@@ -611,5 +610,3 @@ client.connect_signal("unfocus", function(c)
         c.border_color = beautiful.border_normal
     end)
 -- }}}
-
-awful.spawn.with_shell("fix >> /home/glass/tmp.txt")

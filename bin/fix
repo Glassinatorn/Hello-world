@@ -48,3 +48,18 @@ esac
 
 unclutter -idle 0.01 -root &
 ~/.fehbg
+killall sxhkd
+
+if [ $GDMSESSION = "awesome" ]
+then
+    sxhkd -c ~/.config/sxhkd/sxhkdrc \
+             ~/.config/sxhkd/awesome_sxhkdrc
+elif [ $GDMSESSION = "bspwm"]
+then
+    sxhkd -c ~/.config/sxhkd/sxhkdrc \
+             ~/.config/sxhkd/bspwm_sxhkdrc
+elif [ $GDMSESSION = "dwm"]
+then
+    sxhkd -c ~/.config/sxhkd/sxhkdrc \
+             ~/.config/sxhkd/dwm_sxhkdrc
+fi
