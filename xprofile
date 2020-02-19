@@ -1,2 +1,13 @@
+#! /bin/sh
+
+export MONITOR_NUM=$(xrandr | grep connected | grep -v disconnected | wc -l)
+
+if [ $GDMSESSION = "awesome" ]
+then
+    sxhkd -c ~/.config/sxhkd/awesome_sxhkdrc
+elif [ $GDMSESSION = "bspwm" ]
+    sxhkd -c ~/.config/sxhkd/bspwm_sxhkdrc
+elif [ $GDMSESSION = "dwm" ]
+    sxhkd -c ~/.config/sxhkd/dwm_sxhkdrc
+done
 fix &
-sxhkd &
