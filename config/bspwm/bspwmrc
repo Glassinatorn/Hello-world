@@ -3,9 +3,6 @@ conf="bspc config"
 rule="bspc rule"
 export PATH="${PATH}:$HOME/bin"
 
-# checking monitor count to see which layout to use
-export MONITOR_NUM=$(xrandr | grep connected | grep -v disconnected | wc -l)
-
 bspc monitor -d 1 2 3
 
 $conf pointer_modifier		mod4

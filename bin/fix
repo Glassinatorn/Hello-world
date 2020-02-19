@@ -11,7 +11,7 @@ xinput --set-prop "SYNA2B31:00 06CB:7F8B Touchpad" "libinput Accel Speed" 0.2
 xinput --set-prop "SYNA2B31:00 06CB:7F8B Touchpad" "libinput Tapping Enabled" 1
 xinput --set-prop "SYNA2B31:00 06CB:7F8B Touchpad" "libinput Disable While Typing Enabled" 0
 
-case $MONITOR_NUM in
+case $(xrandr | grep connected | grep -v disconnected | wc -l) in
     1)
         setxkbmap -layout se -option ctrl:nocaps
         xmodmap -e 'clear lock'
