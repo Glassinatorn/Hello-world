@@ -18,6 +18,7 @@ CMD="sudo rsync -razzP"
 # .config
 $CMD $CONFDIR/i3 \
      $CONFDIR/bspwm \
+     $CONFDIR/awesome \
      $CONFDIR/sxhkd \
      $CONFDIR/polybar \
      $CONFDIR/termite \
