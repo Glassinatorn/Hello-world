@@ -9,5 +9,5 @@ elif [ $GDMSESSION = "bspwm" ]
     sxhkd -c ~/.config/sxhkd/bspwm_sxhkdrc
 elif [ $GDMSESSION = "dwm" ]
     sxhkd -c ~/.config/sxhkd/dwm_sxhkdrc
-done
+fi
 fix &
