@@ -33,10 +33,13 @@ $CMD $CONFDIR/nnn/plugins \
 $CMD $CONFDIR/qutebrowser/config.py     $BACKUPFOLDER/config/qutebrowser/
 
 # tmux
-$CMD /etc/tmux.conf $BACKUPFOLDER/etc/
+$CMD /etc/tmux.conf                     $BACKUPFOLDER/etc/
 
 # zsh
-$CMD $USR/.zshrc $BACKUPFOLDER/zshrc
+$CMD $USR/.zshrc                        $BACKUPFOLDER/zshrc
+
+# xprofile
+$CMD $USR/.xprofile                     $BACKUPFOLDER/xprofile
 
 # xorg
 $CMD /etc/X11/xorg.conf.d/20-* \
