@@ -12,7 +12,7 @@ super + space
 
 # make sxhkd reload its configuration files:
 super + shift + r
-    pkill -USR1 -x sxhkd
+    fix
 
 #
 # run scripts

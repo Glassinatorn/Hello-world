@@ -27,12 +27,15 @@ super + alt + {h,j,k,l}
 super + alt + shift + {h,j,k,l}
 
 # move a floating window
-super + {Left,Down,Up,Right}
+super + {h,j,k,l}
+    awesome-client 'require("awful").client.focus.bydirection({ \
+            "left", \
+            "down", \
+            "up", \
+            "right" \
+        })'
 
 # close and kill
-super + q
 
 # program launcher
-super + space
-    awesome-client 'local awful = require("awful") awful.spawn("dmenu_center --run")'
 
