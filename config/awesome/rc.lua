@@ -49,7 +49,7 @@ end
 -- }}}
 
 -- {{{ Variable definitions
-beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
+beautiful.init(os.getenv("HOME").."/.config/awesome/themes/glass/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
 terminal = "st"
@@ -65,7 +65,7 @@ modkey = "Mod4"
 
 -- Table of layouts to cover with awful.layout.inc, order matters.
 awful.layout.layouts = {
-    --awful.layout.suit.floating,
+    awful.layout.suit.floating,
     awful.layout.suit.tile,
     --awful.layout.suit.tile.left,
     --awful.layout.suit.tile.bottom,
@@ -356,16 +356,16 @@ globalkeys = gears.table.join(
 -- test        {description = "show the menubar", group = "launcher"})
 )
 
--- test clientkeys = gears.table.join(
+clientkeys = gears.table.join(
 -- test     awful.key({ modkey }, "f", function (c)
 -- test             c.fullscreen = not c.fullscreen
 -- test             c:raise()
 -- test         end,
 -- test         {description = "toggle fullscreen", group = "client"}),
--- test     awful.key({ modkey}, "q", function (c)
--- test             c:kill()
--- test         end,
--- test         {description = "close", group = "client"}),
+    awful.key({ modkey}, "q", function (c)
+            c:kill()
+        end,
+        {description = "close", group = "client"})
 -- test     awful.key({ modkey, "Control" }, "space",  awful.client.floating.toggle                     ,
 -- test               {description = "toggle floating", group = "client"}),
 -- test     awful.key({ modkey, "Control" }, "Return", function (c) c:swap(awful.client.getmaster()) end,
@@ -395,7 +395,7 @@ globalkeys = gears.table.join(
 -- test             c:raise()
 -- test         end ,
 -- test         {description = "(un)maximize horizontally", group = "client"})
--- test )
+)
 
 -- Bind all key numbers to tags.
 -- Be careful: we use keycodes to make it work on any keyboard layout.
