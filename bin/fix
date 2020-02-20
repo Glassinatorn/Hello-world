@@ -52,14 +52,17 @@ killall sxhkd
 
 if [ $GDMSESSION = "awesome" ]
 then
+    echo "awesome1"
     sxhkd -c ~/.config/sxhkd/sxhkdrc \
              ~/.config/sxhkd/awesome_sxhkdrc
-elif [ $GDMSESSION = "bspwm"]
+elif [ $GDMSESSION = "bspwm" ]
 then
+    echo "bspwm"
     sxhkd -c ~/.config/sxhkd/sxhkdrc \
              ~/.config/sxhkd/bspwm_sxhkdrc
-elif [ $GDMSESSION = "dwm"]
+elif [ $GDMSESSION = "dwm" ]
 then
+    echo "dwm"
     sxhkd -c ~/.config/sxhkd/sxhkdrc \
              ~/.config/sxhkd/dwm_sxhkdrc
 fi
