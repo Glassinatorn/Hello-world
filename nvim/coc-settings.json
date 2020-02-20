@@ -20,6 +20,10 @@
            "directory": "/tmp/ccls"
          }
        }
+    },
+    "lua": {
+      "command": "lua-lsp",
+      "filetypes": ["lua"]
     }
   },
   "java.errors.incompleteClasspath.severity": "ignore"
