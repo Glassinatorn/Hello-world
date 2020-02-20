@@ -3,17 +3,17 @@
 #
 
 # set the window state
-super + {t,shift + t,f,shift + f}
+#super + {t,shift + t,f,shift + f}
 
 #
 # focus/swap
 #
 
 # focus the window in the given direction
-super + {_,shift + }{h,j,k,l}
+#super + {_,shift + }{h,j,k,l}
 
 # focus or send to the given tag
-super + {_,shift + }{1-9,0}
+#super + {_,shift + }{1-9,0}
 
 
 #
@@ -21,10 +21,10 @@ super + {_,shift + }{1-9,0}
 #
 
 # expand a window by moving one of its side outward
-super + alt + {h,j,k,l}
+#super + alt + {h,j,k,l}
 
 # contract a window by moving one of its side inward
-super + alt + shift + {h,j,k,l}
+#super + alt + shift + {h,j,k,l}
 
 # move a floating window
 super + {h,j,k,l}
