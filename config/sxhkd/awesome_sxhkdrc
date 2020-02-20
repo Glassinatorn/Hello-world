@@ -36,6 +36,10 @@ super + {h,j,k,l}
         })'
 
 # close and kill
+#super + q
+    #awesome-client 'require("awful").client()'
 
 # program launcher
+super + space
+    awesome-client 'require("awful").spawn("dmenu_center --run")'
 
