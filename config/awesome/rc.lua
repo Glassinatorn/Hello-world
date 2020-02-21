@@ -69,7 +69,7 @@ awful.layout.layouts = {
     awful.layout.suit.tile,
     --awful.layout.suit.tile.left,
     --awful.layout.suit.tile.bottom,
-    awful.layout.suit.tile.top,
+    --awful.layout.suit.tile.top,
     --awful.layout.suit.fair,
     --awful.layout.suit.fair.horizontal,
     --awful.layout.suit.spiral,
@@ -198,9 +198,9 @@ awful.screen.connect_for_each_screen(function(s)
         layout = wibox.layout.align.horizontal,
         { -- Left widgets
             layout = wibox.layout.fixed.horizontal,
-            mylauncher,
+            --mylauncher,
             s.mytaglist,
-            s.mypromptbox,
+            --s.mypromptbox,
         },
 --         s.mytasklist, -- Middle widget
 --         { -- Right widgets
@@ -515,7 +515,7 @@ awful.rules.rules = {
 
     -- Add titlebars to normal clients and dialogs
     { rule_any = {type = { "normal", "dialog" }
-        }, properties = { titlebars_enabled = true }
+        }, properties = { titlebars_enabled = false }
     },
 
     -- Set Firefox to always map on the tag named "2" on screen 1.
@@ -538,11 +538,11 @@ client.connect_signal("manage", function (c)
         awful.placement.no_offscreen(c)
     end
 end)
-client.connect_signal("manage", function (c)
-    c.shape = function(cr,w,h)
-        gears.shape.rounded_rect(cr,w,h,19)
-    end
-end)
+-- client.connect_signal("manage", function (c)
+--     c.shape = function(cr,w,h)
+--         gears.shape.rounded_rect(cr,w,h,19)
+--     end
+-- end)
 
 -- Add a titlebar if titlebars_enabled is set to true in the rules.
 client.connect_signal("request::titlebars", function(c)
@@ -560,30 +560,30 @@ client.connect_signal("request::titlebars", function(c)
             end)
     )
 
-  --awful.titlebar(c) : setup {
-  --    { -- Left
-  --        awful.titlebar.widget.iconwidget(c),
-  --        buttons = buttons,
-  --        layout  = wibox.layout.fixed.horizontal
-  --    },
-  --    { -- Middle
-  --        { -- Title
-  --            align  = "center",
-  --            widget = awful.titlebar.widget.titlewidget(c)
-  --        },
-  --        buttons = buttons,
-  --        layout  = wibox.layout.flex.horizontal
-  --    },
-  --    { -- Right
-  --        awful.titlebar.widget.floatingbutton (c),
-  --        awful.titlebar.widget.maximizedbutton(c),
-  --        awful.titlebar.widget.stickybutton   (c),
-  --        awful.titlebar.widget.ontopbutton    (c),
-  --        awful.titlebar.widget.closebutton    (c),
-  --        layout = wibox.layout.fixed.horizontal()
-  --    },
-  --    layout = wibox.layout.align.horizontal
-  --}
+  awful.titlebar(c) : setup {
+      { -- Left
+          --awful.titlebar.widget.iconwidget(c),
+          buttons = buttons,
+          layout  = wibox.layout.fixed.horizontal
+      },
+     -- { -- Middle
+     --     { -- Title
+     --         align  = "center",
+     --         widget = awful.titlebar.widget.titlewidget(c)
+     --     },
+     --     buttons = buttons,
+     --     layout  = wibox.layout.flex.horizontal
+     -- },
+      { -- Right
+          --awful.titlebar.widget.floatingbutton (c),
+          --awful.titlebar.widget.maximizedbutton(c),
+          --awful.titlebar.widget.stickybutton   (c),
+          --awful.titlebar.widget.ontopbutton    (c),
+          --awful.titlebar.widget.closebutton    (c),
+          layout = wibox.layout.fixed.horizontal()
+      },
+      layout = wibox.layout.align.horizontal
+  }
 end)
 
 -- Enable sloppy focus, so that focus follows mouse.
@@ -592,8 +592,10 @@ client.connect_signal("mouse::enter", function(c)
     end)
 client.connect_signal("focus", function(c)
         c.border_color = beautiful.border_focus
+        awful.titlebar.toggle(c)
     end)
 client.connect_signal("unfocus", function(c)
         c.border_color = beautiful.border_normal
+        awful.titlebar.toggle(c)
     end)
 -- }}}

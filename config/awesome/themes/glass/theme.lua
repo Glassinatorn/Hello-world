@@ -24,11 +24,14 @@ theme.fg_focus      = "#ffffff"
 theme.fg_urgent     = "#ffffff"
 theme.fg_minimize   = "#ffffff"
 
-theme.useless_gap   = dpi(40)
-theme.border_width  = dpi(5)
+theme.useless_gap   = dpi(10)
+theme.border_width  = dpi(0)
 theme.border_normal = "#000000"
 theme.border_focus  = "#05E3E3"
 theme.border_marked = "#91231c"
+
+theme.titlebar_bg_normal = "#000000"
+theme.titlebar_bg =        "#05E3E3"
 
 -- There are other variable sets
 -- overriding the default one when
@@ -59,7 +62,7 @@ theme.taglist_squares_unsel = theme_assets.taglist_squares_unsel(
 -- notification_[border_color|border_width|shape|opacity]
 
 -- Variables set for theming the menu:
--- menu_[bg|fg]_[normal|focus]
+-- menu_[bg|fg1_[normal|focus]
 -- menu_[border_color|border_width]
 theme.menu_submenu_icon = themes_path.."default/submenu.png"
 theme.menu_height = dpi(15)
