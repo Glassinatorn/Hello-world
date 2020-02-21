@@ -515,7 +515,7 @@ awful.rules.rules = {
 
     -- Add titlebars to normal clients and dialogs
     { rule_any = {type = { "normal", "dialog" }
-        }, properties = { titlebars_enabled = false }
+        }, properties = { titlebars_enabled = true }
     },
 
     -- Set Firefox to always map on the tag named "2" on screen 1.
@@ -592,10 +592,8 @@ client.connect_signal("mouse::enter", function(c)
     end)
 client.connect_signal("focus", function(c)
         c.border_color = beautiful.border_focus
-        awful.titlebar.toggle(c)
     end)
 client.connect_signal("unfocus", function(c)
         c.border_color = beautiful.border_normal
-        awful.titlebar.toggle(c)
     end)
 -- }}}

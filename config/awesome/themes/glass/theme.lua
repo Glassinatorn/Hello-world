@@ -30,7 +30,7 @@ theme.border_normal = "#000000"
 theme.border_focus  = "#05E3E3"
 theme.border_marked = "#91231c"
 
-theme.titlebar_bg_normal = "#000000"
+theme.titlebar_bg_normal = "#ececec00"
 theme.titlebar_bg =        "#05E3E3"
 
 -- There are other variable sets
