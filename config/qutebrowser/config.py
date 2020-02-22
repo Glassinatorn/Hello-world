@@ -75,5 +75,5 @@ c.bindings.commands["normal"] = {"Q": "hint images spawn -u qt-chap {hint-url}",
                                  "gd": "open discordapp.com/channels/@me",
                                  "gy": "open youtube.com",
                                  "gu": "open reddit.com/r/unixporn",
-                                 "gs": "open sweclocker.com",
+                                 "gs": "open sweclockers.com",
                                  "gc": "open bth.se/canvas"}
