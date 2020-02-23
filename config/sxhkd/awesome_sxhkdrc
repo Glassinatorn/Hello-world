@@ -26,7 +26,7 @@
 # contract a window by moving one of its side inward
 #super + alt + shift + {h,j,k,l}
 
-# move a floating window
+# focus window by direction
 super + {h,j,k,l}
     awesome-client 'require("awful").client.focus.bydirection({ \
             "left", \
@@ -35,9 +35,14 @@ super + {h,j,k,l}
             "right" \
         })'
 
-# close and kill
-#super + q
-    #awesome-client 'require("awful").client()'
+# change screen focus
+super + ctrl + {h,l}
+    awesome-client 'require("awful").screen.focus_relative({-1, 1})'
+
+# swap window with other screen
+super + shift + ctrl + {h,j,k,l}
+    awesome-client 'require("awful").client.swap.bydirection({"left", "up", "down", "right"})'
+
 
 # program launcher
 super + space
