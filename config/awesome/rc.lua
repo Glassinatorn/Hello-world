@@ -224,54 +224,62 @@ root.buttons(gears.table.join(
 
 -- {{{ Key bindings
 globalkeys = gears.table.join(
--- test    awful.key({ modkey }, "s",      hotkeys_popup.show_help,
--- test              {description="show help", group="awesome"}),
--- test    awful.key({ modkey }, "Left",   awful.tag.viewprev,
--- test              {description = "view previous", group = "tag"}),
--- test    awful.key({ modkey }, "Right",  awful.tag.viewnext,
--- test              {description = "view next", group = "tag"}),
--- test    awful.key({ modkey }, "Escape", awful.tag.history.restore,
--- test              {description = "go back", group = "tag"}),
--- test
--- test    awful.key({ modkey }, "j", function ()
--- test            awful.client.focus.byidx(1)
--- test        end,
--- test        {description = "focus next by index", group = "client"}),
--- test    awful.key({ modkey }, "k", function ()
--- test            awful.client.focus.byidx(-1)
--- test        end,
--- test        {description = "focus previous by index", group = "client"}),
--- test    awful.key({ modkey }, "w", function ()
--- test            mymainmenu:show()
--- test        end,
--- test        {description = "show main menu", group = "awesome"}),
--- test
--- test    -- Layout manipulation
--- test    awful.key({ modkey, "Shift" }, "j", function ()
--- test            awful.client.swap.byidx(1)
--- test        end,
--- test        {description = "swap with next client by index", group = "client"}),
--- test    awful.key({ modkey, "Shift" }, "k", function ()
--- test            awful.client.swap.byidx(-1)
--- test        end,
--- test        {description = "swap with previous client by index", group = "client"}),
--- test    awful.key({ modkey, "Control" }, "j", function ()
--- test            awful.screen.focus_relative(1)
--- test        end,
--- test        {description = "focus the next screen", group = "screen"}),
--- test    awful.key({ modkey, "Control" }, "k", function ()
--- test            awful.screen.focus_relative(-1)
--- test        end,
--- test        {description = "focus the previous screen", group = "screen"}),
--- test    awful.key({ modkey }, "u", awful.client.urgent.jumpto,
--- test              {description = "jump to urgent client", group = "client"}),
--- test    awful.key({ modkey }, "Tab", function ()
--- test            awful.client.focus.history.previous()
--- test            if client.focus then
--- test                client.focus:raise()
--- test            end
--- test        end,
--- test        {description = "go back", group = "client"})
+    awful.key({ modkey }, "s",      hotkeys_popup.show_help,
+              {description="show help", group="awesome"}),
+
+        -- client focus
+    awful.key({ modkey }, "h", function ()
+            awful.client.focus.bydirection("left")
+        end,
+        {description = "focus client to the left", group = "client"}),
+    awful.key({ modkey }, "j", function ()
+            awful.client.focus.bydirection("down")
+        end,
+        {description = "focus client below", group = "client"}),
+    awful.key({ modkey }, "k", function ()
+            awful.client.focus.bydirection("up")
+        end,
+        {description = "focus client above", group = "client"}),
+    awful.key({ modkey }, "l", function ()
+            awful.client.focus.bydirection("right")
+        end,
+        {description = "focus client to the right", group = "client"}),
+
+    -- local layout
+    awful.key({ modkey, "Shift" }, "h", function ()
+            awful.client.swap.global_bydirection("left")
+        end,
+        {description = "swap with client to the left", group = "client"}),
+    awful.key({ modkey, "Shift" }, "j", function ()
+            awful.client.swap.global_bydirection("down")
+        end,
+        {description = "swap with client below", group = "client"}),
+    awful.key({ modkey, "Shift" }, "k", function ()
+            awful.client.swap.global_bydirection("up")
+        end,
+        {description = "swap with client above", group = "client"}),
+    awful.key({ modkey, "Shift" }, "l", function ()
+            awful.client.swap.global_bydirection("right")
+        end,
+        {description = "swap with client to the right", group = "client"}),
+
+    -- global layout
+    awful.key({ modkey, "Control" }, "h", function ()
+            awful.screen.focus_relative(1)
+        end,
+        {description = "focus the next screen", group = "screen"}),
+    awful.key({ modkey, "Control" }, "l", function ()
+            awful.screen.focus_relative(-1)
+        end,
+        {description = "focus the previous screen", group = "screen"}),
+
+    awful.key({ modkey }, "Tab", function ()
+            awful.client.focus.history.previous()
+            if client.focus then
+                client.focus:raise()
+            end
+        end,
+        {description = "go back", group = "client"}),
 
     -- Standard program
 -- test    awful.key({ modkey }, "Return", function ()

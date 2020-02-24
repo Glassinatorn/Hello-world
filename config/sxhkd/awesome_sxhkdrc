@@ -2,49 +2,11 @@
 # state/flags
 #
 
-# set the window state
-#super + {t,shift + t,f,shift + f}
-
 #
 # focus/swap
 #
 
-# focus the window in the given direction
-#super + {_,shift + }{h,j,k,l}
-
-# focus or send to the given tag
-#super + {_,shift + }{1-9,0}
-
-
 #
 # move/resize
 #
-
-# expand a window by moving one of its side outward
-#super + alt + {h,j,k,l}
-
-# contract a window by moving one of its side inward
-#super + alt + shift + {h,j,k,l}
-
-# focus window by direction
-super + {h,j,k,l}
-    awesome-client 'require("awful").client.focus.bydirection({ \
-            "left", \
-            "down", \
-            "up", \
-            "right" \
-        })'
-
-# change screen focus
-super + ctrl + {h,l}
-    awesome-client 'require("awful").screen.focus_relative({-1, 1})'
-
-# swap window with other screen
-super + shift + ctrl + {h,j,k,l}
-    awesome-client 'require("awful").client.swap.bydirection({"left", "up", "down", "right"})'
-
-
-# program launcher
-super + space
-    awesome-client 'require("awful").spawn("dmenu_center --run")'
 
