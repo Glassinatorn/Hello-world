@@ -67,20 +67,9 @@ modkey = "Mod4"
 awful.layout.layouts = {
     awful.layout.suit.floating,
     awful.layout.suit.tile,
-    --awful.layout.suit.tile.left,
-    --awful.layout.suit.tile.bottom,
-    --awful.layout.suit.tile.top,
-    --awful.layout.suit.fair,
-    --awful.layout.suit.fair.horizontal,
-    --awful.layout.suit.spiral,
-    --awful.layout.suit.spiral.dwindle,
-    --awful.layout.suit.max,
-    --awful.layout.suit.max.fullscreen,
-    --awful.layout.suit.magnifier,
-    --awful.layout.suit.corner.nw,
-    --awful.layout.suit.corner.ne,
-    --awful.layout.suit.corner.sw,
-    --awful.layout.suit.corner.se,
+    -- available layouts:.tile.left, .tile.bottom, .tile.top, .fair,
+    -- .fair.horizontal, .spiral, .spiral.dwindle, .max, .max.fullscreen,
+    -- .magnifier, .corner.nw, .corner.ne, .corner.sw, .corner.se,
 }
 -- }}}
 
@@ -246,20 +235,24 @@ globalkeys = gears.table.join(
         {description = "focus client to the right", group = "client"}),
 
     -- local layout
-    awful.key({ modkey, "Shift" }, "h", function ()
-            awful.client.swap.global_bydirection("left")
+    awful.key({ modkey, "Shift" }, "h", function (c)
+            awful.client.swap.bydirection("left", c, true)
+            if client.focus then client.focus:raise() end
         end,
         {description = "swap with client to the left", group = "client"}),
     awful.key({ modkey, "Shift" }, "j", function ()
             awful.client.swap.global_bydirection("down")
+            if client.focus then client.focus:raise() end
         end,
         {description = "swap with client below", group = "client"}),
     awful.key({ modkey, "Shift" }, "k", function ()
             awful.client.swap.global_bydirection("up")
+            if client.focus then client.focus:raise() end
         end,
         {description = "swap with client above", group = "client"}),
     awful.key({ modkey, "Shift" }, "l", function ()
             awful.client.swap.global_bydirection("right")
+            if client.focus then client.focus:raise() end
         end,
         {description = "swap with client to the right", group = "client"}),
 
@@ -419,16 +412,6 @@ for i = 1, 9 do
                   end
             end,
             {description = "view tag #"..i, group = "tag"}),
-        -- Toggle tag display.
-        awful.key({ modkey, "Control" }, "#" .. i + 9, function ()
-                local screen = awful.screen.focused()
-                local tag = screen.tags[i]
-                if tag then
-                   awful.tag.viewtoggle(tag)
-                end
-            end,
-            {description = "toggle tag #" .. i, group = "tag"}),
-        -- Move client to tag.
         awful.key({ modkey, "Shift" }, "#" .. i + 9, function ()
                 if client.focus then
                     local tag = client.focus.screen.tags[i]
@@ -437,17 +420,7 @@ for i = 1, 9 do
                     end
                end
             end,
-            {description = "move focused client to tag #"..i, group = "tag"}),
-        -- Toggle tag on focused client.
-        awful.key({ modkey, "Control", "Shift" }, "#" .. i + 9, function ()
-                if client.focus then
-                    local tag = client.focus.screen.tags[i]
-                    if tag then
-                        client.focus:toggle_tag(tag)
-                    end
-                end
-            end,
-            {description = "toggle focused client on tag #" .. i, group = "tag"})
+            {description = "move focused client to tag #"..i, group = "tag"})
     )
 end
 
@@ -546,11 +519,6 @@ client.connect_signal("manage", function (c)
         awful.placement.no_offscreen(c)
     end
 end)
--- client.connect_signal("manage", function (c)
---     c.shape = function(cr,w,h)
---         gears.shape.rounded_rect(cr,w,h,19)
---     end
--- end)
 
 -- Add a titlebar if titlebars_enabled is set to true in the rules.
 client.connect_signal("request::titlebars", function(c)
