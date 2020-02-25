@@ -47,8 +47,6 @@ $CMD /etc/X11/xorg.conf.d/20-* \
 
 # bin
 $CMD $BINDIR/fix \
-     $BINDIR/vmap \
-     $BINDIR/vdoc \
      $BINDIR/tmx.sh \
      $BINDIR/egpu.sh \
      $BINDIR/gitUp.sh \
