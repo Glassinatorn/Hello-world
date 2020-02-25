@@ -5,6 +5,7 @@ pcall(require, "luarocks.loader")
 -- Standard awesome library
 local gears = require("gears")
 local awful = require("awful")
+local lain = require("lain")
 require("awful.autofocus")
 -- Widget and layout library
 local wibox = require("wibox")
@@ -62,13 +63,14 @@ end
 
 -- Table of layouts to cover with awful.layout.inc, order matters.
 awful.layout.layouts = {
+    lain.layout.centerwork,
     awful.layout.suit.floating,
-    awful.layout.suit.tile,
     -- available layouts:.tile.left, .tile.bottom, .tile.top, .fair,
     -- .fair.horizontal, .spiral, .spiral.dwindle, .max, .max.fullscreen,
     -- .magnifier, .corner.nw, .corner.ne, .corner.sw, .corner.se,
 }
 -- }}}
+
 
 -- {{{ Menu
 -- Create a launcher widget and a main menu
@@ -252,6 +254,14 @@ globalkeys = gears.table.join(
             if client.focus then client.focus:raise() end
         end,
         {description = "swap with client to the right", group = "client"}),
+    awful.key({ modkey }, "[", function ()
+            awful.layout.inc(-1)
+        end,
+        {description = "select previous", group = "layout"}),
+    awful.key({ modkey }, "]", function ()
+            awful.layout.inc(1)
+        end,
+        {description = "select next", group = "layout"}),
 
     -- global layout
     awful.key({ modkey, "Control" }, "h", function ()
@@ -272,127 +282,29 @@ globalkeys = gears.table.join(
         {description = "go back", group = "client"}),
 
     -- Standard program
--- test    awful.key({ modkey }, "Return", function ()
--- test            awful.spawn(terminal)
--- test        end,
--- test        {description = "open a terminal", group = "launcher"}),
--- test    awful.key({ modkey }, "i", function ()
--- test            awful.spawn(sysinfo)
--- test        end,
--- test        {description = "open a terminal", group = "launcher"}),
--- test    awful.key({ modkey, shift }, "i", function ()
--- test            awful.spawn(calinfo)
--- test        end,
--- test        {description = "open a terminal", group = "launcher"}),
     awful.key({ modkey, "Control" }, "r", awesome.restart,
-              {description = "reload awesome", group = "awesome"})
--- test    awful.key({ modkey, "Shift"   }, "q", awesome.quit,
--- test              {description = "quit awesome", group = "awesome"}),
--- test
--- test    awful.key({ modkey }, "l", function ()
--- test            awful.tag.incmwfact(0.05)
--- test        end,
--- test        {description = "increase master width factor", group = "layout"}),
--- test    awful.key({ modkey }, "h", function ()
--- test            awful.tag.incmwfact(-0.05)
--- test        end,
--- test        {description = "decrease master width factor", group = "layout"}),
--- test    awful.key({ modkey, "Shift" }, "h", function ()
--- test            awful.tag.incnmaster(1, nil, true)
--- test        end,
--- test        {description = "increase the number of master clients", group = "layout"}),
--- test    awful.key({ modkey, "Shift" }, "l", function ()
--- test            awful.tag.incnmaster(-1, nil, true)
--- test        end,
--- test        {description = "decrease the number of master clients", group = "layout"}),
--- test    awful.key({ modkey, "Control" }, "h", function ()
--- test            awful.tag.incncol(1, nil, true)
--- test        end,
--- test        {description = "increase the number of columns", group = "layout"}),
--- test    awful.key({ modkey, "Control" }, "l", function ()
--- test            awful.tag.incncol(-1, nil, true)
--- test        end,
--- test        {description = "decrease the number of columns", group = "layout"}),
--- test    awful.key({ modkey }, "space", function ()
--- test            awful.layout.inc(1)
--- test        end,
--- test        {description = "select next", group = "layout"}),
--- test    awful.key({ modkey, "Shift" }, "space", function ()
--- test            awful.layout.inc(-1)
--- test        end,
--- test        {description = "select previous", group = "layout"}),
--- test    awful.key({ modkey, "Control" }, "n", function ()
--- test            local c = awful.client.restore()
--- test            -- Focus restored client
--- test            if c then
--- test              c:emit_signal(
--- test                  "request::activate", "key.unminimize", {raise = true}
--- test              )
--- test            end
--- test        end,
--- test        {description = "restore minimized", group = "client"}),
--- test
--- test    -- Prompt
--- test    awful.key({ modkey }, "r", function ()
--- test            awful.screen.focused().mypromptbox:run()
--- test        end,
--- test        {description = "run prompt", group = "launcher"}),
--- test
--- test    awful.key({ modkey }, "x", function ()
--- test            awful.prompt.run {
--- test              prompt       = "Run Lua code: ",
--- test              textbox      = awful.screen.focused().mypromptbox.widget,
--- test              exe_callback = awful.util.eval,
--- test              history_path = awful.util.get_cache_dir() .. "/history_eval"
--- test            }
--- test        end,
--- test        {description = "lua execute prompt", group = "awesome"}),
--- test    -- Menubar
--- test    awful.key({ modkey }, "p", function()
--- test            menubar.show()
--- test        end,
--- test        {description = "show the menubar", group = "launcher"})
+              {description = "reload awesome", group = "awesome"}),
+    awful.key({ modkey, "Shift" }, "q", awesome.quit,
+              {description = "quit awesome", group = "awesome"})
 )
 
 clientkeys = gears.table.join(
--- test     awful.key({ modkey }, "f", function (c)
--- test             c.fullscreen = not c.fullscreen
--- test             c:raise()
--- test         end,
--- test         {description = "toggle fullscreen", group = "client"}),
+     awful.key({ modkey }, "f", function (c)
+             c.fullscreen = not c.fullscreen
+             c:raise()
+         end,
+         {description = "toggle fullscreen", group = "client"}),
     awful.key({ modkey}, "q", function (c)
             c:kill()
         end,
-        {description = "close", group = "client"})
--- test     awful.key({ modkey, "Control" }, "space",  awful.client.floating.toggle                     ,
--- test               {description = "toggle floating", group = "client"}),
--- test     awful.key({ modkey, "Control" }, "Return", function (c) c:swap(awful.client.getmaster()) end,
--- test               {description = "move to master", group = "client"}),
--- test     awful.key({ modkey }, "o",      function (c) c:move_to_screen()               end,
--- test               {description = "move to screen", group = "client"}),
--- test     awful.key({ modkey }, "t",      function (c) c.ontop = not c.ontop            end,
--- test               {description = "toggle keep on top", group = "client"}),
--- test     awful.key({ modkey }, "n", function (c)
--- test             -- The client currently has the input focus, so it cannot be
--- test             -- minimized, since minimized clients can't have the focus.
--- test             c.minimized = true
--- test         end ,
--- test         {description = "minimize", group = "client"}),
--- test     awful.key({ modkey }, "m", function (c)
--- test             c.maximized = not c.maximized
--- test             c:raise()
--- test         end ,
--- test         {description = "(un)maximize", group = "client"}),
--- test     awful.key({ modkey, "Control" }, "m", function (c)
--- test             c.maximized_vertical = not c.maximized_vertical
--- test             c:raise()
--- test         end ,
--- test         {description = "(un)maximize vertically", group = "client"}),
--- test     awful.key({ modkey, "Shift" }, "m", function (c)
--- test             c.maximized_horizontal = not c.maximized_horizontal
--- test             c:raise()
--- test         end ,
--- test         {description = "(un)maximize horizontally", group = "client"})
+        {description = "close", group = "client"}),
+    awful.key({ modkey, "Control" }, "space",  awful.client.floating.toggle                     ,
+        {description = "toggle floating", group = "client"}),
+    awful.key({ modkey }, "t", function (c)
+            c.ontop = not c.ontop
+        end,
+        {description = "toggle keep on top", group = "client"})
+
 )
 
 -- Bind all key numbers to tags.
