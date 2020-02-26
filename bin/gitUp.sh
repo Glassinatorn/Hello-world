@@ -38,8 +38,9 @@ $CMD /etc/tmux.conf                     $BACKUPFOLDER/etc/
 # zsh
 $CMD $USR/.zshrc                        $BACKUPFOLDER/zshrc
 
-# xprofile
+# profiles
 $CMD $USR/.xprofile                     $BACKUPFOLDER/xprofile
+$CMD $USR/.profile                      $BACKUPFOLDER/profile
 
 # xorg
 $CMD /etc/X11/xorg.conf.d/20-* \
