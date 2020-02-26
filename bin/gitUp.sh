@@ -13,7 +13,7 @@ BINDIR="$USR/bin"
 NVIMRUNTIME="/usr/share/nvim/runtime"
 BACKUPFOLDER="$USR/backup/Hello-world"
 SUCKLESS="$USR/freetime/code/c/git/suckless"
-CMD="sudo rsync -razzP"
+CMD="sudo rsync -razzP --del"
 
 # .config
 $CMD $CONFDIR/i3 \
