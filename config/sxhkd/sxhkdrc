@@ -26,12 +26,6 @@ super + x
 super + p
     screenshot.sh
 
-# attach to tmux session
-ctrl + shift + t
-    #st -e tmx.sh
-    #tmux a -t $(tmux ls | awk '{print $1}' | cut -d ":" -f1 | dmenu_center -p Tmux)
-    notify-send "$(st -e tmux ls)"
-
 # show info
 ctrl + i
     sysinfo

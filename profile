@@ -31,6 +31,7 @@ alias gc="git commit -m"
 alias gp="git push"
 alias gb="git branch"
 alias sr="sudo systemctl restart"
+alias tmx='tmux choose-tree -t tmp && tmux a -t tmp'
 
 # loading nnn config
 source ~/.config/nnn/rc
