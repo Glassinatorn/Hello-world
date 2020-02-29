@@ -36,7 +36,10 @@ theme.titlebar_bg =        "#05E3E3"
 theme.wibar_height=25
 theme.wibar_width=150
 theme.wibar_fg="#05E3E3"
-theme.wibar_bg="#00000000"
+theme.wibar_bg="#000000"
+theme.wibar_border_width=5
+theme.wibar_border_color=theme.border_focus
+theme.wibar_bgimage="#000000"
 --theme.wibar_=
 -- There are other variable sets
 -- overriding the default one when

@@ -168,6 +168,52 @@ awful.screen.connect_for_each_screen(function(s)
     s.mytaglist = awful.widget.taglist {
         screen  = s,
         filter  = awful.widget.taglist.filter.all,
+        buttons = taglist_buttons,
+        style = {
+            shape = gears.shape.powerline
+        },
+        layout = {
+            spacing = -12,
+            spacing_widget = {
+                color = "#dddddd",
+                shape = gears.shape.powerline,
+                widget = wibox.widget.seperator,
+            },
+            layout = wibox.layout.fixed.horizontal
+        },
+        widget_template = {
+            {
+                {
+                    {
+                        {
+                            {
+                                id = "index_role",
+                                widget = wibox.widget.textbox,
+                            },
+                            margins = 1,
+                            widget = wibox.container.margin,
+                        },
+                        bg = "#ececec",
+                        shape = gears.shape.circle,
+                        widget = wibox.container.background,
+                    },
+                    {
+                        id = "text_role",
+                        widget = wibox.widget.textbox,
+                    },
+                    layout = wibox.layout.fixed.horizontal,
+                },
+                left = 20,
+                right = 20,
+                widget = wibox.container.margin,
+            },
+            id = "background_role",
+            widget = wibox.container.background,
+
+            create_callback = function(self, c3, index, objects)
+                self:get_children_by_id("index_role")[1].markup = "<b> "..index.." </b>"
+            end,
+        },
         buttons = taglist_buttons
     }
 
@@ -179,15 +225,13 @@ awful.screen.connect_for_each_screen(function(s)
     }
 
     -- Create the wibox
-    s.mywibox = awful.wibar({
+    s.mywibox = awful.wibox({
         screen = s,
         stretch=false,
-        position = "top",
-        width=150,
+        width=500,
         height=30,
-        fg = beautiful.wibar_fg,
-        bg = beautiful.wibar_bg,
     })
+
 
     -- Add widgets to the wibox
     s.mywibox:setup {
@@ -343,7 +387,8 @@ end
 
 clientbuttons = gears.table.join(
     awful.button({ }, 1, function (c)
-            c:emit_signal("request::activate", "mouse_click", {raise = true})
+            c:emit_signal("request::activate", "mouse_click",
+                          {raise = true})
         end),
     awful.button({ modkey }, 1, function (c)
             c:emit_signal("request::activate", "mouse_click",
