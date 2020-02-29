@@ -33,6 +33,10 @@ theme.border_marked = "#91231c"
 theme.titlebar_bg_normal = "#ececec00"
 theme.titlebar_bg =        "#05E3E3"
 
+theme.wibar_stretch=false
+theme.wibar_height=20
+theme.wibar_width=150
+--theme.wibar_=
 -- There are other variable sets
 -- overriding the default one when
 -- defined, the sets are:
