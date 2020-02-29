@@ -1,6 +1,6 @@
 #! /bin/sh
 
 SESSION=$(ls ~/.local/share/qutebrowser/sessions | cut -d '.' -f 1 | \
-          dmenu_center -p Qutebrowser_session)
+          dmenu -c -p Qutebrowser_session)
 
 qutebrowser -r ~/.local/share/qutebrowser/sessions/$SESSION.yml

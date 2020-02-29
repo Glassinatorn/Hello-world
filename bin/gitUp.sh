@@ -54,7 +54,6 @@ $CMD $BINDIR/fix \
      $BINDIR/sysinfo.sh \
      $BINDIR/sysinfo \
      $BINDIR/shutdown.sh \
-     $BINDIR/dmenu_center \
      $BINDIR/keymap \
      $BINDIR/qutebrowser_session \
      $BINDIR/shutdown.sh \
