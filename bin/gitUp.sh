@@ -23,7 +23,7 @@ $CMD $CONFDIR/i3 \
      $CONFDIR/polybar \
      $CONFDIR/termite \
      $CONFDIR/gtk-3.0/ \
-     $CONFDIR/compton.conf	        $BACKUPFOLDER/config/
+     $CONFDIR/picom.conf	        $BACKUPFOLDER/config/
 
 # nnn
 $CMD $CONFDIR/nnn/plugins \
