@@ -1,4 +1,4 @@
 #! /bin/sh
 #FILES=$(cat /tmp/.nnn* | uniq)
 #mpv $FILES
-mpv $1
+mpv $(cat "$HOME/.config/nnn/.selection")

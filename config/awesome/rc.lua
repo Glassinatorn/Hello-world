@@ -63,8 +63,8 @@ end
 
 -- Table of layouts to cover with awful.layout.inc, order matters.
 awful.layout.layouts = {
-    lain.layout.centerwork,
     awful.layout.suit.floating,
+    lain.layout.centerwork,
     -- available layouts:.tile.left, .tile.bottom, .tile.top, .fair,
     -- .fair.horizontal, .spiral, .spiral.dwindle, .max, .max.fullscreen,
     -- .magnifier, .corner.nw, .corner.ne, .corner.sw, .corner.se,
@@ -151,8 +151,26 @@ local tasklist_buttons = gears.table.join(
         end))
 
 awful.screen.connect_for_each_screen(function(s)
-    -- Each screen has its own tag table.
-    awful.tag({ "1", "2", "3", "4", "5", "6", "7", "8", "9" }, s, awful.layout.layouts[1])
+    awful.tag.add("   code", {
+        layout = lain.layout.centerwork,
+        master_fill_policy = "master_width_factor",
+        gap_single_client = true,
+        screen = s,
+        selected = false,
+    })
+    awful.tag.add("   webb", {
+        master_fill_policy = "master_width_factor",
+        gap_single_client = true,
+        screen = s,
+        selected = true,
+    })
+    awful.tag.add("   music", {
+        master_fill_policy = "master_width_factor",
+        gap_single_client = true,
+        screen = s,
+        selected = false,
+    })
+
 
     -- Create a promptbox for each screen
     s.mypromptbox = awful.widget.prompt()
@@ -164,23 +182,25 @@ awful.screen.connect_for_each_screen(function(s)
         awful.button({ }, 3, function () awful.layout.inc(-1) end),
         awful.button({ }, 4, function () awful.layout.inc( 1) end),
         awful.button({ }, 5, function () awful.layout.inc(-1) end)))
+
     -- Create a taglist widget
     s.mytaglist = awful.widget.taglist {
         screen  = s,
         filter  = awful.widget.taglist.filter.all,
         buttons = taglist_buttons,
-        style = {
-            shape = gears.shape.powerline
-        },
-        layout = {
-            spacing = -12,
-            spacing_widget = {
-                color = "#dddddd",
-                shape = gears.shape.powerline,
-                widget = wibox.widget.seperator,
-            },
-            layout = wibox.layout.fixed.horizontal
-        },
+        bg = "#000000",
+
+        --style = {
+        --    shape = gears.shape.square
+        --},
+        --layout = {
+        --    --spacing = -14,
+        --    spacing_widget = {
+        --        shape = gears.shape.square,
+        --        widget = wibox.widget.seperator,
+        --    },
+        --    layout = wibox.layout.fixed.horizontal
+        --},
         widget_template = {
             {
                 {
@@ -194,7 +214,7 @@ awful.screen.connect_for_each_screen(function(s)
                             widget = wibox.container.margin,
                         },
                         bg = "#ececec",
-                        shape = gears.shape.circle,
+                        shape = gears.shape.square,
                         widget = wibox.container.background,
                     },
                     {
@@ -203,18 +223,16 @@ awful.screen.connect_for_each_screen(function(s)
                     },
                     layout = wibox.layout.fixed.horizontal,
                 },
-                left = 20,
-                right = 20,
+                right = 15,
                 widget = wibox.container.margin,
             },
             id = "background_role",
             widget = wibox.container.background,
-
             create_callback = function(self, c3, index, objects)
-                self:get_children_by_id("index_role")[1].markup = "<b> "..index.." </b>"
+                self:get_children_by_id("index_role")[1].markup = "<b>  "..index.."  </b>"
             end,
         },
-        buttons = taglist_buttons
+        --buttons = taglist_buttons
     }
 
     -- Create a tasklist widget
@@ -225,11 +243,14 @@ awful.screen.connect_for_each_screen(function(s)
     }
 
     -- Create the wibox
-    s.mywibox = awful.wibox({
+    s.mywibox = awful.wibar({
         screen = s,
-        stretch=false,
-        width=500,
-        height=30,
+        stretch = false,
+        height = beautiful.wibar_height,
+        width = beautiful.wibar_width,
+        bg = beautiful.transparent,
+        border_color = "#00000000",
+        border_width = 10
     })
 
 
@@ -352,7 +373,7 @@ clientkeys = gears.table.join(
         {description = "close", group = "client"}),
     awful.key({ modkey, "Control" }, "space",  awful.client.floating.toggle                     ,
         {description = "toggle floating", group = "client"}),
-    awful.key({ modkey }, "t", function (c)
+    awful.key({ modkey }, "t", function (t)
             c.ontop = not c.ontop
         end,
         {description = "toggle keep on top", group = "client"})
