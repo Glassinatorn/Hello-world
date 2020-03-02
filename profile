@@ -36,3 +36,6 @@ alias tmx='tmux a -t $(tmux ls | awk '\''{print $1}'\''| sed s/://g | fzf)'
 # loading nnn config
 source ~/.config/nnn/rc
 stty -ixon
+
+# including rust
+export PATH="$HOME/.cargo/bin:$PATH"

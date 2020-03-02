@@ -117,8 +117,6 @@ nnoremap <leader>py  :set filetype=python<CR>
 call plug#begin('~/.config/nvim/vendor')
 Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
 Plug 'neoclide/coc-prettier', {'do': { -> coc#util#install()}}
-Plug 'neoclide/coc-texlab', {'do': { -> coc#util#install()}}
-Plug 'neoclide/coc-java', {'do': { -> coc#util#install()}}
 Plug 'neoclide/coc-java', {'do': { -> coc#util#install()}}
 Plug 'neoclide/coc-json', {'do': { -> coc#util#install()}}
 Plug 'junegunn/goyo.vim'
