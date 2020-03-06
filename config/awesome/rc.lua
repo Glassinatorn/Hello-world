@@ -156,19 +156,17 @@ awful.screen.connect_for_each_screen(function(s)
         master_fill_policy = "master_width_factor",
         gap_single_client = true,
         screen = s,
-        selected = false,
+        selected = true,
     })
     awful.tag.add("   webb", {
         master_fill_policy = "master_width_factor",
         gap_single_client = true,
         screen = s,
-        selected = true,
     })
     awful.tag.add("   music", {
         master_fill_policy = "master_width_factor",
         gap_single_client = true,
         screen = s,
-        selected = false,
     })
 
 
