@@ -83,17 +83,26 @@ command! -nargs=0 Tabbing call s:tabbing()
 
 
 " global snippets
-autocmd FileType * inoremap ,imap
+autocmd FileType * inoremap ,im
     \ autocmd FileType inoremap ,<++>
     \ <Esc>2bi
-autocmd FileType * inoremap ,nmap
+autocmd FileType * inoremap ,nm
     \ autocmd FileType nnoremap ,<++>
     \ <Esc>2bi
-autocmd FileType * inoremap ,map
+autocmd FileType * inoremap ,ma
     \ autocmd FileType map < leader>
     \ <Esc>bh<Del><Esc>2hi<Space>
 autocmd FileType * inoremap  ,\
     \ <Tab>\ <CR ><Esc>hxA
+autocmd FileType * inoremap ,"
+    \ ""<Esc>i
+autocmd FileType * inoremap ,{
+    \ {
+    \ <CR>}<Esc>O
+autocmd FileType * inoremap ,(
+    \ ()<Esc>i
+autocmd FileType * inoremap ,[
+    \ []<Esc>i
 
 " shortcut to jump to next step in snippets
 noremap <Space><Space> <Esc>/<++><Enter>"_c4l
