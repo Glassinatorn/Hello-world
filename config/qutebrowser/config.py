@@ -66,7 +66,7 @@ c.url.searchengines = {"DEFAULT": "https://duckduckgo.com/?q={}",
                        "m": "https://www.google.se/maps/place/{}"}
 
 
-# Temporary keybindings,
+# keybindings,
 c.bindings.commands["normal"] = {"Q": "hint images spawn -u qt-chap {hint-url}",
                                  "M": "hint links spawn mpv {hint-url}",
                                  "j": "scroll-px 0 40",
@@ -74,5 +74,7 @@ c.bindings.commands["normal"] = {"Q": "hint images spawn -u qt-chap {hint-url}",
                                  "gf": "open feber.se",
                                  "gd": "open discordapp.com/channels/@me",
                                  "gy": "open youtube.com",
-                                 "gu": "open reddit.com/r/unixporn"}
+                                 "gu": "open reddit.com/r/unixporn",
+                                 "xb": "config-cycle statusbar.hide",
+                                 "xt": "config-cycle tabs.show always switching"}
 

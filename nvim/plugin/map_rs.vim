@@ -1,5 +1,5 @@
 autocmd FileType rust inoremap ,print
-    \ println!()<Esc>i
+    \ println!("");<Esc>F"i
 
 autocmd FileType rust inoremap ,match
     \ match  {
