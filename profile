@@ -30,6 +30,8 @@ alias gs="git status"
 alias gc="git commit -m"
 alias gp="git push"
 alias gb="git branch"
+alias cr="cargo run"
+alias cn="cargo new --vcs git"
 alias sr="sudo systemctl restart"
 alias tmx='tmux a -t $(tmux ls | awk '\''{print $1}'\''| sed s/://g | fzf)'
 
