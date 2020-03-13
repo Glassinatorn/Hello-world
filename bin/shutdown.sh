@@ -8,7 +8,7 @@
 #	8eee88 88  8 88ee8   88  88ee8 8eee8 88ee8ee8 88  8
 
 
-ANS="$(echo -e "Lock \nSuspend \nSign out \nReboot \nShutdown" | dmenu -c -l 10)"
+ANS="$(echo -e "Lock \nSuspend \nSign out \nReboot \nShutdown" | dmenu -c -i -l 10)"
 
 case "$ANS" in
     'Lock ') dm-tool lock ;;

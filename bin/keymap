@@ -8,7 +8,8 @@
 #	88   8 88ee   88   88 8  8 88  8 88
 
 
-if [ $(setxkbmap -v | grep symbols | cut -d '+' -f 2) = "se" ]; then
+if [ $(setxkbmap -v | grep symbols | cut -d '+' -f 2) = "se" ]
+then
     setxkbmap us
     notify-send "US keymap"
 else

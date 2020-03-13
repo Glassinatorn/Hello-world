@@ -20,7 +20,7 @@ DIR="/etc/X11/xorg.conf.d"
 # fi
 
 
-if [ -e $DIR/20-nvidia.conf ];
+if [ -e $DIR/20-nvidia.conf ]
 then
     sudo mv $DIR/../20-intel.conf $DIR/ && \
     sudo mv $DIR/20-nvidia.conf $DIR/../20-nvidia.conf

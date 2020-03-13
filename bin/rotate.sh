@@ -10,7 +10,8 @@
 
 TEMP=$(xinput | grep "Finger" | awk '{print $8}' | cut -b 4-6)
 
-if [ `xrandr | grep eDP | awk '{print $4}'` = "(normal" ]; then
+if [ $(xrandr | grep eDP | awk '{print $4}') = "(normal" ]
+then
     xrandr --output eDP1 --rotate left
     xinput set-prop $TEMP "Coordinate Transformation Matrix" 4 -1 1 1 0 0 0 0 1
     echo normal
