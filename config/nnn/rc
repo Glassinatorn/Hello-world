@@ -1,14 +1,16 @@
 export NNN_USE_EDITOR=1
 
 # bookmarks
-export NNN_BMS="h:~/;"\
+export NNN_BMS=\
+"h:~/;"\
 "m:~/school/master/semester1/machineLearning/;"\
 "r:~/school/master/semester2/researchMethodologies/;"\
 "s:~/school/master/semester2/secureSoftwareEngieering/;"\
-"c:~/freetime/code/;"
+"c:~/freetime/code/rust/;"
 
 # plugins
-export NNN_PLUG="p:sxiv;"\
+export NNN_PLUG=\
+"p:sxiv;"\
 "t:transfer;"\
 "m:playlist;"\
 "x:xdg-update;"

@@ -125,8 +125,7 @@ nnoremap <leader>py  :set filetype=python<CR>
 " plugins
 call plug#begin('~/.config/nvim/vendor')
 Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
-Plug 'neoclide/coc-prettier', {'do': { -> coc#util#install()}}
-Plug 'neoclide/coc-json', {'do': { -> coc#util#install()}}
-Plug 'fannheyward/coc-rust-analyzer', {'do': { -> coc#util#install()}}
+" find a way to automatically install coc-prettier coc-java coc-json
+" coc-rust-analyzer
 Plug 'junegunn/goyo.vim'
 call plug#end()
