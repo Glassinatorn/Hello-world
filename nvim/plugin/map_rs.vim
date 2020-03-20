@@ -13,6 +13,6 @@ autocmd FileType rust inoremap ,try
     \ match {
     \ <CR>Ok(<++>) => <++>,
     \ <CR>Err(error) => {
-    \ <CR>println!("ERROR: {:?}", error)
+    \ <CR>panic!("ERROR: {:?}", error)
     \ <CR>},
-    \ <CR>};
+    \ <CR>};<Esc>5k$Fha<Space>
