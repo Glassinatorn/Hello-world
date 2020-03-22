@@ -69,6 +69,7 @@ $CMD $CONFDIR/nvim/init.vim \
      $CONFDIR/nvim/coc-settings.json    $BACKUPFOLDER/nvim/
 
 $CMD $NVIMRUNTIME/plugin/map_*          $BACKUPFOLDER/nvim/plugin/
+$CMD $NVIMRUNTIME/colors/mono_tl.vim*   $BACKUPFOLDER/nvim/colors/
 $CMD $NVIMRUNTIME/doc/doc.txt \
      $NVIMRUNTIME/doc/doc_*             $BACKUPFOLDER/nvim/doc/
 
