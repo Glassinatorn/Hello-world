@@ -16,3 +16,6 @@ autocmd FileType rust inoremap ,try
     \ <CR>panic!("ERROR: {:?}", error)
     \ <CR>},
     \ <CR>};<Esc>5k$Fha<Space>
+
+autocmd FileType rust inoremap ,vec
+    \ let = vec![<++>];<Esc>Fta<Space>
