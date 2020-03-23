@@ -30,10 +30,12 @@ alias gs="git status"
 alias gc="git commit -m"
 alias gp="git push"
 alias gb="git branch"
-alias cr="cargo run"
+alias cr="clear && cargo run"
+alias ct="clear && cargo test"
 alias cn="cargo new --vcs git"
 alias sr="sudo systemctl restart"
-alias tm='tmux a -t $(tmux ls | awk '\''{print $1}'\''| sed s/://g | fzf)'
+alias tm='tmux a -t $(tmux ls | awk '\''{print $1}'\'' | sed s/://g | fzf)'
+alias murder='kill $(ps -e | fzf | awk '\''{print $1}'\'')'
 
 # loading nnn config
 source ~/.config/nnn/rc

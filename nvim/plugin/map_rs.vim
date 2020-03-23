@@ -7,7 +7,7 @@ autocmd FileType rust inoremap ,mat
     \ <CR>}<Esc>2kwhi
 
 autocmd FileType rust inoremap ,str
-    \ String::from("");<Esc>2hi
+    \ String::from("")<Esc>hi
 
 autocmd FileType rust inoremap ,try
     \ match {
@@ -19,3 +19,6 @@ autocmd FileType rust inoremap ,try
 
 autocmd FileType rust inoremap ,vec
     \ let = vec![<++>];<Esc>Fta<Space>
+
+autocmd FileType rust inoremap ,test
+    \ #[test]<Esc>
