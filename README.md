@@ -11,12 +11,15 @@ But awfully nice of you to pop by.
 - [Sxiv](https://github.com/muennich/sxiv) (image viewer)
 - [Qutebrowser](https://www.qutebrowser.org/) (web browser)
 - [Zathura](https://github.com/pwmt/zathura) (pdf viewer)
+
 - [St 0.8.2](https://st.suckless.org/) (terminal)
+
     Patches:
     - [anysize](https://st.suckless.org/patches/anysize/st-anysize-0.8.1.diff)
     - [boxdraw](https://st.suckless.org/patches/boxdraw/st-boxdraw_v2-0.8.2.diff)
     - [scrollback](https://st.suckless.org/patches/scrollback/st-scrollback-0.8.2.diff)
 - [Dwm 6.2](https://dwm.suckless.org/) (secondary window manager)
+
     Patches:
     - [attachaside](https://dwm.suckless.org/patches/attachaside/dwm-attachaside-20180126-db22360.diff)
     - [autostart](https://dwm.suckless.org/patches/autostart/dwm-autostart-20161205-bb3bd6f.diff)
@@ -25,6 +28,7 @@ But awfully nice of you to pop by.
     - [ru_bottomstack](https://dwm.suckless.org/patches/bottomstack/dwm-bottomstack-6.1.diff)
     - [ru_gaps](https://dwm.suckless.org/patches/ru_gaps/dwm-ru_gaps-6.2.diff)
 - [Dmenu 4.9](https://tools.suckless.org/dmenu/) (program launcher)
+
     Patches:
     - [border](https://tools.suckless.org/dmenu/patches/border/dmenu-border-4.9.diff)
     - [fuzzymatch](https://tools.suckless.org/dmenu/patches/fuzzymatch/dmenu-fuzzymatch-4.9.diff)
