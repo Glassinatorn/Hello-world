@@ -22,3 +22,6 @@ autocmd FileType rust inoremap ,vec
 
 autocmd FileType rust inoremap ,test
     \ #[test]<Esc>
+
+autocmd FileType rust inoremap ,exit
+    \ process::exit(1);<Esc>
