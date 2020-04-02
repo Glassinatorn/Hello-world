@@ -6,8 +6,11 @@ autocmd FileType rust inoremap ,mat
     \ <CR><++> => <++>,
     \ <CR>}<Esc>2kwhi
 
-autocmd FileType rust inoremap ,str
+autocmd FileType rust inoremap ,string
     \ String::from("")<Esc>hi
+autocmd FileType rust inoremap ,struct
+    \ struct {
+    \ <CR>}<Esc>kea<Space>
 
 autocmd FileType rust inoremap ,try
     \ match {

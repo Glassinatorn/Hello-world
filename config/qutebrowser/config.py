@@ -76,5 +76,6 @@ c.bindings.commands["normal"] = {"Q": "hint images spawn -u qt-chap {hint-url}",
                                  "gy": "open youtube.com",
                                  "gu": "open reddit.com/r/unixporn",
                                  "xb": "config-cycle statusbar.hide",
-                                 "xt": "config-cycle tabs.show always switching"}
+                                 "xt": "config-cycle tabs.show always switching",
+                                 "ip": "open https://www.myip.com/"}
 
