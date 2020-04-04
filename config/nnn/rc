@@ -4,7 +4,7 @@ export NNN_USE_EDITOR=1
 export NNN_BMS=\
 "h:~/;"\
 "c:~/freetime/code/rust/;"\
-"m:~/school/master/semester1/machineLearning/;"\
+"m:~/freetime/music/;"\
 "1:~/school/master/semester2/decisionSoftwareSystem/;"\
 "2:~/school/master/semester2/multicoreProgramming/;"\
 "3:~/school/master/semester1/machineLearning/;"
