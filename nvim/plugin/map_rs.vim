@@ -28,3 +28,7 @@ autocmd FileType rust inoremap ,test
 
 autocmd FileType rust inoremap ,exit
     \ process::exit(1);<Esc>
+
+autocmd FileType rust inoremap ,for
+    \ for in <++> {
+    \ <CR>}<Esc>3bhi<Space>
