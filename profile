@@ -15,6 +15,7 @@ PS1='Glass $ '
 # git
 alias gu="git fetch && git pull"
 alias gs="git status"
+alias ga="git add"
 alias gc="git commit -m"
 alias gp="git push"
 alias gb="git branch"
@@ -33,7 +34,7 @@ alias vdoc='sudo nvim $(ls /usr/share/nvim/runtime/doc/doc* | fzf)'
 # dir management
 alias ls="ls --color=auto"
 alias la="ls -la"
-alias n="nnn -c"
+alias n="nnn"
 
 # various
 alias sr="sudo systemctl restart"

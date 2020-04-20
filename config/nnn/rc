@@ -1,5 +1,3 @@
-export NNN_OPENER=nvim
-
 # bookmarks
 export NNN_BMS=\
 "h:~/;"\
