@@ -26,13 +26,14 @@ alias cn="cargo new --vcs git"
 
 # nvim
 alias v="nvim"
+alias sv="sudo nvim"
 alias vmap='sudo nvim $(ls /usr/share/nvim/runtime/plugin/map_* | fzf)'
 alias vdoc='sudo nvim $(ls /usr/share/nvim/runtime/doc/doc* | fzf)'
 
 # dir management
 alias ls="ls --color=auto"
 alias la="ls -la"
-alias n="nnn"
+alias n="nnn -c"
 
 # various
 alias sr="sudo systemctl restart"

@@ -15,7 +15,7 @@ autocmd FileType c inoremap ,main
 
 autocmd FileType c inoremap ,for
     \ for(int i = 0; i < ; i++) {
-    \ <CR>}<Esc>o
+    \ <CR>}<Esc>O
 
 autocmd FileType c inoremap ,if
     \ if () {

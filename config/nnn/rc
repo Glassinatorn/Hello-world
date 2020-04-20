@@ -1,4 +1,4 @@
-export NNN_USE_EDITOR=1
+export NNN_OPENER=nvim
 
 # bookmarks
 export NNN_BMS=\
