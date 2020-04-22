@@ -46,7 +46,7 @@ set foldmethod=manual
 " setting paste
 set clipboard=unnamedplus
 
-function! s:figlet(...)
+function! s:fig(...)
     put=system("figlet -f /home/glass/Freetime/Figlet/computer.flf",  a:1)
     for i in [1, 2, 3, 4, 5, 6]
         if &filetype == "vim"
@@ -63,7 +63,7 @@ function! s:figlet(...)
         norm! ggdd
     endif
 endfunction
-command! -nargs=1 Figlet call s:figlet(<f-args>)
+command! -nargs=1 Fig call s:fig(<f-args>)
 
 function! s:tabbing(...)
     if g:currentTabbing == "soft"
@@ -112,6 +112,7 @@ autocmd BufNewFile *.tex 0r /usr/share/nvim/runtime/skeletons/skeleton.tex
 autocmd BufNewFile *.c	 0r /usr/share/nvim/runtime/skeletons/skeleton.c
 autocmd BufNewFile *.h	 0r /usr/share/nvim/runtime/skeletons/skeleton.h
 autocmd BufNewFile *.cpp 0r /usr/share/nvim/runtime/skeletons/skeleton.cpp
+autocmd BufNewFile *.dot 0r /usr/share/nvim/runtime/skeletons/skeleton.dot
 autocmd BufNewFile doc_* 0r /usr/share/nvim/runtime/skeletons/documentation.txt
 
 " manual sourcing snippets
