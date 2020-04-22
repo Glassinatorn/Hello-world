@@ -47,7 +47,7 @@ set foldmethod=manual
 set clipboard=unnamedplus
 
 function! s:fig(...)
-    put=system("figlet -f /home/glass/Freetime/Figlet/computer.flf",  a:1)
+    put=system("figlet -f /home/glass/freetime/figlet/computer.flf",  a:1)
     for i in [1, 2, 3, 4, 5, 6]
         if &filetype == "vim"
             norm! k>>0i"
