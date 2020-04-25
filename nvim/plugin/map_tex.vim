@@ -83,9 +83,15 @@ autocmd FileType tex inoremap ,bf
     \ \textbf{}<Esc>i
 
 autocmd FileType tex inoremap ,item
-\ \begin{itemize}
+    \ \begin{itemize}
     \ <CR>\item
     \ <CR>\end{itemize}
+    \ <Esc>kA
+
+autocmd FileType tex inoremap ,enum
+    \ \begin{enumerate}
+    \ <CR>\item
+    \ <CR>\end{enumerate}
     \ <Esc>kA
 
 autocmd FileType tex inoremap ,it
