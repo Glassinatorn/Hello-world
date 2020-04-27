@@ -36,7 +36,7 @@ alias vdoc='sudo nvim $(ls /usr/share/nvim/runtime/doc/doc* | fzf)'
 alias graph="dot -Tpng -o graph.png"
 
 # dir management
-alias ls="ls --color=auto"
+alias ls="ls --color=auto -h"
 alias la="ls -la"
 alias n="nnn"
 
