@@ -1,0 +1,5 @@
+#ifndef <++>
+#define <++>
+
+
+#endif /* <++> */
