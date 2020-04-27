@@ -22,7 +22,6 @@ $CMD $CONFDIR/i3 \
      $CONFDIR/sxhkd \
      $CONFDIR/polybar \
      $CONFDIR/termite \
-     $CONFDIR/gtk-3.0/ \
      $CONFDIR/picom.conf	        $BACKUPFOLDER/config/
 
 # nnn
@@ -67,7 +66,6 @@ $CMD $CONFDIR/nvim/init.vim \
      $CONFDIR/nvim/coc-settings.json    $BACKUPFOLDER/nvim/
 
 $CMD $NVIMRUNTIME/plugin/map_*          $BACKUPFOLDER/nvim/plugin/
-$CMD $NVIMRUNTIME/skeletons/*           $BACKUPFOLDER/nvim/skeletons/
 $CMD $NVIMRUNTIME/colors/mono_tl.vim*   $BACKUPFOLDER/nvim/colors/
 $CMD $NVIMRUNTIME/doc/doc.txt \
      $NVIMRUNTIME/doc/doc_*             $BACKUPFOLDER/nvim/doc/

@@ -28,7 +28,7 @@ alias cn="cargo new --vcs git"
 # nvim
 alias v="nvim"
 alias sv="sudo nvim"
-alias vskel='sudo nvim $(ls /usr/share/nvim/runtime/skeletons/* | fzf)'
+alias vskel='sudo nvim $(ls /usr/share/nvim/runtime/skeletons/ | fzf)'
 alias vmap='sudo nvim $(ls /usr/share/nvim/runtime/plugin/map_* | fzf)'
 alias vdoc='sudo nvim $(ls /usr/share/nvim/runtime/doc/doc* | fzf)'
 
@@ -36,8 +36,8 @@ alias vdoc='sudo nvim $(ls /usr/share/nvim/runtime/doc/doc* | fzf)'
 alias graph="dot -Tpng -o graph.png"
 
 # dir management
-alias ls="ls --color=auto -h"
-alias la="ls -la"
+alias ls="ls --color=auto"
+alias la="ls -lah"
 alias n="nnn"
 
 # various
