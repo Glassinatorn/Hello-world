@@ -6,7 +6,7 @@
 "	88eee8
 
 autocmd FileType c inoremap ,inc
-    \ #include <.h><Esc>F.i
+    \ #include <><Esc>i
 
 autocmd FileType c inoremap ,main
     \ int main (int argc, char **argv) {
