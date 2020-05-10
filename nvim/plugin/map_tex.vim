@@ -30,7 +30,7 @@ autocmd FileType tex inoremap ,article
     \ <CR>\tableofcontent
     \ <CR><CR><CR>\end{document}<Esc>ggf{a
 
-autocmd FileType tex inoremap ,BTH
+autocmd FileType tex inoremap ,bth
     \ \documentclass[a4paper, oneside]{article} %article/others
     \ <CR>\usepackage[utf8]{inputenc}
     \ <CR>\usepackage{listings}
@@ -82,34 +82,34 @@ autocmd FileType tex inoremap ,titlepage
 autocmd FileType tex inoremap ,bf
     \ \textbf{}<Esc>i
 
-autocmd FileType tex inoremap ,enum
+autocmd FileType tex inoremap ,en
     \ \begin{enumerate}
     \ <CR>\item
     \ <CR>\end{enumerate}
     \ <Esc>kA
 
-autocmd FileType tex inoremap ,item
+autocmd FileType tex inoremap ,it
     \ \begin{itemize}
     \ <CR>\item
     \ <CR>\end{itemize}
     \ <Esc>kA
 
-autocmd FileType tex inoremap ,it
+autocmd FileType tex inoremap ,i
     \ <CR>\item
-autocmd FileType tex nnoremap ,it
+autocmd FileType tex nnoremap ,i
     \ o\item
 
-autocmd FileType tex inoremap ,sec
+autocmd FileType tex inoremap ,se
     \ \section{}<Esc>i
 
-autocmd FileType tex inoremap ,sub
+autocmd FileType tex inoremap ,su
     \ \subsection{}<Esc>i
 
-autocmd FileType tex inoremap ,code
+autocmd FileType tex inoremap ,c
     \ \begin{lstlisting}
     \ <CR>\end{lstlisting}<Esc>O
 
-autocmd FileType tex inoremap ,pic
+autocmd FileType tex inoremap ,p
     \ \begin{figure}[!h]
     \ <CR>\centering
     \ <CR>\includegraphics[width=0.6\textwidth]{<++>.png}
@@ -117,7 +117,7 @@ autocmd FileType tex inoremap ,pic
     \ <CR>\label{<++>}
     \ <CR>\end{figure}<Esc>{<Space><Space>
 
-autocmd FileType tex inoremap ,table
+autocmd FileType tex inoremap ,ta
     \ \begin{tabular}{}
     \ <CR>\hline
     \ <CR>\textbf{<++>} & \textbf{<++>} \\ \hline
@@ -159,7 +159,7 @@ autocmd FileType tex inoremap ,"
 autocmd FileType tex inoremap ,fra
     \ \frac{}{<++>}<Esc>ba
 
-autocmd FileType tex inoremap ,center
+autocmd FileType tex inoremap ,cent
     \ \begin{center}
     \ <CR>\end{center}<Esc>O
 
@@ -169,14 +169,14 @@ autocmd FileType tex inoremap ,matr
     \ <CR>\end{<++>matrix}$
     \ <Esc>2kF{a
 
-autocmd FileType tex inoremap ,ref
+autocmd FileType tex inoremap ,r
     \ \ref{}<Esc>i
 
-autocmd FileType tex inoremap ,href
+autocmd FileType tex inoremap ,hr
     \ \hyperref[]{''<++>''}
     \ <Esc>F]i
 
-autocmd FileType tex inoremap ,graph
+autocmd FileType tex inoremap ,gr
     \ \begin{tikzpicture}
     \ <CR>\begin{axis}[
     \ <CR>title={<++>},
