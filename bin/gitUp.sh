@@ -8,7 +8,7 @@
 #	88eee8 88  88
 
 CONFDIR="$HOME/.config"
-BINDIR="$HOME/bin"
+BINDIR="$HOME/.local/bin/own"
 NVIMRUNTIME="/usr/share/nvim/runtime"
 BACKUPFOLDER="$HOME/freetime/code/various/Hello-world"
 SUCKLESS="$HOME/freetime/code/c/git/suckless"
