@@ -7,12 +7,11 @@
 #	88   8 88  88
 #	88eee8 88  88
 
-USR="/home/$(whoami)"
-CONFDIR="$USR/.config"
-BINDIR="$USR/bin"
+CONFDIR="$HOME/.config"
+BINDIR="$HOME/bin"
 NVIMRUNTIME="/usr/share/nvim/runtime"
-BACKUPFOLDER="$USR/backup/Hello-world"
-SUCKLESS="$USR/freetime/code/c/git/suckless"
+BACKUPFOLDER="$HOME/freetime/code/various/Hello-world"
+SUCKLESS="$HOME/freetime/code/c/git/suckless"
 CMD="sudo rsync -razzP --del"
 
 # .config
@@ -35,11 +34,11 @@ $CMD $CONFDIR/qutebrowser/config.py     $BACKUPFOLDER/config/qutebrowser/
 $CMD /etc/tmux.conf                     $BACKUPFOLDER/etc/
 
 # zsh
-$CMD $USR/.zshrc                        $BACKUPFOLDER/zshrc
+$CMD $HOME/.zshrc                        $BACKUPFOLDER/zshrc
 
 # profiles
-$CMD $USR/.xprofile                     $BACKUPFOLDER/xprofile
-$CMD $USR/.profile                      $BACKUPFOLDER/profile
+$CMD $HOME/.xprofile                     $BACKUPFOLDER/xprofile
+$CMD $HOME/.profile                      $BACKUPFOLDER/profile
 
 # xorg
 $CMD /etc/X11/xorg.conf.d/20-* \
