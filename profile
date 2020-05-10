@@ -36,7 +36,7 @@ alias vdoc='sudo nvim $(ls /usr/share/nvim/runtime/doc/doc* | fzf)'
 # dir management
 alias ls="ls --color=auto"
 alias la="ls -lah"
-alias n="nnn"
+alias ..="cd .."
 
 # various
 alias sr="sudo systemctl restart"
@@ -48,6 +48,7 @@ alias usb='sudo mount /dev/$(ls /dev | grep sd | fzf) /mnt/usb/'
 alias remake="make && sudo make install && make clean"
 alias upd="sudo pacman -Syu && rustup update && pipupgrade -i"
 alias ins="sudo pacman -S"
+alias n="nnn"
 
 # loading nnn config
 source ~/.config/nnn/rc
