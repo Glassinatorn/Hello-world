@@ -126,6 +126,7 @@ nnoremap <leader>py  :set filetype=python<CR>
 " plugins
 call plug#begin('~/.config/nvim/vendor')
 Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
+Plug 'roxma/vim-tmux-clipboard'
 " find a way to automatically install coc-prettier coc-java coc-json
 " coc-rust-analyzer
 Plug 'junegunn/goyo.vim'
