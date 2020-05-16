@@ -105,7 +105,7 @@ autocmd FileType tex inoremap ,se
 autocmd FileType tex inoremap ,su
     \ \subsection{}<Esc>i
 
-autocmd FileType tex inoremap ,c
+autocmd FileType tex inoremap ,co
     \ \begin{lstlisting}
     \ <CR>\end{lstlisting}<Esc>O
 
@@ -150,7 +150,7 @@ autocmd FileType tex inoremap ,bt
     \ <CR>Available at: <++>
     \ <CR>[Accessed: <++>]}<Esc>4khi
 
-autocmd FileType tex inoremap ,c
+autocmd FileType tex inoremap ,ci
     \ \cite{}<Esc>i
 
 autocmd FileType tex inoremap ,"

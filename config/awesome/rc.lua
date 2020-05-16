@@ -12,7 +12,8 @@ local wibox = require("wibox")
 -- Theme handling library
 local beautiful = require("beautiful")
 -- Notification library
-local naughty = require("naughty")
+-- replacing naughty with dunst
+-- local naughty = require("naughty")
 local menubar = require("menubar")
 local hotkeys_popup = require("awful.hotkeys_popup")
 -- Enable hotkeys help widget for VIM and other apps
@@ -35,11 +36,12 @@ modkey = "Mod4"
 -- Check if awesome encountered an error during startup and fell back to
 -- another config (This code will only ever execute for the fallback config)
 if awesome.startup_errors then
-    naughty.notify({
-        preset = naughty.config.presets.critical,
-        title = "Oops, there were errors during startup!",
-        text = awesome.startup_errors
-    })
+    -- replacing neughty with dunst
+    --naughty.notify({
+    --    preset = naughty.config.presets.critical,
+    --    title = "Oops, there were errors during startup!",
+    --    text = awesome.startup_errors
+    --})
 end
 
 -- Handle runtime errors after startup
@@ -51,11 +53,12 @@ do
             return end
         in_error = true
 
-        naughty.notify({
-            preset = naughty.config.presets.critical,
-            title = "Oops, an error happened!",
-            text = tostring(err)
-        })
+        -- replacing naughty with dunst
+       -- naughty.notify({
+       --     preset = naughty.config.presets.critical,
+       --     title = "Oops, an error happened!",
+       --     text = tostring(err)
+       -- })
         in_error = false
     end)
 end
