@@ -49,6 +49,7 @@ alias remake="make && sudo make install && make clean"
 alias upd="sudo pacman -Syu && rustup update && pipupgrade -i"
 alias ins="sudo pacman -S"
 alias n="nnn"
+alias py="python3"
 
 # loading nnn config
 source ~/.config/nnn/rc

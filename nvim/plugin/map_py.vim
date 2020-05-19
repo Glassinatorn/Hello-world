@@ -1,5 +1,5 @@
 autocmd FileType python inoremap ,p
-    \ print("")<Esc>hi
+    \ print()<Esc>i
 
 autocmd FileType python inoremap ,f
     \ for  in <++>:<Esc>Frla
