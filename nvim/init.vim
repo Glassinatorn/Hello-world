@@ -1,14 +1,15 @@
-"  88   8
-"  88   8 e  eeeeeee eeeee  eeee
-"  88  e8 8  8  8  8 8   8  8  8
-"  "8  8  8e 8e 8  8 8eee8e 8e
-"   8  8  88 88 8  8 88   8 88
-"   8ee8  88 88 8  8 88   8 88e8
-"
-"
-" This line should not be removed as it ensures that various options are
-" properly set to work with the Vim-related packages.
-runtime! archlinux.vim
+
+"    @@@  @@@  @@@  @@@@@@@@@@   @@@@@@@    @@@@@@@
+"    @@@  @@@  @@@  @@@@@@@@@@@  @@@@@@@@  @@@@@@@@
+"    @@!  @@@  @@!  @@! @@! @@!  @@!  @@@  !@@
+"    !@!  @!@  !@!  !@! !@! !@!  !@!  @!@  !@!
+"    @!@  !@!  !!@  @!! !!@ @!@  @!@!!@!   !@!
+"    !@!  !!!  !!!  !@!   ! !@!  !!@!@!    !!!
+"    :!:  !!:  !!:  !!:     !!:  !!: :!!   :!!
+"     ::!!:!   :!:  :!:     :!:  :!:  !:!  :!:
+"      ::::     ::  :::     ::   ::   :::   ::: :::
+"       :      :     :      :     :   : :   :: :: :
+
 
 " setting general line formatting
 set expandtab
@@ -19,13 +20,8 @@ set smarttab
 set bg=dark
 set tw=80
 
-" setting colors and fixing spell highlight for gruvbox
-let g:gruvbox_guisp_fallback = "bg"
-" colorscheme desert
-" colorscheme nord
+" setting colorscheme
 colorscheme mono_tl
-" colorscheme mono_sw
-" colorscheme gruvbox
 
 " disabling permanent search highlight
 set nohlsearch
