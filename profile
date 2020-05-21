@@ -10,7 +10,7 @@ export PATH="$PATH:$HOME/.local/bin/own"
 export EDITOR=nvim
 
 # prompt
-PS1='Glass $ '
+PS1='>_ '
 
 # git
 alias gu="git fetch && git pull"
@@ -38,10 +38,14 @@ alias ls="ls --color=auto"
 alias la="ls -lah"
 alias ..="cd .."
 
-# various
+# service management
+alias se="sudo systemctl enable"
 alias sr="sudo systemctl restart"
-alias tm='tmux a -t $(tmux ls | awk '\''{print $1}'\'' | sed s/://g | fzf)'
+alias ss="systemctl status"
 alias murder='kill $(ps -e | fzf | awk '\''{print $1}'\'')'
+
+# various
+alias tm='tmux a -t $(tmux ls | awk '\''{print $1}'\'' | sed s/://g | fzf)'
 alias yt="youtube-dl -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/bestvideo+bestaudio' --merge-output-format mkv"
 alias ssd='sudo mount /dev/$(ls /dev | grep sd | fzf) /mnt/ssd/'
 alias usb='sudo mount /dev/$(ls /dev | grep sd | fzf) /mnt/usb/'
