@@ -50,6 +50,7 @@ alias upd="sudo pacman -Syu && rustup update && pipupgrade -i"
 alias ins="sudo pacman -S"
 alias n="nnn"
 alias py="python3"
+alias gwal="xwinwrap -g 240x240+839+297 -ov -sh circle -- gifview -w WID -a"
 
 # loading nnn config
 source ~/.config/nnn/rc

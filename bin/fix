@@ -1,11 +1,17 @@
 #! /bin/sh
 
-#	8""""
-#	8     e  e    e
-#	8eeee 8  8    8
-#	88    8e eeeeee
-#	88    88 88   8
-#	88    88 88   8
+
+#    @@@@@@@@  @@@  @@@  @@@
+#    @@@@@@@@  @@@  @@@  @@@
+#    @@!       @@!  @@!  !@@
+#    !@!       !@!  !@!  @!!
+#    @!!!:!    !!@   !@@!@!
+#    !!!!!:    !!!    @!!!
+#    !!:       !!:   !: :!!
+#    :!:       :!:  :!:  !:!
+#     ::        ::   ::  :::
+#     :        :     :   ::
+
 
 xinput --set-prop "SYNA2B31:00 06CB:7F8B Touchpad" "libinput Accel Speed" 0.2
 xinput --set-prop "SYNA2B31:00 06CB:7F8B Touchpad" "libinput Tapping Enabled" 1
