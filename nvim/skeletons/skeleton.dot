@@ -1,22 +1,22 @@
 digraph <++> {
     graph [
-        charset = "UTF-8";
-        label = "<++>",
-        fontsize = 18,
-        style = "filled",
-        margin = 0.2,
+        charset="UTF-8"
+        label="<++>"
+        fontsize=18
+        style="filled"
+        margin=0.2
 
-        /* dark colored scheme
-        bgcolor = "#343434",
-        fontcolor = white, */
+        /* dark colored scheme */
+        //bgcolor="#343434"
+        //fontcolor=white
         /* light colored scheme */
-        bgcolor = "#ffffff",
-        fontcolor = black,
+        bgcolor="#ffffff"
+        fontcolor=black
     ];
 
     /* define nodes */
-    /* example: node [shape = box/Msquare/etc]; */
+    /* example: node [shape=box/Msquare/etc] */
 
-    <++> -> <++> [label = "<++>", arrowhead = normal];
+    <++> -> <++> [ arrowhead=normal ]
 }
 

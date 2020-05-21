@@ -72,6 +72,7 @@ $CMD $CONFDIR/nvim/init.vim \
 
 $CMD $NVIMRUNTIME/plugin/map_*          $BACKUPFOLDER/nvim/plugin/
 $CMD $NVIMRUNTIME/colors/mono_tl.vim*   $BACKUPFOLDER/nvim/colors/
+$CMD $NVIMRUNTIME/skeletons/*           $BACKUPFOLDER/nvim/skeletons/
 $CMD $NVIMRUNTIME/doc/doc.txt \
      $NVIMRUNTIME/doc/doc_*             $BACKUPFOLDER/nvim/doc/
 
