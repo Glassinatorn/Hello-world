@@ -105,12 +105,13 @@ autocmd FileType * inoremap ,[
 noremap <Space><Space> <Esc>/<++><Enter>"_c4l
 
 " skeletons
-autocmd BufNewFile *.tex 0r /usr/share/nvim/runtime/skeletons/skeleton.tex
-autocmd BufNewFile *.c	 0r /usr/share/nvim/runtime/skeletons/skeleton.c
-autocmd BufNewFile *.h	 0r /usr/share/nvim/runtime/skeletons/skeleton.h
-autocmd BufNewFile *.cpp 0r /usr/share/nvim/runtime/skeletons/skeleton.cpp
-autocmd BufNewFile *.dot 0r /usr/share/nvim/runtime/skeletons/skeleton.dot
-autocmd BufNewFile doc_* 0r /usr/share/nvim/runtime/skeletons/documentation.txt
+autocmd BufNewFile *.tex  0r /usr/share/nvim/runtime/skeletons/skeleton.tex
+autocmd BufNewFile *.c	  0r /usr/share/nvim/runtime/skeletons/skeleton.c
+autocmd BufNewFile *.h	  0r /usr/share/nvim/runtime/skeletons/skeleton.h
+autocmd BufNewFile *.cpp  0r /usr/share/nvim/runtime/skeletons/skeleton.cpp
+autocmd BufNewFile *.dot  0r /usr/share/nvim/runtime/skeletons/skeleton.dot
+autocmd BufNewFile *.html 0r /usr/share/nvim/runtime/skeletons/skeleton.html
+autocmd BufNewFile doc_*  0r /usr/share/nvim/runtime/skeletons/documentation.txt
 
 " manual sourcing snippets
 nnoremap <leader>tex :set filetype=tex<CR>
