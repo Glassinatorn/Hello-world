@@ -13,7 +13,7 @@
 #    :: : :     :   : :   : :  :      :     :: :  :    : :  :     :: :  : :    ::    :
 
 
-ANS="$(echo -e "Lock \nSuspend \nSign out \nReboot \nShutdown" | dmenu -c -i -l 10)"
+ANS="$(printf "Lock \nSuspend \nSign out \nReboot \nShutdown" | dmenu -c -i -l 10)"
 
 case "$ANS" in
     'Lock ') dm-tool lock ;;
