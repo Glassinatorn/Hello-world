@@ -107,7 +107,7 @@ autocmd FileType tex inoremap ,su
 
 autocmd FileType tex inoremap ,co
     \ \begin{lstlisting}
-    \ <CR>\end{lstlisting}<Esc>O
+    \ <CR>\end{lstlisting}<Esc>O<Tab>
 
 autocmd FileType tex inoremap ,p
     \ \begin{figure}[!h]
