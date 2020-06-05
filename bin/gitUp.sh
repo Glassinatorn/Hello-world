@@ -59,6 +59,7 @@ $CMD $BINDIR/fix \
      $BINDIR/keymap \
      $BINDIR/qutebrowser_session \
      $BINDIR/shutdown.sh \
+     $BINDIR/brightness \
      $BINDIR/rotate.sh                  $BACKUPFOLDER/bin/
 
 # suckless
