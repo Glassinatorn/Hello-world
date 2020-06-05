@@ -36,7 +36,7 @@ theme.border_marked = "#91231c"
 theme.titlebar_bg        = "#05E3E3"
 
 theme.wibar_height         = 20
-theme.wibar_width          = 270
+theme.wibar_width          = 320
 
 --theme.wibar_=
 -- There are other variable sets

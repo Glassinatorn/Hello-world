@@ -18,7 +18,7 @@ ANS="$(printf "Lock \nSuspend \nSign out \nReboot \nShutdown" | dmenu -c -i -l 1
 case "$ANS" in
     'Lock ') dm-tool lock ;;
     'Suspend ') systemctl suspend ;;
-    'Sign out ') systemctl restart lightdm ;;
+    'Sign out ') sudo systemctl restart lightdm ;;
     'Reboot ') reboot ;;
     'Shutdown') shutdown now ;;
 esac
