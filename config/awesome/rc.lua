@@ -68,6 +68,7 @@ end
 awful.layout.layouts = {
     awful.layout.suit.floating,
     lain.layout.centerwork,
+    awful.layout.suit.fair.horizontal,
     -- available layouts:.tile.left, .tile.bottom, .tile.top, .fair,
     -- .fair.horizontal, .spiral, .spiral.dwindle, .max, .max.fullscreen,
     -- .magnifier, .corner.nw, .corner.ne, .corner.sw, .corner.se,
