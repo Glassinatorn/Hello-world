@@ -1,19 +1,20 @@
 autocmd FileType sh inoremap ,#
     \ #! /bin/sh
 
-autocmd FileType sh inoremap ,for
-    \ for [ ]
-    \ <CR>then
+autocmd FileType sh inoremap ,f
+    \ for [ ]; then
     \ <CR><++>
-    \ <CR>done<Esc>3kwa<Space>
+    \ <CR>done<Esc>2kwa<Space>
 
-autocmd FileType sh inoremap ,if
-    \ if [ ]
-    \ <CR>then
+autocmd FileType sh inoremap ,i
+    \ if [ ]; then
     \ <CR><++>
-    \ <CR>done<Esc>3kwa<Space>
+    \ <CR>fi<Esc>2kwa<Space>
 
-autocmd FileType sh inoremap ,case
+autocmd FileType sh inoremap ,p
+    \ printf ""<Esc>i
+
+autocmd FileType sh inoremap ,c
     \ case $ in
     \ <CR><++>)
     \ <CR>;;
