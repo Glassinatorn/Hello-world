@@ -39,6 +39,7 @@ c.hints.border = "3px solid #515151"
 c.fonts.hints = "12pt Unscii"
 c.prompt.radius = 0
 c.completion.shrink = True
+c.colors.webpage.darkmode.enabled = True
 
 ## Features
 c.scrolling.smooth = True
@@ -78,4 +79,3 @@ c.bindings.commands["normal"] = {"Q": "hint images spawn -u qt-chap {hint-url}",
                                  "xb": "config-cycle statusbar.hide",
                                  "xt": "config-cycle tabs.show always switching",
                                  "ip": "open https://www.myip.com/"}
-
