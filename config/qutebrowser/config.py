@@ -51,11 +51,8 @@ c.colors.webpage.darkmode.enabled = True
 ## Features
 c.scrolling.smooth = True
 
-#placeholder for when the commands is not overwritten bt settings.yml
-#c.editor.command: ["st", "-e", "nvim", "{}"]
-
 ## Start page
-c.url.start_pages = ["/home/glass/.homepage/home.html"]
+c.url.start_pages = ["~/.homepage/home.html"]
 
 ## Search engines
 c.url.searchengines = {"DEFAULT": "https://duckduckgo.com/?q={}",
