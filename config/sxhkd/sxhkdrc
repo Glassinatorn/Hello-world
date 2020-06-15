@@ -24,7 +24,7 @@ super + x
 
 # screenshot
 super + p
-    screenshot.sh
+    maim -s ~/screenshots/$(date +%F_%H:%M:%S".png")
 
 # show info
 ctrl + i

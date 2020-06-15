@@ -55,7 +55,6 @@ alias ins="sudo pacman -S"
 alias n="nnn"
 alias py="python3"
 alias gwall="xwinwrap -g 240x240+839+297 -ov -sh circle -- gifview -w WID -a"
-alias screenshot='maim -s ~/screenshots/$(date +%F_%H:%M:%S".png")'
 
 # loading nnn config
 source ~/.config/nnn/rc

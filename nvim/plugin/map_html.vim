@@ -34,3 +34,6 @@ autocmd FileType html inoremap ,flow
     \ <CR>graph TD
     \ <CR>--> <++>
     \ <CR></div><Esc>kI
+
+autocmd FileType html inoremap ,it
+    \ <CR>--> <++><Esc>I
