@@ -12,10 +12,10 @@ autocmd FileType dot inoremap ,it
     \ <Esc>o-> <++> [ arrowhead=normal ]<Esc>I
 
 autocmd FileType dot nnoremap ,it
-    \ o-> <++> [ arrowhead=normal ]<Esc>I
+    \ -> <++> [ arrowhead=normal ]<Esc>I
 
 autocmd FileType dot inoremap ,la
-    \ label=""<Esc>ha
+    \ label=""<Esc>i
 
 autocmd FileType dot inoremap ,pic
     \ image=""<Esc>ha
@@ -27,9 +27,9 @@ autocmd FileType dot inoremap ,po
     \ pos=",<++>!" <Esc>F,i
 
 autocmd FileType dot inoremap ,sub
-    \ subgraph {
+    \ subgraph cluster0 {
     \ <CR><Tab>label="<++>"
     \ <CR>style=filled
     \ <CR>color="<++>"
     \ <CR>fillcolor="<++>"
-    \ <CR><BS>}<Esc>5kea<Space>
+    \ <CR><BS>}<Esc>5kf0
