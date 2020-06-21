@@ -17,6 +17,16 @@ c = c  # noqa: F821 pylint: disable=E0602,C0103
 config = config  # noqa: F821 pylint: disable=E0602,C0103
 
 import sys, os
+from qutebrowser.api import interceptor
+
+# blocking yt adds
+def filter_yt(info: interceptor.Request):
+    """Block the given request if necessary."""
+    url = info.request_url
+    if (url.host() == 'www.youtube.com' and url.path() == '/get_video_info' and '&adformat=' in url.query()):
+        info.block()
+
+interceptor.register(filter_yt)
 
 ## Colors
 teal = "#00F2FF"
@@ -83,3 +93,4 @@ c.bindings.commands["normal"] = {"Q": "hint images spawn -u qt-chap {hint-url}",
                                  "xb": "config-cycle statusbar.hide",
                                  "xt": "config-cycle tabs.show always switching",
                                  "ip": "open https://www.myip.com/"}
+
