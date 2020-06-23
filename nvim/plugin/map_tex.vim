@@ -30,55 +30,6 @@ autocmd FileType tex inoremap ,article
     \ <CR>\tableofcontent
     \ <CR><CR><CR>\end{document}<Esc>ggf{a
 
-autocmd FileType tex inoremap ,bth
-    \ \documentclass[a4paper, oneside]{article} %article/others
-    \ <CR>\usepackage[utf8]{inputenc}
-    \ <CR>\usepackage{listings}
-    \ <CR>\usepackage{hyperref}
-    \ <CR>\usepackage{graphicx}
-    \ <CR>\hypersetup{
-    \ <CR>    colorlinks=true,
-    \ <CR>    linkcolor=blue,
-    \ <CR>    filecolor=magenta,
-    \ <CR>    urlcolor=blue,
-    \ <CR>}
-    \ <CR><CR><CR>
-    \ <CR>\begin{document}
-    \ <CR>\begin{titlepage}
-    \ <CR>\centering
-    \ <CR>{\huge\bfseries <++>\par}
-    \ <CR>\vspace{1cm}
-    \ <CR>{\scshape\Large BTH, (\today) \par}
-    \ <CR>{\scshape\Large Author: Axel Gehlin Björnberg, Gusten.1@hotmail.com \par}
-    \ <CR>{\scshape\Large Course: <++>\par}
-    \ <CR>\vspace{1cm}
-    \ <CR>\includegraphics[width=0.3\textwidth]{bthlogo_svart_new.png}\par\vspace{1cm}
-    \ <CR>\vspace*{\fill}
-    \ <CR>Blekinge Institute of Technology\\
-    \ <CR>SE - 371 79 Karlskrona\\
-    \ <CR>Sweden
-    \ <CR>\end{titlepage}
-    \ <CR>\tableofcontent
-    \ <CR><CR><CR>\end{document}<Esc>gg
-
-autocmd FileType tex inoremap ,titlepage
-    \ \begin{document}
-    \ <CR>\begin{titlepage}
-    \ <CR>\centering
-    \ <CR>{\huge\bfseries <++>\par}
-    \ <CR>\vspace{1cm}
-    \ <CR>{\scshape\Large BTH, (\today) \par}
-    \ <CR>{\scshape\Large Author: Axel Gehlin Björnberg, Gusten.1@hotmail.com \par}
-    \ <CR>{\scshape\Large Course: <++>\par}
-    \ <CR>\vspace{1cm}
-    \ <CR>\includegraphics[width=0.3\textwidth]{bthlogo_svart_new.png}\par\vspace{1cm}
-    \ <CR>\vspace*{\fill}
-    \ <CR>Blekinge Institute of Technology\\
-    \ <CR>SE - 371 79 Karlskrona\\
-    \ <CR>Sweden
-    \ <CR>\end{titlepage}
-
-
 autocmd FileType tex inoremap ,bf
     \ \textbf{}<Esc>i
 
