@@ -17,10 +17,16 @@ PS1='>_ '
 alias gu="git fetch && git pull"
 alias gs="git status"
 alias ga="git add"
+alias gr="git rm"
 alias gc="git commit"
 alias gp="git push"
 alias gb="git branch"
 alias gch="git checkout"
+
+# docker
+alias dl="docker ps -a"
+alias ds="docker stop"
+alias di="docker images"
 
 # cargo
 alias cr="clear && cargo run"
