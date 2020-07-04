@@ -48,6 +48,7 @@ alias ..="cd .."
 # service management
 alias se="sudo systemctl enable"
 alias sr="sudo systemctl restart"
+alias sS="sudo systemctl start"
 alias ss="systemctl status"
 alias murder='kill $(ps -e | fzf | awk '\''{print $1}'\'')'
 
