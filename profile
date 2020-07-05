@@ -27,6 +27,7 @@ alias gch="git checkout"
 alias dl="docker ps -a"
 alias ds="docker stop"
 alias di="docker images"
+alias dr="docker rm"
 
 # cargo
 alias cr="clear && cargo run"
