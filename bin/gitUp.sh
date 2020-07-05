@@ -25,6 +25,7 @@ $CMD $CONFDIR/i3 \
      $CONFDIR/bspwm \
      $CONFDIR/awesome \
      $CONFDIR/sxhkd \
+     $CONFDIR/gtk-3.0 \
      $CONFDIR/polybar \
      $CONFDIR/termite \
      $CONFDIR/picom.conf	        $BACKUPFOLDER/config/
