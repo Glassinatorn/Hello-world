@@ -25,9 +25,11 @@ alias gch="git checkout"
 
 # docker
 alias dl="docker ps -a"
-alias ds="docker stop"
 alias di="docker images"
-alias dr="docker rm"
+alias ds='docker stop $(docker inspect $(docker ps -aq) --format='\''{{.Name}}'\'' | \
+    sed s/'\''\/'\''//g | fzf)'
+alias dr='docker rm $(docker inspect $(docker ps -aq) --format='\''{{.Name}}'\'' | \
+    sed s/'\''\/'\''//g | fzf)'
 
 # cargo
 alias cr="clear && cargo run"
