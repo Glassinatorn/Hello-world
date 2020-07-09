@@ -30,6 +30,8 @@ alias ds='docker stop $(docker inspect $(docker ps -aq) --format='\''{{.Name}}'\
     sed s/'\''\/'\''//g | fzf)'
 alias dr='docker rm $(docker inspect $(docker ps -aq) --format='\''{{.Name}}'\'' | \
     sed s/'\''\/'\''//g | fzf)'
+alias dd="docker-compose down -v"
+alias du="docker-compose up -d"
 
 # cargo
 alias cr="clear && cargo run"
