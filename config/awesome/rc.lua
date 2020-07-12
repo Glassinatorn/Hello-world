@@ -251,8 +251,7 @@ awful.screen.connect_for_each_screen(function(s)
         height = beautiful.wibar_height,
         width = beautiful.wibar_width,
         bg = beautiful.transparent,
-        border_color = "#00000000",
-        border_width = 10
+        shape = gears.shape.rectangle,
     })
 
 
