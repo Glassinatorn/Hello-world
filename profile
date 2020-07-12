@@ -32,7 +32,7 @@ alias dr='docker rm $(docker inspect $(docker ps -aq) --format='\''{{.Name}}'\''
     sed s/'\''\/'\''//g | fzf)'
 alias dd="docker-compose down -v"
 alias du="docker-compose up -d"
-alias db="docker-compose build ."
+alias db="docker-compose build"
 
 # cargo
 alias cr="clear && cargo run"
