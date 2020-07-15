@@ -8,12 +8,35 @@
 autocmd FileType html inoremap ,b
     \ <b></b><Esc>2ba
 
+autocmd FileType html inoremap ,a
+    \ <a href=""></a><Esc>F"i
+
 autocmd FileType html inoremap ,bu
     \ <button class="" on_click="<++>"><++></button><Esc>0f"a
 
 autocmd FileType html inoremap ,sc
     \ <script></script><Esc>2ba
 
+autocmd FileType html inoremap ,input
+    \ <input type="" value="<++>"><Esc>bF"i
+
+autocmd FileType html inoremap ,form
+    \ <form action="" method="<++>">
+    \ <CR></form><Esc>kf"a
+
+autocmd FileType html inoremap ,ul
+    \ <ul>
+    \ <CR><li></li>
+    \ <CR></ul>
+    \ <Esc>kf/hi
+
+autocmd FileType html inoremap ,li
+    \ <li></li><Esc>2ba
+
+
+""""""""""""""""""""""
+"  mermaid specific  "
+""""""""""""""""""""""
 autocmd FileType html inoremap ,mermaid
     \ <script src="https://cdn.jsdelivr.net/npm/mermaid@8.4.0/dist/mermaid.min.js">
     \ <CR>mermaid.initialize({startOnLoad:true});
@@ -37,3 +60,13 @@ autocmd FileType html inoremap ,flow
 
 autocmd FileType html inoremap ,it
     \ <CR>--> <++><Esc>I
+
+
+"""""""""""""""""""""
+"  django specific  "
+"""""""""""""""""""""
+autocmd FileType html inoremap ,{
+    \ {{ }}<Esc>2hi<Space>
+
+autocmd FileType html inoremap ,%
+    \ {% %}<Esc>2hi<Space>

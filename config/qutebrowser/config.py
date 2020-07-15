@@ -19,6 +19,9 @@ config = config  # noqa: F821 pylint: disable=E0602,C0103
 import sys, os
 from qutebrowser.api import interceptor
 
+# blocking websites
+c.content.host_blocking.lists.append( str(config.configdir) + "/blockedHosts")
+
 # blocking yt adds
 def filter_yt(info: interceptor.Request):
     """Block the given request if necessary."""
