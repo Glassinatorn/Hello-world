@@ -1,5 +1,5 @@
 {
-  "python.linting.pylintPath":"/usr/local/bin/pylint",
+  "python.linting.pylintPath":"/usr/bin/pylint",
   "prettier.requireConfig": true,
   "coc.preferences.formatOnSaveFiletypes": [
     "css",
@@ -10,21 +10,5 @@
     "typescript",
     "typescriptreact"
   ],
-  "languageserver": {
-    "ccls": {
-      "command": "ccls",
-      "filetypes": ["c", "cpp", "objc", "objcpp"],
-      "rootPatterns": [".ccls", "compile_commands.json", ".vim/", ".git/", ".hg/"],
-      "initializationOptions": {
-         "cache": {
-           "directory": "/tmp/ccls"
-         }
-       }
-    },
-    "lua": {
-      "command": "lua-lsp",
-      "filetypes": ["lua"]
-    },
-  },
   "java.errors.incompleteClasspath.severity": "ignore"
 }
