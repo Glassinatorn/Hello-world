@@ -24,7 +24,9 @@ super + x
 
 # screenshot
 super + p
-    maim -s ~/screenshots/$(date +%F_%H:%M:%S".png")
+    curr_time=$(date +%F_%H:%M:%S".png") && \
+    maim -s ~/screenshots/$curr_time && \
+    echo "~/screenshots/$curr_time" | xclip
 
 # show info
 ctrl + i
