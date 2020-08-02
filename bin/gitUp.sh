@@ -71,6 +71,7 @@ $CMD --exclude '.git' $SUCKLESS/st      $BACKUPFOLDER/suckless/
 # nvim
 $CMD $CONFDIR/nvim/init.vim \
      $CONFDIR/nvim/coc-settings.json    $BACKUPFOLDER/nvim/
+$CMD $CONFDIR/nvim/after/coc.vim        $BACKUPFOLDER/nvim/after/
 
 $CMD $NVIMRUNTIME/plugin/map_*          $BACKUPFOLDER/nvim/plugin/
 $CMD $NVIMRUNTIME/colors/mono_tl.vim*   $BACKUPFOLDER/nvim/colors/
