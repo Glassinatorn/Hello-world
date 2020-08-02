@@ -21,10 +21,10 @@ set shiftwidth=4
 set softtabstop=4
 let g:currentTabbing="soft"
 set smarttab
-set bg=dark
 set tw=80
 
 " setting colorscheme
+set bg=dark
 colorscheme mono_tl
 
 " disabling permanent search highlight
