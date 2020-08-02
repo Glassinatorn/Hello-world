@@ -11,7 +11,11 @@
 "       :      :     :      :     :   : :   :: :: :
 
 
-" setting general line formatting
+" setting general settings
+set nobackup
+set nowritebackup
+set cmdheight=2
+set updatetime=300
 set expandtab
 set shiftwidth=4
 set softtabstop=4
@@ -169,3 +173,5 @@ inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
 " Symbol renaming.
 nmap <leader>rn <Plug>(coc-rename)
+
+
