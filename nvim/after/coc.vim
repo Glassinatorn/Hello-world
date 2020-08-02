@@ -12,7 +12,8 @@
 
 
 " https://github.com/neoclide/coc.nvim#example-vim-configuration
-inoremap <silent><expr> <c-tab> coc#refresh()
+inoremap <silent><expr> <c-n> coc#refresh()
+inoremap <silent><expr> <c-p> coc#refresh()
 
 " gd - go to definition of word under cursor
 nmap <silent> gd <Plug>(coc-definition)
@@ -26,7 +27,6 @@ nmap <silent> gr <Plug>(coc-references)
 
 " gh - get hint on whatever's under the cursor
 nnoremap <silent> K :call <SID>show_documentation()<CR>
-nnoremap <silent> gh :call <SID>show_documentation()<CR>
 
 function! s:show_documentation()
   if &filetype == 'vim'
