@@ -62,6 +62,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'roxma/vim-tmux-clipboard'
 Plug 'liuchengxu/graphviz.vim'
 Plug 'junegunn/goyo.vim'
+Plug 'sbdchd/neoformat'
 call plug#end()
 
 " loading small functions

@@ -8,7 +8,8 @@
     "javascript",
     "javascriptreact",
     "typescript",
-    "typescriptreact"
+    "typescriptreact",
+    "json"
   ],
   "java.errors.incompleteClasspath.severity": "ignore"
 }
