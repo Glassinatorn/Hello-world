@@ -3,7 +3,7 @@
 pcall(require, "luarocks.loader")
 
 -- Standard awesome library
-local gears =     require("gears")
+local gears = require("gears")
 local awful = require("awful")
 local lain = require("lain")
 require("awful.autofocus")
@@ -90,9 +90,12 @@ myawesomemenu = {
     {"manual", terminal .. " -e man awesome"},
     {"edit config", editor_cmd .. " " .. awesome.conffile},
     {"restart", awesome.restart},
-    {"quit", function()
+    {
+        "quit",
+        function()
             awesome.quit()
-        end}
+        end
+    }
 }
 
 mymainmenu =

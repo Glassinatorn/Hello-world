@@ -58,6 +58,7 @@ nnoremap <silent> <leader>cx  :<C-u>CocList extensions<cr>
 nmap <leader>cr  <Plug>(coc-rename)
 nmap <leader>cf  <Plug>(coc-format-selected)
 vmap <leader>cf  <Plug>(coc-format-selected)
+autocmd BufWritePre * :Neoformat
 
 " run code actions
 vmap <leader>ca  <Plug>(coc-codeaction-selected)

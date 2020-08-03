@@ -38,8 +38,9 @@ map <leader>se :setlocal spell! spelllang=sv<CR>
 nnoremap <silent> <C-S> :w<CR>
 inoremap <silent> <C-S> <Esc>:w<CR>
 
-" automatically delete trailing whitespaces on filesave
+" automatically formats code on filesave
 autocmd BufWritePre * %s/\s\+$//e
+autocmd BufWritePre * :Neoformat
 
 " setting folding method
 set foldmethod=manual
