@@ -72,3 +72,8 @@ nmap <leader>rn <Plug>(coc-rename)
 inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() :
     \"\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
+" Create markmap from the whole file
+nmap <Leader>m <Plug>(coc-markmap-create)
+" Create markmap from the selected lines
+vmap <Leader>m <Plug>(coc-markmap-create-v)
+
