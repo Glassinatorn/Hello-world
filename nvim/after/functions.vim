@@ -63,4 +63,4 @@ function! s:colorswitch(...)
 endfunction
 command! -nargs=0 Colorswitch call s:colorswitch()
 autocmd FileType * nnoremap <leader>sw
-    \ !:Cosw<cr>
+    \ !:Colorswitch<cr>
