@@ -1,4 +1,5 @@
-"  @@@@@@@@  @@@  @@@  @@@  @@@   @@@@@@@  @@@@@@@  @@@   @@@@@@   @@@  @@@    @@@@@@ @@@@@@@@  @@@  @@@  @@@@ @@@  @@@@@@@@  @@@@@@@  @@@  @@@@@@@@  @@@@ @@@   @@@@@@@
+"  @@@@@@@@  @@@  @@@  @@@  @@@   @@@@@@@  @@@@@@@  @@@   @@@@@@   @@@  @@@    @@@@@@
+"  @@@@@@@@  @@@  @@@  @@@@ @@@  @@@@@@@@  @@@@@@@  @@@  @@@@@@@@  @@@@ @@@   @@@@@@@
 "  @@!       @@!  @@@  @@!@!@@@  !@@         @@!    @@!  @@!  @@@  @@!@!@@@   !@@
 "  !@!       !@!  @!@  !@!!@!@!  !@!         !@!    !@!  !@!  @!@  !@!!@!@!   !@!
 "  @!!!:!    @!@  !@!  @!@ !!@!  !@!         @!!    !!@  @!@  !@!  @!@ !!@!   !!@@!!
@@ -45,3 +46,19 @@ function! s:tabbing(...)
     endif
 endfunction
 command! -nargs=0 Tabbing call s:tabbing()
+
+" function for switching dark and light colorscheme
+function! s:colorswitch(...)
+    if g:color == "dark"
+        let g:color="light"
+        set termguicolors
+        colorscheme ayu
+    else
+        set notermguicolors
+        colorscheme mono_tl
+        let g:color="dark"
+    endif
+endfunction
+command! -nargs=0 Colorswitch call s:colorswitch()
+autocmd FileType * nnoremap <leader>sw
+    \ :Cosw<cr>

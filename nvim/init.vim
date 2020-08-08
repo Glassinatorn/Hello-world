@@ -20,11 +20,13 @@ set expandtab
 set shiftwidth=4
 set softtabstop=4
 let g:currentTabbing="soft"
+let g:color="dark"
 set smarttab
 set tw=80
 
 " setting colorscheme
 set bg=dark
+let ayucolor="light"
 colorscheme mono_tl
 
 " disabling permanent search highlight
@@ -64,6 +66,7 @@ Plug 'roxma/vim-tmux-clipboard'
 Plug 'liuchengxu/graphviz.vim'
 Plug 'junegunn/goyo.vim'
 Plug 'sbdchd/neoformat'
+Plug 'ayu-theme/ayu-vim'
 call plug#end()
 
 " loading small functions
