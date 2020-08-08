@@ -5,32 +5,35 @@
 "	88  8   88  88 8  8 88
 "	88  8   88  88 8  8 88eee
 
-autocmd FileType html inoremap ,b
+autocmd FileType html inoremap ,b<space>
     \ <b></b><Esc>2ba
 
-autocmd FileType html inoremap ,a
+autocmd FileType html inoremap ,a<space>
     \ <a href=""></a><Esc>F"i
 
-autocmd FileType html inoremap ,bu
+autocmd FileType html inoremap ,p<space>
+    \ <p></p><Esc>F<i
+
+autocmd FileType html inoremap ,bu<space>
     \ <button class="" on_click="<++>"><++></button><Esc>0f"a
 
-autocmd FileType html inoremap ,sc
+autocmd FileType html inoremap ,sc<space>
     \ <script></script><Esc>2ba
 
-autocmd FileType html inoremap ,input
+autocmd FileType html inoremap ,in<space>
     \ <input type="" value="<++>"><Esc>bF"i
 
-autocmd FileType html inoremap ,form
+autocmd FileType html inoremap ,fo<space>
     \ <form action="" method="<++>">
     \ <CR></form><Esc>kf"a
 
-autocmd FileType html inoremap ,ul
+autocmd FileType html inoremap ,ul<space>
     \ <ul>
     \ <CR><li></li>
     \ <CR></ul>
     \ <Esc>kf/hi
 
-autocmd FileType html inoremap ,li
+autocmd FileType html inoremap ,li<space>
     \ <li></li><Esc>2ba
 
 

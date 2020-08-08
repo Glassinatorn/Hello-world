@@ -1,5 +1,5 @@
 {
-  "python.linting.pylintPath":"/usr/bin/pylint",
+  "python.linting.pylintPath": "/usr/bin/pylint",
   "prettier.requireConfig": true,
   "coc.preferences.formatOnSaveFiletypes": [
     "css",
@@ -11,5 +11,5 @@
     "typescriptreact",
     "json"
   ],
-  "java.errors.incompleteClasspath.severity": "ignore"
+  "python.jediEnabled": false
 }
