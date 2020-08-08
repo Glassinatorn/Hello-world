@@ -46,7 +46,7 @@ function! s:tabbing(...)
     endif
 endfunction
 command! -nargs=0 Tabbing call s:tabbing()
-autocmd FileType * nnoremap <leader>sw
+autocmd FileType * nnoremap <leader><Tab>
     \ :Tabbing<cr>
 
 " function for switching dark and light colorscheme
