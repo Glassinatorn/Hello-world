@@ -1,5 +1,5 @@
 autocmd FileType sh inoremap ,#
-    \ #! /bin/sh
+    \ #! /bin/sh<cr><cr>
 
 autocmd FileType sh inoremap ,f
     \ for [ ]; then
