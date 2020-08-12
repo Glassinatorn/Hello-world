@@ -46,6 +46,7 @@ alias sv="sudo nvim"
 alias vskel='sudo nvim $(ls /usr/share/nvim/runtime/skeletons/skeleton* | fzf)'
 alias vmap='sudo nvim $(ls /usr/share/nvim/runtime/plugin/map_* | fzf)'
 alias vdoc='sudo nvim $(ls /usr/share/nvim/runtime/doc/doc* | fzf)'
+alias vbin='nvim ~/.local/bin/own/$(ls ~/.local/bin/own/ | fzf)'
 
 # dir management
 alias ls="ls --color=auto"
