@@ -88,7 +88,7 @@ $CMD $CD/nvim/after/ \
     $BD/nvim/after/
 
 # navi
-$CMD $SHD/navi/ $BD/navi/
+$CMD $SHD/navi/cheats/own/ $BD/navi/cheats/own/
 
 $CMD $ND/plugin/map_* $BD/nvim/plugin/
 $CMD $ND/colors/mono_tl.vim* $BD/nvim/colors/
