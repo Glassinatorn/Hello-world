@@ -11,6 +11,7 @@
 #     ::: ::::   ::     ::    ::::: ::   ::
 #     :: :: :   :       :      : :  :    :
 
+# defining paths
 CD="$HOME/.config"
 BID="$HOME/.local/bin/own"
 ND="/usr/share/nvim/runtime"
@@ -18,7 +19,7 @@ BD="$HOME/freetime/code/various/Hello-world"
 SD="$HOME/freetime/code/c/git/suckless"
 CMD="sudo rsync -razzP --del"
 
-# .config
+# various from .config
 $CMD $CD/i3 \
     $CD/bspwm \
     $CD/awesome \
@@ -57,7 +58,7 @@ $CMD /etc/X11/xorg.conf.d/20-* \
     /etc/X11/20-* \
     $BD/etc/X11/
 
-# bin
+# own scripts
 $CMD $BID/fix \
     $BID/egpu.sh \
     $BID/gitUp.sh \
@@ -92,6 +93,7 @@ $CMD $ND/doc/doc.txt \
     $ND/doc/doc_* \
     $BD/nvim/doc/
 
+# uploading to github
 echo "upload? y?"
 read UPLOAD
 
