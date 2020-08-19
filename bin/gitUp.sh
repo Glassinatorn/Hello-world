@@ -14,6 +14,7 @@
 # defining paths
 CD="$HOME/.config"
 BID="$HOME/.local/bin/own"
+SHD="$HOME/.local/share"
 ND="/usr/share/nvim/runtime"
 BD="$HOME/freetime/code/various/Hello-world"
 SD="$HOME/freetime/code/c/git/suckless"
@@ -85,6 +86,9 @@ $CMD $CD/nvim/init.vim \
     $BD/nvim/
 $CMD $CD/nvim/after/ \
     $BD/nvim/after/
+
+# navi
+$CMD $SHD/navi/ $BD/navi/
 
 $CMD $ND/plugin/map_* $BD/nvim/plugin/
 $CMD $ND/colors/mono_tl.vim* $BD/nvim/colors/
