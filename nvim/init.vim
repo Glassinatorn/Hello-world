@@ -50,8 +50,8 @@ set foldmethod=manual
 " persistent folds
 augroup AutoSaveFolds
   autocmd!
-  autocmd BufWinLeave * mkview
-  autocmd BufWinEnter * silent loadview
+  autocmd BufWinLeave *.py,*.c,*.sh,*.js,*.rs mkview
+  autocmd BufWinEnter *.py,*.c,*.sh,*.js,*.rs silent loadview
 augroup END
 
 " setting paste
