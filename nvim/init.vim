@@ -47,8 +47,36 @@ autocmd BufWritePre * :Neoformat
 " setting folding method
 set foldmethod=manual
 
+" persistent folds
+augroup AutoSaveFolds
+  autocmd!
+  autocmd BufWinLeave * mkview
+  autocmd BufWinEnter * silent loadview
+augroup END
+
 " setting paste
 set clipboard=unnamedplus
+
+" settings for easymotion
+" Turn on case-insensitive feature
+let g:EasyMotion_smartcase = 1
+map <space>k <Plug>(easymotion-k)
+map <space>j <Plug>(easymotion-j)
+
+" 'fix' linting errors with easymotion
+let g:easymotion#is_active = 0
+function! EasyMotionCoc() abort
+  if EasyMotion#is_active()
+    let g:easymotion#is_active = 1
+    CocDisable
+  else
+    if g:easymotion#is_active == 1
+      let g:easymotion#is_active = 0
+      CocEnable
+    endif
+  endif
+endfunction
+autocmd TextChanged,CursorMoved * call EasyMotionCoc()
 
 " skeletons
 autocmd BufNewFile *.tex  0r /usr/share/nvim/runtime/skeletons/skeleton.tex
@@ -67,6 +95,7 @@ Plug 'liuchengxu/graphviz.vim'
 Plug 'junegunn/goyo.vim'
 Plug 'sbdchd/neoformat'
 Plug 'ayu-theme/ayu-vim'
+Plug 'easymotion/vim-easymotion'
 call plug#end()
 
 " loading small functions
