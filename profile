@@ -26,16 +26,37 @@ alias ga='git add $(git status \
 alias gr="git rm"
 alias gc="git commit"
 alias gp="git push"
-alias gb="git branch \
-    | awk '{ print "$1\ndelete" }'| fzf | git checkout"
+alias gb='CHOICE=$( \
+    printf "$(git branch)\n  NEW\n  DELETE" \
+        | fzf \
+        | cut -d " " -f 3)
+    case $CHOICE in
+        "NEW")
+            printf "New branch: "
+            read CHOICE
+            git branch $CHOICE && git checkout $CHOICE
+            ;;
+        "DELETE")
+            git branch -d $(git branch | fzf)
+            ;;
+        *)
+            git checkout $CHOICE
+            ;;
+    esac'
 
 # docker
 alias dl="docker ps -a"
 alias di="docker images"
-alias ds='docker stop $(docker inspect $(docker ps -aq) --format='\''{{.Name}}'\'' | \
-    sed s/'\''\/'\''//g | fzf)'
-alias drm='docker rm $(docker inspect $(docker ps -aq) --format='\''{{.Name}}'\'' | \
-    sed s/'\''\/'\''//g | fzf)'
+alias ds='docker stop $(
+    docker inspect $( \
+        docker ps -aq) --format='\''{{.Name}}'\'' \
+            | sed s/'\''\/'\''//g \
+            | fzf)'
+alias drm='docker rm $( \
+    docker inspect $( \
+        docker ps -aq) --format='\''{{.Name}}'\'' \
+            | sed s/'\''\/'\''//g \
+            | fzf)'
 alias dd="docker-compose down -v"
 alias du="docker-compose up -d"
 alias db="docker-compose build"
@@ -64,11 +85,20 @@ alias se="sudo systemctl enable"
 alias sr="sudo systemctl restart"
 alias sS="sudo systemctl start"
 alias ss="systemctl status"
-alias murder='kill $(ps -e | fzf | awk '\''{print $1}'\'')'
+alias murder='kill $( \
+    ps -e \
+        | fzf \
+        | awk '\''{print $1}'\'')'
 
 # various
-alias tm='tmux a -t $(tmux ls | awk '\''{print $1}'\'' | sed s/://g | fzf)'
-alias yt="youtube-dl -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/bestvideo+bestaudio' --merge-output-format mkv"
+alias tm='tmux a -t $( \
+    tmux ls \
+        | awk '\''{print $1}'\'' \
+        | sed s/://g \
+        | fzf)'
+alias yt="youtube-dl -f \
+    'bestvideo[ext=mp4]+bestaudio[ext=m4a]/bestvideo+bestaudio' \
+    --merge-output-format mkv"
 alias ssd='sudo mount /dev/$(ls /dev | grep sd | fzf) /mnt/ssd/'
 alias usb='sudo mount /dev/$(ls /dev | grep sd | fzf) /mnt/usb/'
 alias remake="make && sudo make install && make clean"
@@ -77,7 +107,10 @@ alias ins="sudo pacman -S"
 alias n="nnn"
 alias py="python3"
 alias gwall="xwinwrap -g 240x240+839+297 -ov -sh circle -- gifview -w WID -a"
-alias proto="ls *.proto | fzf | xargs python -m grpc_tools.protoc -I. --python_out=. --grpc_python_out=. $1"
+alias proto="ls *.proto \
+    | fzf \
+    | xargs python -m grpc_tools.protoc -I. \--python_out=. --grpc_python_out=. \
+    $1"
 
 # loading nnn config
 source ~/.config/nnn/rc
