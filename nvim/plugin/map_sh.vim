@@ -14,6 +14,9 @@ autocmd FileType sh inoremap ,i
 autocmd FileType sh inoremap ,p
     \ printf ""<Esc>i
 
+autocmd FileType sh inoremap ,ap
+    \ awk '\''{ print $ }'\''<Esc>F$a
+
 autocmd FileType sh inoremap ,c
     \ case $ in
     \ <CR><++>)

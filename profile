@@ -26,8 +26,8 @@ alias ga='git add $(git status \
 alias gr="git rm"
 alias gc="git commit"
 alias gp="git push"
-alias gb="git branch"
-alias gch="git checkout"
+alias gb="git branch \
+    | awk '{ print "$1\ndelete" }'| fzf | git checkout"
 
 # docker
 alias dl="docker ps -a"

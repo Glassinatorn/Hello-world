@@ -1,6 +1,9 @@
 % git, shell
 
 # upload new updates
-git add <files>  && git commit && git push
+git add <files>  && git commit
 
 $ files: git status | awk '{ if ($1 == "modified:" || $1 == "new:") print $2 }' | uniq | fzf -m
+
+# branch management
+branch=$()
