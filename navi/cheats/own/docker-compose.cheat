@@ -1,0 +1,6 @@
+% docker, docker-compose, shell
+
+# restart docker container
+docker stop <container-id>
+
+$ container-id: docker inspect --format='\''{{.Name}}'\''

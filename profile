@@ -16,7 +16,13 @@ PS1='>_ '
 # git
 alias gu="git fetch && git pull"
 alias gs="git status"
-alias ga="git add"
+alias ga='git add $(git status \
+    | awk '\''{ \
+        if ($1 == "modified:" || $1 == "new:") \
+            print $2\
+        }'\'' \
+    | uniq \
+    | fzf -m)'
 alias gr="git rm"
 alias gc="git commit"
 alias gp="git push"
