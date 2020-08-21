@@ -26,7 +26,7 @@ super + x
 super + p
     curr_time=$(date +%F_%H:%M:%S".png") && \
     maim -s ~/screenshots/$curr_time && \
-    echo "~/screenshots/$curr_time" | xclip
+    echo "$HOME/screenshots/$curr_time" | xclip -selection c
 
 # show info
 ctrl + i
