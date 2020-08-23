@@ -87,15 +87,15 @@ $CMD $CD/nvim/init.vim \
 $CMD $CD/nvim/after/ \
     $BD/nvim/after/
 
-# navi
-$CMD $SHD/navi/cheats/own/ $BD/navi/cheats/own/
-
 $CMD $ND/plugin/map_* $BD/nvim/plugin/
 $CMD $ND/colors/mono_tl.vim* $BD/nvim/colors/
 $CMD $ND/skeletons/* $BD/nvim/skeletons/
 $CMD $ND/doc/doc.txt \
     $ND/doc/doc_* \
     $BD/nvim/doc/
+
+# navi
+$CMD $SHD/navi/cheats/own/ $BD/navi/cheats/own/
 
 # uploading to github
 echo "upload? y?"
