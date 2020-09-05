@@ -1,3 +1,5 @@
+#! /bin/sh
+
 # colors in less
 export LESS_TERMCAP_mb=$'\E[01;31m'
 export LESS_TERMCAP_md=$'\E[01;31m'
@@ -10,7 +12,7 @@ export PATH="$PATH:$HOME/.local/bin"
 export PATH="$PATH:$HOME/.local/bin/own"
 export EDITOR=nvim
 
-# prompt
+# setting prompt
 PS1='>_ '
 
 # git
@@ -70,10 +72,18 @@ alias cn="cargo new --vcs git"
 # nvim
 alias v="nvim"
 alias sv="sudo nvim"
-alias vskel='sudo nvim $(ls /usr/share/nvim/runtime/skeletons/skeleton* | fzf)'
-alias vmap='sudo nvim $(ls /usr/share/nvim/runtime/plugin/map_* | fzf)'
-alias vdoc='sudo nvim $(ls /usr/share/nvim/runtime/doc/doc* | fzf)'
-alias vbin='nvim ~/.local/bin/own/$(ls ~/.local/bin/own/ | fzf)'
+alias vskel='sudo nvim $( \
+    ls /usr/share/nvim/runtime/skeletons/skeleton* \
+        | fzf)'
+alias vmap='sudo nvim $( \
+    ls /usr/share/nvim/runtime/plugin/map_* \
+        | fzf)'
+alias vdoc='sudo nvim $( \
+    ls /usr/share/nvim/runtime/doc/doc* \
+        | fzf)'
+alias vbin='nvim ~/.local/bin/own/$( \
+    ls ~/.local/bin/own/ \
+        | fzf)'
 
 # dir management
 alias ls="ls --color=auto"
@@ -99,12 +109,23 @@ alias tm='tmux a -t $( \
 alias yt="youtube-dl -f \
     'bestvideo[ext=mp4]+bestaudio[ext=m4a]/bestvideo+bestaudio' \
     --merge-output-format mkv"
-alias ssd='sudo mount /dev/$(ls /dev | grep sd | fzf) /mnt/ssd/'
-alias usb='sudo mount /dev/$(ls /dev | grep sd | fzf) /mnt/usb/'
+alias ssd='sudo mount /dev/$( \
+    ls /dev \
+        | grep sd \
+        | fzf) /mnt/ssd/'
+alias usb='sudo mount /dev/$( \
+    ls /dev \
+        | grep sd \
+        | fzf) /mnt/usb/'
 alias remake="make && sudo make install && make clean"
 alias pup="sudo pacman -Syu && rustup update && pipupgrade -i"
 alias pin="sudo pacman -S"
-alias prm='sudo pacman -R $(pacman -Q | fzf -m | awk '\''{ print $1 }'\'')'
+alias prm='sudo pacman -R $( \
+    pacman -Q \
+        | fzf -m \
+        | awk '\''{ \
+            print $1 \
+            }'\'')'
 alias n="nnn"
 alias py="python3"
 alias gwall="xwinwrap -g 240x240+839+297 -ov -sh circle -- gifview -w WID -a"
