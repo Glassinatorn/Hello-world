@@ -1,10 +1,9 @@
 # bookmarks
 export NNN_BMS=\
 "h:~/;"\
-"c:~/freetime/code/rust/;"\
-"m:~/freetime/music/;"\
-"1:~/school/master/semester2/decisionSoftwareSystem/;"\
-"2:~/school/master/semester2/multicoreProgramming/;"\
+"c:~/freetime/code/various/;"\
+"1:~/school/master/semester3/malwareAnalysis;"\
+"2:~/school/master/semester3/simulation;"\
 "3:~/school/master/semester1/machineLearning/;"
 
 # plugins
