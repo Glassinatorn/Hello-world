@@ -50,7 +50,7 @@ set foldmethod=manual
 " persistent folds
 augroup AutoSaveFolds
   autocmd!
-  autocmd BufWinLeave *.py,*.c,*.sh,*.rs,*.js,*.html,*.css mkview
+  autocmd BufWinLeave *.py,*.c,*.sh,*.rs,*.js,*.html,*.css silent mkview
   autocmd BufWinEnter *.py,*.c,*.sh,*.rs,*.js,*.html,*.css silent loadview
 augroup END
 
