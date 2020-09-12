@@ -31,6 +31,8 @@ autocmd FileType * inoremap ,(
     \ ()<Esc>i
 autocmd FileType * inoremap ,[
     \ []<Esc>i
+autocmd FileType * inoremap ,<
+    \ <><Esc>i
 
 " shortcut to jump to next step in snippets
 noremap <Space><Space> <Esc>/<++><Enter>"_c4l

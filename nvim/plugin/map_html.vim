@@ -5,36 +5,48 @@
 "	88  8   88  88 8  8 88
 "	88  8   88  88 8  8 88eee
 
-autocmd FileType html inoremap ,b<space>
+autocmd FileType html inoremap ,b
     \ <b></b><Esc>2ba
 
-autocmd FileType html inoremap ,a<space>
+autocmd FileType html inoremap ,a
     \ <a href=""></a><Esc>F"i
 
-autocmd FileType html inoremap ,p<space>
+autocmd FileType html inoremap ,p
     \ <p></p><Esc>F<i
 
-autocmd FileType html inoremap ,bu<space>
+autocmd FileType html inoremap ,c
+    \ <center><CR></center><Esc>O
+
+autocmd FileType html inoremap ,bu
     \ <button class="" on_click="<++>"><++></button><Esc>0f"a
 
-autocmd FileType html inoremap ,sc<space>
+autocmd FileType html inoremap ,sc
     \ <script></script><Esc>2ba
 
-autocmd FileType html inoremap ,in<space>
+autocmd FileType html inoremap ,in
     \ <input type="" value="<++>"><Esc>bF"i
 
-autocmd FileType html inoremap ,fo<space>
+autocmd FileType html inoremap ,fo
     \ <form action="" method="<++>">
     \ <CR></form><Esc>kf"a
 
-autocmd FileType html inoremap ,ul<space>
+autocmd FileType html inoremap ,ul
     \ <ul>
     \ <CR><li></li>
     \ <CR></ul>
     \ <Esc>kf/hi
 
-autocmd FileType html inoremap ,li<space>
+autocmd FileType html inoremap ,li
     \ <li></li><Esc>2ba
+
+autocmd FileType html inoremap ,di
+    \ <div><CR></div><Esc>O
+
+autocmd FileType html inoremap ,dc
+    \ <div class=""><CR></div><Esc>k0f"a
+
+autocmd FileType html inoremap ,de
+    \ <del></del><Esc>2ba
 
 
 """"""""""""""""""""""
