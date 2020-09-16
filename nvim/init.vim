@@ -24,6 +24,9 @@ let g:color="dark"
 set smarttab
 set tw=80
 
+" setting leader key
+let mapleader = ",,"
+
 " setting colorscheme
 set bg=dark
 let ayucolor="light"
@@ -42,7 +45,7 @@ inoremap <silent> <C-S> <Esc>:w<CR>
 
 " automatically formats code on filesave
 autocmd BufWritePre * %s/\s\+$//e
-autocmd BufWritePre * :Neoformat
+map <leader>fo :Neoformat<CR>
 
 " setting folding method
 set foldmethod=manual
@@ -50,8 +53,8 @@ set foldmethod=manual
 " persistent folds
 augroup AutoSaveFolds
   autocmd!
-  autocmd BufWinLeave *.py,*.c,*.sh,*.rs,*.js,*.html,*.css silent mkview
-  autocmd BufWinEnter *.py,*.c,*.sh,*.rs,*.js,*.html,*.css silent loadview
+  autocmd BufWinLeave *.py,*.c,*.sh,*.rs,*.js,*.html,*.css,*.vim silent! mkview
+  autocmd BufWinEnter *.py,*.c,*.sh,*.rs,*.js,*.html,*.css,*.vim silent! loadview
 augroup END
 
 " setting paste
@@ -79,9 +82,10 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'roxma/vim-tmux-clipboard'
 Plug 'liuchengxu/graphviz.vim'
 Plug 'junegunn/goyo.vim'
-Plug 'sbdchd/neoformat'
 Plug 'ayu-theme/ayu-vim'
 Plug 'easymotion/vim-easymotion'
+Plug 'sbdchd/neoformat'
+Plug 'alloyed/lua-lsp'
 call plug#end()
 
 " loading small functions

@@ -71,17 +71,16 @@ alias cn="cargo new --vcs git"
 
 # nvim
 alias v="nvim"
-alias sv="sudo nvim"
-alias vskel='sudo nvim $( \
+alias vs='sudo nvim $( \
     ls /usr/share/nvim/runtime/skeletons/skeleton* \
         | fzf)'
-alias vmap='sudo nvim $( \
+alias vm='sudo nvim $( \
     ls /usr/share/nvim/runtime/plugin/map_* \
         | fzf)'
-alias vdoc='sudo nvim $( \
+alias vd='sudo nvim $( \
     ls /usr/share/nvim/runtime/doc/doc* \
         | fzf)'
-alias vbin='nvim ~/.local/bin/own/$( \
+alias vb='nvim ~/.local/bin/own/$( \
     ls ~/.local/bin/own/ \
         | fzf)'
 
@@ -92,9 +91,15 @@ alias ..="cd .."
 
 # service management
 alias se="sudo systemctl enable"
-alias sr="sudo systemctl restart"
-alias sS="sudo systemctl start"
-alias ss="systemctl status"
+alias sr='sudo systemctl restart $( \
+    systemctl list-units \
+        | fzf -m)'
+alias sS='sudo systemctl start $( \
+    systemctl list-units -all \
+        | fzf -m)'
+alias ss='systemctl status $( \
+    systemctl list-units \
+        | fzf -m)'
 alias murder='kill $( \
     ps -e \
         | fzf \
