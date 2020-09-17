@@ -97,6 +97,7 @@ $CMD $ND/doc/doc.txt \
 # navi
 $CMD $SHD/navi/cheats/own/ $BD/navi/cheats/own/
 
+
 # uploading to github
 echo "upload? y?"
 read UPLOAD

@@ -43,7 +43,7 @@ map <leader>se :setlocal spell! spelllang=sv<CR>
 nnoremap <silent> <C-S> :w<CR>
 inoremap <silent> <C-S> <Esc>:w<CR>
 
-" automatically formats code on filesave
+" formats code on filesave
 autocmd BufWritePre * %s/\s\+$//e
 map <leader>fo :Neoformat<CR>
 
