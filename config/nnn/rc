@@ -2,9 +2,9 @@
 export NNN_BMS=\
 "h:~/;"\
 "c:~/freetime/code/various/;"\
-"1:~/school/master/semester3/malwareAnalysis;"\
-"2:~/school/master/semester3/simulation;"\
-"3:~/school/master/semester1/machineLearning/;"
+"m:~/school/master/semester3/malwareAnalysis;"\
+"s:~/school/master/semester3/simulation;"\
+"M:~/school/master/semester1/machineLearning/;"
 
 # plugins
 export NNN_PLUG=\

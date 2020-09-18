@@ -29,6 +29,7 @@ $CMD $CD/i3 \
     $CD/polybar \
     $CD/termite \
     $CD/picom.conf \
+    $CD/gtk-3.0 \
     $BD/config/
 
 # nnn
