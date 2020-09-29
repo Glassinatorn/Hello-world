@@ -24,8 +24,9 @@ let g:color="dark"
 set smarttab
 set tw=80
 
-" setting leader key
+" binding keys
 let mapleader = ",,"
+autocmd FileType * inoremap jk <Esc>
 
 " setting colorscheme
 set bg=dark

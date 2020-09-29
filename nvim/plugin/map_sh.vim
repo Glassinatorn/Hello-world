@@ -14,7 +14,10 @@ autocmd FileType sh inoremap ,i
 autocmd FileType sh inoremap ,p
     \ printf ""<Esc>i
 
-autocmd FileType sh inoremap ,ap
+autocmd FileType sh inoremap ,r
+    \ read -e -p "" -i "Y" CHOICE<Esc>0f"a
+
+autocmd FileType sh inoremap ,aw
     \ awk '\''{ print $ }'\''<Esc>F$a
 
 autocmd FileType sh inoremap ,c

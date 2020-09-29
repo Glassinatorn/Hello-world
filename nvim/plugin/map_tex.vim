@@ -124,8 +124,7 @@ autocmd FileType tex inoremap ,r
     \ \ref{}<Esc>i
 
 autocmd FileType tex inoremap ,hr
-    \ \hyperref[]{''<++>''}
-    \ <Esc>F]i
+    \ \href{}{<++>}<Esc>ba
 
 autocmd FileType tex inoremap ,gr
     \ \begin{tikzpicture}
@@ -143,5 +142,3 @@ autocmd FileType tex inoremap ,gr
     \ <CR>\end{axis}
 \end{tikzpicture}
 
-autocmd FileType tex inoremap ,href
-    \ \href{}{<++>}<Esc>ba
