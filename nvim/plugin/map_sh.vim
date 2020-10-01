@@ -1,6 +1,9 @@
 autocmd FileType sh inoremap ,#
     \ #! /bin/sh<cr><cr>
 
+autocmd FileType sh inoremap ,'
+    \ '\'''\''<Esc>3hi
+
 autocmd FileType sh inoremap ,f
     \ for [ ]; then
     \ <CR><++>
@@ -18,6 +21,15 @@ autocmd FileType sh inoremap ,r
     \ read -e -p "" -i "Y" CHOICE<Esc>0f"a
 
 autocmd FileType sh inoremap ,aw
+    \ awk '{ print $ }'<Esc>F$a
+
+autocmd FileType sh inoremap ,ai
+    \ awk '{ \
+    \ if ($1 == "" || $1 == "<++>") \
+    \ <Tab>print $<++> \
+    \ }'
+
+autocmd FileType sh inoremap ,ap
     \ awk '\''{ print $ }'\''<Esc>F$a
 
 autocmd FileType sh inoremap ,c
