@@ -9,7 +9,7 @@ autocmd FileType sh inoremap ,f
     \ <CR><++>
     \ <CR>done<Esc>2kwa<Space>
 
-autocmd FileType sh inoremap ,i
+autocmd FileType sh inoremap ,i<++>
     \ if [ ]; then
     \ <CR><++>
     \ <CR>fi<Esc>2kwa<Space>
