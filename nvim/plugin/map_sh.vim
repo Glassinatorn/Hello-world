@@ -9,10 +9,10 @@ autocmd FileType sh inoremap ,f
     \ <CR><++>
     \ <CR>done<Esc>2kwa<Space>
 
-autocmd FileType sh inoremap ,i<++>
+autocmd FileType sh inoremap ,i
     \ if [ ]; then
     \ <CR><++>
-    \ <CR>fi<Esc>2kwa<Space>
+    \ <CR>fi<Esc>2kwa
 
 autocmd FileType sh inoremap ,p
     \ printf ""<Esc>i
@@ -25,9 +25,9 @@ autocmd FileType sh inoremap ,aw
 
 autocmd FileType sh inoremap ,ai
     \ awk '{ \
-    \ if ($1 == "" || $1 == "<++>") \
-    \ <Tab>print $<++> \
-    \ }'
+    \ <CR>if ($1 == "" \|\| $1 == "<++>") \
+    \ <CR><Tab>print $<++> \
+    \ <CR>}'<Esc>2kf"a
 
 autocmd FileType sh inoremap ,ap
     \ awk '\''{ print $ }'\''<Esc>F$a
