@@ -24,10 +24,6 @@ let g:color="dark"
 set smarttab
 set tw=80
 
-" binding keys
-let mapleader = ",,"
-autocmd FileType * inoremap jk <Esc>
-
 " setting colorscheme
 set bg=dark
 let ayucolor="light"
@@ -97,3 +93,9 @@ source ~/.config/nvim/after/snippets.vim
 
 " Loading Coc settings
 source ~/.config/nvim/after/coc.vim
+
+" binding keys
+inoremap jk <Esc>
+inoremap kj <Esc>
+nnoremap z<space> za
+nnoremap zz z=
