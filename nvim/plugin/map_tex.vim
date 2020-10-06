@@ -123,6 +123,9 @@ autocmd FileType tex inoremap ,matr
 autocmd FileType tex inoremap ,r
     \ \ref{}<Esc>i
 
+autocmd FileType tex inoremap ,u
+    \ \url{}<Esc>i
+
 autocmd FileType tex inoremap ,hr
     \ \href{}{<++>}<Esc>ba
 
