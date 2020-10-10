@@ -18,13 +18,32 @@ autocmd FileType sh inoremap ,p
     \ printf ""<Esc>i
 
 autocmd FileType sh inoremap ,r
-    \ read -e -p " [Y/n]: " \|\| <++>='Y'<Esc>0f"a
+    \ #
+    \ <CR>DEFAULT='Y'
+    \ <CR>read -e -p " [Y/n]:"
+    \ <CR>CHOICE="${CHOICE:-${DEFAULT}}"
+    \ <Esc>4ka<Space>
 
 autocmd FileType sh inoremap ,ir
-    \ read -e -p " [Y/n]: " CHOICE \|\| CHOICE='Y'
+    \ #
+    \ <CR>DEFAULT='<++>'
+    \ <CR>read -p " [Y/n]:" CHOICE
+    \ <CR>CHOICE="${CHOICE:-${DEFAULT}}"
     \ <CR><CR>if [ $CHOICE = 'y'] \|\| [ $CHOICE = 'Y' ]; then
     \ <CR><++>
-    \ <CR>fi<Esc>3kf"a
+    \ <CR>fi<Esc>7ka
+
+autocmd FileType sh inoremap ,cr
+    \ #
+    \ <CR>DEFAULT='<++>'
+    \ <CR>read -p " [Y/n]:" CHOICE
+    \ <CR>CHOICE="${CHOICE:-${DEFAULT}}"
+    \ <CR><CR>case $CHOICE in
+    \ <CR><++>)
+    \ <CR>;;
+    \ <CR>*)
+    \ <CR>esac<Esc>
+
 
 autocmd FileType sh inoremap ,aw
     \ awk '{ print $ }'<Esc>F$a

@@ -99,14 +99,12 @@ $CMD $ND/doc/doc.txt \
 $CMD $SHD/navi/cheats/own/ $BD/navi/cheats/own/
 
 
-# uploading to github
+# uploading to GitHub
 DEFAULT='Y'
-read -p "Upload [Y/n]: " CHOICE
+read -p " [Y/n]:" CHOICE
 CHOICE="${CHOICE:-${DEFAULT}}"
 
-printf "$CHOICE"
-
-if [ $CHOICE = 'y' ] || [ $CHOICE = 'Y' ]; then
+if [ $CHOICE = 'y'] || [ $CHOICE = 'Y' ]; then
     cd $BD
     git add *
     git commit
