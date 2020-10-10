@@ -32,7 +32,7 @@ autocmd FileType sh inoremap ,ir
     \ <CR>DEFAULT='<++>'
     \ <CR>read -p "<++> [Y/n]:" CHOICE
     \ <CR>CHOICE="${CHOICE:-${DEFAULT}}"
-    \ <CR><CR>if [ $CHOICE = 'y'] \|\| [ $CHOICE = 'Y' ]; then
+    \ <CR><CR>if [ $CHOICE = 'y' ] \|\| [ $CHOICE = 'Y' ]; then
     \ <CR><++>
     \ <CR>fi<Esc>7ka
 
@@ -60,7 +60,7 @@ autocmd FileType sh inoremap ,ai
 autocmd FileType sh inoremap ,ap
     \ awk '\''{ print $ }'\''<Esc>F$a
 
-autocmd FileType sh inoremap ,c
+autocmd FileType sh inoremap ,c<space>
     \ case $ in
     \ <CR><++>)
     \ <CR>;;
