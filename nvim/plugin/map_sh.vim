@@ -20,14 +20,14 @@ autocmd FileType sh inoremap ,p
 autocmd FileType sh inoremap ,r
     \ #
     \ <CR>DEFAULT='Y'
-    \ <CR>read -e -p " [Y/n]:"
+    \ <CR>read -e -p "<++> [Y/n]:"
     \ <CR>CHOICE="${CHOICE:-${DEFAULT}}"
     \ <Esc>4ka<Space>
 
 autocmd FileType sh inoremap ,ir
     \ #
     \ <CR>DEFAULT='<++>'
-    \ <CR>read -p " [Y/n]:" CHOICE
+    \ <CR>read -p "<++> [Y/n]:" CHOICE
     \ <CR>CHOICE="${CHOICE:-${DEFAULT}}"
     \ <CR><CR>if [ $CHOICE = 'y'] \|\| [ $CHOICE = 'Y' ]; then
     \ <CR><++>
@@ -36,7 +36,7 @@ autocmd FileType sh inoremap ,ir
 autocmd FileType sh inoremap ,cr
     \ #
     \ <CR>DEFAULT='<++>'
-    \ <CR>read -p " [Y/n]:" CHOICE
+    \ <CR>read -p "<++> [Y/n]:" CHOICE
     \ <CR>CHOICE="${CHOICE:-${DEFAULT}}"
     \ <CR><CR>case $CHOICE in
     \ <CR><++>)
