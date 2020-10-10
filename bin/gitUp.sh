@@ -100,7 +100,9 @@ $CMD $SHD/navi/cheats/own/ $BD/navi/cheats/own/
 
 
 # uploading to github
-read -p "Upload [Y/n]: " CHOICE && CHOICE='Y'
+DEFAULT='Y'
+read -p "Upload [Y/n]: " CHOICE
+CHOICE="${CHOICE:-${DEFAULT}}"
 
 printf "$CHOICE"
 
