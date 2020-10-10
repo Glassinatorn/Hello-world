@@ -101,8 +101,9 @@ $CMD $SHD/navi/cheats/own/ $BD/navi/cheats/own/
 
 # uploading to GitHub
 DEFAULT='Y'
-read -e -p "Upload to GitHub? [Y/n]:" CHOICE || CHOICE='Y'
+read -e -p "Upload to GitHub? [Y/n]:" CHOICE
 CHOICE="${CHOICE:-${DEFAULT}}"
+printf "$CHOICE"
 
 if [ $CHOICE = 'y'] || [ $CHOICE = 'Y' ]; then
     cd $BD
