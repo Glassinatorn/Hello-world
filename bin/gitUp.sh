@@ -103,9 +103,8 @@ $CMD $SHD/navi/cheats/own/ $BD/navi/cheats/own/
 DEFAULT='Y'
 read -e -p "Upload to GitHub? [Y/n]:" CHOICE
 CHOICE="${CHOICE:-${DEFAULT}}"
-printf "$CHOICE"
 
-if [ $CHOICE = 'y'] || [ $CHOICE = 'Y' ]; then
+if [ $CHOICE = 'y' ] || [ $CHOICE = 'Y' ]; then
     cd $BD
     git add *
     git commit
