@@ -18,7 +18,13 @@ autocmd FileType sh inoremap ,p
     \ printf ""<Esc>i
 
 autocmd FileType sh inoremap ,r
-    \ read -e -p "" -i "Y" CHOICE<Esc>0f"a
+    \ read -e -p " [Y/n]: " \|\| <++>='Y'<Esc>0f"a
+
+autocmd FileType sh inoremap ,ir
+    \ read -e -p " [Y/n]: " CHOICE \|\| CHOICE='Y'
+    \ <CR><CR>if [ $CHOICE = 'y'] \|\| [ $CHOICE = 'Y' ]; then
+    \ <CR><++>
+    \ <CR>fi<Esc>3kf"a
 
 autocmd FileType sh inoremap ,aw
     \ awk '{ print $ }'<Esc>F$a

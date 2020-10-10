@@ -100,10 +100,11 @@ $CMD $SHD/navi/cheats/own/ $BD/navi/cheats/own/
 
 
 # uploading to github
-echo "upload? y?"
-read UPLOAD
+read -p "Upload [Y/n]: " CHOICE && CHOICE='Y'
 
-if [ $UPLOAD = 'y' ]; then
+printf "$CHOICE"
+
+if [ $CHOICE = 'y' ] || [ $CHOICE = 'Y' ]; then
     cd $BD
     git add *
     git commit
