@@ -17,12 +17,15 @@ autocmd FileType sh inoremap ,i
 autocmd FileType sh inoremap ,p
     \ printf ""<Esc>i
 
-autocmd FileType sh inoremap ,r
+autocmd FileType sh inoremap ,r<space>
+    \ read -p "" <++><Esc>F"i
+
+autocmd FileType sh inoremap ,rd
     \ #
-    \ <CR>DEFAULT='Y'
-    \ <CR>read -e -p "<++> [Y/n]:"
+    \ <CR>DEFAULT='<++>'
+    \ <CR>read -p "<++> [Y/n]:" CHOICE
     \ <CR>CHOICE="${CHOICE:-${DEFAULT}}"
-    \ <Esc>4ka<Space>
+    \ <Esc>3ka<Space>
 
 autocmd FileType sh inoremap ,ir
     \ #

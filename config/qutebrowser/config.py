@@ -71,18 +71,17 @@ c.url.start_pages = ["~/.homepage/home.html"]
 
 ## Search engines
 c.url.searchengines = {"DEFAULT": "https://duckduckgo.com/?q={}",
-                       "q": "https://qwant.com/?l=en&q={}&",
                        "aw": "https://wiki.archlinux.org/?search={}",
-                       "duck": "https://duckduckgo.com/?q={}",
+                       "a": "https://www.amazon.co.uk/s?k={}",
                        "w": "https://en.wikipedia.org/wiki/{}",
-                       "tra": "https://translate.google.com/?text={}",
+                       "tr": "https://translate.google.com/?text={}",
                        "yt": "https://www.youtube.com/results?search_query={}",
                        "lv": "https://wiki.libvirt.org/page/{}",
                        "web": "https://developer.mozilla.org/en-US/search?q={}",
                        "tex": "https://latex.wikia.org/wiki/Special:Search?query={}",
                        "vi": "https://vim.fandom.com/wiki/Special:Search?query={}",
                        "g": "https://www.google.se/search?q={}",
-                       "p": "https://www.prisjakt.nu/search?search={}",
+                       "p": "https://www.pricerunner.com/results?q={}",
                        "m": "https://www.google.se/maps/place/{}"}
 
 

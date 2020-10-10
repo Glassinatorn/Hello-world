@@ -71,6 +71,7 @@ alias cn="cargo new --vcs git"
 
 # nvim
 alias v="nvim"
+alias sv="sudo nvim"
 alias vs='sudo nvim $( \
     ls /usr/share/nvim/runtime/skeletons/skeleton* \
         | fzf)'
@@ -148,3 +149,6 @@ export PATH="$HOME/.cargo/bin:$PATH"
 
 # making makepkg multithreaded
 export MAKEFLAGS="-j$(expr $(nproc) \+ 1)"
+
+# making java apps viewable
+export _JAVA_AWT_WM_NONREPARENTING=1
