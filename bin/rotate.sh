@@ -12,12 +12,13 @@
 #    ::   :::  ::::: ::     ::    ::   :::     ::     :: ::::
 #     :   : :   : :  :      :      :   : :     :     : :: ::
 
-
+# getting id for touch device
 TOUCH_DEV=$(xinput \
     | grep "Finger" \
     | awk '{print $7}' \
     | cut -b 4-6)
 
+# checking screen orientation
 SCREEN=$(xrandr \
     | grep eDP \
     | awk '{print $4}')
