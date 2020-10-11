@@ -61,15 +61,15 @@ $CMD /etc/X11/xorg.conf.d/20-* \
     $BD/etc/X11/
 
 # own scripts
-$CMD $BID/fix \
+$CMD $BID/fix.sh \
     $BID/egpu.sh \
     $BID/gitUp.sh \
-    $BID/sysinfo \
+    $BID/sysinfo.sh \
     $BID/shutdown.sh \
-    $BID/keymap \
-    $BID/qutebrowser_session \
+    $BID/keymap.sh \
+    $BID/qutebrowser_session.sh \
     $BID/shutdown.sh \
-    $BID/brightness \
+    $BID/brightness.sh \
     $BID/rotate.sh \
     $BD/bin/
 
