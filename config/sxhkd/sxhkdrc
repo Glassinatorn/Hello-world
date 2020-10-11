@@ -1,6 +1,6 @@
 # web browser
 super + w
-    qutebrowser_session
+    qutebrowser_session.sh
 
 # terminal emulator
 super + Return
@@ -12,7 +12,7 @@ super + space
 
 # make sxhkd reload its configuration files:
 super + shift + r
-    fix
+    fix.sh
 
 #
 # run scripts
@@ -30,7 +30,7 @@ super + p
 
 # show info
 ctrl + i
-    sysinfo
+    sysinfo.sh
 
 # opens calcurse
 super + c
@@ -48,11 +48,11 @@ ctrl + shift + i
 
 # fix screens and touchpad
 ctrl + shift + f
-    fix
+    fix.sh
 
 # switch between igpu and egpu
 ctrl + shift + e
-    pk_eGPU
+    pk_eGPU.sh
 
 # rotating screen
 ctrl + shift + r
@@ -60,7 +60,7 @@ ctrl + shift + r
 
 # toggling keyboard layout
 ctrl + space
-    keymap
+    keymap.sh
 
 # volume control keys
 XF86AudioMute
