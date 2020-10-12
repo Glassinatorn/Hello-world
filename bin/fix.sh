@@ -12,12 +12,19 @@
 #     ::        ::   ::  :::
 #     :        :     :   ::
 
-
+# settings for laptop touchpad
 xinput --set-prop "SYNA2B31:00 06CB:7F8B Touchpad" "libinput Accel Speed" 0.2
 xinput --set-prop "SYNA2B31:00 06CB:7F8B Touchpad" "libinput Tapping Enabled" 1
 xinput --set-prop "SYNA2B31:00 06CB:7F8B Touchpad" "libinput Disable While Typing Enabled" 0
 
-case $(xrandr | grep connected | grep -v disconnected | wc -l) in
+# counting connected screens
+NUM_MONITORS=$(xrandr \
+    | grep connected \
+    | grep -v disconnected \
+    | wc -l)
+
+# setup for screens
+case $NUM_MONITORS in
     1)
         setxkbmap -layout se -option ctrl:nocaps
         xmodmap -e 'clear lock'
@@ -52,23 +59,18 @@ case $(xrandr | grep connected | grep -v disconnected | wc -l) in
         ;;
 esac
 
+# starting backround processes
 unclutter -idle 0.01 -root &
 ~/.fehbg
 killall sxhkd
 
-if [ $GDMSESSION = "awesome" ]
-then
-    echo "awesome1"
+if [ $GDMSESSION = "awesome" ]; then
     sxhkd -c ~/.config/sxhkd/sxhkdrc \
              ~/.config/sxhkd/awesome_sxhkdrc
-elif [ $GDMSESSION = "bspwm" ]
-then
-    echo "bspwm"
+elif [ $GDMSESSION = "bspwm" ]; then
     sxhkd -c ~/.config/sxhkd/sxhkdrc \
              ~/.config/sxhkd/bspwm_sxhkdrc
-elif [ $GDMSESSION = "dwm" ]
-then
-    echo "dwm"
+elif [ $GDMSESSION = "dwm" ]; then
     sxhkd -c ~/.config/sxhkd/sxhkdrc \
              ~/.config/sxhkd/dwm_sxhkdrc
 fi
