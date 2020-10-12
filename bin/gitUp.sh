@@ -71,6 +71,7 @@ $CMD $BID/fix.sh \
     $BID/shutdown.sh \
     $BID/brightness.sh \
     $BID/rotate.sh \
+    $BID/record.sh \
     $BD/bin/
 
 # suckless
