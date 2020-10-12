@@ -15,8 +15,8 @@
 
 DIR="/etc/X11/xorg.conf.d"
 
-# if [ -e $DIR/20-radeon.conf ];
-# then
+# switching AMD and intel as display driver
+# if [ -e $DIR/20-radeon.conf ]; then
 #     sudo mv $DIR/../20-intel.conf $DIR/ && \
 #     sudo mv $DIR/20-radeon.conf $DIR/../20-nvidia.conf
 # else
@@ -25,8 +25,8 @@ DIR="/etc/X11/xorg.conf.d"
 # fi
 
 
-if [ -e $DIR/20-nvidia.conf ]
-then
+# switching nvidia and intel as display driver
+if [ -e $DIR/20-nvidia.conf ]; then
     sudo mv $DIR/../20-intel.conf $DIR/ && \
     sudo mv $DIR/20-nvidia.conf $DIR/../20-nvidia.conf
 else
@@ -36,5 +36,5 @@ else
     sudo mv $DIR/20-intel.conf $DIR/../20-intel.conf
 fi
 
-
+# restarting display manager
 sudo systemctl restart lightdm
