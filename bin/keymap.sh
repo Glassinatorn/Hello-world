@@ -13,8 +13,13 @@
 #     :   :::  : :: ::      :      :      :     :   : :   :
 
 
-if [ $(setxkbmap -v | grep symbols | cut -d '+' -f 2) = "se" ]
-then
+# getting the current keymap
+KEYMAP=$(setxkbmap -v \
+    | grep symbols \
+    | cut -d '+' -f 2)
+
+# setting the keymap
+if [ $KEYMAP = "se" ]; then
     setxkbmap us
     notify-send "US keymap"
 else
