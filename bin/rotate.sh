@@ -12,6 +12,7 @@
 #    ::   :::  ::::: ::     ::    ::   :::     ::     :: ::::
 #     :   : :   : :  :      :      :   : :     :     : :: ::
 
+# getting hardware info
 # getting id for touch device
 TOUCH_DEV=$(xinput \
     | grep "Finger" \
@@ -23,6 +24,7 @@ SCREEN=$(xrandr \
     | grep eDP \
     | awk '{print $4}')
 
+# rotating screen
 if [ $SCREEN = '(normal' ]; then
     xrandr --output eDP1 --rotate left
     xinput set-prop $TEMP "Coordinate Transformation Matrix" 4 -1 1 1 0 0 0 0 1
