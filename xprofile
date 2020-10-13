@@ -1,6 +1,8 @@
 #!/bin/sh
 export PATH="${PATH}:$HOME/bin"
 export EDITOR=nvim
+
+# starting backround programs
 fix.sh &
 picom --experimental-backend &
 unclutter &
