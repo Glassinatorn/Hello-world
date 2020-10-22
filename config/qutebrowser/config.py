@@ -82,6 +82,7 @@ c.url.searchengines = {"DEFAULT": "https://duckduckgo.com/?q={}",
                        "vi": "https://vim.fandom.com/wiki/Special:Search?query={}",
                        "g": "https://www.google.se/search?q={}",
                        "p": "https://www.pricerunner.com/results?q={}",
+                       "b": "https://www.blocket.se/annonser/hela_sverige?q={}",
                        "m": "https://www.google.se/maps/place/{}"}
 
 

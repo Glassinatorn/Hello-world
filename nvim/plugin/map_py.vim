@@ -17,11 +17,19 @@ autocmd FileType python inoremap ,s
     \ <CR>}
 
 autocmd FileType python inoremap ,d
-    \ """
+    \ def ():
+    \ <CR>"""
+    \ <CR><++>
+    \ <CR>"""
+    \ <Esc>3kF(i
+
+autocmd FileType python inoremap ,D
+    \ def (<++>):
+    \ <CR>"""
     \ <CR><CR>Parameters
     \ <CR>----------
     \ <CR><++> : <++>
     \ <CR><CR>Returns
     \ <CR>-------
     \ <CR><Tab><++>
-    \ <CR><BS>"""<Esc>9ko
+    \ <CR><BS>"""<Esc>10kF(i
