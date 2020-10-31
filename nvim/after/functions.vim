@@ -66,15 +66,9 @@ autocmd FileType * nnoremap <leader>sw
     \ :Colorswitch<cr>
 
 " 'fix' linting errors with easymotion
-function! EasyMotionCoc() abort
-  if EasyMotion#is_active()
-    let g:easymotion#is_active = 1
-    CocDisable
-  else
-    if g:easymotion#is_active == 1
-      let g:easymotion#is_active = 0
-      CocEnable
-    endif
-  endif
+function! DoingEasyMotion()
+    let g:is_doing_easymotion = 1
+    let cancelled = EasyMotion#WB(0,2)
+    let g:is_doing_easymotion = 0
 endfunction
-autocmd TextChanged,CursorMoved * call EasyMotionCoc()
+autocmd TextChanged,CursorMoved * call DoingEasyMotion()
