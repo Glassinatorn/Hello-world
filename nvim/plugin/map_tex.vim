@@ -6,7 +6,7 @@
 "	  88  88ee 88   8
 
 
-autocmd BufWritePost *.tex :! pdflatex %:p && rm %:r.log %:r.aux
+autocmd BufWritePost *.tex :! pdflatex %:p && rm %:r.log %:r.aux %:r.out
 autocmd FileType tex nnoremap <leader>r :source /usr/share/nvim/runtime/plugin/map_tex.vim
 
 autocmd FileType tex inoremap ,article
