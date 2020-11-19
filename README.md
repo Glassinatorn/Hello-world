@@ -23,7 +23,7 @@ But awfully nice of you to pop by.
     - [movestack](https://dwm.suckless.org/patches/movestack/dwm-movestack-6.1.diff<Paste>)
     - [ru_bottomstack](https://dwm.suckless.org/patches/bottomstack/dwm-bottomstack-6.1.diff)
     - [ru_gaps](https://dwm.suckless.org/patches/ru_gaps/dwm-ru_gaps-6.2.diff)
-- [Dmenu 4.9](https://tools.suckless.org/dmenu/) (program launcher)
+- [Dmenu 5.0](https://tools.suckless.org/dmenu/) (program launcher)
     - [border](https://tools.suckless.org/dmenu/patches/border/dmenu-border-4.9.diff)
     - [fuzzymatch](https://tools.suckless.org/dmenu/patches/fuzzymatch/dmenu-fuzzymatch-4.9.diff)
     - [lineheight](https://tools.suckless.org/dmenu/patches/line-height/dmenu-lineheight-4.9.diff)
