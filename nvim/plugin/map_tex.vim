@@ -63,10 +63,10 @@ autocmd FileType tex inoremap ,co
 autocmd FileType tex inoremap ,p
     \ \begin{figure}[!h]
     \ <CR>\centering
-    \ <CR>\includegraphics[width=0.6\textwidth]{<++>.png}
+    \ <CR>\includegraphics[width=0.6\textwidth]{.png}
     \ <CR>\caption{<++>}
     \ <CR>\label{<++>}
-    \ <CR>\end{figure}<Esc>{<Space><Space>
+    \ <CR>\end{figure}<Esc>3kf{a
 
 autocmd FileType tex inoremap ,ta
     \ \begin{tabular}{}

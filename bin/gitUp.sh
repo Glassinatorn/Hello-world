@@ -73,6 +73,7 @@ $CMD $BID/fix.sh \
     $BID/rotate.sh \
     $BID/record.sh \
     $BID/pg.sh \
+    $BID/screenshot.sh \
     $BD/bin/
 
 # suckless

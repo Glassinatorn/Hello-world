@@ -62,7 +62,6 @@ esac
 # starting backround processes
 unclutter -idle 0.01 -root &
 ~/.fehbg
-killall sxhkd
 
 if [ $GDMSESSION = "awesome" ]; then
     sxhkd -c ~/.config/sxhkd/sxhkdrc \

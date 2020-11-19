@@ -24,9 +24,10 @@ super + x
 
 # screenshot
 super + p
-    curr_time=$(date +%F_%H:%M:%S".png") && \
-    maim -s ~/screenshots/$curr_time && \
-    echo "$HOME/screenshots/$curr_time" | xclip -selection c
+    screenshot.sh
+
+super + shift + p
+    screenshot.sh $(echo "where?: " | dmenu -c -l 1)
 
 # show info
 ctrl + i
