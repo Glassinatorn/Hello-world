@@ -10,11 +10,8 @@ autocmd FileType python inoremap ,r
 autocmd FileType python inoremap ,i
     \ if :<Esc>i
 
-autocmd FileType python inoremap ,s
-    \ switch () {
-    \ <CR>case <>: <++>;
-    \ <CR>break:
-    \ <CR>}
+autocmd FileType python inoremap ,o
+    \ open(, "<++>")<Esc>F,i
 
 autocmd FileType python inoremap ,d
     \ def ():
