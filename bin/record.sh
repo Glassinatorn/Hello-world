@@ -19,7 +19,10 @@ AUDIO_INPUT=$(pactl list sources \
     | awk '{ print $2 }' \
     | fzf)
 
-read -e -p "Video? (Y\n)" -i "Y" VIDEO
+# Ask if screen or not
+DEFAULT='Y'
+read -p "Screen? [Y/n]: " CHOICE
+VIDEO="${CHOICE:-${DEFAULT}}"
 
 # recording screen/audio
 if [ $VIDEO = "y" ] || [ $VIDEO = "Y" ]; then

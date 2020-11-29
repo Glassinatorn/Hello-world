@@ -40,8 +40,7 @@ case $NUM_MONITORS in
         xmodmap -e 'keycode 0x7e = Control_R'
         xmodmap -e 'add Control = Control_R'
 
-        nitrogen --restore
-        gifwall.sh ~/Freetime/Pictures/gifWallpaper/portrait_trainEvening.gif
+        # gifwall.sh ~/Freetime/Pictures/gifWallpaper/portrait_trainEvening.gif
         ;;
 
     3)
@@ -54,15 +53,20 @@ case $NUM_MONITORS in
         xmodmap -e 'keycode 0x7e = Control_R'
         xmodmap -e 'add Control = Control_R'
 
-        nitrogen --restore
-        #gifwall.sh ~/Freetime/Pictures/gifWallpaper/portrait_trainEvening.gif
+        # gifwall.sh ~/Freetime/Pictures/gifWallpaper/portrait_trainEvening.gif
         ;;
+
+    4)
+        ~/.screenlayout/4.sh
+        setxkbmap -layout us
+
 esac
 
 # starting backround processes
 unclutter -idle 0.01 -root &
 ~/.fehbg
 
+# starting keybinding daemon
 if [ $GDMSESSION = "awesome" ]; then
     sxhkd -c ~/.config/sxhkd/sxhkdrc \
              ~/.config/sxhkd/awesome_sxhkdrc
