@@ -7,7 +7,7 @@ autocmd FileType python inoremap ,f
 autocmd FileType python inoremap ,r
     \ range()<Esc>i
 
-autocmd FileType python inoremap ,i
+autocmd FileType python inoremap ,i<space>
     \ if :<Esc>i
 
 autocmd FileType python inoremap ,o
