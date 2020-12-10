@@ -89,7 +89,7 @@ c.url.searchengines = {"DEFAULT": "https://duckduckgo.com/?q={}",
 
 # keybindings,
 c.bindings.commands["normal"] = {"Q": "hint images spawn -u qt-chap {hint-url}",
-                                 "M": "hint links spawn mpv {hint-url}",
+                                 "M": "hint links spawn -d mpv {hint-url}",
                                  "j": "scroll-px 0 40",
                                  "k": "scroll-px 0 -40",
                                  "gf": "open feber.se",

@@ -12,7 +12,7 @@
 
 " global snippets
 autocmd FileType * inoremap ,<space><space>
-    \ <++><space>
+    \ <++>
 autocmd FileType * inoremap ,im
     \ autocmd FileType inoremap ,<++>
     \ <Esc>2bi

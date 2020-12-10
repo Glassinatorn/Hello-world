@@ -72,7 +72,7 @@ autocmd FileType tex inoremap ,ta
     \ \begin{tabular}{}
     \ <CR>\hline
     \ <CR>\textbf{<++>} & \textbf{<++>} \\ \hline
-    \ <CR>& \\ \hline
+    \ <CR><++> & <++> \\ \hline
     \ <CR>\end{tabular}<Esc>4k$hi
 
 autocmd FileType tex inoremap ,math
