@@ -65,17 +65,28 @@ command! -nargs=0 Colorswitch call s:colorswitch()
 autocmd FileType * nnoremap <leader>sw
     \ :Colorswitch<cr>
 
-" 'fix' linting errors with easymotion
-function! EasyMotionCoc()
-  if EasyMotion#is_active()
-    let g:easymotion#is_active = 1
-    CocDisable
-  else
-    if g:easymotion#is_active == 1
-      let g:easymotion#is_active = 0
-      CocEnable
-    endif
-  endif
-endfunction
-nmap <leader>c call EasyMotionCoc()
-"autocmd TextChanged,CursorMoved * call EasyMotionCoc()
+" " 'fix' linting errors with easymotion
+" function! EasyMotionCoc()
+"   if EasyMotion#is_active()
+"     let g:easymotion#is_active = 1
+"     CocDisable
+"   else
+"     if g:easymotion#is_active == 1
+"       let g:easymotion#is_active = 0
+"       CocEnable
+"     endif
+"   endif
+" endfunction
+" nmap <leader>c call EasyMotionCoc()
+" autocmd TextChanged,CursorMoved * call EasyMotionCoc()
+
+" " show documentation for hover with coc
+" function! s:show_documentation()
+"   if &filetype == 'vim'
+"     execute 'h '.expand('<cword>')
+"   else
+"     call CocAction('doHover')
+"   endif
+" endfunction
+" " get hint on whatever's under the cursor
+" nnoremap <silent> K :call <SID>show_documentation()<CR>

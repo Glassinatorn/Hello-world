@@ -11,6 +11,14 @@
 "       :      :     :      :     :   : :   :: :: :
 
 
+" binding keys
+let mapleader = "\<Space>"
+inoremap jk <Esc>
+inoremap kj <Esc>
+nnoremap z<space> za
+nnoremap zz z=
+inoremap <silent><expr> <CR>      compe#confirm('<CR>')
+
 " setting general settings
 set nobackup
 set nowritebackup
@@ -23,11 +31,17 @@ let g:currentTabbing="soft"
 let g:color="dark"
 set smarttab
 set tw=80
+syntax on
 
 " setting colorscheme
 set bg=dark
+let g:nvcode_termcolors=256
 let ayucolor="light"
-colorscheme mono_tl
+
+if (has("termguicolors"))
+    set termguicolors
+    hi LineNr ctermbg=NONE guibg=NONE
+endif
 
 " disabling permanent search highlight
 set nohlsearch
@@ -50,19 +64,18 @@ set foldmethod=manual
 " persistent folds
 augroup AutoSaveFolds
   autocmd!
-  autocmd BufWinLeave *.py,*.c,*.sh,*.rs,*.js,*.html,*.css,*.vim silent! mkview
-  autocmd BufWinEnter *.py,*.c,*.sh,*.rs,*.js,*.html,*.css,*.vim silent! loadview
+  autocmd BufWinLeave *.lua,*.py,*.c,*.sh,*.rs,*.js,*.html,*.css,*.vim silent! mkview
+  autocmd BufWinEnter *.lua,*.py,*.c,*.sh,*.rs,*.js,*.html,*.css,*.vim silent! loadview
 augroup END
 
 " setting paste
 set clipboard=unnamedplus
 
-" settings for easymotion
-" Turn on case-insensitive feature
+" settings for easymotion and case-insensitive feature
 let g:EasyMotion_smartcase = 1
 let g:easymotion#is_active = 0
-map <space>k <Plug>(easymotion-k)
-map <space>j <Plug>(easymotion-j)
+map <Space>k <Plug>(easymotion-k)
+map <Space>j <Plug>(easymotion-j)
 
 " skeletons
 autocmd BufNewFile *.tex  0r /usr/share/nvim/runtime/skeletons/skeleton.tex
@@ -75,27 +88,53 @@ autocmd BufNewFile doc_*  0r /usr/share/nvim/runtime/skeletons/documentation.txt
 
 " plugins
 call plug#begin('~/.config/nvim/vendor')
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" lsp
+Plug 'neovim/nvim-lspconfig'
+Plug 'hrsh7th/nvim-compe'
+" end of lsp
+" treesitter
+Plug 'christianchiarulli/nvcode-color-schemes.vim'
+Plug 'nvim-treesitter/nvim-treesitter'
+" end of treesitter
 Plug 'roxma/vim-tmux-clipboard'
 Plug 'liuchengxu/graphviz.vim'
 Plug 'junegunn/goyo.vim'
 Plug 'ayu-theme/ayu-vim'
 Plug 'easymotion/vim-easymotion'
 Plug 'sbdchd/neoformat'
-Plug 'alloyed/lua-lsp'
+Plug 'liuchengxu/vim-which-key'
+Plug 'sirver/ultisnips'
+Plug 'erietz/vim-terminator'
+Plug 'mattn/emmet-vim'
 call plug#end()
 
 " loading small functions
 source ~/.config/nvim/after/functions.vim
 
 " loading snippets
-source ~/.config/nvim/after/snippets.vim
+let g:UltiSnipsJumpForwardTrigger='<tab>'
 
-" Loading Coc settings
-source ~/.config/nvim/after/coc.vim
+" " Loading keybindings
+" source ~/.config/nvim/after/keys.vim
 
-" binding keys
-inoremap jk <Esc>
-inoremap kj <Esc>
-nnoremap z<space> za
-nnoremap zz z=
+" For when it is easier to use lua in nvim
+" Loading lua configs
+luafile ~/.config/nvim/lua/lua_config.lua
+luafile ~/.config/nvim/lua/maps.lua
+" luafile ~/.config/nvim/lua/treesitter_config.lua
+
+" configure treesitter
+lua << EOF
+require'nvim-treesitter.configs'.setup {
+  ensure_installed = "all", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+  highlight = {
+    enable = true,              -- false will disable the whole extension
+    disable = { "c", "rust" },  -- list of language that will be disabled
+  },
+}
+EOF
+
+colorscheme mono_tl " Or whatever colorscheme you make
+
+luafile ~/.config/nvim/lua/compe_config.lua

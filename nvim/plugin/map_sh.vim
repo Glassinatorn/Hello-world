@@ -5,9 +5,9 @@ autocmd FileType sh inoremap ,'
     \ '\'''\''<Esc>3hi
 
 autocmd FileType sh inoremap ,f
-    \ for [ ]; then
+    \ for ; do
     \ <CR><++>
-    \ <CR>done<Esc>2kwa<Space>
+    \ <CR>done<Esc>2kf;i
 
 autocmd FileType sh inoremap ,i
     \ if [ ]; then
@@ -15,54 +15,16 @@ autocmd FileType sh inoremap ,i
     \ <CR>fi<Esc>2kwa
 
 autocmd FileType sh inoremap ,p
-    \ printf ""<Esc>i
+    \ printf "\n"<Esc>2hi
+
+autocmd FileType sh inoremap ,s
+    \ sed s//<++>/g<Esc>ba
 
 autocmd FileType sh inoremap ,r<space>
     \ read -p "" <++><Esc>F"i
 
-autocmd FileType sh inoremap ,rd
-    \ #
-    \ <CR>DEFAULT='<++>'
-    \ <CR>read -p "<++> [Y/n]: " CHOICE
-    \ <CR>CHOICE="${CHOICE:-${DEFAULT}}"
-    \ <Esc>3ka<Space>
-
-autocmd FileType sh inoremap ,ir
-    \ #
-    \ <CR>DEFAULT='<++>'
-    \ <CR>read -p "<++> [Y/n]: " CHOICE
-    \ <CR>CHOICE="${CHOICE:-${DEFAULT}}"
-    \ <CR><CR>if [ "$CHOICE" = 'y' ] \|\| [ $CHOICE = 'Y' ]; then
-    \ <CR><++>
-    \ <CR>fi<Esc>7ka
-
-autocmd FileType sh inoremap ,cr
-    \ #
-    \ <CR>DEFAULT='<++>'
-    \ <CR>read -p "<++> [Y/n]: " CHOICE
-    \ <CR>CHOICE="${CHOICE:-${DEFAULT}}"
-    \ <CR><CR>case $CHOICE in
-    \ <CR><++>)
-    \ <CR>;;
-    \ <CR>*)
-    \ <CR>esac<Esc>
-
-
 autocmd FileType sh inoremap ,aw
     \ awk '{ print $ }'<Esc>F$a
 
-autocmd FileType sh inoremap ,ai
-    \ awk '{ \
-    \ <CR>if ($1 == "" \|\| $1 == "<++>") \
-    \ <CR><Tab>print $<++> \
-    \ <CR>}'<Esc>2kf"a
-
 autocmd FileType sh inoremap ,ap
     \ awk '\''{ print $ }'\''<Esc>F$a
-
-autocmd FileType sh inoremap ,c<space>
-    \ case $ in
-    \ <CR><++>)
-    \ <CR>;;
-    \ <CR>*)
-    \ <CR>esac<Esc>4kwa

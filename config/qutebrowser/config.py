@@ -22,16 +22,17 @@ import sys
 from qutebrowser.api import interceptor
 
 # blocking websites
-c.content.host_blocking.lists.append( str(config.configdir) + "/blockedHosts")
+# c.content.host_blocking.lists.append( str(config.configdir) + "/blockedHosts")
 
-# blocking yt adds
-def filter_yt(info: interceptor.Request):
-    """Block the given request if necessary."""
-    url = info.request_url
-    if (url.host() == 'www.youtube.com' and url.path() == '/get_video_info' and '&adformat=' in url.query()):
-        info.block()
-
-interceptor.register(filter_yt)
+# # blocking yt adds
+# def filter_yt(info: interceptor.Request):
+#     """Block the given request if necessary."""
+#     url = info.request_url
+#     if (url.host() == 'www.youtube.com' and url.path() == '/get_video_info' and '&adformat=' in url.query()):
+#         info.block()
+#
+# interceptor.register(filter_yt)
+c.content.blocking.enabled = True
 
 ## Colors
 teal = "#00F2FF"

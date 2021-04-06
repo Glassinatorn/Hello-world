@@ -13,9 +13,9 @@
 #     :        :     :   ::
 
 # settings for laptop touchpad
-xinput --set-prop "SYNA2B31:00 06CB:7F8B Touchpad" "libinput Accel Speed" 0.2
-xinput --set-prop "SYNA2B31:00 06CB:7F8B Touchpad" "libinput Tapping Enabled" 1
-xinput --set-prop "SYNA2B31:00 06CB:7F8B Touchpad" "libinput Disable While Typing Enabled" 0
+xinput --set-prop 10 "libinput Accel Speed" 0.2
+xinput --set-prop 10 "libinput Tapping Enabled" 1
+xinput --set-prop 10 "libinput Disable While Typing Enabled" 0
 
 # counting connected screens
 NUM_MONITORS=$(xrandr \
@@ -65,6 +65,8 @@ esac
 # starting backround processes
 unclutter -idle 0.01 -root &
 ~/.fehbg
+# killing old sxhkd processes
+killall sxkhd
 
 # starting keybinding daemon
 if [ $GDMSESSION = "awesome" ]; then

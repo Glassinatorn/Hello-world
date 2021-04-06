@@ -11,5 +11,5 @@
     "typescriptreact",
     "json"
   ],
-  "python.jediEnabled": false
+  "Lua.diagnostics.globals": ["awesome", "client", "root"]
 }

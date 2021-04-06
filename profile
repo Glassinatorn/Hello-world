@@ -134,11 +134,22 @@ alias prm='sudo pacman -R $( \
             }'\'')'
 alias n="nnn"
 alias py="python3"
+alias pyenv="if [ -d env/ ]; then
+        source env/bin/activate
+    else
+        python -m venv env &&
+        source env/bin/activate
+    fi"
 alias gwall="xwinwrap -g 240x240+839+297 -ov -sh circle -- gifview -w WID -a"
 alias proto="ls *.proto \
     | fzf \
     | xargs python -m grpc_tools.protoc -I. \--python_out=. --grpc_python_out=. \
     $1"
+alias overleaf="mkdir overleaf &&
+    touch overleaf/report.tex;
+    cat report.tex |
+        sed 's/pictures\/screenshots\///g' >> overleaf/report.tex;
+    cp pictures/screenshots/* overleaf/;"
 
 # loading nnn config
 source ~/.config/nnn/rc
