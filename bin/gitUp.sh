@@ -85,11 +85,10 @@ $CMD --exclude '.git' $SD/st \
     $BD/suckless/
 
 # nvim
-$CMD $CD/nvim/init.vim \
-    $CD/nvim/coc-settings.json \
+$CMD $CD/nvim/init.lua \
     $BD/nvim/
-$CMD $CD/nvim/after/ \
-    $BD/nvim/after/
+$CMD $CD/nvim/lua/ \
+    $BD/nvim/lua/
 
 $CMD $ND/plugin/map_* $BD/nvim/plugin/
 $CMD $ND/colors/mono_tl.vim* $BD/nvim/colors/
