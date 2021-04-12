@@ -23,6 +23,7 @@ paq {'sbdchd/neoformat'}
 paq {'sirver/ultisnips'}
 paq {'mattn/emmet-vim'}
 paq {'erietz/vim-terminator'}
+paq {'glassinatorn/figlet-banner'}
 paq {'christianchiarulli/nvcode-color-schemes.vim'}
 
 
