@@ -29,6 +29,7 @@ paq {'christianchiarulli/nvcode-color-schemes.vim'}
 -- loading settings
 require('settings')                     -- general settings
 require('maps')                         -- keybindings
-require('lsp')                   -- config for lsp
+require('lsp_config')                   -- config for lsp
 require('treesitter_config')            -- treesitter config
 require('compe_config')                 -- completion with compe
+require('functions')
