@@ -13,38 +13,27 @@
 -- found (e.g. lgi). If LuaRocks is not installed, do nothing.
 pcall(require, "luarocks.loader")
 
--- Standard awesome library
+-- Standard awesome libraries
 local gears = require("gears")
 local lain = require("lain")
 local awful = require("awful")
 local cairo = require("lgi").cairo
 -- local naughty = require("naughty")
-require("awful.autofocus")
-
--- Widget and layout library
 local wibox = require("wibox")
-
--- Theme handling library
 local beautiful = require("beautiful")
-
--- Menubar library
 local menubar = require("menubar")
-
--- Hotkey popup library
 local hotkeys_popup = require("awful.hotkeys_popup")
-
--- Enable hotkeys help widget for VIM and other apps
--- when client with a matching name is opened:
+require("awful.autofocus")
 require("awful.hotkeys_popup.keys")
 
 -- {{{ Variable definitions
 beautiful.init(os.getenv("HOME") .. "/.config/awesome/themes/glass/theme.lua")
 
 -- Defining programs to use
-Terminal = "st"
-Browser = "qutebrowser"
-Editor = os.getenv("EDITOR") or "vi"
-Editor_cmd = Terminal .. " -e " .. Editor
+TERMINAL = "st"
+BROWSER = "qutebrowser"
+EDITOR = os.getenv("EDITOR") or "vi"
+EDITOR_CMD = TERMINAL .. " -e " .. EDITOR
 
 -- Default modkey.
 Modkey = "Mod4"
@@ -69,8 +58,8 @@ Myawesomemenu = {
             hotkeys_popup.show_help(nil, awful.screen.focused())
         end
     },
-    {"manual", Terminal .. " -e man awesome"},
-    {"edit config", Editor_cmd .. " " .. awesome.conffile},
+    {"manual", TERMINAL .. " -e man awesome"},
+    {"edit config", EDITOR_CMD .. " " .. awesome.conffile},
     {
         "quit",
         function()
@@ -113,7 +102,7 @@ Mymainmenu =
     {
         items = {
             {"Awesome", Myawesomemenu, beautiful.awesome_icon},
-            {"Open terminal", Terminal},
+            {"Open terminal", TERMINAL},
             {
                 "Open sidebar", function ()
                 end
@@ -134,7 +123,7 @@ Mylauncher =
 -- custom widgets
 
 -- Menubar configuration
-menubar.utils.terminal = Terminal -- Set the terminal for applications that require it
+menubar.utils.terminal = TERMINAL -- Set the terminal for applications that require it
 -- }}}
 
 -- Keyboard map indicator and switcher
@@ -625,7 +614,7 @@ awful.rules.rules = {
                 "Kruler",
                 "MessageWin", -- kalarm.
                 "Sxiv",
-                "Tor Browser", -- Needs a fixed window size to avoid fingerprinting by screen size.
+                "Tor BROWSER", -- Needs a fixed window size to avoid fingerprinting by screen size.
                 "Wpa_gui",
                 "veromix",
                 "xtightvncviewer"
