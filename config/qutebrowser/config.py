@@ -62,7 +62,7 @@ c.hints.border = "3px solid #515151"
 c.fonts.hints = "12pt Unscii"
 c.prompt.radius = 0
 c.completion.shrink = True
-c.colors.webpage.darkmode.enabled = True
+c.colors.webpage.darkmode.enabled = False
 c.qt.force_platformtheme = None
 
 ## Features

@@ -137,8 +137,10 @@ alias py="python3"
 alias pyenv="if [ -d env/ ]; then
         source env/bin/activate
     else
+	touch requirements.txt
         python -m venv env &&
         source env/bin/activate
+	pip install neovim
     fi"
 alias gwall="xwinwrap -g 240x240+839+297 -ov -sh circle -- gifview -w WID -a"
 alias proto="ls *.proto \
