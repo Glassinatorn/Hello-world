@@ -25,6 +25,7 @@ paq {'mattn/emmet-vim'}
 paq {'erietz/vim-terminator'}
 paq {'glassinatorn/figlet-banner'}
 paq {'christianchiarulli/nvcode-color-schemes.vim'}
+paq {'puremourning/vimspector'}
 
 
 -- loading settings

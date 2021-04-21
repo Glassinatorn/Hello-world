@@ -32,4 +32,8 @@ map('n', '<leader>se', ':setlocal spell! spelllang=se<CR>', { noremap = true }) 
 map('n', '<space>j', '<Plug>(easymotion-j)', { noremap = true }) -- go down
 map('n', '<space>k', '<Plug>(easymotion-k)', { noremap = true }) -- go up
 
-
+-- vimspector 
+map('n', '<leader>db', ':call vimspector#Launch()<CR>', { noremap = true })
+map('n', '<leader>drm', ':call vimspector#Reset()<CR>', { noremap = true })
+map('n', '<leader>dbr', ':call vimspector#ToggleBreakpoint()<CR>', { noremap = true })
+map('n', '<leader>dl', ':call vimspector#Continue()<CR>', { noremap = true })
