@@ -6,9 +6,11 @@ CHOSEN=$(echo $OPTIONS | fzf)
 
 case $CHOSEN in
     "python")
+	# TODO: 
+	# check if there is already a created project in the current folder
 	touch requirements.txt
 	python -m venv env &&
-	source env/bin/activate
+	    source env/bin/activate
 	pip install neovim
     ;;
     "rust")
