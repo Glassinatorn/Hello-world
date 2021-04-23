@@ -18,9 +18,14 @@ map('n', 'K', ':lua vim.lsp.buf.hover()<CR>',			    { noremap = true })
 -- nice to haves
 map('i', 'kj', '<Esc>',			    { noremap = true })	    -- escape insert
 map('i', 'jk', '<Esc>',	    		    { noremap = true })	    -- escape insert
+map('i', '()', '()<Esc>i',	    	    { noremap = true })	    -- insert ()
+map('i', '[]', '[]<Esc>i',	    	    { noremap = true })	    -- insert []
+map('i', '{}', '{}<Esc>i',	    	    { noremap = true })	    -- insert {}
+map('i', '<>', '<><Esc>i',	    	    { noremap = true })	    -- insert <>
+map('i', '""', '""<Esc>i',	    	    { noremap = true })	    -- insert ""
 map('n', 'zz', 'z=',	    		    { noremap = true })	    -- fix spelling
 map('n', 'z<space>', 'za',  		    { noremap = true })	    -- toggle fold
-map('i', '<C-s>', '<Esc>:w<CR>a',	    { noremap = true })	    -- save with control-s
+map('i', '<C-s>', '<Esc>:w<CR>',	    { noremap = true })	    -- save with control-s
 map('n', '<C-s>', ':w<CR>',		    { noremap = true })	    -- save with control-s
 map('n', '<leader>fo', ':Neoformat<CR>',    { noremap = true })	    -- formatting
 
