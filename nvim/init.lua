@@ -34,4 +34,3 @@ require('maps')                         -- keybindings
 require('lsp_config')                   -- config for lsp
 require('treesitter_config')            -- treesitter config
 require('compe_config')                 -- completion with compe
-require('functions')
