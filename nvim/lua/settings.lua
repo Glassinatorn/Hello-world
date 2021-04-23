@@ -32,4 +32,6 @@ cmd [[ autocmd BufNewFile *.html  0r /usr/share/nvim/runtime/skeletons/skeleton.
 cmd [[ autocmd BufNewFile *.dot  0r /usr/share/nvim/runtime/skeletons/skeleton.dot ]]
 cmd [[ autocmd BufNewFile doc_*  0r /usr/share/nvim/runtime/skeletons/documentation.txt ]]
 
-
+-- ultisnips
+cmd [[ let g:UltiSnipsExpandTrigger='<tab>' ]]
+cmd [[ let g:UltiSnipsJumpForwardTrigger='<cr>' ]]

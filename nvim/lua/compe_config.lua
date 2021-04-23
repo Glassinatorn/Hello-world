@@ -12,7 +12,7 @@ require'compe'.setup {
   max_abbr_width = 100;
   max_kind_width = 100;
   max_menu_width = 100;
-  documentation = false;
+  documentation = true;
 
   source = {
     path = true;
@@ -27,6 +27,3 @@ require'compe'.setup {
 local t = function(str)
   return vim.api.nvim_replace_termcodes(str, true, true, true)
 end
-
-
-
