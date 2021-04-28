@@ -14,6 +14,7 @@ vim.cmd 'packadd paq-nvim'              -- load the package manager
 local paq = require('paq-nvim').paq     -- a convenient alias
 paq {'savq/paq-nvim', opt = true}       -- paq-nvim manages itself
 
+
 -- the rest of the plugins
 paq {'nvim-treesitter/nvim-treesitter'}
 paq {'neovim/nvim-lspconfig'}
