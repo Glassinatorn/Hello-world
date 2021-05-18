@@ -54,6 +54,8 @@ $CMD $HOME/.xprofile \
     $BD/xprofile
 $CMD $HOME/.profile \
     $BD/profile
+$CMD $HOME/.vimspector.json \
+    $DB/vimspector.json
 
 # xorg
 $CMD /etc/X11/xorg.conf.d/20-* \

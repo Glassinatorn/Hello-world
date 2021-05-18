@@ -11,6 +11,7 @@ o.smarttab = true			-- smart tabbing
 o.hlsearch = false			-- multiple highlight for search
 o.updatetime = 300			-- ms between swap is written
 cmd [[ set clipboard+=unnamedplus ]]	-- enables clipboard
+cmd [[ let g:vimspector_base_dir=expand( '$HOME/.config/nvim/vimspector-config' ) ]]
 
 -- colorscheme settings
 o.termguicolors = true			-- enables 24-bit colors

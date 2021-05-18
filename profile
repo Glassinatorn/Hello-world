@@ -133,7 +133,7 @@ alias prm='sudo pacman -R $( \
             print $1 \
             }'\'')'
 alias n="nnn"
-alias py="python3"
+alias py="python3.8"
 alias pe="if [ -d env/ ]; then
         source env/bin/activate
     else
