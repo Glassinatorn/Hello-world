@@ -2,26 +2,29 @@
 
 # prompting the user to chose what 
 OPTIONS="python \nrust \nc"
-CHOSEN=$(echo $OPTIONS | fzf)
+CHOSEN=$(printf "$OPTIONS" | fzf)
 
 case $CHOSEN in
-    "python")
+    "python ")
 	# TODO: 
-	# check if there is already a created project in the current folder
+	# check if there is already a created project in the current folder []
+	# add documentation []
 	touch requirements.txt
-	python -m venv env &&
-	    source env/bin/activate
+	python -m venv env 
+	source env/bin/activate
+
 	pip install neovim
-    ;;
-    "rust")
+	;;
+    "rust ")
 	printf "you chose rust\n"
-    ;;
-    "c")
+	;;
+    "c ")
 	mkdir tests src bin
 	touch Makefile
+	;;
     *)
 esac
 
-printf "-------------------\n"
-printf "      DONE!!       \n"
-printf "-------------------\n"
+printf "===================\n"
+printf "=     DONE!!      =\n"
+printf "===================\n"

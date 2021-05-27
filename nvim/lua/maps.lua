@@ -16,29 +16,31 @@ map('n', '<leader>rn', ':lua vim.lsp.buf.rename()<CR>',		    { noremap = true })
 map('n', 'K', ':lua vim.lsp.buf.hover()<CR>',			    { noremap = true })
 
 -- nice to haves
-map('i', 'kj', '<Esc>',			    { noremap = true })	    -- escape insert
-map('i', 'jk', '<Esc>',	    		    { noremap = true })	    -- escape insert
-map('i', '()', '()<Esc>i',	    	    { noremap = true })	    -- insert ()
-map('i', '[]', '[]<Esc>i',	    	    { noremap = true })	    -- insert []
-map('i', '{}', '{}<Esc>i',	    	    { noremap = true })	    -- insert {}
-map('i', '<>', '<><Esc>i',	    	    { noremap = true })	    -- insert <>
-map('i', '""', '""<Esc>i',	    	    { noremap = true })	    -- insert ""
-map('n', 'zz', 'z=',	    		    { noremap = true })	    -- fix spelling
-map('n', 'z<space>', 'za',  		    { noremap = true })	    -- toggle fold
-map('i', '<C-s>', '<Esc>:w<CR>',	    { noremap = true })	    -- save with control-s
-map('n', '<C-s>', ':w<CR>',		    { noremap = true })	    -- save with control-s
-map('n', '<leader>fo', ':Neoformat<CR>',    { noremap = true })	    -- formatting
+map('i', 'kj', '<Esc>',			                            { noremap = true })	    -- escape insert
+map('i', 'jk', '<Esc>',	    		                            { noremap = true })	    -- escape insert
+map('i', '()', '()<Esc>i',	    	                            { noremap = true })	    -- insert ()
+map('i', '[]', '[]<Esc>i',	    	                            { noremap = true })	    -- insert []
+map('i', '{}', '{}<Esc>i',	    	                            { noremap = true })	    -- insert {}
+map('i', '<>', '<><Esc>i',	    	                            { noremap = true })	    -- insert <>
+map('i', '""', '""<Esc>i',	    	                            { noremap = true })	    -- insert ""
+map('i', '\'\'', '\'\'<Esc>i',	    	                            { noremap = true })	    -- insert ""
+map('n', 'zz', 'z=',	    		                            { noremap = true })	    -- fix spelling
+map('n', 'z<space>', 'za',  		                            { noremap = true })	    -- toggle fold
+map('i', '<C-s>', '<Esc>:w<CR>',	                            { noremap = true })	    -- save with control-s
+map('n', '<C-s>', ':w<CR>',		                            { noremap = true })	    -- save with control-s
+map('n', '<leader>fo', ':Neoformat<CR>',                            { noremap = true })	    -- formatting
 
 -- spelling bindings
-map('n', '<leader>us', ':setlocal spell! spelllang=en<CR>', { noremap = true }) -- check english spelling
-map('n', '<leader>se', ':setlocal spell! spelllang=se<CR>', { noremap = true }) -- check swedish spelling
+map('n', '<leader>us', ':setlocal spell! spelllang=en<CR>',         { noremap = true })     -- check english spelling
+map('n', '<leader>se', ':setlocal spell! spelllang=se<CR>',         { noremap = true })     -- check swedish spelling
 
 -- easymotion
-map('n', '<space>j', '<Plug>(easymotion-j)', { noremap = true }) -- go down
-map('n', '<space>k', '<Plug>(easymotion-k)', { noremap = true }) -- go up
+map('n', '<space>j', '<Plug>(easymotion-j)',                        { noremap = true })     -- go down
+map('n', '<space>k', '<Plug>(easymotion-k)',                        { noremap = true })     -- go up
 
 -- vimspector 
-map('n', '<leader>db', ':call vimspector#Launch()<CR>', { noremap = true })
-map('n', '<leader>drm', ':call vimspector#Reset()<CR>', { noremap = true })
-map('n', '<leader>dbr', ':call vimspector#ToggleBreakpoint()<CR>', { noremap = true })
-map('n', '<leader>dl', ':call vimspector#Continue()<CR>', { noremap = true })
+map('n', '<leader>dl', ':call vimspector#Continue()<CR>',           { noremap = true })
+map('n', '<leader>ds', ':call vimspector#Reset()<CR>',              { noremap = true })
+map('n', '<leader>b', ':call vimspector#ToggleBreakpoint()<CR>',    { noremap = true })
+map('n', '<leader>dr', ':call vimspector#Restart()<CR>',            { noremap = true })
+map('n', '<leader>e', ':call vimspector#BalloonEval()<CR>',         { noremap = true })

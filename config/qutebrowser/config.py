@@ -74,7 +74,7 @@ c.url.start_pages = ["~/.homepage/home.html"]
 ## Search engines
 c.url.searchengines = {"DEFAULT": "https://duckduckgo.com/?q={}",
                        "aw": "https://wiki.archlinux.org/?search={}",
-                       "a": "https://www.amazon.co.uk/s?k={}",
+                       "a": "https://www.amazon.se/s?k={}",
                        "w": "https://en.wikipedia.org/wiki/{}",
                        "tr": "https://translate.google.com/?text={}",
                        "yt": "https://www.youtube.com/results?search_query={}",
