@@ -27,6 +27,7 @@ paq {'erietz/vim-terminator'}
 paq {'glassinatorn/figlet-banner'}
 paq {'christianchiarulli/nvcode-color-schemes.vim'}
 paq {'puremourning/vimspector'}
+paq {'kabouzeid/nvim-lspinstall'}
 
 
 -- loading settings
