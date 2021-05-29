@@ -21,6 +21,7 @@ require'compe'.setup {
     nvim_lsp = true;
     spell = true;
     ultisnips = true;
+    emoji = true;
   };
 }
 
