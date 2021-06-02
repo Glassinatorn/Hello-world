@@ -8,7 +8,7 @@ local function setup_servers()
 end
 
 setup_servers() -- calling on funciton to setup installed language servers
- 
+
 -- configuring how language servers are supposed to display diagnostics
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
     vim.lsp.diagnostic.on_publish_diagnostics, {

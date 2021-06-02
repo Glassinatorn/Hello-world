@@ -13,6 +13,7 @@
 -- found (e.g. lgi). If LuaRocks is not installed, do nothing.
 pcall(require, "luarocks.loader")
 
+-- importing libraries
 -- Standard awesome libraries
 local gears = require("gears")
 local lain = require("lain")
@@ -89,12 +90,12 @@ local mysides = {
     visible = false,
 }
 
+-- clock widget
 local clock = {
     widget = wibox.widget.textclock("%H %M"),
     align = "center",
     valign = "center",
 }
-
 
 -- Main menu
 Mymainmenu =
@@ -119,8 +120,6 @@ Mylauncher =
         menu = Mymainmenu
     }
 )
-
--- custom widgets
 
 -- Menubar configuration
 menubar.utils.terminal = TERMINAL -- Set the terminal for applications that require it
@@ -211,6 +210,7 @@ awful.screen.connect_for_each_screen(
 
         -- Create a promptbox for each screen
         s.mypromptbox = awful.widget.prompt()
+
         -- Create an imagebox widget which will contain an icon indicating which layout we're using.
         -- We need one layoutbox per screen.
         s.mylayoutbox = awful.widget.layoutbox(s)
@@ -687,6 +687,7 @@ client.connect_signal(
             )
         )
 
+        -- creating the titlebar
         awful.titlebar(c):setup {
             {
                 -- Left

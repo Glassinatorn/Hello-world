@@ -29,6 +29,7 @@ map('n', 'z<space>', 'za',  		                            { noremap = true })	  
 map('i', '<C-s>', '<Esc>:w<CR>',	                            { noremap = true })	    -- save with control-s
 map('n', '<C-s>', ':w<CR>',		                            { noremap = true })	    -- save with control-s
 map('n', '<leader>fo', ':Neoformat<CR>',                            { noremap = true })	    -- formatting
+map('n', '<leader>m', ':MaximizerToggle<CR>',                       { noremap = true })	    -- 
 
 -- spelling bindings
 map('n', '<leader>us', ':setlocal spell! spelllang=en<CR>',         { noremap = true })     -- check english spelling
