@@ -29,7 +29,7 @@ map('n', 'z<space>', 'za',  		                            { noremap = true })	  
 map('i', '<C-s>', '<Esc>:w<CR>',	                            { noremap = true })	    -- save with control-s
 map('n', '<C-s>', ':w<CR>',		                            { noremap = true })	    -- save with control-s
 map('n', '<leader>fo', ':Neoformat<CR>',                            { noremap = true })	    -- formatting
-map('n', '<leader>m', ':MaximizerToggle<CR>',                       { noremap = true })	    -- 
+map('n', '<leader>m', ':MaximizerToggle<CR>',                       { noremap = true })	    -- maximized buffer
 
 -- spelling bindings
 map('n', '<leader>us', ':setlocal spell! spelllang=en<CR>',         { noremap = true })     -- check english spelling
@@ -39,7 +39,7 @@ map('n', '<leader>se', ':setlocal spell! spelllang=se<CR>',         { noremap = 
 map('n', '<space>j', '<Plug>(easymotion-j)',                        { noremap = true })     -- go down
 map('n', '<space>k', '<Plug>(easymotion-k)',                        { noremap = true })     -- go up
 
--- vimspector 
+-- vimspector
 map('n', '<leader>dl', ':call vimspector#Continue()<CR>',           { noremap = true })
 map('n', '<leader>ds', ':call vimspector#Reset()<CR>',              { noremap = true })
 map('n', '<leader>b', ':call vimspector#ToggleBreakpoint()<CR>',    { noremap = true })
