@@ -5,15 +5,15 @@ local map = vim.api.nvim_set_keymap
 g.mapleader = ' '
 
 -- lsp actions
-map('n', '<leader>h',       ':lua vim.lsp.diagnostic.goto_prev()<CR>',  { noremap = true })
-map('n', '<leader>l',       ':lua vim.lsp.diagnostic.goto_next()<CR>',  { noremap = true })
-map('n', '<leader>a',       ':lua vim.lsp.buf.code_action()<CR>',	{ noremap = true })
-map('n', '<leader>d',       ':lua vim.lsp.buf.definition()<CR>',	{ noremap = true })
-map('n', '<leader>D',       ':lua vim.lsp.buf.declaration()<CR>',	{ noremap = true })
-map('n', '<leader>r',       ':lua vim.lsp.buf.references()<CR>',	{ noremap = true })
-map('n', '<leader>i',       ':lua vim.lsp.buf.implementation()<CR>',	{ noremap = true })
-map('n', '<leader>rn',      ':lua vim.lsp.buf.rename()<CR>',		{ noremap = true })
-map('n', 'K',               ':lua vim.lsp.buf.hover()<CR>',		{ noremap = true })
+map('n', '<leader>h',       ':lua vim.lsp.diagnostic.goto_prev()<CR>',  { noremap = true })     -- go to previous diagnostic
+map('n', '<leader>l',       ':lua vim.lsp.diagnostic.goto_next()<CR>',  { noremap = true })     -- go to next diagnostic
+map('n', '<leader>a',       ':lua vim.lsp.buf.code_action()<CR>',	{ noremap = true })     -- code action
+map('n', '<leader>d',       ':lua vim.lsp.buf.definition()<CR>',	{ noremap = true })     -- go to definition
+map('n', '<leader>D',       ':lua vim.lsp.buf.declaration()<CR>',	{ noremap = true })     -- go to declaration
+map('n', '<leader>r',       ':lua vim.lsp.buf.references()<CR>',	{ noremap = true })     -- show references
+map('n', '<leader>i',       ':lua vim.lsp.buf.implementation()<CR>',	{ noremap = true })     -- go to implementation
+map('n', '<leader>rn',      ':lua vim.lsp.buf.rename()<CR>',		{ noremap = true })     -- dynamically rename variables
+map('n', 'K',               ':lua vim.lsp.buf.hover()<CR>',		{ noremap = true })     -- show documentation
 
 -- nice to haves
 map('i', 'kj',              '<Esc>',			                { noremap = true })	-- escape insert
@@ -40,8 +40,8 @@ map('n', '<space>j',        '<Plug>(easymotion-j)',                     { norema
 map('n', '<space>k',        '<Plug>(easymotion-k)',                     { noremap = true })     -- go up
 
 -- vimspector
-map('n', '<leader>dl',          ':call vimspector#Continue()<CR>',      { noremap = true })
-map('n', '<leader>ds',      ':call vimspector#Reset()<CR>',             { noremap = true })
-map('n', '<leader>b',       ':call vimspector#ToggleBreakpoint()<CR>',  { noremap = true })
-map('n', '<leader>dr',      ':call vimspector#Restart()<CR>',           { noremap = true })
-map('n', '<leader>e',       ':call vimspector#BalloonEval()<CR>',       { noremap = true })
+map('n', '<leader>dl',      ':call vimspector#Continue()<CR>',          { noremap = true })     -- next step in debugging
+map('n', '<leader>ds',      ':call vimspector#Reset()<CR>',             { noremap = true })     -- reset debugger
+map('n', '<leader>b',       ':call vimspector#ToggleBreakpoint()<CR>',  { noremap = true })     -- toggle breakpoint
+map('n', '<leader>dr',      ':call vimspector#Restart()<CR>',           { noremap = true })     -- restart the debugger
+map('n', '<leader>e',       ':call vimspector#BalloonEval()<CR>',       { noremap = true })     -- evaluate expression under cursor
