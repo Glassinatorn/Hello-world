@@ -31,6 +31,7 @@ paq {'kabouzeid/nvim-lspinstall'}
 paq {'RishabhRD/popfix'}
 paq {'RishabhRD/nvim-lsputils'}
 paq {'szw/vim-maximizer'}
+paq {'lervag/vimtex'}
 
 
 -- loading settings
