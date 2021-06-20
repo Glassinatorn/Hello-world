@@ -25,6 +25,7 @@ paq {'sirver/ultisnips'}
 paq {'mattn/emmet-vim'}
 paq {'erietz/vim-terminator'}
 paq {'glassinatorn/figlet-banner'}
+paq {'glassinatorn/light-toggle'}
 paq {'christianchiarulli/nvcode-color-schemes.vim'}
 paq {'puremourning/vimspector'}
 paq {'kabouzeid/nvim-lspinstall'}
