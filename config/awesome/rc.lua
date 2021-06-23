@@ -467,7 +467,7 @@ Globalkeys =
         "Tab",
         function()
             awful.client.focus.history.previous()
-            if client.focus then
+            if lient.focus then
                 client.focus:raise()
             end
         end,

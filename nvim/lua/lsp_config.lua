@@ -3,7 +3,15 @@ local function setup_servers()
   require'lspinstall'.setup()
   local servers = require'lspinstall'.installed_servers()
   for _, server in pairs(servers) do
-    require'lspconfig'[server].setup{}
+	require'lspconfig'[server].setup{
+		settings = {
+		lua = {
+		    diagnostics = {
+			globals = { 'vim', 'awesome', 'client', 'root' }
+		    }
+		}
+	    }
+	}
   end
 end
 
