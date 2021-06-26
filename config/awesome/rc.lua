@@ -9,6 +9,11 @@
 -- ::   :::   :::: :: :::    :: ::::  :::: ::   ::::: ::  :::     ::    :: ::::  
 --  :   : :    :: :  : :    : :: ::   :: : :     : :  :    :      :    : :: ::   
                                                                               
+-- for lsp server
+local client = require("client")
+local awesome = require("awesome")
+local root = require("root")
+
 -- If LuaRocks is installed, make sure that packages installed through it are
 -- found (e.g. lgi). If LuaRocks is not installed, do nothing.
 pcall(require, "luarocks.loader")
@@ -467,7 +472,7 @@ Globalkeys =
         "Tab",
         function()
             awful.client.focus.history.previous()
-            if lient.focus then
+            if client.focus then
                 client.focus:raise()
             end
         end,
