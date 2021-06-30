@@ -58,9 +58,6 @@ Globalkeys = gears.table.join(
     awful.key({vars.MODKEY}, "[", function() awful.layout.inc(-1) end, {description = "select previous", group = "layout"}),
     awful.key({vars.MODKEY}, "]", function() awful.layout.inc(1) end, {description = "select next", group = "layout"}),
 
-    -- global layout
-    awful.key({vars.MODKEY, "Control"}, "h", function() awful.screen.focus_relative(1) end, {description = "focus the next screen", group = "screen"}),
-    awful.key({vars.MODKEY, "Control"}, "l", function() awful.screen.focus_relative(-1) end, {description = "focus the previous screen", group = "screen"}),
     awful.key({vars.MODKEY},
         "Tab",
         function()
