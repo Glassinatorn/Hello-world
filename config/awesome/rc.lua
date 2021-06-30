@@ -98,7 +98,6 @@
 pcall(require, "luarocks.loader")
 
 -- importing libraries
--- Standard awesome libraries
 local gears = require("gears")
 local lain = require("lain")
 local awful = require("awful")
