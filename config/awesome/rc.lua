@@ -9,10 +9,89 @@
 -- ::   :::   :::: :: :::    :: ::::  :::: ::   ::::: ::  :::     ::    :: ::::  
 --  :   : :    :: :  : :    : :: ::   :: : :     : :  :    :      :    : :: ::   
                                                                               
+-- -- inspiration for is based on example config from
+-- -- https://epsi-rns.github.io/desktop/2019/06/16/awesome-modularized-structure.html
+-- pcall(require, "luarocks.loader")
+-- 
+-- -- standard awesome modules
+-- require("main.error-handling")
+-- -- local awful = require("awful")
+-- local gears = require("gears")
+-- -- local root = require("root")
+-- 
+-- -- theme module
+-- local beautiful = require("beautiful")
+-- 
+-- -- menubar module
+-- local menubar = require("menubar")
+-- 
+-- -- variable definitions
+-- beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
+-- 
+-- Config = {}
+-- Config.vars = require("main.user_variables")
+-- modkey = Config.vars.modkey
+-- 
+-- -- error handling
+-- require("main.error_handling")
+-- 
+-- -- custom modules
+-- local main = {
+--     layouts = require("main.layout"),
+--     tags    = require("main.tags"),
+--     menu    = require("main.menu"),
+--     rules   = require("main.rules"),
+-- }
+-- 
+-- -- hotkey bindings
+-- local bindings = {
+--     global_buttons = require("binding.global_buttons"),
+--     client_buttons = require("binding.client_buttons"),
+--     global_keys = require("binding.global_keys"),
+--     client_keys = require("binding.client_keys"),
+--     bind_to_tags = require("binding.bind_to_tags")
+-- }
+-- 
+-- -- layouts
+-- Config.layouts = main.layouts
+-- 
+-- -- tags
+-- Config.tags = main.tags()
+-- 
+-- -- menu
+-- Config.mainmenu = awful.menu({ items = main.menu() }) -- in global_keys
+-- Config.launcher = awful.widget.launcher({ image = beautiful.awesome_icon, menu = Config.mainmenu })
+-- menubar.utils.terminal = Config.vars.terminal
+-- 
+-- -- mouse and key bindings
+-- Config.global_keys = bindings.global_keys
+-- Config.global_keys = bindings.bind_to_tags(Config.global_keys)
+-- 
+-- 
+-- -- set root
+-- root.buttons(bindings.global_buttons())
+-- root.keys(Config.global_keys)
+-- 
+-- -- keyboard map indicator and switcher
+-- mykeyboardlayout = awful.widget.keyboardlayout()
+-- 
+-- -- wibar
+-- require("decoration.titlebar")
+-- 
+-- -- rules 
+-- awful.rules.rules = main.rules({
+--     bindings.client_keys(),
+--     bindings.client_buttons()
+-- })
+-- 
+-- -- signals
+-- require("main.signals")
+
+
 -- for lsp server
-local client = require("client")
-local awesome = require("awesome")
-local root = require("root")
+-- local client = require("client")
+-- local awesome = require("awesome")
+-- local root = require("root")
 
 -- If LuaRocks is installed, make sure that packages installed through it are
 -- found (e.g. lgi). If LuaRocks is not installed, do nothing.
@@ -48,7 +127,7 @@ Modkey = "Mod4"
 awful.layout.layouts = {
     awful.layout.suit.floating,
     lain.layout.centerwork,
-    awful.layout.suit.fair.horizontal
+
     -- available layouts:.tile.left, .tile.bottom, .tile.top, .fair,
     -- .fair.horizontal, .spiral, .spiral.dwindle, .max, .max.fullscreen,
     -- .magnifier, .corner.nw, .corner.ne, .corner.sw, .corner.se,

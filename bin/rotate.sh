@@ -13,10 +13,17 @@
 #     :   : :   : :  :      :      :   : :     :     : :: ::
 
 # getting hardware info
-# getting id for touch device
-TOUCH_DEV=$(xinput \
+# getting id for finger
+# TODO: make awk print the second line
+FINGER=$(xinput \
     | grep "IPTS Touch" \
-    | awk '{print $5}' \
+    | awk '{print $7}' \
+    | cut -b 4-6)
+
+# getting id for pen
+FINGER=$(xinput \
+    | grep "Stylus Pen" \
+    | awk '{print $7}' \
     | cut -b 4-6)
 
 # checking screen orientation
@@ -31,11 +38,13 @@ ROTATED=$(xrandr \
 
 # rotating screen
 if [ $ROTATED = '(normal' ]; then
-    xrandr --output $SCREEN --rotate left
-    xinput set-prop $TOUCH_DEV "Coordinate Transformation Matrix" 4 -1 1 1 0 0 0 0 1
+    xrandr --output $SCREEN --rotate right
+    xinput set-prop $FINGER "Coordinate Transformation Matrix" 0 1 0 -1 0 1 0 0 1
+    xinput set-prop "11" "Coordinate Transformation Matrix" 0 1 0 -1 0 1 0 0 1
     echo "normal"
 else
     xrandr --output $SCREEN --rotate normal
-    xinput set-prop $TOUCH_DEV "Coordinate Transformation Matrix" 1 0 0 0 1 0 0 0 1
+    xinput set-prop $FINGER "Coordinate Transformation Matrix" 1 0 0 0 1 0 0 0 1
+    xinput set-prop "11" "Coordinate Transformation Matrix" 1 0 0 0 1 0 0 0 1
     echo "not_normal"
 fi
