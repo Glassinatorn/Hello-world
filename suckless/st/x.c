@@ -15,6 +15,7 @@
 #include <X11/Xft/Xft.h>
 #include <X11/XKBlib.h>
 #include <X11/Xresource.h>
+#include <arpa/inet.h>
 
 static char *argv0;
 #include "arg.h"
@@ -92,6 +93,7 @@ typedef XftGlyphFontSpec GlyphFontSpec;
 typedef struct {
 	int tw, th; /* tty width and height */
 	int w, h; /* window width and height */
+	int x, y; /* window location */
 	int hborderpx, vborderpx;
 	int ch; /* char height */
 	int cw; /* char width  */

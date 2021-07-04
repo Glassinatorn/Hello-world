@@ -17,12 +17,12 @@
 # TODO: make awk print the second line
 FINGER=$(xinput \
     | grep "IPTS Touch" \
-    | awk '{print $7}' \
+    | awk '{print $5}' \
     | cut -b 4-6)
 
 # getting id for pen
-FINGER=$(xinput \
-    | grep "Stylus Pen" \
+PEN=$(xinput \
+    | grep "IPTS Stylus Pen" \
     | awk '{print $7}' \
     | cut -b 4-6)
 
@@ -40,11 +40,11 @@ ROTATED=$(xrandr \
 if [ $ROTATED = '(normal' ]; then
     xrandr --output $SCREEN --rotate right
     xinput set-prop $FINGER "Coordinate Transformation Matrix" 0 1 0 -1 0 1 0 0 1
-    xinput set-prop "11" "Coordinate Transformation Matrix" 0 1 0 -1 0 1 0 0 1
+    xinput set-prop $PEN "Coordinate Transformation Matrix" 0 1 0 -1 0 1 0 0 1
     echo "normal"
 else
     xrandr --output $SCREEN --rotate normal
     xinput set-prop $FINGER "Coordinate Transformation Matrix" 1 0 0 0 1 0 0 0 1
-    xinput set-prop "11" "Coordinate Transformation Matrix" 1 0 0 0 1 0 0 0 1
+    xinput set-prop $PEN "Coordinate Transformation Matrix" 1 0 0 0 1 0 0 0 1
     echo "not_normal"
 fi
