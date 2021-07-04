@@ -31,7 +31,7 @@ map('n', '<C-s>',           ':w<CR>',		                            { noremap = t
 map('n', '<leader>fo',      ':Neoformat<CR>',                               { noremap = true })	    -- formatting
 map('n', '<leader>m',       ':MaximizerToggle<CR>',                         { noremap = true })	    -- maximized buffer
 
--- spelling bindings
+-- spelling
 map('n', '<leader>us',      ':setlocal spell! spelllang=en<CR>',            { noremap = true })     -- check english spelling
 map('n', '<leader>se',      ':setlocal spell! spelllang=se<CR>',            { noremap = true })     -- check swedish spelling
 
@@ -45,6 +45,9 @@ map('n', '<leader>ds',      ':call vimspector#Reset()<CR>',                 { no
 map('n', '<leader>b',       ':call vimspector#ToggleBreakpoint()<CR>',      { noremap = true })     -- toggle breakpoint
 map('n', '<leader>dr',      ':call vimspector#Restart()<CR>',               { noremap = true })     -- restart the debugger
 map('n', '<leader>e',       ':call vimspector#BalloonEval()<CR>',           { noremap = true })     -- evaluate expression under cursor
+
+-- ultisnips
+map('n', '<Tab>',           ':call UltiSnips#ExpandSnippetOrJump()<CR>',    { noremap = true })
 
 -- own functions
 map('n', '<leader>sw',       ':lua require("light-toggle").toggle()<CR>',   { noremap = true })     -- evaluate expression under cursor
