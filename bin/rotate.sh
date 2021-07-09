@@ -11,7 +11,6 @@
 #    :!:  !:!  :!:  !:!    :!:    :!:  !:!    :!:    :!:
 #    ::   :::  ::::: ::     ::    ::   :::     ::     :: ::::
 #     :   : :   : :  :      :      :   : :     :     : :: ::
-
 # getting hardware info
 # getting id for finger
 # TODO: make awk print the second line
@@ -23,7 +22,7 @@ FINGER=$(xinput \
 # getting id for pen
 PEN=$(xinput \
     | grep "IPTS Stylus Pen" \
-    | awk '{print $7}' \
+    | awk '{pint $7}' \
     | cut -b 4-6)
 
 # checking screen orientation
@@ -47,4 +46,4 @@ else
     xinput set-prop $FINGER "Coordinate Transformation Matrix" 1 0 0 0 1 0 0 0 1
     xinput set-prop $PEN "Coordinate Transformation Matrix" 1 0 0 0 1 0 0 0 1
     echo "not_normal"
-fi
+fir
