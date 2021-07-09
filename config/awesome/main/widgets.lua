@@ -3,7 +3,7 @@ local awful = require("awful")
 local gears = require("gears")
 -- local client = require("client")
 local beautiful = require("beautiful")
-local vars = require("my_variables")
+local vars = require("main.variables")
 
 local mysides = {
         widget = {
@@ -24,7 +24,32 @@ local mysides = {
     y = 10,
     visible = false,
 }
---
+
+-- clock 
+local clock = {
+    widget = wibox.widget.textclock("%H %M"),
+    align = "center",
+    valign = "center",
+}
+
+-- Submenu
+Myawesomemenu = {
+    {
+        "hotkeys",
+        function()
+            hotkeys_popup.show_help(nil, awful.screen.focused())
+        end
+    },
+    {"manual", vars.TERMINAL .. " -e man awesome"},
+    {"edit config", vars.EDITOR_CMD .. " " .. awesome.conffile},
+    {
+        "quit",
+        function()
+            awesome.quit()
+        end
+    }
+}
+
 -- create buttons for the taglist
 local taglist_buttons =
     gears.table.join(
@@ -126,5 +151,7 @@ local taglist_buttons =
 return { 
     mysides = mysides,
     -- taglist = taglist,
-    taglist_buttons = taglist_buttons
+    taglist_buttons = taglist_buttons,
+    Myawesomemenu = Myawesomemenu,
+    clock = clock
 }

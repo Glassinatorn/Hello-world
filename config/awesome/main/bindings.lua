@@ -1,13 +1,13 @@
 local gears = require("gears")
 local awful = require("awful")
 local wibox = require("wibox")
-local vars = require("my_variables")
+local vars = require("main.variables")
 local hotkeys_popup = require("awful.hotkeys_popup")
 --local client = require("client")
 -- local awesome = require("awesome")
 -- {{{ Key bindings
 -- Globalkeys
-local mysides = require("my_widgets").mysides
+local mysides = require("main.widgets").mysides
      
 Globalkeys = gears.table.join(
     -- popups
@@ -134,3 +134,8 @@ Clientbuttons =
         end)
 )
 
+return {
+    Globalkeys = Globalkeys,
+    Clientkeys = Clientkeys,
+    Clientbuttons = Clientbuttons,
+}

@@ -33,6 +33,7 @@ paq {'RishabhRD/popfix'}
 paq {'RishabhRD/nvim-lsputils'}
 paq {'szw/vim-maximizer'}
 paq {'lervag/vimtex'}
+paq {'ggandor/lightspeed.nvim'}
 
 
 -- loading settings
