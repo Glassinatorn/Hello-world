@@ -5,7 +5,7 @@ local vars = require("main.variables")
 local hotkeys_popup = require("awful.hotkeys_popup")
 
 -- Globalkeys
-local mysides = require("main.widgets").mysides
+local mysides = require("widgets.widgets").mysides
      
 Globalkeys = gears.table.join(
     -- popups

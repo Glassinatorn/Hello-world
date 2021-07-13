@@ -4,7 +4,7 @@ local gears = require("gears")
 local wibox = require("wibox")
 local beautiful = require("beautiful")
 
-local bindings = require("main.bindings")
+local bindings = require("bindings.bindings")
 local vars = require("main.variables")
 
 -- connecting tags for each screen

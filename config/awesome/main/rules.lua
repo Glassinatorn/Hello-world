@@ -1,6 +1,6 @@
 local awful = require("awful")
 local beautiful = require("beautiful")
-local bindings = require("main.bindings")
+local bindings = require("bindings.bindings")
 
 rules = {
     -- All clients will match this rule.

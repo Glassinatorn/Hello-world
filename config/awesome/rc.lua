@@ -28,10 +28,10 @@ require("awful.hotkeys_popup.keys")
 beautiful.init(os.getenv("HOME") .. "/.config/awesome/themes/glass/theme.lua")
 
 local vars = require("main.variables")      -- variables
-local bindings = require("main.bindings")   -- keybindings
-require("main.screen")                      -- connecting tags to each screen
+local bindings = require("bindings.bindings")   -- keybindings
+require("bindings.screen")                      -- connecting tags to each screen
 local rules = require("main.rules")         -- rules
-local widgets = require("main.widgets")     -- widgets
+local widgets = require("widgets.widgets")     -- widgets
 
 require("main.layouts")                     -- layouts
 

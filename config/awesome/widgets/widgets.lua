@@ -4,7 +4,7 @@ local gears = require("gears")
 local beautiful = require("beautiful")
 
 local vars = require("main.variables")
-local menu = require("main.menu")
+local menu = require("widgets.menu")
 
 -- sidebar widget
 local mysides = {
