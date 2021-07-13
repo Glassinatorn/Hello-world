@@ -63,5 +63,10 @@ rules = {
     --   properties = { screen = 1, tag = "2" } },
 }
 
-return { rules = rules }
+-- setup function
+local function setup()
+    awful.rules.rules = rules
+end
+
+return { setup = setup }
 
