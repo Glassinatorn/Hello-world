@@ -63,6 +63,5 @@ rules = {
     --   properties = { screen = 1, tag = "2" } },
 }
 
-return {
-    rules = rules
-}
+return { rules = rules }
+
