@@ -1,23 +1,23 @@
 local gears = require("gears")
 local awful = require("awful")
 local wibox = require("wibox")
-local vars = require("main.variables")
+local vars = require("my_variables")
 local hotkeys_popup = require("awful.hotkeys_popup")
-
+--local client = require("client")
+-- local awesome = require("awesome")
+-- {{{ Key bindings
 -- Globalkeys
-local mysides = require("main.widgets").mysides
+local mysides = require("my_widgets").mysides
      
 Globalkeys = gears.table.join(
     -- popups
     awful.key({vars.MODKEY}, "s", hotkeys_popup.show_help, {description = "show help", group = "awesome"}),
     awful.key({vars.MODKEY}, "u", function () awful.popup(mysides) end, {description = "show help", group = "awesome"}),
-
     -- client focus
     awful.key({vars.MODKEY}, "h", function() awful.client.focus.global_bydirection("left") end, {description = "focus client to the left", group = "client"}),
     awful.key({vars.MODKEY}, "j", function() awful.client.focus.global_bydirection("down") end, {description = "focus client below", group = "client"}),
     awful.key({vars.MODKEY}, "k", function() awful.client.focus.global_bydirection("up") end, {description = "focus client above", group = "client"}),
     awful.key({vars.MODKEY}, "l", function() awful.client.focus.global_bydirection("right") end, {description = "focus client to the right", group = "client"}),
-
     -- local layout
     awful.key({vars.MODKEY, "Shift"}, "h",
         function(c)
@@ -55,12 +55,9 @@ Globalkeys = gears.table.join(
         end,
         {description = "swap with client to the right", group = "client"}
     ),
-
-    -- change layout scheme
     awful.key({vars.MODKEY}, "[", function() awful.layout.inc(-1) end, {description = "select previous", group = "layout"}),
     awful.key({vars.MODKEY}, "]", function() awful.layout.inc(1) end, {description = "select next", group = "layout"}),
 
-    -- focus lastly used client
     awful.key({vars.MODKEY},
         "Tab",
         function()
@@ -118,51 +115,6 @@ for i = 1, 9 do
     )
 end
 
--- Create a wibox for each screen 
-local taglist_buttons =
-    gears.table.join(
-    awful.button(
-        {},
-        1,
-        function(t)
-            t:view_only()
-        end
-    ),
-    awful.button(
-        {vars.MODKEY},
-        1,
-        function(t)
-            if client.focus then
-                client.focus:move_to_tag(t)
-            end
-        end
-    ),
-    awful.button({}, 3, awful.tag.viewtoggle),
-    awful.button(
-        {vars.MODKEY},
-        3,
-        function(t)
-            if client.focus then
-                client.focus:toggle_tag(t)
-            end
-        end
-    ),
-    awful.button(
-        {},
-        4,
-        function(t)
-            awful.tag.viewnext(t.screen)
-        end
-    ),
-    awful.button(
-        {},
-        5,
-        function(t)
-            awful.tag.viewprev(t.screen)
-        end
-    )
-)
-
 -- Clientbuttons
 Clientbuttons =
     gears.table.join(
@@ -182,29 +134,3 @@ Clientbuttons =
         end)
 )
 
--- {{{ Mouse bindings
-root.buttons(
-    gears.table.join(
-        awful.button(
-            {},
-            3,
-            function()
-                Mymainmenu:toggle()
-            end
-        ),
-        awful.button({}, 4, awful.tag.viewnext),
-        awful.button({}, 5, awful.tag.viewprev)
-    )
-)
--- }}}
-
--- Set keys
-root.keys(Globalkeys)
--- }}}
-
-return {
-    Globalkeys = Globalkeys,
-    Clientkeys = Clientkeys,
-    taglist_buttons = taglist_buttons,
-    Clientbuttons = Clientbuttons,
-}

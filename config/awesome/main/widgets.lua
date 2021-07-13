@@ -1,10 +1,12 @@
 local wibox = require("wibox")
 local awful = require("awful")
 local gears = require("gears")
--- local client = require("client")
 local beautiful = require("beautiful")
-local vars = require("main.variables")
 
+local vars = require("main.variables")
+local menu = require("main.menu")
+
+-- sidebar widget
 local mysides = {
         widget = {
             {
@@ -32,25 +34,7 @@ local clock = {
     valign = "center",
 }
 
--- Submenu
-Myawesomemenu = {
-    {
-        "hotkeys",
-        function()
-            hotkeys_popup.show_help(nil, awful.screen.focused())
-        end
-    },
-    {"manual", vars.TERMINAL .. " -e man awesome"},
-    {"edit config", vars.EDITOR_CMD .. " " .. awesome.conffile},
-    {
-        "quit",
-        function()
-            awesome.quit()
-        end
-    }
-}
-
--- create buttons for the taglist
+-- buttons for the taglist
 local taglist_buttons =
     gears.table.join(
     awful.button(
@@ -95,63 +79,9 @@ local taglist_buttons =
     )
 )
 
--- -- Create a taglist widget
--- local taglist =
---     awful.widget.taglist {
---     filter = awful.widget.taglist.filter.all,
---     buttons = taglist_buttons,
---     bg = "#000000",
---     --style = {
---     --    shape = gears.shape.square
---     --},
---     --layout = {
---     --    --spacing = -14,
---     --    spacing_widget = {
---     --        shape = gears.shape.square,
---     --        widget = wibox.widget.seperator,
---     --    },
---     --    layout = wibox.layout.fixed.horizontal
---     --},
---     widget_template = {
--- 	{
--- 	    {
--- 		{
--- 		    {
--- 			{
--- 			    id = "index_role",
--- 			    widget = wibox.widget.textbox
--- 			},
--- 			margins = 1,
--- 			widget = wibox.container.margin
--- 		    },
--- 		    bg = beautiful.bg_normal,--"#ececec",
--- 		    shape = gears.shape.square,
--- 		    widget = wibox.container.background
--- 		},
--- 		{
--- 		    id = "text_role",
--- 		    widget = wibox.widget.textbox
--- 		},
--- 		layout = wibox.layout.fixed.horizontal
--- 	    },
--- 	    right = 15,
--- 	    widget = wibox.container.margin
--- 	},
--- 	id = "background_role",
--- 	widget = wibox.container.background,
--- 	create_callback = function(self, c3, index, objects)
--- 	    self:get_children_by_id("index_role")[1].markup = "<b>  " .. index .. "  </b>"
--- 	end
---     }
---     --buttons = taglist_buttons
--- }
-
-
 
 return { 
     mysides = mysides,
-    -- taglist = taglist,
+    clock = clock,
     taglist_buttons = taglist_buttons,
-    Myawesomemenu = Myawesomemenu,
-    clock = clock
 }

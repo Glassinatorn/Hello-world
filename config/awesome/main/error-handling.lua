@@ -1,12 +1,10 @@
 -- notification module
 local naughty = require("naughty")
 
-
------------------------------------------------------------
-
 -- check if awesome encountered an error during startup and fell back to 
 -- another config (this code will only execute for the fallback config)
 
+-- check if there was some errors 
 if awesome.startup_errors then 
     naughty.notify({
 	preset = naughty.config.presets.critical,

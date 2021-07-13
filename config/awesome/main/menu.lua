@@ -1,43 +1,52 @@
 -- standard awesome library
 local awful = require("awful")
+local beautiful = require("beautiful")
 local hotkeys_popup = require("awful.hotkeys_popup").widget
 
--- theme handling library
-local beutiful = require("beutiful")
+local vars = require("main.variables")
 
 
-local M = {}
-local _M = {}
-
-local terminal = Config.vars.terminal
-
-
--- variable definitions
--- this is used later as the default terminal and editor to use
-local editor = os.getenv("EDITOR") or "vi"
-local editor_cmd = terminal .. " -e " .. editor
-
-M.awesome = {
-    {"hotkeys", function()
-	hotkeys_popup.show_help(nil, awful.screen.focused())
-    end},
-    {"manual", terminal .. " -e man awesome"},
-    {"edit config", editor_cmd .. " " .. awesome.conffile},
-    {"Terminal", terminal},
-    {"Shutdown/Logout", "oblogout"},
-    {"restart", awesome.restart},
-    {"quit", function() awesome.quit() end}
+-- Submenu
+Myawesomemenu = {
+    {
+        "hotkeys",
+        function()
+            hotkeys_popup.show_help(nil, awful.screen.focused())
+        end
+    },
+    {"manual", vars.TERMINAL .. " -e man awesome"},
+    {"edit config", vars.EDITOR_CMD .. " " .. awesome.conffile},
+    {
+        "quit",
+        function()
+            awesome.quit()
+        end
+    }
 }
 
-
-function _M.get ()
-    -- main menu
-    local menu_items = {
-	{"awesome", M.awesome, beutiful.awesome.awesome_subicon},
-	{"open terminal", terminal}
+-- Main menu
+Mymainmenu =
+    awful.menu(
+    {
+        items = {
+            {"Awesome", Myawesomemenu, beautiful.awesome_icon},
+            {"Open terminal", vars.TERMINAL},
+            {"Open sidebar", function () end}
+        }
     }
+)
 
-    return menu_items
-end
+-- Launcher
+Mylauncher =
+    awful.widget.launcher(
+    {
+        image = beautiful.awesome_icon,
+        menu = Mymainmenu
+    }
+)
 
-return setmetatable({ {}, {__call = function(_, ...) return _M.get(...) end} })
+return {
+    Myawesomemenu = Myawesomemenu,
+    Mymainmenu = Mymainmenu,
+    Mylauncher = Mylauncher
+}
