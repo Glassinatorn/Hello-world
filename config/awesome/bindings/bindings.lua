@@ -1,6 +1,5 @@
 local gears = require("gears")
 local awful = require("awful")
-local wibox = require("wibox")
 local vars = require("main.variables")
 local hotkeys_popup = require("awful.hotkeys_popup")
 
@@ -86,33 +85,38 @@ Clientkeys =
     awful.key({vars.MODKEY}, "t", function(c) c.ontop = not c.ontop end, {description = "toggle keep on top", group = "client"})
 )
 
+-- go to tag
+local function move_to_tag(i)
+    local screen = awful.screen.focused()
+    local tag = screen.tags[i]
+    if tag then
+	tag:view_only()
+    end
+end
+
+-- send client to tag
+local function send_to_tag(i)
+    if client.focus then
+	local tag = client.focus.screen.tags[i]
+	if tag then
+	    client.focus:move_to_tag(tag)
+	end
+    end
+end
+
 -- Bind all key numbers to tags.
--- Be careful: we use keycodes to make it work on any keyboard layout.
--- This should map on the top row of your keyboard, usually 1 to 9.
 for i = 1, 9 do
     Globalkeys =
         gears.table.join(
         Globalkeys,
-        -- View tag only.
+        -- view tag
         awful.key({vars.MODKEY}, "#" .. i + 9,
-            function()
-                local screen = awful.screen.focused()
-                local tag = screen.tags[i]
-                if tag then
-                    tag:view_only()
-                end
-            end,
+            function() move_to_tag(i) end,
             {description = "view tag #" .. i, group = "tag"}
         ),
+        -- send to tag
         awful.key({vars.MODKEY, "Shift"}, "#" .. i + 9,
-            function()
-                if client.focus then
-                    local tag = client.focus.screen.tags[i]
-                    if tag then
-                        client.focus:move_to_tag(tag)
-                    end
-                end
-            end,
+            function() send_to_tag(i) end,
             {description = "move focused client to tag #" .. i, group = "tag"}
         )
     )
