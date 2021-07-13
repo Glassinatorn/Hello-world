@@ -3,7 +3,7 @@ local beautiful = require("beautiful")
 local bindings = require("bindings.bindings")
 
 rules = {
-    -- All clients will match this rule.
+   -- All clients will match this rule.
     {
         rule = {},
         properties = {
