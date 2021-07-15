@@ -70,6 +70,7 @@ local wibar_boxes = {
     shape = gears.shape.rectangle
 }
 
+-- setup function
 local function setup(s)
     -- connecting tags for each screen
     awful.screen.connect_for_each_screen(
