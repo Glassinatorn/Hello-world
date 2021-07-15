@@ -15,7 +15,7 @@
 --  signals [x]
 --  layouts [x]
 --  bindings [x]
---  screen []
+--  screen [v]
 --  widgets []
 
 pcall(require, "luarocks.loader") -- luarocks

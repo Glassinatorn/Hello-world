@@ -6,6 +6,7 @@ local beautiful = require("beautiful")
 
 local bindings = require("bindings.bindings")
 
+-- tags for wibox
 local tags = { 
     code = {
 	layout = lain.layout.centerwork,
@@ -26,6 +27,49 @@ local tags = {
     }
 }
 
+-- template for taglist in the wibox
+local taglist_template = {
+    {
+	{
+	    {
+		{
+		    {
+			id = "index_role",
+			widget = wibox.widget.textbox
+		    },
+		    margins = 1,
+		    widget = wibox.container.margin
+		},
+		bg = beautiful.bg_normal,
+		shape = gears.shape.square,
+		widget = wibox.container.background
+	    },
+	    {
+		id = "text_role",
+		widget = wibox.widget.textbox
+	    },
+	    layout = wibox.layout.fixed.horizontal
+	},
+	right = 15,
+	widget = wibox.container.margin
+    },
+    id = "background_role",
+    widget = wibox.container.background,
+    create_callback = function(self, c3, index, objects)
+	self:get_children_by_id("index_role")[1].markup = "<b>  " .. index .. "  </b>"
+    end
+}
+
+-- wibox
+local wibar_boxes = {
+    screen = s,
+    stretch = false,
+    height = beautiful.wibar_height,
+    width = beautiful.wibar_width,
+    bg = beautiful.transparent,
+    shape = gears.shape.rectangle
+}
+
 -- connecting tags for each screen
 awful.screen.connect_for_each_screen(
     function(s)
@@ -44,51 +88,11 @@ awful.screen.connect_for_each_screen(
             filter = awful.widget.taglist.filter.all,
             buttons = bindings.taglist_buttons,
             bg = "#000000",
-            widget_template = {
-                {
-                    {
-                        {
-                            {
-                                {
-                                    id = "index_role",
-                                    widget = wibox.widget.textbox
-                                },
-                                margins = 1,
-                                widget = wibox.container.margin
-                            },
-                            bg = beautiful.bg_normal,--"#ececec",
-                            shape = gears.shape.square,
-                            widget = wibox.container.background
-                        },
-                        {
-                            id = "text_role",
-                            widget = wibox.widget.textbox
-                        },
-                        layout = wibox.layout.fixed.horizontal
-                    },
-                    right = 15,
-                    widget = wibox.container.margin
-                },
-                id = "background_role",
-                widget = wibox.container.background,
-                create_callback = function(self, c3, index, objects)
-                    self:get_children_by_id("index_role")[1].markup = "<b>  " .. index .. "  </b>"
-                end
-            }
+            widget_template = taglist_template
         }
 
         -- Create the wibox
-        s.mywibox =
-            awful.wibar(
-            {
-                screen = s,
-                stretch = false,
-                height = beautiful.wibar_height,
-                width = beautiful.wibar_width,
-                bg = beautiful.transparent,
-                shape = gears.shape.rectangle
-            }
-        )
+        s.mywibox = awful.wibar(wibar_boxes)
 
         -- Add widgets to the wibox
         s.mywibox:setup {
