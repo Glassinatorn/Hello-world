@@ -5,32 +5,34 @@ local wibox = require("wibox")
 local beautiful = require("beautiful")
 
 local bindings = require("bindings.bindings")
-local vars = require("main.variables")
+
+local tags = { 
+    code = {
+	layout = lain.layout.centerwork,
+	master_fill_policy = "master_width_factor",
+	gap_single_client = true,
+	screen = s,
+	selected = true
+    },
+    webb = {
+	master_fill_policy = "master_width_factor",
+	gap_single_client = true,
+	screen = s
+    },
+    music = {
+	master_fill_policy = "master_width_factor",
+	gap_single_client = true,
+	screen = s
+    }
+}
 
 -- connecting tags for each screen
 awful.screen.connect_for_each_screen(
     function(s)
         -- workplace labels
-        awful.tag.add("   code", {
-                layout = lain.layout.centerwork,
-                master_fill_policy = "master_width_factor",
-                gap_single_client = true,
-                screen = s,
-                selected = true
-            }
-        )
-        awful.tag.add("   webb", {
-                master_fill_policy = "master_width_factor",
-                gap_single_client = true,
-                screen = s
-            }
-        )
-        awful.tag.add("   music", {
-                master_fill_policy = "master_width_factor",
-                gap_single_client = true,
-                screen = s
-            }
-        )
+        awful.tag.add("   code", tags["code"])
+        awful.tag.add("   webb", tags["webb"])
+        awful.tag.add("   music", tags["music"])
 
         -- Create a promptbox for each screen
         s.mypromptbox = awful.widget.prompt()
@@ -110,33 +112,3 @@ awful.screen.connect_for_each_screen(
         }
     end
 )
-
--- -- binding keys for each tag
--- for i = 1, 9 do
---     Globalkeys =
---         gears.table.join(
---         Globalkeys,
---         -- View tag only.
---         awful.key({vars.MODKEY}, "#" .. i + 9,
---             function()
---                 local screen = awful.screen.focused()
---                 local tag = screen.tags[i]
---                 if tag then
---                     tag:view_only()
---                 end
---             end,
---             {description = "view tag #" .. i, group = "tag"}
---         ),
---         awful.key({vars.MODKEY, "Shift"}, "#" .. i + 9,
---             function()
---                 if client.focus then
---                     local tag = client.focus.screen.tags[i]
---                     if tag then
---                         client.focus:move_to_tag(tag)
---                     end
---                 end
---             end,
---             {description = "move focused client to tag #" .. i, group = "tag"}
---         )
---     )
--- end
