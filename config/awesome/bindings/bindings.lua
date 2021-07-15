@@ -6,84 +6,33 @@ local hotkeys_popup = require("awful.hotkeys_popup")
 -- Globalkeys
 local mysides = require("widgets.widgets").mysides
      
-Globalkeys = gears.table.join(
-    -- popups
-    awful.key({vars.MODKEY}, "s", hotkeys_popup.show_help, {description = "show help", group = "awesome"}),
-    awful.key({vars.MODKEY}, "u", function () awful.popup(mysides) end, {description = "show help", group = "awesome"}),
+-- wrapper for client focus
+local function focus_tag_wrapper(direction)
+    awful.client.focus.global_bydirection(direction)
+end
 
-    -- client focus
-    awful.key({vars.MODKEY}, "h", function() awful.client.focus.global_bydirection("left") end, {description = "focus client to the left", group = "client"}),
-    awful.key({vars.MODKEY}, "j", function() awful.client.focus.global_bydirection("down") end, {description = "focus client below", group = "client"}),
-    awful.key({vars.MODKEY}, "k", function() awful.client.focus.global_bydirection("up") end, {description = "focus client above", group = "client"}),
-    awful.key({vars.MODKEY}, "l", function() awful.client.focus.global_bydirection("right") end, {description = "focus client to the right", group = "client"}),
+-- wrapper for client swap
+local function swap_tag_wrapper(direction, c)
+    awful.client.swap.global_bydirection(direction, c, true)
+    if client.focus then
+	client.focus:raise()
+    end
+end
 
-    -- local layout
-    awful.key({vars.MODKEY, "Shift"}, "h",
-        function(c)
-            awful.client.swap.global_bydirection("left", c, true)
-            if client.focus then
-                client.focus:raise()
-            end
-        end,
-        {description = "swap with client to the left", group = "client"}
-    ),
-    awful.key({vars.MODKEY, "Shift"}, "j",
-        function()
-            awful.client.swap.global_bydirection("down")
-            if client.focus then
-                client.focus:raise()
-            end
-        end,
-        {description = "swap with client below", group = "client"}
-    ),
-    awful.key({vars.MODKEY, "Shift"}, "k",
-        function()
-            awful.client.swap.global_bydirection("up")
-            if client.focus then
-                client.focus:raise()
-            end
-        end,
-        {description = "swap with client above", group = "client"}
-    ),
-    awful.key({vars.MODKEY, "Shift"}, "l",
-        function()
-            awful.client.swap.global_bydirection("right")
-            if client.focus then
-                client.focus:raise()
-            end
-        end,
-        {description = "swap with client to the right", group = "client"}
-    ),
+-- client focus based on history
+local function history_focus()
+    awful.client.focus.history.previous()
+    if client.focus then
+	client.focus:raise()
+    end
+end
 
-    -- change layout scheme
-    awful.key({vars.MODKEY}, "[", function() awful.layout.inc(-1) end, {description = "select previous", group = "layout"}),
-    awful.key({vars.MODKEY}, "]", function() awful.layout.inc(1) end, {description = "select next", group = "layout"}),
-
-    -- focus lastly used client
-    awful.key({vars.MODKEY},
-        "Tab",
-        function()
-            awful.client.focus.history.previous()
-            if client.focus then
-                client.focus:raise()
-            end
-        end,
-        {description = "go back", group = "client"}
-    ),
-
-    -- Standard program
-    awful.key({vars.MODKEY, "Control"}, "r", awesome.restart, {description = "reload awesome", group = "awesome"}),
-    awful.key({vars.MODKEY, "Shift"}, "q", awesome.quit, {description = "quit awesome", group = "awesome"})
-)
-
--- Clientkeys
-Clientkeys =
-    gears.table.join(
-    awful.key({vars.MODKEY}, "f", function(c) c.fullscreen = not c.fullscreen c:raise() end, {description = "toggle fullscreen", group = "client"}),
-    awful.key({vars.MODKEY}, "q", function(c) c:kill() end, {description = "close", group = "client"}),
-    awful.key({vars.MODKEY, "Control"}, "space", awful.client.floating.toggle, {description = "toggle floating", group = "client"}),
-    awful.key({vars.MODKEY}, "t", function(c) c.ontop = not c.ontop end, {description = "toggle keep on top", group = "client"})
-)
+-- toggle fullscreen for selected client
+local function toggle_fullscreen(c)
+    c.fullscreen = not 
+    c.fullscreen 
+    c:raise()
+end
 
 -- go to tag
 local function move_to_tag(i)
@@ -103,6 +52,47 @@ local function send_to_tag(i)
 	end
     end
 end
+
+-- globalkeys
+Globalkeys = gears.table.join(
+    -- popups
+    awful.key({vars.MODKEY}, "s", hotkeys_popup.show_help, {description = "show help", group = "awesome"}),
+    awful.key({vars.MODKEY}, "u", function () awful.popup(mysides) end, {description = "show help", group = "awesome"}),
+
+    -- client focus
+    awful.key({vars.MODKEY}, "h", function() focus_tag_wrapper("left") end, {description = "focus client to the left", group = "client"}),
+    awful.key({vars.MODKEY}, "j", function() focus_tag_wrapper("down") end, {description = "focus client below", group = "client"}),
+    awful.key({vars.MODKEY}, "k", function() focus_tag_wrapper("up") end, {description = "focus client above", group = "client"}),
+    awful.key({vars.MODKEY}, "l", function() focus_tag_wrapper("right") end, {description = "focus client to the right", group = "client"}),
+
+    -- local layout
+    awful.key({vars.MODKEY, "Shift"}, "h", function(c) swap_tag_wrapper("left", c) end, {description = "swap with client to the left", group = "client"}),
+    awful.key({vars.MODKEY, "Shift"}, "j", function() swap_tag_wrapper("down", c) end, {description = "swap with client below", group = "client"}),
+    awful.key({vars.MODKEY, "Shift"}, "k", function() swap_tag_wrapper("up", c) end, {description = "swap with client above", group = "client"}),
+    awful.key({vars.MODKEY, "Shift"}, "l", function() swap_tag_wrapper("right", c) end, {description = "swap with client to the right", group = "client"}),
+
+    -- change layout scheme
+    awful.key({vars.MODKEY}, "[", function() awful.layout.inc(-1) end, {description = "select previous", group = "layout"}),
+    awful.key({vars.MODKEY}, "]", function() awful.layout.inc(1) end, {description = "select next", group = "layout"}),
+
+    -- focus based on history
+    awful.key({vars.MODKEY}, "Tab", function() history_focus() end, {description = "go back", group = "client"}),
+
+    -- Standard program
+    awful.key({vars.MODKEY, "Control"}, "r", awesome.restart, {description = "reload awesome", group = "awesome"}),
+    awful.key({vars.MODKEY, "Shift"}, "q", awesome.quit, {description = "quit awesome", group = "awesome"})
+)
+
+-- clientkeys
+Clientkeys =
+    gears.table.join(
+    awful.key({vars.MODKEY}, "f", function(c) toggle_fullscreen(c) end, {description = "toggle fullscreen", group = "client"}),
+    awful.key({vars.MODKEY}, "q", function(c) c:kill() end, {description = "close", group = "client"}),
+    awful.key({vars.MODKEY, "Control"}, "space", awful.client.floating.toggle, {description = "toggle floating", group = "client"}),
+    awful.key({vars.MODKEY}, "t", function(c) c.ontop = not c.ontop end, {description = "toggle keep on top", group = "client"})
+)
+
+
 
 -- Bind all key numbers to tags.
 for i = 1, 9 do

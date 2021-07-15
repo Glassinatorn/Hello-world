@@ -10,6 +10,14 @@
 --  :   : :    :: :  : :    : :: ::   :: : :     : :  :    :      :    : :: ::   
                                                                               
 
+-- TODO:
+--  rules [x]
+--  signals [x]
+--  layouts [x]
+--  bindings [v]
+--  screen []
+--  widgets []
+
 pcall(require, "luarocks.loader") -- luarocks
 
 -- importing aweomsewm libraries
