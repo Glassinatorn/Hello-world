@@ -3,7 +3,6 @@ local awful = require("awful")
 local vars = require("main.variables")
 local hotkeys_popup = require("awful.hotkeys_popup")
 
--- Globalkeys
 local mysides = require("widgets.widgets").mysides
      
 -- wrapper for client focus
@@ -53,6 +52,18 @@ local function send_to_tag(i)
     end
 end
 
+-- move client with mouse
+local function mouse_move_client(client)
+    client:emit_signal("request::activate", "mouse_click", {raise = true})
+    awful.mouse.client.move(client)
+end
+
+-- resize client with mouse
+local function mouse_resize_client(client)
+    client:emit_signal("request::activate", "mouse_click", {raise = true})
+    awful.mouse.client.resize(client)
+end
+
 -- globalkeys
 Globalkeys = gears.table.join(
     -- popups
@@ -92,62 +103,51 @@ Clientkeys =
     awful.key({vars.MODKEY}, "t", function(c) c.ontop = not c.ontop end, {description = "toggle keep on top", group = "client"})
 )
 
-
-
--- Bind all key numbers to tags.
-for i = 1, 9 do
-    Globalkeys =
-        gears.table.join(
-        Globalkeys,
-        -- view tag
-        awful.key({vars.MODKEY}, "#" .. i + 9,
-            function() move_to_tag(i) end,
-            {description = "view tag #" .. i, group = "tag"}
-        ),
-        -- send to tag
-        awful.key({vars.MODKEY, "Shift"}, "#" .. i + 9,
-            function() send_to_tag(i) end,
-            {description = "move focused client to tag #" .. i, group = "tag"}
-        )
-    )
-end
-
+-- make taglist clickable
 local taglist_buttons = awful.button({}, 1, function(t) t:view_only() end)
 
 -- Clientbuttons
 Clientbuttons =
     gears.table.join(
-    awful.button({}, 1,
-        function(c)
-            c:emit_signal("request::activate", "mouse_click", {raise = true})
-        end),
-    awful.button({vars.MODKEY}, 1,
-        function(c)
-            c:emit_signal("request::activate", "mouse_click", {raise = true})
-            awful.mouse.client.move(c)
-        end),
-    awful.button({vars.MODKEY}, 3,
-        function(c)
-            c:emit_signal("request::activate", "mouse_click", {raise = true})
-            awful.mouse.client.resize(c)
-        end)
+	awful.button({}, 1, function(c) c:emit_signal("request::activate", "mouse_click", {raise = true}) end),
+	awful.button({vars.MODKEY}, 1, function(c) mouse_move_client(c) end),
+	awful.button({vars.MODKEY}, 3, function(c) mouse_resize_client(c) end)
 )
 
--- {{{ Mouse bindings
-root.buttons(
-    gears.table.join(
-        awful.button( {}, 3, function() Mymainmenu:toggle() end),
-        awful.button({}, 4, awful.tag.viewnext),
-        awful.button({}, 5, awful.tag.viewprev)
+local function setup()
+    -- Bind all key numbers to tags.
+    for i = 1, 9 do
+	Globalkeys =
+	    gears.table.join(
+	    Globalkeys,
+	    -- view tag
+	    awful.key({vars.MODKEY}, "#" .. i + 9,
+		function() move_to_tag(i) end,
+		{description = "view tag #" .. i, group = "tag"}
+	    ),
+	    -- send to tag
+	    awful.key({vars.MODKEY, "Shift"}, "#" .. i + 9,
+		function() send_to_tag(i) end,
+		{description = "move focused client to tag #" .. i, group = "tag"}
+	    )
+	)
+    end
+
+    -- Mouse bindings
+    root.buttons(
+	gears.table.join(
+	    awful.button( {}, 3, function() Mymainmenu:toggle() end),
+	    awful.button({}, 4, awful.tag.viewnext),
+	    awful.button({}, 5, awful.tag.viewprev)
+	)
     )
-)
--- }}}
 
--- Set keys
-root.keys(Globalkeys)
--- }}}
+    -- Set keys
+    root.keys(Globalkeys)
+end
 
 return {
+    setup = setup,
     Globalkeys = Globalkeys,
     Clientkeys = Clientkeys,
     taglist_buttons = taglist_buttons,

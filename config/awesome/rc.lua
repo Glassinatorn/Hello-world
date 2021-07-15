@@ -14,7 +14,7 @@
 --  rules [x]
 --  signals [x]
 --  layouts [x]
---  bindings [v]
+--  bindings [x]
 --  screen []
 --  widgets []
 
@@ -34,7 +34,7 @@ beautiful.init(os.getenv("HOME") .. "/.config/awesome/themes/glass/theme.lua")
 require("awful.autofocus")
 require("awful.hotkeys_popup.keys")
 
-require("bindings.bindings")                -- keybindings
+local bindings = require("bindings.bindings")                -- keybindings
 require("bindings.screen")                  -- connecting tags to each screen
 require("widgets.widgets")                  -- widgets
 local signals = require("main.signals")     -- Signals
@@ -46,3 +46,4 @@ Mykeyboardlayout = awful.widget.keyboardlayout() -- Keyboard map indicator and s
 rules.setup()             -- rules
 signals.setup(c)
 layouts.setup(c)
+bindings.setup()
