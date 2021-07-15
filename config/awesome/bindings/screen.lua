@@ -70,38 +70,42 @@ local wibar_boxes = {
     shape = gears.shape.rectangle
 }
 
--- connecting tags for each screen
-awful.screen.connect_for_each_screen(
-    function(s)
-        -- workplace labels
-        awful.tag.add("   code", tags["code"])
-        awful.tag.add("   webb", tags["webb"])
-        awful.tag.add("   music", tags["music"])
+local function setup(s)
+    -- connecting tags for each screen
+    awful.screen.connect_for_each_screen(
+	function(s)
+	    -- workplace labels
+	    awful.tag.add("   code", tags["code"])
+	    awful.tag.add("   webb", tags["webb"])
+	    awful.tag.add("   music", tags["music"])
 
-        -- Create a promptbox for each screen
-        s.mypromptbox = awful.widget.prompt()
+	    -- Create a promptbox for each screen
+	    s.mypromptbox = awful.widget.prompt()
 
-        -- taglist widget
-        s.mytaglist =
-            awful.widget.taglist {
-            screen = s,
-            filter = awful.widget.taglist.filter.all,
-            buttons = bindings.taglist_buttons,
-            bg = "#000000",
-            widget_template = taglist_template
-        }
+	    -- taglist widget
+	    s.mytaglist =
+		awful.widget.taglist {
+		    screen = s,
+		    filter = awful.widget.taglist.filter.all,
+		    buttons = bindings.taglist_buttons,
+		    bg = "#000000",
+		    widget_template = taglist_template
+	    }
 
-        -- Create the wibox
-        s.mywibox = awful.wibar(wibar_boxes)
+	    -- Create the wibox
+	    s.mywibox = awful.wibar(wibar_boxes)
 
-        -- Add widgets to the wibox
-        s.mywibox:setup {
-            layout = wibox.layout.align.horizontal,
-            {
-                -- Left widgets
-                layout = wibox.layout.fixed.horizontal,
-                s.mytaglist
-            }
-        }
-    end
-)
+	    -- Add widgets to the wibox
+	    s.mywibox:setup {
+		layout = wibox.layout.align.horizontal,
+		{
+		    -- Left widgets
+		    layout = wibox.layout.fixed.horizontal,
+		    s.mytaglist
+		}
+	    }
+	end
+    )
+end
+
+return { setup = setup }
