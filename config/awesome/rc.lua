@@ -32,14 +32,14 @@ local vars = require("main.variables")      -- variables
 local rules = require("main.rules")         -- rules
 local layouts = require("main.layouts")     -- layouts
 local bindings = require("bindings.bindings")                -- keybindings
-local screen = require("bindings.screen")                  -- connecting tags to each screen
+local screens = require("bindings.screen")                  -- connecting tags to each screen
 local signals = require("main.signals")     -- Signals
 
 require("widgets.widgets")                  -- widgets
 
 
-rules.setup()             -- rules
+rules.setup()
 signals.setup(c)
 layouts.setup(c)
 bindings.setup()
-screen.setup(s)
+screens.setup(s)

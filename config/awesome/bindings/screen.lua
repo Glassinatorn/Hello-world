@@ -1,31 +1,11 @@
-local awful = require("awful")
-local lain = require("lain")
 local gears = require("gears")
 local wibox = require("wibox")
+local awful = require("awful")
+local lain = require("lain")
 local beautiful = require("beautiful")
-
 local bindings = require("bindings.bindings")
+mykeyboardlayout = awful.widget.keyboardlayout()
 
--- tags for wibox
-local tags = { 
-    code = {
-	layout = lain.layout.centerwork,
-	master_fill_policy = "master_width_factor",
-	gap_single_client = true,
-	screen = s,
-	selected = true
-    },
-    webb = {
-	master_fill_policy = "master_width_factor",
-	gap_single_client = true,
-	screen = s
-    },
-    music = {
-	master_fill_policy = "master_width_factor",
-	gap_single_client = true,
-	screen = s
-    }
-}
 
 -- template for taglist in the wibox
 local taglist_template = {
@@ -60,53 +40,58 @@ local taglist_template = {
     end
 }
 
--- wibox
-local wibar_boxes = {
-    screen = s,
-    stretch = false,
-    height = beautiful.wibar_height,
-    width = beautiful.wibar_width,
-    bg = beautiful.transparent,
-    shape = gears.shape.rectangle
-}
-
--- setup function
 local function setup(s)
-    -- connecting tags for each screen
+    -- connect tags and wibar for each screen
     awful.screen.connect_for_each_screen(
 	function(s)
-	    -- workplace labels
-	    awful.tag.add("   code", tags["code"])
-	    awful.tag.add("   webb", tags["webb"])
-	    awful.tag.add("   music", tags["music"])
+	-- Each screen has its own tag table.
+	awful.tag.add("   code", {
+	    layout = lain.layout.centerwork,
+	    master_fill_policy = "master_width_factor",
+	    gap_single_client = true,
+	    screen = s,
+	    selected = true
+	})
+	awful.tag.add("   webb", {
+	    master_fill_policy = "master_width_factor",
+	    gap_single_client = true,
+	    screen = s
+	})
+	awful.tag.add("   music", {
+	    master_fill_policy = "master_width_factor",
+	    gap_single_client = true,
+	    screen = s
+	})
 
-	    -- Create a promptbox for each screen
-	    s.mypromptbox = awful.widget.prompt()
+	-- Create a taglist widget
+	s.mytaglist = awful.widget.taglist {
+	    screen = s,
+	    filter = awful.widget.taglist.filter.all,
+	    buttons = bindings.taglist_buttons,
+	    bg = "#000000",
+	    widget_template = taglist_template,
+	}
 
-	    -- taglist widget
-	    s.mytaglist =
-		awful.widget.taglist {
-		    screen = s,
-		    filter = awful.widget.taglist.filter.all,
-		    buttons = bindings.taglist_buttons,
-		    bg = "#000000",
-		    widget_template = taglist_template
+	-- Create the wibox
+	s.mywibox = awful.wibar({ 
+	    screen = s,
+	    stretch = false,
+	    height = beautiful.wibar_height,
+	    width = beautiful.wibar_width,
+	    bg = beautiful.transparent,
+	    shape = gears.shape.rectangle,
+	})
+
+	-- Add widgets to the wibox
+	s.mywibox:setup {
+	    layout = wibox.layout.align.horizontal,
+	    {
+		-- Left widgets
+		layout = wibox.layout.fixed.horizontal,
+		s.mytaglist
 	    }
-
-	    -- Create the wibox
-	    s.mywibox = awful.wibar(wibar_boxes)
-
-	    -- Add widgets to the wibox
-	    s.mywibox:setup {
-		layout = wibox.layout.align.horizontal,
-		{
-		    -- Left widgets
-		    layout = wibox.layout.fixed.horizontal,
-		    s.mytaglist
-		}
-	    }
-	end
-    )
+	}
+    end)
 end
 
 return { setup = setup }
