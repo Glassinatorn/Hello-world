@@ -34,7 +34,7 @@ paq {'RishabhRD/nvim-lsputils'}
 paq {'szw/vim-maximizer'}
 paq {'lervag/vimtex'}
 paq {'ggandor/lightspeed.nvim'}
-
+paq {'norcalli/nvim-colorizer.lua'}
 
 -- loading settings
 require('settings')                     -- general settings

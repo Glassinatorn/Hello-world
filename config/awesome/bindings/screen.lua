@@ -9,35 +9,35 @@ mykeyboardlayout = awful.widget.keyboardlayout()
 
 -- template for taglist in the wibox
 local taglist_template = {
+{
     {
 	{
 	    {
 		{
-		    {
-			id = "index_role",
-			widget = wibox.widget.textbox
-		    },
-		    margins = 1,
-		    widget = wibox.container.margin
+		    id = "index_role",
+		    widget = wibox.widget.textbox
 		},
-		bg = beautiful.bg_normal,
-		shape = gears.shape.square,
-		widget = wibox.container.background
+		margins = 1,
+		widget = wibox.container.margin
 	    },
-	    {
-		id = "text_role",
-		widget = wibox.widget.textbox
-	    },
-	    layout = wibox.layout.fixed.horizontal
+	    bg = beautiful.bg_normal,
+	    shape = gears.shape.square,
+	    widget = wibox.container.background
 	},
-	right = 15,
-	widget = wibox.container.margin
+	{
+	    id = "text_role",
+	    widget = wibox.widget.textbox
+	},
+	layout = wibox.layout.fixed.horizontal
     },
-    id = "background_role",
-    widget = wibox.container.background,
-    create_callback = function(self, c3, index, objects)
-	self:get_children_by_id("index_role")[1].markup = "<b>  " .. index .. "  </b>"
-    end
+    right = 15,
+    widget = wibox.container.margin
+},
+id = "background_role",
+widget = wibox.container.background,
+create_callback = function(self, c3, index, objects)
+    self:get_children_by_id("index_role")[1].markup = "<b>  " .. index .. "  </b>"
+end
 }
 
 local function setup(s)

@@ -11,6 +11,18 @@ local shape = require("gears.shape")
 local cairo = require("lgi").cairo
 local themes_path = gfs.get_themes_dir()
 
+local colors = {
+    nord = {
+        teal        = "#00cdcd",
+        transparent = "#00000000",
+    },
+    teal_lightblue = {},
+    red_darkblue = {},
+    red_lightblue = {},
+    lightblue = {},
+    darkblue = {},
+
+}
 local theme = {}
 
 theme.transparent   = "#00000000"
@@ -35,8 +47,22 @@ theme.border_marked = "#91231c"
 
 theme.titlebar_bg   = "#05E3E3"
 
-theme.wibar_height  = 20
-theme.wibar_width   = 270
+theme.wibar_height  = dpi(20)
+theme.wibar_width   = dpi(330)
+
+-- hotkeys popup
+theme.hotkeys_bg    = 
+-- beautiful.hotkeys_bg	Hotkeys widget background color.
+-- beautiful.hotkeys_fg	Hotkeys widget foreground color.
+-- beautiful.hotkeys_border_width	Hotkeys widget border width.
+-- beautiful.hotkeys_border_color	Hotkeys widget border color.
+-- beautiful.hotkeys_shape	Hotkeys widget shape.
+-- beautiful.hotkeys_modifiers_fg	Foreground color used for hotkey modifiers (Ctrl, Alt, Super, etc).
+-- beautiful.hotkeys_label_bg	Background color used for miscellaneous labels of hotkeys widget.
+-- beautiful.hotkeys_label_fg	Foreground color used for hotkey groups and other labels.
+-- beautiful.hotkeys_font	Main hotkeys widget font.
+-- beautiful.hotkeys_description_font	Font used for hotkeys' descriptions.
+-- beautiful.hotkeys_group_margin	Margin between hotkeys groups.
 
 --theme.wibar_=
 -- There are other variable sets
@@ -76,6 +102,8 @@ theme.taglist_bg_empty = theme.bg_minimize
 theme.menu_submenu_icon = themes_path.."glass/submenu.png"
 theme.menu_height = dpi(15)
 theme.menu_width  = dpi(100)
+theme.menu_bg = "#000111"
+theme.menu_fg = "#000000"
 
 -- Define the image to load
 theme.webb_icon = themes_path.."glass/taglist/squarefw.png"
