@@ -5,64 +5,97 @@
 local theme_assets = require("beautiful.theme_assets")
 local xresources = require("beautiful.xresources")
 local dpi = xresources.apply_dpi
+local xresources_colors = xresources.get_current_theme()
 
 local gfs = require("gears.filesystem")
 local shape = require("gears.shape")
 local cairo = require("lgi").cairo
 local themes_path = gfs.get_themes_dir()
 
-local colors = {
-    nord = {
-        teal        = "#00cdcd",
-        transparent = "#00000000",
-    },
-    teal_lightblue = {},
-    red_darkblue = {},
-    red_lightblue = {},
-    lightblue = {},
-    darkblue = {},
-
+local theme = {
+    -- loading colors
+    color0 = xresources_colors.color0,
+    color1 = xresources_colors.color1,
+    color2 = xresources_colors.color2,
+    color3 = xresources_colors.color3,
+    color4 = xresources_colors.color4,
+    color5 = xresources_colors.color5,
+    color6 = xresources_colors.color6,
+    color7 = xresources_colors.color7,
+    color8 = xresources_colors.color8,
+    color9 = xresources_colors.color9,
+    color10 = xresources_colors.color10,
+    color11 = xresources_colors.color11,
+    color12 = xresources_colors.color12,
+    color13 = xresources_colors.color13,
+    color14 = xresources_colors.color14,
+    color15 = xresources_colors.color15,
+    foreground = xresources_colors.foreground,
+    background = xresources_colors.background,
 }
-local theme = {}
 
 theme.transparent   = "#00000000"
+--require("naughty").
 theme.font          = "sans 8"
 
-theme.bg_normal     = "#222222"
-theme.bg_focus      = "#535d6c"
-theme.bg_urgent     = "#ff0000"
-theme.bg_minimize   = "#444444"
-theme.bg_systray    = theme.bg_normal
+-- general background
+theme.bg_normal     = theme.background
+theme.bg_focus      = theme.color1
+theme.bg_urgent     = theme.color11
+theme.bg_minimize   = theme.background
+theme.bg_systray    = theme.background
 
-theme.fg_normal     = "#00cdcd"
-theme.fg_focus      = "#002f3f"
-theme.fg_urgent     = "#ffffff"
-theme.fg_minimize   = "#ffffff"
+-- general foreground
+theme.fg_normal     = theme.foreground
+theme.fg_focus      = theme.background
+theme.fg_urgent     = theme.background
+theme.fg_minimize   = theme.background
 
+-- general borders
 theme.useless_gap   = dpi(30)
 theme.border_width  = dpi(0)
-theme.border_normal = "#000000"
-theme.border_focus  = "#05E3E3"
-theme.border_marked = "#91231c"
+theme.border_normal = theme.background
+theme.border_focus  = theme.foreground
+theme.border_marked = theme.color6
 
-theme.titlebar_bg   = "#05E3E3"
+-- titlebar
+theme.titlebar_bg   = theme.color8
 
-theme.wibar_height  = dpi(20)
-theme.wibar_width   = dpi(330)
+-- wibar
+theme.wibar_height      = dpi(20)
+theme.wibar_width       = dpi(210)
+theme.wibar_normal_bg   = theme.color4
+theme.wibar_normal_fg   = theme.color3
+theme.wibar_bg          = theme.color4
+theme.wibar_fg          = theme.color3
+
+-- taglist
+theme.taglist_border        = dpi(10)
+theme.taglist_spacing       = dpi(10)
+theme.taglist_shape         = shape.rectangle
+theme.taglist_fg_focus      = theme.background
+theme.taglist_bg_focus      = theme.color8
+theme.taglist_fg_occupied   = theme.foreground
+theme.taglist_bg_occupied   = theme.background
+theme.taglist_fg_empty      = theme.foreground
+theme.taglist_bg_empty      = theme.background
+
+-- clients
 
 -- hotkeys popup
-theme.hotkeys_bg    = 
--- beautiful.hotkeys_bg	Hotkeys widget background color.
--- beautiful.hotkeys_fg	Hotkeys widget foreground color.
--- beautiful.hotkeys_border_width	Hotkeys widget border width.
--- beautiful.hotkeys_border_color	Hotkeys widget border color.
--- beautiful.hotkeys_shape	Hotkeys widget shape.
--- beautiful.hotkeys_modifiers_fg	Foreground color used for hotkey modifiers (Ctrl, Alt, Super, etc).
--- beautiful.hotkeys_label_bg	Background color used for miscellaneous labels of hotkeys widget.
--- beautiful.hotkeys_label_fg	Foreground color used for hotkey groups and other labels.
--- beautiful.hotkeys_font	Main hotkeys widget font.
--- beautiful.hotkeys_description_font	Font used for hotkeys' descriptions.
--- beautiful.hotkeys_group_margin	Margin between hotkeys groups.
+theme.hotkeys_bg = theme.background
+theme.hotkeys_fg = theme.foreground
+-- theme.hotkeys_bg	Hotkeys widget background color.
+-- theme.hotkeys_fg	Hotkeys widget foreground color.
+-- theme.hotkeys_border_width	Hotkeys widget border width.
+-- theme.hotkeys_border_color	Hotkeys widget border color.
+-- theme.hotkeys_shape	Hotkeys widget shape.
+-- theme.hotkeys_modifiers_fg	Foreground color used for hotkey modifiers (Ctrl, Alt, Super, etc).
+-- theme.hotkeys_label_bg	Background color used for miscellaneous labels of hotkeys widget.
+-- theme.hotkeys_label_fg	Foreground color used for hotkey groups and other labels.
+-- theme.hotkeys_font	Main hotkeys widget font.
+-- theme.hotkeys_description_font	Font used for hotkeys' descriptions.
+-- theme.hotkeys_group_margin	Margin between hotkeys groups.
 
 --theme.wibar_=
 -- There are other variable sets
@@ -78,17 +111,6 @@ theme.hotkeys_bg    =
 -- Example:
 --theme.taglist_bg_focus = "#ff0000"
 
--- Generate taglist squares:
-
-theme.taglist_border = 15
-theme.taglist_spacing = 15
-theme.taglist_shape = shape.rectangle
-theme.taglist_bg_focus = theme.border_focus
-theme.taglist_fg_focus = theme.fg_focus
-theme.taglist_fg_occupied = theme.fg_minimize
-theme.taglist_bg_occupied = theme.bg_minimize
-theme.taglist_fg_empty = theme.fg_minimize
-theme.taglist_bg_empty = theme.bg_minimize
 
 -- Variables set for theming notifications:
 -- notification_font
@@ -102,8 +124,8 @@ theme.taglist_bg_empty = theme.bg_minimize
 theme.menu_submenu_icon = themes_path.."glass/submenu.png"
 theme.menu_height = dpi(15)
 theme.menu_width  = dpi(100)
-theme.menu_bg = "#000111"
-theme.menu_fg = "#000000"
+theme.menu_bg = xresources_colors.background
+theme.menu_fg = xresources_colors.foreground
 
 -- Define the image to load
 theme.webb_icon = themes_path.."glass/taglist/squarefw.png"

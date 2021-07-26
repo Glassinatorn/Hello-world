@@ -20,7 +20,8 @@ local taglist_template = {
 		margins = 1,
 		widget = wibox.container.margin
 	    },
-	    bg = beautiful.bg_normal,
+	    bg = beautiful.color9,
+	    fg = beautiful.background,
 	    shape = gears.shape.square,
 	    widget = wibox.container.background
 	},
@@ -68,7 +69,6 @@ local function setup(s)
 	    screen = s,
 	    filter = awful.widget.taglist.filter.all,
 	    buttons = bindings.taglist_buttons,
-	    bg = "#000000",
 	    widget_template = taglist_template,
 	}
 
