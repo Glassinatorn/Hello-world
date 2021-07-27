@@ -32,11 +32,11 @@ local theme = {
     color15 = xresources_colors.color15,
     foreground = xresources_colors.foreground,
     background = xresources_colors.background,
+    font = xresources.font
 }
 
 theme.transparent   = "#00000000"
---require("naughty").
-theme.font          = "sans 8"
+require("naughty").notify({title = "test", text = xresources.font, timeout = 4 })
 
 -- general background
 theme.bg_normal     = theme.background
@@ -83,8 +83,14 @@ theme.taglist_bg_empty      = theme.background
 -- clients
 
 -- hotkeys popup
+theme.hotkeys_border_width = dpi(10)
+theme.hotkeys_border_color = theme.color8
 theme.hotkeys_bg = theme.background
 theme.hotkeys_fg = theme.foreground
+theme.hotkeys_label_bg = theme.foreground
+theme.hotkeys_label_fg = theme.foreground
+theme.hotkeys_modifiers_fg = theme.foreground
+theme.hotkeys_font = theme.font
 -- theme.hotkeys_bg	Hotkeys widget background color.
 -- theme.hotkeys_fg	Hotkeys widget foreground color.
 -- theme.hotkeys_border_width	Hotkeys widget border width.
