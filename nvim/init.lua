@@ -35,6 +35,11 @@ paq {'szw/vim-maximizer'}
 paq {'lervag/vimtex'}
 paq {'ggandor/lightspeed.nvim'}
 paq {'norcalli/nvim-colorizer.lua'}
+paq {'nvim-lua/plenary.nvim'} -- function wrappers for git plugin
+paq {'lewis6991/gitsigns.nvim'} -- git integration
+paq {'jbyuki/instant.nvim'} -- pair programing
+
+
 
 -- loading settings
 require('settings')                     -- general settings
