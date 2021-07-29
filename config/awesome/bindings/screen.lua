@@ -20,7 +20,7 @@ local taglist_template = {
 		margins = 1,
 		widget = wibox.container.margin
 	    },
-	    bg = beautiful.color9,
+	    bg = beautiful.color7,
 	    fg = beautiful.background,
 	    shape = gears.shape.square,
 	    widget = wibox.container.background
