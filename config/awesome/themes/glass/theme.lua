@@ -36,12 +36,11 @@ local theme = {
 }
 
 theme.transparent   = "#00000000"
-require("naughty").notify({title = "test", text = xresources.font, timeout = 4 })
 
 -- general background
 theme.bg_normal     = theme.background
-theme.bg_focus      = theme.color1
-theme.bg_urgent     = theme.color11
+theme.bg_focus      = theme.color7
+theme.bg_urgent     = theme.color1
 theme.bg_minimize   = theme.background
 theme.bg_systray    = theme.background
 
@@ -59,7 +58,7 @@ theme.border_focus  = theme.foreground
 theme.border_marked = theme.color6
 
 -- titlebar
-theme.titlebar_bg   = theme.color8
+theme.titlebar_bg   = theme.color10
 
 -- wibar
 theme.wibar_height      = dpi(20)
@@ -74,64 +73,29 @@ theme.taglist_border        = dpi(10)
 theme.taglist_spacing       = dpi(10)
 theme.taglist_shape         = shape.rectangle
 theme.taglist_fg_focus      = theme.background
-theme.taglist_bg_focus      = theme.color8
+theme.taglist_bg_focus      = theme.color10
 theme.taglist_fg_occupied   = theme.foreground
 theme.taglist_bg_occupied   = theme.background
 theme.taglist_fg_empty      = theme.foreground
 theme.taglist_bg_empty      = theme.background
 
--- clients
-
 -- hotkeys popup
+theme.hotkeys_font = theme.font
 theme.hotkeys_border_width = dpi(10)
 theme.hotkeys_border_color = theme.color8
 theme.hotkeys_bg = theme.background
 theme.hotkeys_fg = theme.foreground
-theme.hotkeys_label_bg = theme.foreground
-theme.hotkeys_label_fg = theme.foreground
-theme.hotkeys_modifiers_fg = theme.foreground
-theme.hotkeys_font = theme.font
--- theme.hotkeys_bg	Hotkeys widget background color.
--- theme.hotkeys_fg	Hotkeys widget foreground color.
--- theme.hotkeys_border_width	Hotkeys widget border width.
--- theme.hotkeys_border_color	Hotkeys widget border color.
--- theme.hotkeys_shape	Hotkeys widget shape.
--- theme.hotkeys_modifiers_fg	Foreground color used for hotkey modifiers (Ctrl, Alt, Super, etc).
--- theme.hotkeys_label_bg	Background color used for miscellaneous labels of hotkeys widget.
--- theme.hotkeys_label_fg	Foreground color used for hotkey groups and other labels.
--- theme.hotkeys_font	Main hotkeys widget font.
--- theme.hotkeys_description_font	Font used for hotkeys' descriptions.
--- theme.hotkeys_group_margin	Margin between hotkeys groups.
+theme.hotkeys_label_fg = theme.background
+theme.hotkeys_modifiers_fg = theme.color4
 
---theme.wibar_=
--- There are other variable sets
--- overriding the default one when
--- defined, the sets are:
--- taglist_[bg|fg]_[focus|urgent|occupied|empty|volatile]
--- tasklist_[bg|fg]_[focus|urgent]
--- titlebar_[bg|fg]_[normal|focus]
--- tooltip_[font|opacity|fg_color|bg_color|border_width|border_color]
--- mouse_finder_[color|timeout|animate_timeout|radius|factor]
--- prompt_[fg|bg|fg_cursor|bg_cursor|font]
--- hotkeys_[bg|fg|border_width|border_color|shape|opacity|modifiers_fg|label_bg|label_fg|group_margin|font|description_font]
--- Example:
---theme.taglist_bg_focus = "#ff0000"
-
-
--- Variables set for theming notifications:
--- notification_font
--- notification_[bg|fg]
--- notification_[width|height|margin]
--- notification_[border_color|border_width|shape|opacity]
-
--- Variables set for theming the menu:
--- menu_[bg|fg1_[normal|focus]
--- menu_[border_color|border_width]
+-- menu
 theme.menu_submenu_icon = themes_path.."glass/submenu.png"
 theme.menu_height = dpi(15)
 theme.menu_width  = dpi(100)
 theme.menu_bg = xresources_colors.background
 theme.menu_fg = xresources_colors.foreground
+theme.menu_border_color = theme.color0
+theme.menu_border_width = dpi(5)
 
 -- Define the image to load
 theme.webb_icon = themes_path.."glass/taglist/squarefw.png"
@@ -142,45 +106,10 @@ theme.titlebar_close_button_focus  = themes_path.."glass/titlebar/close_focus.pn
 theme.titlebar_minimize_button_normal = themes_path.."glass/titlebar/minimize_normal.png"
 theme.titlebar_minimize_button_focus  = themes_path.."glass/titlebar/minimize_focus.png"
 
-theme.titlebar_ontop_button_normal_inactive = themes_path.."glass/titlebar/ontop_normal_inactive.png"
-theme.titlebar_ontop_button_focus_inactive  = themes_path.."glass/titlebar/ontop_focus_inactive.png"
-theme.titlebar_ontop_button_normal_active = themes_path.."glass/titlebar/ontop_normal_active.png"
-theme.titlebar_ontop_button_focus_active  = themes_path.."glass/titlebar/ontop_focus_active.png"
-
-theme.titlebar_sticky_button_normal_inactive = themes_path.."glass/titlebar/sticky_normal_inactive.png"
-theme.titlebar_sticky_button_focus_inactive  = themes_path.."glass/titlebar/sticky_focus_inactive.png"
-theme.titlebar_sticky_button_normal_active = themes_path.."glass/titlebar/sticky_normal_active.png"
-theme.titlebar_sticky_button_focus_active  = themes_path.."glass/titlebar/sticky_focus_active.png"
-
-theme.titlebar_floating_button_normal_inactive = themes_path.."glass/titlebar/floating_normal_inactive.png"
-theme.titlebar_floating_button_focus_inactive  = themes_path.."glass/titlebar/floating_focus_inactive.png"
-theme.titlebar_floating_button_normal_active = themes_path.."glass/titlebar/floating_normal_active.png"
-theme.titlebar_floating_button_focus_active  = themes_path.."glass/titlebar/floating_focus_active.png"
-
 theme.titlebar_maximized_button_normal_inactive = themes_path.."glass/titlebar/maximized_normal_inactive.png"
 theme.titlebar_maximized_button_focus_inactive  = themes_path.."glass/titlebar/maximized_focus_inactive.png"
 theme.titlebar_maximized_button_normal_active = themes_path.."glass/titlebar/maximized_normal_active.png"
 theme.titlebar_maximized_button_focus_active  = themes_path.."glass/titlebar/maximized_focus_active.png"
-
-theme.wallpaper = themes_path.."glass/background.png"
-
--- You can use your own layout icons like this:
-theme.layout_fairh = themes_path.."glass/layouts/fairhw.png"
-theme.layout_fairv = themes_path.."glass/layouts/fairvw.png"
-theme.layout_floating  = themes_path.."glass/layouts/floatingw.png"
-theme.layout_magnifier = themes_path.."glass/layouts/magnifierw.png"
-theme.layout_max = themes_path.."glass/layouts/maxw.png"
-theme.layout_fullscreen = themes_path.."glass/layouts/fullscreenw.png"
-theme.layout_tilebottom = themes_path.."glass/layouts/tilebottomw.png"
-theme.layout_tileleft   = themes_path.."glass/layouts/tileleftw.png"
-theme.layout_tile = themes_path.."glass/layouts/tilew.png"
-theme.layout_tiletop = themes_path.."glass/layouts/tiletopw.png"
-theme.layout_spiral  = themes_path.."glass/layouts/spiralw.png"
-theme.layout_dwindle = themes_path.."glass/layouts/dwindlew.png"
-theme.layout_cornernw = themes_path.."glass/layouts/cornernww.png"
-theme.layout_cornerne = themes_path.."glass/layouts/cornernew.png"
-theme.layout_cornersw = themes_path.."glass/layouts/cornersww.png"
-theme.layout_cornerse = themes_path.."glass/layouts/cornersew.png"
 
 -- Generate Awesome icon:
 theme.awesome_icon = theme_assets.awesome_icon(

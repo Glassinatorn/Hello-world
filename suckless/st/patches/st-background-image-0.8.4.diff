@@ -1,0 +1,190 @@
+From fdf9692358326993f0dc6a6896cc0a7194ba6152 Mon Sep 17 00:00:00 2001
+From: Matthias Schoth <mschoth@gmail.com>
+Date: Sun, 4 Jul 2021 19:18:20 +0200
+Subject: [PATCH] Implements background image and pseudo transparancy support.
+
+---
+ config.def.h |  8 +++++
+ x.c          | 91 ++++++++++++++++++++++++++++++++++++++++++++++++----
+ 2 files changed, 93 insertions(+), 6 deletions(-)
+
+diff --git a/config.def.h b/config.def.h
+index 6f05dce..3d352db 100644
+--- a/config.def.h
++++ b/config.def.h
+@@ -8,6 +8,14 @@
+ static char *font = "Liberation Mono:pixelsize=12:antialias=true:autohint=true";
+ static int borderpx = 2;
+ 
++/*
++ * background image
++ * expects farbfeld format
++ * pseudo transparency fixes coordinates to the screen origin
++ */
++static const char *bgfile = "/path/to/image.ff";
++static const int pseudotransparency = 0;
++
+ /*
+  * What program is execed by st depends of these precedence rules:
+  * 1: program passed with -e
+diff --git a/x.c b/x.c
+index 210f184..22653ea 100644
+--- a/x.c
++++ b/x.c
+@@ -14,6 +14,7 @@
+ #include <X11/keysym.h>
+ #include <X11/Xft/Xft.h>
+ #include <X11/XKBlib.h>
++#include <arpa/inet.h>
+ 
+ char *argv0;
+ #include "arg.h"
+@@ -81,6 +82,7 @@ typedef XftGlyphFontSpec GlyphFontSpec;
+ typedef struct {
+ 	int tw, th; /* tty width and height */
+ 	int w, h; /* window width and height */
++	int x, y; /* window location */
+ 	int ch; /* char height */
+ 	int cw; /* char width  */
+ 	int mode; /* window state/mode flags */
+@@ -101,6 +103,8 @@ typedef struct {
+ 		XVaNestedList spotlist;
+ 	} ime;
+ 	Draw draw;
++	Drawable bgimg;   /* background image */
++	GC bggc;          /* Graphics Context for background */
+ 	Visual *vis;
+ 	XSetWindowAttributes attrs;
+ 	int scr;
+@@ -151,6 +155,7 @@ static void ximinstantiate(Display *, XPointer, XPointer);
+ static void ximdestroy(XIM, XPointer, XPointer);
+ static int xicdestroy(XIC, XPointer, XPointer);
+ static void xinit(int, int);
++static void bginit();
+ static void cresize(int, int);
+ static void xresize(int, int);
+ static void xhints(void);
+@@ -820,9 +825,9 @@ xsetcolorname(int x, const char *name)
+ void
+ xclear(int x1, int y1, int x2, int y2)
+ {
+-	XftDrawRect(xw.draw,
+-			&dc.col[IS_SET(MODE_REVERSE)? defaultfg : defaultbg],
+-			x1, y1, x2-x1, y2-y1);
++	if (pseudotransparency)
++		XSetTSOrigin(xw.dpy, xw.bggc, -win.x, -win.y);
++	XFillRectangle(xw.dpy, xw.buf, xw.bggc, x1, y1, x2-x1, y2-y1);
+ }
+ 
+ void
+@@ -1207,6 +1212,65 @@ xinit(int cols, int rows)
+ 		xsel.xtarget = XA_STRING;
+ }
+ 
++/*
++ * initialize background image
++ */
++void
++bginit()
++{
++	uint32_t hdr[4], bgw, bgh, i = 0;
++	char buf[8], *image32;
++	FILE *bgf = fopen(bgfile, "rb");
++	XGCValues gcvalues;
++	XImage *bgxi;
++
++	if (bgf == NULL) die("could not load background image.\n");
++
++	if (fread(hdr, sizeof(*hdr), LEN(hdr), bgf) != LEN(hdr))
++		if (ferror(bgf))
++			die("fread:");
++		else
++			die("fread: Unexpected end of file\n");
++
++	if (memcmp("farbfeld", hdr, sizeof("farbfeld") - 1))
++		die("Invalid magic value");
++
++	bgw = ntohl(hdr[2]);
++	bgh = ntohl(hdr[3]);
++	image32 = (char *)malloc(bgw * bgh * 4 * sizeof(char));
++
++	while (i < bgh * bgw * 4) {
++		if (fread(buf, sizeof(*buf), LEN(buf), bgf) != LEN(buf))
++			if (ferror(bgf))
++				die("fread:");
++			else
++				die("fread: Unexpected end of file");
++
++		image32[i++] = buf[4]; /* convert 16 bit RGBA to 8 bit BGRA */
++		image32[i++] = buf[2];
++		image32[i++] = buf[0];
++		image32[i++] = buf[6];
++        }
++
++	fclose(bgf);
++	bgxi = XCreateImage(xw.dpy, DefaultVisual(xw.dpy, xw.scr),
++		24, ZPixmap, 0, image32, bgw, bgh, 32, 0);
++	xw.bgimg = XCreatePixmap(xw.dpy, xw.win, bgw, bgh,
++                        DefaultDepth(xw.dpy, xw.scr));
++	XPutImage(xw.dpy, xw.bgimg, dc.gc, bgxi, 0, 0, 0, 0, bgw, bgh);
++	XDestroyImage(bgxi);
++	memset(&gcvalues, 0, sizeof(gcvalues));
++	xw.bggc = XCreateGC(xw.dpy, xw.win, 0, &gcvalues);
++	XSetTile(xw.dpy, xw.bggc, xw.bgimg);
++	XSetFillStyle(xw.dpy, xw.bggc, FillTiled);
++	if (pseudotransparency) {
++		XWindowAttributes xwa;
++		XGetWindowAttributes(xw.dpy, xw.win, &xwa);
++		win.x = xwa.x;
++		win.y = xwa.y;
++	}
++}
++
+ int
+ xmakeglyphfontspecs(XftGlyphFontSpec *specs, const Glyph *glyphs, int len, int x, int y)
+ {
+@@ -1447,7 +1511,10 @@ xdrawglyphfontspecs(const XftGlyphFontSpec *specs, Glyph base, int len, int x, i
+ 		xclear(winx, winy + win.ch, winx + width, win.h);
+ 
+ 	/* Clean up the region we want to draw to. */
+-	XftDrawRect(xw.draw, bg, winx, winy, width, win.ch);
++	if (bg == &dc.col[defaultbg])
++		xclear(winx, winy, winx + width, winy + win.ch);
++	else
++		XftDrawRect(xw.draw, bg, winx, winy, width, win.ch);
+ 
+ 	/* Set the clip region because Xft is sometimes dirty. */
+ 	r.x = 0;
+@@ -1855,8 +1922,19 @@ cmessage(XEvent *e)
+ void
+ resize(XEvent *e)
+ {
+-	if (e->xconfigure.width == win.w && e->xconfigure.height == win.h)
+-		return;
++	if (pseudotransparency) {
++		if (e->xconfigure.width == win.w &&
++			e->xconfigure.height == win.h &&
++			e->xconfigure.x == win.x && e->xconfigure.y == win.y)
++			return;
++
++		win.x = e->xconfigure.x;
++		win.y = e->xconfigure.y;
++	} else {
++		if (e->xconfigure.width == win.w &&
++			e->xconfigure.height == win.h)
++			return;
++	}
+ 
+ 	cresize(e->xconfigure.width, e->xconfigure.height);
+ }
+@@ -2041,6 +2119,7 @@ run:
+ 	rows = MAX(rows, 1);
+ 	tnew(cols, rows);
+ 	xinit(cols, rows);
++	bginit();
+ 	xsetenv();
+ 	selinit();
+ 	run();
+-- 
+2.32.0
+
