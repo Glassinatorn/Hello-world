@@ -52,6 +52,8 @@ $CMD $HOME/.zshrc \
 # profiles
 $CMD $HOME/.xprofile \
     $BD/xprofile
+$CMD $HOME/.Xresources \
+    $BD/Xresources
 $CMD $HOME/.profile \
     $BD/profile
 $CMD $HOME/.vimspector.json \

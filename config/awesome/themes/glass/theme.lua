@@ -57,9 +57,6 @@ theme.border_normal = theme.background
 theme.border_focus  = theme.foreground
 theme.border_marked = theme.color6
 
--- titlebar
-theme.titlebar_bg   = theme.color10
-
 -- wibar
 theme.wibar_height      = dpi(20)
 theme.wibar_width       = dpi(210)
@@ -97,7 +94,10 @@ theme.menu_fg = xresources_colors.foreground
 theme.menu_border_color = theme.color0
 theme.menu_border_width = dpi(5)
 
--- Define the image to load
+-- titlebar
+theme.titlebar_bg   = theme.color10
+
+-- titlebar buttons
 theme.webb_icon = themes_path.."glass/taglist/squarefw.png"
 theme.code_icon = themes_path.."glass/taglist/submenu.png"
 theme.titlebar_close_button_normal = themes_path.."glass/titlebar/close_normal.png"
