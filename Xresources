@@ -16,6 +16,7 @@
 ! color14 -> color2, color10
 ! color15 -> color5, color14
 
+! defining nord colors
 #define nord0	#2E3440
 #define nord1 	#3B4252
 #define nord2 	#434C5E
@@ -33,6 +34,7 @@
 #define nord14	#A3BE8C
 #define nord15	#B48EAD
 
+! defining 
 *.dpi:		141
 *.font:		monospace
 *.foreground:   nord4
@@ -41,6 +43,7 @@
 *fading:	35
 *fadeColor:	nord3
 
+! binding colors
 *.color0:	nord1
 *.color1: 	nord11
 *.color2: 	nord14
