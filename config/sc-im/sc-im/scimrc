@@ -20,8 +20,6 @@ DEFINE_COLOR "nord15" 180 142 173
 color "type=HEADINGS bg=nord1 fg=nord4"
 color "type=HEADINGS_ODD bg=nord1 fg=nord4"
 color "type=MODE bg=nord1 fg=nord5"
-
-# cell colors
 color "type=CELL_SELECTION bg=nord3 fg=nord5"
 color "type=CELL_SELECTION_SC bg=nord3 fg=nord5"
 
@@ -36,5 +34,25 @@ color "type=EXPRESSION bg=nord0 fg=nord9"
 # error and warnings
 color "type=ERROR_MSG bg=nord0 fg=nord11"
 color "type=CELL_ERROR bg=nord12 fg=nord5"
+color "type=CELL_NEGATIVE bg=nord13 fg=nord0"
 color "type=INFO_MSG bg=nord0 fg=nord13"
 color "type=WELCOME bg=nord0 fg=nord8"
+
+# input and misc
+color "type=INPUT bg=nord0 fg=nord5"
+color "type=NORMAL bg=nord0 fg=nord5"
+
+
+# rebinding key-bindings
+# command mode
+cmap "kj" "<ESC>"
+cmap "ZZ" ":wq<cr>"
+cmap "Q" ":q!<cr>"
+
+# insert mode
+imap "kj" "<ESC>"
+imap "ZZ" ":wq<cr>"
+
+# normal mode
+nmap "ZZ" ":wq<cr>"
+nmap "Q" ":q!<cr>"
