@@ -37,6 +37,10 @@ $CMD $CD/nnn/plugins \
     $CD/nnn/rc \
     $BD/config/nnn/
 
+# sc-im
+$CMD $CD/sc-im \
+    $BD/config/sc-im/
+
 # qutebrowser
 $CMD $CD/qutebrowser/config.py \
     $BD/config/qutebrowser/

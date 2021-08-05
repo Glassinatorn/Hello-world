@@ -1,0 +1,40 @@
+# nord colorscheme definition
+DEFINE_COLOR "nord0" 46 52 64
+DEFINE_COLOR "nord1" 59 66 82
+DEFINE_COLOR "nord2" 67 76 94
+DEFINE_COLOR "nord3" 76 86 106
+DEFINE_COLOR "nord4" 216 222 233
+DEFINE_COLOR "nord5" 229 233 240
+DEFINE_COLOR "nord6" 236 239 244
+DEFINE_COLOR "nord7" 143 188 187
+DEFINE_COLOR "nord8" 136 192 208
+DEFINE_COLOR "nord9" 129 161 193
+DEFINE_COLOR "nord10" 94 129 172
+DEFINE_COLOR "nord11" 191 97 106
+DEFINE_COLOR "nord12" 208 135 112
+DEFINE_COLOR "nord13" 235 203 139
+DEFINE_COLOR "nord14" 163 190 140
+DEFINE_COLOR "nord15" 180 142 173
+
+# surrounding ui elements
+color "type=HEADINGS bg=nord1 fg=nord4"
+color "type=HEADINGS_ODD bg=nord1 fg=nord4"
+color "type=MODE bg=nord1 fg=nord5"
+
+# cell colors
+color "type=CELL_SELECTION bg=nord3 fg=nord5"
+color "type=CELL_SELECTION_SC bg=nord3 fg=nord5"
+
+# values
+color "type=NUMB bg=nord0 fg=nord4"
+color "type=STRG bg=nord0 fg=nord14"
+color "type=DATEF bg=nord0 fg=nord14"
+
+# expressions and functions
+color "type=EXPRESSION bg=nord0 fg=nord9"
+
+# error and warnings
+color "type=ERROR_MSG bg=nord0 fg=nord11"
+color "type=CELL_ERROR bg=nord12 fg=nord5"
+color "type=INFO_MSG bg=nord0 fg=nord13"
+color "type=WELCOME bg=nord0 fg=nord8"
