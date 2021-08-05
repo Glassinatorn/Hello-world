@@ -56,3 +56,4 @@ imap "ZZ" ":wq<cr>"
 # normal mode
 nmap "ZZ" ":wq<cr>"
 nmap "Q" ":q!<cr>"
+nmap "i" "\"
