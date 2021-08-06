@@ -162,3 +162,6 @@ export MAKEFLAGS="-j$(expr $(nproc) \+ 1)"
 
 # making java apps viewable
 export _JAVA_AWT_WM_NONREPARENTING=1
+
+# loading temporary secrets
+source ~/.tmp_secrets

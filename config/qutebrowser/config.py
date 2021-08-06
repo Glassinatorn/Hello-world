@@ -100,4 +100,5 @@ c.bindings.commands["normal"] = {"Q": "hint images spawn -u qt-chap {hint-url}",
                                  "gu": "open reddit.com/r/unixporn",
                                  "xb": "config-cycle statusbar.hide",
                                  "xt": "config-cycle tabs.show always switching",
-                                 "ip": "open https://www.myip.com/"}
+                                 "ip": "open https://www.myip.com/",
+                                 "<Ctrl-R>": "config-cycle content.user_stylesheets /home/glass/.local/share/qutebrowser/stylesheets/apprentice-all.css ''"}
