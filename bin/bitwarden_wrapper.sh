@@ -1,3 +1,11 @@
+# TODO:
+# - make sure variables are cleaned after use []
+# - move TMP outside of function to reduce load times []
+# - implement create []
+# - implement update []
+# - implement delete []
+# - implement export []
+
 login() {
     export BW_SESSION="$(bw unlock --raw)" 
     bw sync
