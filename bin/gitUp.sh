@@ -83,6 +83,7 @@ $CMD $BID/fix.sh \
     $BID/pg.sh \
     $BID/screenshot.sh \
     $BID/project.sh \
+    $BID/bitwarden_wrapper.sh \
     $BD/bin/
 
 # suckless

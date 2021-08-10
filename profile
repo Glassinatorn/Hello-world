@@ -149,6 +149,7 @@ alias overleaf="mkdir overleaf &&
     cat report.tex |
         sed 's/pictures\/screenshots\///g' >> overleaf/report.tex;
     cp pictures/screenshots/* overleaf/;"
+alias bww="bitwarden_wrapper.sh"
 
 # loading nnn config
 source ~/.config/nnn/rc
@@ -162,6 +163,3 @@ export MAKEFLAGS="-j$(expr $(nproc) \+ 1)"
 
 # making java apps viewable
 export _JAVA_AWT_WM_NONREPARENTING=1
-
-# loading temporary secrets
-source ~/.tmp_secrets
