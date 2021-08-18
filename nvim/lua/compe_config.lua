@@ -16,12 +16,12 @@ require'compe'.setup {
 
   source = {
     path = true;
-    buffer = true;
+    --buffer = true;
     calc = true;
     nvim_lsp = true;
-    spell = true;
+    --pell = true;
     ultisnips = true;
-    emoji = true;
+    --moji = true;
   };
 }
 

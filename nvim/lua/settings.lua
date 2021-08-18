@@ -1,6 +1,7 @@
 local cmd = vim.cmd	-- commands
 local bo = vim.bo	-- buffer
 local o = vim.o		-- general
+local g = vim.general
 
 -- syntax and text settings
 cmd [[ filetype plugin indent on ]]

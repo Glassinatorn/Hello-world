@@ -59,6 +59,9 @@ ctrl + shift + e
 ctrl + shift + r
     rotate.sh
 
+ctrl + shift + b
+    brightness.sh
+
 # toggling keyboard layout
 ctrl + space
     keymap.sh

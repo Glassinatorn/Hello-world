@@ -50,4 +50,5 @@ map('n', '<leader>e',       ':call vimspector#BalloonEval()<CR>',           { no
 map('n', '<Tab>',           ':call UltiSnips#ExpandSnippetOrJump()<CR>',    { noremap = true })
 
 -- own functions
-map('n', '<leader>sw',       ':lua require("light-toggle").toggle()<CR>',   { noremap = true })     -- evaluate expression under cursor
+map('n', '<leader>sw',      ':lua require("light-toggle").toggle()<CR>',    { noremap = true })     -- evaluate expression under cursor
+

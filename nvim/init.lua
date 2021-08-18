@@ -18,7 +18,7 @@ paq {'savq/paq-nvim', opt = true}       -- paq-nvim manages itself
 -- the rest of the plugins
 paq {'nvim-treesitter/nvim-treesitter'}
 paq {'neovim/nvim-lspconfig'}
-paq {'hrsh7th/nvim-compe'}
+--paq {'hrsh7th/nvim-compe'}
 paq {'easymotion/vim-easymotion'}
 paq {'sbdchd/neoformat'}
 paq {'sirver/ultisnips'}
@@ -35,10 +35,10 @@ paq {'szw/vim-maximizer'}
 paq {'lervag/vimtex'}
 paq {'ggandor/lightspeed.nvim'}
 paq {'norcalli/nvim-colorizer.lua'}
-paq {'nvim-lua/plenary.nvim'} -- function wrappers for git plugin
-paq {'lewis6991/gitsigns.nvim'} -- git integration
-paq {'jbyuki/instant.nvim'} -- pair programing
-
+paq {'nvim-lua/plenary.nvim'}		-- function wrappers for git plugin
+paq {'lewis6991/gitsigns.nvim'}		-- git integration
+paq {'jbyuki/instant.nvim'}		-- pair programing
+paq {'ms-jpq/coq_nvim'}			-- completion plugin
 
 
 -- loading settings
@@ -46,4 +46,4 @@ require('settings')                     -- general settings
 require('maps')                         -- keybindings
 require('lsp_config')                   -- config for lsp
 require('treesitter_config')            -- treesitter config
-require('compe_config')                 -- completion with compe
+require('coq_settings')
