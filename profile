@@ -137,7 +137,11 @@ alias py="python"
 alias pe="if [ -d env/ ]; then
         source env/bin/activate
     else
-	printf 'There is no python enviroment in this folder.\n'
+	printf 'Creating a new enviroment\n'
+	python3 -m venv env
+        source env/bin/activate
+	pip install pynvim
+	touch requirement.txt
     fi"
 alias gwall="xwinwrap -g 240x240+839+297 -ov -sh circle -- gifview -w WID -a"
 alias proto="ls *.proto \
@@ -163,3 +167,9 @@ export MAKEFLAGS="-j$(expr $(nproc) \+ 1)"
 
 # making java apps viewable
 export _JAVA_AWT_WM_NONREPARENTING=1
+
+# settings for android development with flutter
+export JAVA_HOME='/usr/lib/jvm/java-8-openjdk'
+export JAVA_OPTS='-XX:+IgnoreUnrecognizedVMOptions --add-modules java.se.ee'
+export ANDROID_SDK_ROOT='/opt/android-sdk'
+export CHROME_EXECUTABLE=/usr/bin/google-chrome-stable
