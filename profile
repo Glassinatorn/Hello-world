@@ -154,6 +154,8 @@ alias overleaf="mkdir overleaf &&
         sed 's/pictures\/screenshots\///g' >> overleaf/report.tex;
     cp pictures/screenshots/* overleaf/;"
 alias bww="bitwarden_wrapper.sh"
+alias r2="r2 -AAA"
+
 
 # loading nnn config
 source ~/.config/nnn/rc
