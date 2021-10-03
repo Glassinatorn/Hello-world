@@ -15,7 +15,8 @@ digraph <++> {
     ];
 
     /* define nodes */
-    /* example: node [shape=box/Msquare/etc] */
+    /* class example: node [ shape=record, style=filled ] */
+    /* classical example: node [ shape=circle ] */
 
     <++> -> <++> [ arrowhead=normal ]
 }
