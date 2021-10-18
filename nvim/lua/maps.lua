@@ -24,7 +24,6 @@ map('i', '{}',              '{}<Esc>i',	    	                            { norem
 map('i', '<>',              '<><Esc>i',	    	                            { noremap = true })	    -- insert <>
 map('i', '""',              '""<Esc>i',	    	                            { noremap = true })	    -- insert ""
 map('i', '\'\'',            '\'\'<Esc>i',	    	                    { noremap = true })	    -- insert ""
-map('n', 'zz',              'z=',	    		                    { noremap = true })	    -- fix spelling
 map('n', 'z<space>',        'za',  		                            { noremap = true })	    -- toggle fold
 map('i', '<C-s>',           '<Esc>:w<CR>',	                            { noremap = true })	    -- save with control-s
 map('n', '<C-s>',           ':w<CR>',		                            { noremap = true })	    -- save with control-s
@@ -34,6 +33,9 @@ map('n', '<leader>m',       ':MaximizerToggle<CR>',                         { no
 -- spelling
 map('n', '<leader>us',      ':setlocal spell! spelllang=en<CR>',            { noremap = true })     -- check english spelling
 map('n', '<leader>se',      ':setlocal spell! spelllang=se<CR>',            { noremap = true })     -- check swedish spelling
+map('n', 'zz',              'z=',	    		                    { noremap = true })	    -- fix spelling
+map('n', 'zh',              '[s',                                           { noremap = true })     -- go to previous misspelled
+map('n', 'zl',              ']s',                                           { noremap = true })     -- go to next misspelled
 
 -- easymotion
 map('n', '<space>j',        '<Plug>(easymotion-j)',                         { noremap = true })     -- go down
