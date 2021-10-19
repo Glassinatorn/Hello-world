@@ -63,7 +63,8 @@ case $NUM_MONITORS in
 esac
 
 # starting backround processes
-unclutter -idle 0.01 -root &
+killall unclutter
+unclutter -idle 0.5 -root &
 ~/.fehbg
 # killing old sxhkd processes
 killall sxkhd
