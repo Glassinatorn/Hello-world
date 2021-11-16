@@ -124,7 +124,11 @@ alias usb='sudo mount /dev/$( \
         | grep sd \
         | fzf) /mnt/usb/'
 alias remake="make && sudo make install && make clean"
-alias pup="sudo pacman -Syu && rustup update && pipupgrade -i"
+alias pup="sudo pacman -Syu && \
+    rustup update && \
+    pipupgrade -i && \
+    nvim -c ':PaqUpdate' \
+    nvim -c ':COQdeps'"
 alias pin="sudo pacman -S"
 alias prm='sudo pacman -R $( \
     pacman -Q \

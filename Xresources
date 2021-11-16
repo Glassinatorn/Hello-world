@@ -35,7 +35,7 @@
 #define nord15	#B48EAD
 
 ! defining 
-*.dpi:		141
+*.dpi:		124
 *.font:		monospace
 *.foreground:   nord4
 *.background:   nord3
