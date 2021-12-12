@@ -11,8 +11,8 @@
 
 -- starting plugin manager
 vim.cmd 'packadd paq-nvim'              -- load the package manager
-local paq = require('paq-nvim').paq     -- a convenient alias
-paq {'savq/paq-nvim', opt = true}       -- paq-nvim manages itself
+local paq = require('paq')		-- a convenient alias
+paq {'savq/paq-nvim'}			-- paq-nvim manages itself
 
 
 -- the rest of the plugins
@@ -48,7 +48,7 @@ require("flutter-tools").setup{} -- use defaults
 -- loading settings
 require('settings')                     -- general settings
 require('maps')                         -- keybindings
-require('lsp_config')                   -- config for lsp
+-- require('lsp_config')                   -- config for lsp
 require('treesitter_config')            -- treesitter config
 require('coq_settings')
 -- require('compe_config')
