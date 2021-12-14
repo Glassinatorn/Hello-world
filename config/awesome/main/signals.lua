@@ -18,7 +18,7 @@ end
 local function create_titlebar(c)
     awful.titlebar(c):setup {
 	{
-	    layout = wibox.layout.fixed.horizontal()
+	    layout = wibox.layout.fixed.horizontal(),
 	},
 	layout = wibox.layout.align.horizontal
     }
@@ -26,7 +26,7 @@ end
 
 -- toggle titlebar
 local function toggle_titlebar(c)
-    awful.titlebar.toggle(c)
+    awful.titlebar.show(c)
 end
 
 -- setup signals
@@ -36,9 +36,14 @@ local function setup(c)
     -- Add a titlebar if titlebars_enabled is set to true in the rules.
     client.connect_signal( "request::titlebars", function(c) create_titlebar(c) end)
 
+
     -- Focus signals
-    client.connect_signal("focus", function(c) toggle_titlebar(c) end)
-    client.connect_signal("unfocus", function(c) toggle_titlebar(c) end)
+    client.connect_signal("focus", function(c) 
+	awful.titlebar.show(c) 
+	beautiful.titlebar_bg = beautiful.transparent end)
+
+    client.connect_signal("unfocus", function(c) 
+	beautiful.titlebar_bg = beautiful.color10 end)
 end
 
 return { setup = setup }
