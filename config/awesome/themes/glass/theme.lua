@@ -59,7 +59,7 @@ theme.border_marked = theme.color6
 
 -- wibar
 theme.wibar_height      = dpi(20)
-theme.wibar_width       = dpi(210)
+theme.wibar_width       = dpi(250)
 theme.wibar_normal_bg   = theme.color4
 theme.wibar_normal_fg   = theme.color3
 theme.wibar_bg          = theme.color4
