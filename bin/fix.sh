@@ -66,6 +66,7 @@ esac
 killall unclutter
 unclutter -idle 0.5 -root &
 ~/.fehbg
+picom
 # killing old sxhkd processes
 killall sxkhd
 
