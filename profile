@@ -160,6 +160,7 @@ alias overleaf="mkdir overleaf &&
 alias bww="bitwarden_wrapper.sh"
 alias r2="r2 -AAA"
 alias sc="sc-im"
+alias f="find 2>/dev/null / -name"
 
 
 # loading nnn config

@@ -40,7 +40,7 @@ local function setup(c)
     -- Focus signals
     client.connect_signal("focus", function(c) 
 	awful.titlebar.show(c) 
-	beautiful.titlebar_bg = beautiful.transparent end)
+	beautiful.titlebar_bg = beautiful.color8 end)
 
     client.connect_signal("unfocus", function(c) 
 	beautiful.titlebar_bg = beautiful.color10 end)
