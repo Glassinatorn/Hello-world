@@ -5,8 +5,8 @@ local map = vim.api.nvim_set_keymap
 g.mapleader = ' '
 
 -- lsp actions
-map('n', '<leader>h',       ':lua vim.lsp.diagnostic.goto_prev()<CR>',      { noremap = true })     -- go to previous diagnostic
-map('n', '<leader>l',       ':lua vim.lsp.diagnostic.goto_next()<CR>',      { noremap = true })     -- go to next diagnostic
+map('n', '<leader>h',       ':lua vim.diagnostic.goto_prev()<CR>',      { noremap = true })      -- go to previous diagnostic
+map('n', '<leader>l',       ':lua vim.diagnostic.goto_next()<CR>',      { noremap = true })      -- go to next diagnostic
 map('n', '<leader>a',       ':lua vim.lsp.buf.code_action()<CR>',	    { noremap = true })     -- code action
 map('n', '<leader>d',       ':lua vim.lsp.buf.definition()<CR>',	    { noremap = true })     -- go to definition
 map('n', '<leader>D',       ':lua vim.lsp.buf.declaration()<CR>',	    { noremap = true })     -- go to declaration
