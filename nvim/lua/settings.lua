@@ -36,7 +36,7 @@ cmd [[ autocmd BufNewFile doc_*  0r /usr/share/nvim/runtime/skeletons/documentat
 
 -- ultisnips
 --vim.api.nvim_set_var("UltiSnipsExpandTrigger", "<tab>")
---vim.api.nvim_set_var("UltiSnipsJumpForwardTrigger", "<tab>")
+vim.api.nvim_set_var("UltiSnipsJumpForwardTrigger", "<tab>")
 
 -- color highlighter
 require'colorizer'.setup()
