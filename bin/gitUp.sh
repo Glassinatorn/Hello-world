@@ -27,7 +27,6 @@ $CMD $CD/i3 \
     $CD/sxhkd \
     $CD/gtk-3.0 \
     $CD/polybar \
-    $CD/mpv \
     $CD/termite \
     $CD/picom.conf \
     $CD/gtk-3.0 \
