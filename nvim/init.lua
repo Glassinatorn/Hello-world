@@ -16,7 +16,7 @@ local packer = require('packer').startup(function()
     use {'wbthomason/packer.nvim'}
     use {'nvim-treesitter/nvim-treesitter'}
     use {'neovim/nvim-lspconfig'}
-    use {'hrsh7th/nvim-compe'}
+    use {'hrsh7th/nvim-cmp'}
     use {'easymotion/vim-easymotion'}
     use {'sbdchd/neoformat'}
     use {'sirver/ultisnips'}
