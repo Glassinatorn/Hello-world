@@ -46,4 +46,4 @@ require('settings')                     -- general settings
 require('maps')                         -- keybindings
 require('lsp_config')                   -- config for lsp
 require('treesitter_config')            -- treesitter config
-require('compe_config')
+require('cmp_config')
