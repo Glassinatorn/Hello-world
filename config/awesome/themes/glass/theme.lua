@@ -10,7 +10,8 @@ local xresources_colors = xresources.get_current_theme()
 local gfs = require("gears.filesystem")
 local shape = require("gears.shape")
 local cairo = require("lgi").cairo
-local themes_path = gfs.get_themes_dir()
+-- local themes_path = gfs.get_themes_dir()
+local themes_path = "/home/glass/.config/awesome/themes/"
 
 local theme = {
     -- loading colors

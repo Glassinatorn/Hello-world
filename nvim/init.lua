@@ -15,8 +15,10 @@ vim.cmd [[packadd packer.nvim]]
 local packer = require('packer').startup(function()
     use {'wbthomason/packer.nvim'}
     use {'nvim-treesitter/nvim-treesitter'}
-    use {'neovim/nvim-lspconfig'}
     use {'hrsh7th/nvim-cmp'}
+    use {'hrsh7th/cmp-buffer'}
+    use {'hrsh7th/cmp-nvim-lsp'}
+    use {'quangnguyen30192/cmp-nvim-ultisnips'}
     use {'easymotion/vim-easymotion'}
     use {'sbdchd/neoformat'}
     use {'sirver/ultisnips'}
@@ -27,8 +29,9 @@ local packer = require('packer').startup(function()
     use {'christianchiarulli/nvcode-color-schemes.vim'}
     use {'puremourning/vimspector'}
     use {'williamboman/nvim-lsp-installer'}
-    use {'RishabhRD/popfix'}
+    use {'neovim/nvim-lspconfig'}
     use {'RishabhRD/nvim-lsputils'}
+    use {'RishabhRD/popfix'}
     use {'szw/vim-maximizer'}
     use {'lervag/vimtex'}
     use {'ggandor/lightspeed.nvim'}

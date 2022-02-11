@@ -26,7 +26,6 @@ cmd [[ autocmd BufWinLeave *.lua,*.py,*.c,*.sh,*.rs,*.js,*.html,*.css,*.vim sile
 cmd [[ autocmd BufWinEnter *.lua,*.py,*.c,*.sh,*.rs,*.js,*.html,*.css,*.vim silent! loadview ]]	    -- save folds
 
 -- loading skeletons
-cmd [[ autocmd BufNewFile *.tex  0r /usr/share/nvim/runtime/skeletons/skeleton.tex ]]
 cmd [[ autocmd BufNewFile *.c  0r /usr/share/nvim/runtime/skeletons/skeleton.c ]]
 cmd [[ autocmd BufNewFile *.h  0r /usr/share/nvim/runtime/skeletons/skeleton.h ]]
 cmd [[ autocmd BufNewFile *.cpp  0r /usr/share/nvim/runtime/skeletons/skeleton.cpp ]]

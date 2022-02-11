@@ -5,8 +5,8 @@ local map = vim.api.nvim_set_keymap
 g.mapleader = ' '
 
 -- lsp actions
-map('n', '<leader>h',       ':lua vim.diagnostic.goto_prev()<CR>',      { noremap = true })      -- go to previous diagnostic
-map('n', '<leader>l',       ':lua vim.diagnostic.goto_next()<CR>',      { noremap = true })      -- go to next diagnostic
+map('n', '<leader>h',       ':lua vim.diagnostic.goto_prev()<CR>',	    { noremap = true })      -- go to previous diagnostic
+map('n', '<leader>l',       ':lua vim.diagnostic.goto_next()<CR>',	    { noremap = true })      -- go to next diagnostic
 map('n', '<leader>a',       ':lua vim.lsp.buf.code_action()<CR>',	    { noremap = true })     -- code action
 map('n', '<leader>d',       ':lua vim.lsp.buf.definition()<CR>',	    { noremap = true })     -- go to definition
 map('n', '<leader>D',       ':lua vim.lsp.buf.declaration()<CR>',	    { noremap = true })     -- go to declaration
@@ -15,9 +15,18 @@ map('n', '<leader>i',       ':lua vim.lsp.buf.implementation()<CR>',	    { norem
 map('n', '<leader>rn',      ':lua vim.lsp.buf.rename()<CR>',		    { noremap = true })     -- dynamically rename variables
 map('n', 'K',               ':lua vim.lsp.buf.hover()<CR>',		    { noremap = true })     -- show documentation
 
+-- completion 
+local cmp = require("cmp")
+cmp.setup({
+    mapping = {
+	["<Tab>"] = cmp.mapping.select_next_item(),
+	["<CR>"] = cmp.mapping.confirm({ select = true })
+    }
+})
+
 -- nice to haves
-map('i', 'kj',              '<Esc>',			                    { noremap = true })	    -- escape insert
-map('i', 'jk',              '<Esc>',	    		                    { noremap = true })	    -- escape insert
+map('i', 'kj',              '<Esc>',					    { noremap = true })	    -- escape insert
+map('i', 'jk',              '<Esc>',					    { noremap = true })	    -- escape insert
 map('i', '()',              '()<Esc>i',	    	                            { noremap = true })	    -- insert ()
 map('i', '[]',              '[]<Esc>i',	    	                            { noremap = true })	    -- insert []
 map('i', '{}',              '{}<Esc>i',	    	                            { noremap = true })	    -- insert {}
@@ -29,6 +38,7 @@ map('i', '<C-s>',           '<Esc>:w<CR>',	                            { noremap
 map('n', '<C-s>',           ':w<CR>',		                            { noremap = true })	    -- save with control-s
 map('n', '<leader>fo',      ':Neoformat<CR>',                               { noremap = true })	    -- formatting
 map('n', '<leader>m',       ':MaximizerToggle<CR>',                         { noremap = true })	    -- maximized buffer
+map('n', '<leader>re',	    ':w<CR> :so ~/.config/nvim/init.lua<CR>',	    { noremap = true })	    -- source config
 
 -- spelling
 map('n', '<leader>us',      ':setlocal spell! spelllang=en<CR>',            { noremap = true })     -- check english spelling
@@ -36,10 +46,6 @@ map('n', '<leader>se',      ':setlocal spell! spelllang=se<CR>',            { no
 map('n', 'zz',              'z=',	    		                    { noremap = true })	    -- fix spelling
 map('n', 'zh',              '[s',                                           { noremap = true })     -- go to previous misspelled
 map('n', 'zl',              ']s',                                           { noremap = true })     -- go to next misspelled
-
--- easymotion
-map('n', '<space>j',        '<Plug>(easymotion-j)',                         { noremap = true })     -- go down
-map('n', '<space>k',        '<Plug>(easymotion-k)',                         { noremap = true })     -- go up
 
 -- vimspector
 map('n', '<leader>dl',      ':call vimspector#Continue()<CR>',              { noremap = true })     -- next step in debugging
@@ -53,4 +59,3 @@ map('n', '<Tab>',           ':call UltiSnips#ExpandSnippetOrJump()<CR>',    { no
 
 -- own functions
 map('n', '<leader>sw',      ':lua require("light-toggle").toggle()<CR>',    { noremap = true })     -- evaluate expression under cursor
-

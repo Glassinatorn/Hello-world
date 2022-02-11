@@ -127,8 +127,7 @@ alias remake="make && sudo make install && make clean"
 alias pup="sudo pacman -Syu && \
     rustup update && \
     pipupgrade -i && \
-    nvim -c ':PaqUpdate' \
-    nvim -c ':COQdeps'"
+    nvim -c ':PackerSync'"
 alias pin="sudo pacman -S"
 alias prm='sudo pacman -R $( \
     pacman -Q \
