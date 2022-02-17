@@ -40,6 +40,7 @@ local packer = require('packer').startup(function()
     use {'lewis6991/gitsigns.nvim'}		-- git integration
     use {'jbyuki/instant.nvim'}		-- pair programing
     use {'akinsho/flutter-tools.nvim'}
+    use {'dstein64/vim-startuptime'}
 end)
 
 
