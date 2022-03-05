@@ -19,7 +19,6 @@ local packer = require('packer').startup(function()
     use {'hrsh7th/cmp-buffer'}
     use {'hrsh7th/cmp-nvim-lsp'}
     use {'quangnguyen30192/cmp-nvim-ultisnips'}
-    use {'easymotion/vim-easymotion'}
     use {'sbdchd/neoformat'}
     use {'sirver/ultisnips'}
     use {'mattn/emmet-vim'}
