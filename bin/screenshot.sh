@@ -16,7 +16,7 @@
 curr_time=$(date +%F_%H:%M:%S".png")
 
 if [ -n $1 ]; then
-    maim -s "Figures/$1"
+    maim -s "$1"
     echo "$1" | xclip -selection c
 else
     curr_time=$(date +%F_%H:%M:%S".png")
