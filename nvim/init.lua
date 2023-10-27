@@ -40,6 +40,8 @@ local packer = require('packer').startup(function()
     use {'jbyuki/instant.nvim'}		-- pair programing
     use {'akinsho/flutter-tools.nvim'}
     use {'dstein64/vim-startuptime'}
+    use {'vijaymarupudi/nvim-fzf'}
+    use {'vijaymarupudi/nvim-fzf-commands'}
 end)
 
 

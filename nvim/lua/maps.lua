@@ -39,6 +39,7 @@ map('n', '<C-s>',           ':w<CR>',		                            { noremap = t
 map('n', '<leader>fo',      ':Neoformat<CR>',                               { noremap = true })	    -- formatting
 map('n', '<leader>m',       ':MaximizerToggle<CR>',                         { noremap = true })	    -- maximized buffer
 map('n', '<leader>re',	    ':w<CR> :so ~/.config/nvim/init.lua<CR>',	    { noremap = true })	    -- source config
+map('n', '<leader>ff',	    ':Telescope find_files<CR>',		    { noremap = true })	    -- open file
 
 -- spelling
 map('n', '<leader>us',      ':setlocal spell! spelllang=en<CR>',            { noremap = true })     -- check english spelling

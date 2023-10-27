@@ -46,3 +46,4 @@ require('gitsigns').setup()
 -- setting global for plugin
 vim.api.nvim_set_var("Toggle_color_1", "nord")
 vim.api.nvim_set_var("Toggle_color_2", "yui")
+

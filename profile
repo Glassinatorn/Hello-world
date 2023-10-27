@@ -157,7 +157,7 @@ alias overleaf="mkdir overleaf &&
     cat report.tex |
         sed 's/pictures\/screenshots\///g' >> overleaf/report.tex;
     cp pictures/screenshots/* overleaf/;"
-alias rmt="rm *.aux *.bbl *.blg *.fls *.log *.out"
+alias rmt="rm *.aux *.bbl *.blg *.fls *.log *.out *.fdb_latexmk *synctex.gz"
 alias bww="bitwarden_wrapper.sh"
 alias r2="r2 -AAA"
 alias sc="sc-im"

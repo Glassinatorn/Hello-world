@@ -1,18 +1,20 @@
 # TODO:
 # - make sure variables are cleaned after use []
 # - move TMP outside of function to reduce load times []
+# - empty clipboard after usage []
 # - implement create []
 # - implement update []
 # - implement delete []
 # - implement export []
 
 login() {
-    export BW_SESSION="$(bw unlock --raw)" 
-    bw sync
+    BW_SESSION=$(bw unlock --raw)
+    bw sync --session $BW_SESSION
 }
 
 get_pass () {
-    TMP_FOLDERS=$(bw list folders)
+    # chosing folder
+    TMP_FOLDERS=$(bw list folders --session $BW_SESSION)
     TMP=$(echo $TMP_FOLDERS \
 	| jq '.[] | select(.name)' \
 	| grep -i name \
@@ -20,14 +22,14 @@ get_pass () {
 	| fzf \
 	| cut -c 3-) 
 
-    echo $TMP
-    TMP_FOLDERS=$(bw list folders)
+    # 
+    TMP_FOLDERS=$(bw list folders --session $BW_SESSION)
     TMP_ID=$(echo $TMP_FOLDERS \
 	| jq --raw-output '.[] 
 	    | select(.name == '\"$TMP\"')
 	    | .id') 
 
-    TMP_FOLDER=$(bw list items) 
+    TMP_FOLDER=$(bw list items --session $BW_SESSION) 
     TMP_FOLDER=$(echo $TMP_FOLDER \
 	| jq '.[] 
 	    | select(.folderId == '\"$TMP_ID\"')') 
@@ -36,7 +38,7 @@ get_pass () {
 	| jq --raw-output .name \
 	| fzf) 
 
-    TMP_CLIP=$(bw list items) 
+    TMP_CLIP=$(bw list items --session $BW_SESSION) 
     echo $TMP_CLIP \
 	| jq --raw-output '.[] 
 	    | select(.folderId == '\"$TMP_ID\"') 
@@ -60,15 +62,14 @@ logout() {
 }
 
 login
-CHOICES="Get Create Update Delete Logout"
 # promts for what to do
-select CHOICE in $CHOICES; do
-    case $CHOICE in
-	"Get")
+#select CHOICE in "Get" "Create" "Update" "Delete" "Logout"; do
+    #case $CHOICE in
+	#"Get")
 	    get_pass
 	    logout
-	;;
-	"Logout")
-	    exit
-    esac
-done
+	#;;
+	#"Logout")
+	    #exit
+    #esac
+#done
