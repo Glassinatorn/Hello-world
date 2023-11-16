@@ -188,9 +188,9 @@ end
 
 local function get_wallpaper(screen)
     if screen.geometry.width == 1920 then
-        return CONFDIR .. "info_panel_1920.png"
+        return CONFDIR .. "pictures/" .. "info_panel_1920.png"
     else
-        return CONFDIR .. "info_panel_3440.png"
+        return CONFDIR .. "pictures/" .. "info_panel_3440.png"
     end
 end
 
@@ -223,9 +223,9 @@ HW_info_bars = create_centered_box({battery_bar,
 local electricity_price_text = helpful_functions.run_shell_script("python " .. CONFDIR .. "scripts/get_electricity_price.py")
 local electricity_price_text = wibox.widget.textbox("<span size='300%'> " .. electricity_price_text .. "</span>")
 
-local electricity_box = create_centered_box({electricity_price_text, 
+local electricity_box = create_centered_box({electricity_price_text,
                                             wibox.widget.textbox("Öre/Kwh")},
-                                            dpi(20), dpi(10), dpi(150), dpi(150))
+                                            dpi(10), dpi(0), dpi(150), dpi(150))
 
 
 local docker_title = create_centered_line(create_underlined_text("Docker"))
@@ -372,21 +372,21 @@ local function setup(s)
         --helpful_functions.run_shell_script(CONFDIR .. "scripts/tmp.sh" .. " " .. 
                                             --dpi(2000) .. " " .. dpi(500) .. " " .. 
                                             --values.indicator .. " " .. 
-                                            --CONFDIR .. "scripts/" .. values.picture)
+                                            --CONFDIR .. "pictures/" .. values.picture)
     end
 
 
 
     local top_graph_image = {
         id = "top_graph",
-        image = gears.surface.load_uncached(CONFDIR .. "scripts/gdp.png"),
+        image = gears.surface.load_uncached(CONFDIR .. "pictures/gdp.png"),
         widget = wibox.widget.imagebox
     }
     local top_graph_box = create_generic_box(top_graph_image, 0, dpi(500), dpi(250))
 
     local bottom_graph_image = {
         id = "bottom_graph",
-        image = gears.surface.load_uncached(CONFDIR .. "scripts/gdp.png"),
+        image = gears.surface.load_uncached(CONFDIR .. "pictures/gdp.png"),
         widget = wibox.widget.imagebox
     }
     local bottom_graph_box = create_generic_box(bottom_graph_image, 0, dpi(500), dpi(250))
@@ -401,13 +401,13 @@ local function setup(s)
         cpi_button = create_underlined_text("CPI", 10),
     }
     local top_buttons_bindings = {
-        inflation_button = CONFDIR .. "scripts/inflation.png",
-        gdp_button = CONFDIR .. "scripts/gdp.png",
-        gdp_per_capita_button = CONFDIR .. "scripts/gdp_per_capita.png",
-        education_expenditure_button = CONFDIR .. "scripts/education_expenditure.png",
-        interest_rates_button = CONFDIR .. "scripts/interest_rates.png",
-        foreign_investments_button = CONFDIR .. "scripts/foreign_direct_investments.png",
-        cpi_button = CONFDIR .. "scripts/cpi.png",
+        inflation_button = CONFDIR .. "pictures/inflation.png",
+        gdp_button = CONFDIR .. "pictures/gdp.png",
+        gdp_per_capita_button = CONFDIR .. "pictures/gdp_per_capita.png",
+        education_expenditure_button = CONFDIR .. "pictures/education_expenditure.png",
+        interest_rates_button = CONFDIR .. "pictures/interest_rates.png",
+        foreign_investments_button = CONFDIR .. "pictures/foreign_direct_investments.png",
+        cpi_button = CONFDIR .. "pictures/cpi.png",
     }
 
     local bottom_buttons = {
@@ -418,11 +418,11 @@ local function setup(s)
         net_migration_button = create_underlined_text("Net migration", 10),
     }
     local bottom_buttons_bindings = {
-        unemployement_rate_button = CONFDIR .. "scripts/unemployment_rate.png",
-        gini_coefficient_button = CONFDIR .. "scripts/gini_coefficient.png",
-        poverty_button = CONFDIR .. "scripts/poverty.png",
-        population_button = CONFDIR .. "scripts/population.png",
-        net_migration_button = CONFDIR .. "scripts/net_migration.png"
+        unemployement_rate_button = CONFDIR .. "pictures/unemployment_rate.png",
+        gini_coefficient_button = CONFDIR .. "pictures/gini_coefficient.png",
+        poverty_button = CONFDIR .. "pictures/poverty.png",
+        population_button = CONFDIR .. "pictures/population.png",
+        net_migration_button = CONFDIR .. "pictures/net_migration.png"
     }
 
 
