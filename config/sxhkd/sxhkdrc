@@ -1,6 +1,8 @@
+# ~/.local/bin/own/
+#
 # web browser
 super + w
-    qutebrowser_session.sh
+    ~/.local/bin/own/qutebrowser_session.sh
 
 # terminal emulator
 super + Return
@@ -12,7 +14,7 @@ super + space
 
 # make sxhkd reload its configuration files:
 super + shift + r
-    fix.sh
+    ~/.local/bin/own/fix.sh
 
 #
 # run scripts
@@ -20,18 +22,18 @@ super + shift + r
 
 # shutdown
 super + x
-    shutdown.sh
+    ~/.local/bin/own/shutdown.sh
 
 # screenshot
 super + p
-    screenshot.sh
+    ~/.local/bin/own/screenshot.sh
 
 super + shift + p
-    screenshot.sh $(echo "where?: " | dmenu -c -l 1)
+    ~/.local/bin/own/screenshot.sh $(echo "name: " | dmenu -c -l 1)
 
 # show info
 ctrl + i
-    sysinfo.sh
+    ~/.local/bin/own/sysinfo.sh
 
 # opens calcurse
 super + c
@@ -41,30 +43,24 @@ super + c
 super + m
     st -c calcurse -e neomutt
 
-# show calendar info
-ctrl + shift + i
-    notify-send \
-        "$(date | cut -d ' ' -f 1-3)" \
-        "$(calcurse -Q --filter-priority 1 --format-todo %N)"
-
 # fix screens and touchpad
 ctrl + shift + f
-    fix.sh
+    ~/.local/bin/own/fix.sh
 
 # switch between igpu and egpu
 ctrl + shift + e
-    pk_eGPU.sh
+    ~/.local/bin/own/pk_eGPU.sh
 
 # rotating screen
 ctrl + shift + r
-    rotate.sh
+    ~/.local/bin/own/rotate.sh
 
 ctrl + shift + b
-    brightness.sh
+    ~/.local/bin/own/brightness.sh
 
 # toggling keyboard layout
 ctrl + space
-    keymap.sh
+    ~/.local/bin/own/keymap.sh
 
 # volume control keys
 XF86AudioMute

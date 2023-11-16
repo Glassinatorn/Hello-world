@@ -6,13 +6,18 @@ local g = vim.general
 -- syntax and text settings
 cmd [[ filetype plugin indent on ]]
 cmd [[ syntax on ]]
-bo.softtabstop = 4			-- sets tabs to 4 spaces
-bo.shiftwidth = 4
-o.smarttab = true			-- smart tabbing
 o.hlsearch = false			-- multiple highlight for search
 o.updatetime = 300			-- ms between swap is written
-cmd [[ set clipboard+=unnamedplus ]]	-- enables clipboard
+cmd [[ set clipboard=unnamedplus ]]	-- enables clipboard
 cmd [[ let g:vimspector_base_dir=expand( '$HOME/.config/nvim/vimspector-config' ) ]]
+
+-- tabbing settings
+bo.tabstop = 4
+bo.expandtab = true
+bo.shiftwidth = 4
+bo.autoindent = true
+bo.smartindent = true
+bo.cindent = true
 
 -- colorscheme settings
 o.termguicolors = true			-- enables 24-bit colors
@@ -21,9 +26,11 @@ nvcode_termcolors = 256			-- colorspace for nvcode
 cmd [[ colorscheme nord ]]		-- setting colorscheme
 
 -- folding settings
-o.foldmethod = "manual"
-cmd [[ autocmd BufWinLeave *.lua,*.py,*.c,*.sh,*.rs,*.js,*.html,*.css,*.vim silent! mkview ]]	    -- load folds
-cmd [[ autocmd BufWinEnter *.lua,*.py,*.c,*.sh,*.rs,*.js,*.html,*.css,*.vim silent! loadview ]]	    -- save folds
+o.foldmethod = "expr"
+o.foldexpr = "nvim_treesitter#foldexpr()"
+-- cmd [[ autocmd BufReadPost,FileReadPost * normal zR ]]
+cmd [[ autocmd BufWinLeave *.lua,*.py,*.c,*.sh,*.rs,*.js,*.html,*.css,*.vim,*.json silent! mkview ]]	    -- load folds
+cmd [[ autocmd BufWinEnter *.lua,*.py,*.c,*.sh,*.rs,*.js,*.html,*.css,*.vim,*.json silent! loadview ]]	    -- save folds
 
 -- loading skeletons
 cmd [[ autocmd BufNewFile *.c  0r /usr/share/nvim/runtime/skeletons/skeleton.c ]]
@@ -46,4 +53,3 @@ require('gitsigns').setup()
 -- setting global for plugin
 vim.api.nvim_set_var("Toggle_color_1", "nord")
 vim.api.nvim_set_var("Toggle_color_2", "yui")
-

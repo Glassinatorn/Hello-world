@@ -11,6 +11,7 @@ export LESS_TERMCAP_us=$'\E[01;32m'
 export PATH="$PATH:$HOME/.local/bin"
 export PATH="$PATH:$HOME/.local/bin/own"
 export EDITOR=nvim
+export LIBVA_DRIVER_NAME=iHD
 
 # setting prompt
 PS1='>_ '
@@ -63,6 +64,8 @@ alias dd="docker-compose down -v"
 alias du="docker-compose up -d"
 alias db="docker-compose build"
 alias dr="dd && db && du"
+alias ddjango="docker run -d -p 8000:8000 --name django_app -v /tmp/django:/usr/src/app django"
+alias dkali="docker run -it --name pentest-container kalilinux/kali-rolling"
 
 # cargo
 alias cr="clear && cargo run"
@@ -125,10 +128,14 @@ alias usb='sudo mount /dev/$( \
         | fzf) /mnt/usb/'
 alias remake="make && sudo make install && make clean"
 alias pup="sudo pacman -Syu && \
+    printf \"General system done!\n\n\n\"
     rustup update && \
-    pipupgrade -i && \
-    nvim -c ':PackerSync \
-    nvim -c ':TSUpdate'"
+    printf \"\n\nRust done!\n\n\n\" \
+    pipup && \
+    printf \"\n\nPython done!\n\n\n\" \
+    nvim -c ':PackerSync' \
+    nvim -c ':TSUpdate' \
+    printf \"\n\nNvim done!\n\n\n\""
 alias pin="sudo pacman -S"
 alias prm='sudo pacman -R $( \
     pacman -Q \
@@ -147,6 +154,10 @@ alias pe="if [ -d env/ ]; then
 	pip install pynvim
 	touch requirement.txt
     fi"
+alias pipup="pip3 list --outdated --format=freeze 
+    | grep -v '^\-e' 
+    | cut -d = -f 1 
+    | xargs -n1 pip3 install -U"
 alias gwall="xwinwrap -g 240x240+839+297 -ov -sh circle -- gifview -w WID -a"
 alias proto="ls *.proto \
     | fzf \
@@ -162,7 +173,6 @@ alias bww="bitwarden_wrapper.sh"
 alias r2="r2 -AAA"
 alias sc="sc-im"
 alias f="find 2>/dev/null / -name"
-
 
 # loading nnn config
 source ~/.config/nnn/rc
@@ -182,3 +192,6 @@ export JAVA_HOME='/usr/lib/jvm/java-8-openjdk'
 export JAVA_OPTS='-XX:+IgnoreUnrecognizedVMOptions --add-modules java.se.ee'
 export ANDROID_SDK_ROOT='/opt/android-sdk'
 export CHROME_EXECUTABLE=/usr/bin/google-chrome-stable
+
+# sourcing secrets
+source ~/.secrets

@@ -2,9 +2,8 @@
 export NNN_BMS=\
 "h:~/;"\
 "c:~/freetime/code/;"\
-"m:~/school/master/semester3/advancedMultiProgramming/;"\
-"n:~/school/master/semester3/networkAndSystemSecurity/;"\
-"M:~/school/master/semester1/machineLearning/;"\
+"n:~/school/master/semester7/networkAndSystemSecurity/;"\
+"m:~/school/master/semester7/malwareAnalysis/;"\
 "t:~/school/master/semester4/tor/;"
 
 # plugins

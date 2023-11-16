@@ -45,7 +45,7 @@ local function setup(s)
     -- connect tags and wibar for each screen
     awful.screen.connect_for_each_screen(
 	function(s)
-	-- Each screen has its own tag table.
+	-- each screen has its own tag table.
 	awful.tag.add("   code", {
 	    layout = lain.layout.centerwork,
 	    master_fill_policy = "master_width_factor",
@@ -63,8 +63,13 @@ local function setup(s)
 	    gap_single_client = true,
 	    screen = s
 	})
+	awful.tag.add("   extra", {
+	    master_fill_policy = "master_width_factor",
+	    gap_single_client = true,
+	    screen = s
+	})
 
-	-- Create a taglist widget
+	-- create a taglist widget
 	s.mytaglist = awful.widget.taglist {
 	    screen = s,
 	    filter = awful.widget.taglist.filter.all,
@@ -72,7 +77,7 @@ local function setup(s)
 	    widget_template = taglist_template,
 	}
 
-	-- Create the wibox
+	-- create the wibox
 	s.mywibox = awful.wibar({ 
 	    screen = s,
 	    stretch = false,
@@ -82,11 +87,11 @@ local function setup(s)
 	    shape = gears.shape.rectangle,
 	})
 
-	-- Add widgets to the wibox
+	-- add widgets to the wibox
 	s.mywibox:setup {
 	    layout = wibox.layout.align.horizontal,
 	    {
-		-- Left widgets
+		-- left widgets
 		layout = wibox.layout.fixed.horizontal,
 		s.mytaglist
 	    }

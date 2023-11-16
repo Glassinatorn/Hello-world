@@ -1,19 +1,20 @@
-local lsp_installer = require("nvim-lsp-installer")
+require("nvim-lsp-installer").setup {}
+local lspconfig = require("lspconfig")
 
--- Register a handler that will be called for all installed servers.
--- Alternatively, you may also register handlers on specific server instances instead (see example below).
-lsp_installer.on_server_ready(function(server)
-    local opts = {}
+--Enable (broadcasting) snippet capability for completion
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities.textDocument.completion.completionItem.snippetSupport = true
 
-    -- (optional) Customize the options passed to the server
-    -- if server.name == "tsserver" then
-    --     opts.root_dir = function() ... end
-    -- end
-
-    server:setup(opts)
-end)
-
-
+-- choosing lsp servers 
+lspconfig.bashls.setup{capabilities = capabilities} -- shell
+lspconfig.pyright.setup{capabilties = capabilities} -- python
+lspconfig.lua_ls.setup{capabilities = capabilities} -- lua
+lspconfig.clangd.setup{capabilities = capabilities} -- c & c++
+lspconfig.dartls.setup{capabilities = capabilities} -- dart
+lspconfig.eslint.setup{capabilities = capabilities} -- js
+lspconfig.vimls.setup{capabilities = capabilities} -- vim
+lspconfig.rust_analyzer.setup{capabilities = capabilities} -- rust
+lspconfig.dockerls.setup{capabilities = capabilities} -- docker
 
 -- configuring how language servers are supposed to display diagnostics
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(

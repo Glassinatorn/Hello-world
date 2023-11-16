@@ -10,33 +10,30 @@
 --  :   : :    :: :  : :    : :: ::   :: : :     : :  :    :      :    : :: ::   
                                                                               
 
--- TODO:
---  rules [x]
---  signals [x]
---  layouts [x]
---  bindings [x]
---  screen [x]
---  widgets []
-
+-- importing libraries
 pcall(require, "luarocks.loader") -- luarocks
 
 -- importing aweomsewm libraries
 require("awful.autofocus")
 require("awful.hotkeys_popup.keys")
+local awful = require("awful")
 local beautiful = require("beautiful")
 beautiful.init(os.getenv("HOME") .. "/.config/awesome/themes/glass/theme.lua")
 
-local rules = require("main.rules")         -- rules
-local layouts = require("main.layouts")     -- layouts
-local bindings = require("bindings.bindings")                -- keybindings
-local screens = require("bindings.screen")                  -- connecting tags to each screen
-local signals = require("main.signals")     -- Signals
+local functions = require("functions")  -- functions to manage clients
+local rules = require("rules")          -- tags
+local layouts = require("layouts")      -- layouts for clients
+local info_panel = require("info_panel") -- info panel
+local keys = require("keys")            -- keybindings
 
-require("widgets.widgets")                  -- widgets
+-- setups
+functions.setup_signals(c)
+functions.setup_taglist(s)
+rules.setup_rules()
+layouts.setup_layouts()
+-- info_panel.setup(s)
+keys.setup_keybindings()
 
-
-rules.setup()
-signals.setup(c)
-layouts.setup(c)
-bindings.setup()
-screens.setup(s)
+-- autostart applications
+awful.spawn.with_shell("$HOME/.local/bin/own/fix.sh") -- fix screens, wallpaper, etc
+awful.spawn.with_shell("$HOME/.local/bin/own/autostart.sh") -- autostart applications

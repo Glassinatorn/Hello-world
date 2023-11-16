@@ -2,8 +2,11 @@
 local awful = require("awful")
 local beautiful = require("beautiful")
 local hotkeys_popup = require("awful.hotkeys_popup").widget
+local gears = require("gears")
+local wibox = require("wibox")
 
 local vars = require("main.variables")
+
 
 
 -- Submenu
@@ -30,11 +33,13 @@ Mymainmenu =
     {
         items = {
             {"Awesome", Myawesomemenu, beautiful.awesome_icon},
+            {"Start", vars.SETUP},
             {"Open terminal", vars.TERMINAL},
-            {"Open sidebar", function () end}
+            {"Open sidebar", sidebar}
         }
     }
 )
+
 
 -- Launcher
 Mylauncher =

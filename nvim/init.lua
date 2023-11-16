@@ -18,9 +18,12 @@ local packer = require('packer').startup(function()
     use {'hrsh7th/nvim-cmp'}
     use {'hrsh7th/cmp-buffer'}
     use {'hrsh7th/cmp-nvim-lsp'}
-    use {'quangnguyen30192/cmp-nvim-ultisnips'}
+    use {'windwp/nvim-autopairs'}
+    use {'rafamadriz/friendly-snippets'}
     use {'sbdchd/neoformat'}
-    use {'sirver/ultisnips'}
+    use {'hrsh7th/cmp-vsnip'}
+    use {'hrsh7th/vim-vsnip'}
+    use {'hrsh7th/vim-vsnip-integ'}
     use {'mattn/emmet-vim'}
     use {'erietz/vim-terminator'}
     use {'glassinatorn/figlet-banner'}
@@ -42,7 +45,33 @@ local packer = require('packer').startup(function()
     use {'dstein64/vim-startuptime'}
     use {'vijaymarupudi/nvim-fzf'}
     use {'vijaymarupudi/nvim-fzf-commands'}
+    use {'roxma/vim-tmux-clipboard'}		-- clipboard integration with tmux
+    use {'daeyun/vim-matlab'}
+    use {'github/copilot.vim'}
+    use {
+            'nvim-telescope/telescope.nvim', tag = '0.1.0',
+            requires = { {'nvim-lua/plenary.nvim'} }
+        }
+    use {'eandrju/cellular-automaton.nvim'} -- make the code melt
+    use({
+	  "jackMort/ChatGPT.nvim",
+	    config = function()
+	      require("chatgpt").setup({
+		-- optional configuration
+        keymaps = {
+            submit = "<C-e>",
+          },
+	      })
+	    end,
+	    requires = {
+	      "MunifTanjim/nui.nvim",
+	      "nvim-lua/plenary.nvim",
+	      "nvim-telescope/telescope.nvim"
+	    }
+	})
 end)
+
+
 
 
 
@@ -52,3 +81,4 @@ require('maps')                         -- keybindings
 require('lsp_config')                   -- config for lsp
 require('treesitter_config')            -- treesitter config
 require('cmp_config')
+require("flutter-tools").setup{} -- use defaults

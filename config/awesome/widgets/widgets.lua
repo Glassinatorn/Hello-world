@@ -24,19 +24,9 @@ local mysides = {
     ontop = true,
     x = 10,
     y = 10,
-    visible = false,
+    visible = true,
 }
 
--- clock 
-local clock = {
-    widget = wibox.widget.textclock("%H %M"),
-    align = "center",
-    valign = "center",
-}
-
-
-
-return { 
+return {
     mysides = mysides,
-    clock = clock,
 }

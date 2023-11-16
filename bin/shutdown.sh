@@ -17,7 +17,7 @@ ANS="$(printf "Lock \nSuspend \nSign out \nReboot \nShutdown" \
     | dmenu -c -i -l 10)"
 
 case "$ANS" in
-    'Lock ') dm-tool lock ;;
+    'Lock ') $HOME/.local/bin/own/lock.sh ;;
     'Suspend ') systemctl suspend ;;
     'Sign out ') sudo systemctl restart lightdm ;;
     'Reboot ') reboot ;;

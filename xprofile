@@ -1,8 +1,10 @@
 #!/bin/sh
 export PATH="${PATH}:$HOME/bin"
 export EDITOR=nvim
+export TERMINAL=st
 
 # starting backround programs
 fix.sh &
 picom --experimental-backend &
 unclutter &
+rclone mount google_drive:/ --vfs-cache-mode full $HOME/google_drive &

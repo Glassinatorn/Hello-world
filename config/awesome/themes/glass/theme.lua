@@ -33,7 +33,7 @@ local theme = {
     color15 = xresources_colors.color15,
     foreground = xresources_colors.foreground,
     background = xresources_colors.background,
-    font = xresources.font
+    font = xresources.font,
 }
 
 theme.transparent   = "#00000000"
@@ -60,7 +60,7 @@ theme.border_marked = theme.color6
 
 -- wibar
 theme.wibar_height      = dpi(20)
-theme.wibar_width       = dpi(250)
+theme.wibar_width       = dpi(330)
 theme.wibar_normal_bg   = theme.color4
 theme.wibar_normal_fg   = theme.color3
 theme.wibar_bg          = theme.color4
@@ -87,7 +87,6 @@ theme.hotkeys_label_fg = theme.background
 theme.hotkeys_modifiers_fg = theme.color4
 
 -- menu
-theme.menu_submenu_icon = themes_path.."glass/submenu.png"
 theme.menu_height = dpi(15)
 theme.menu_width  = dpi(100)
 theme.menu_bg = xresources_colors.background
@@ -97,20 +96,8 @@ theme.menu_border_width = dpi(5)
 
 -- titlebar
 theme.titlebar_bg   = theme.color10
-
--- titlebar buttons
-theme.webb_icon = themes_path.."glass/taglist/squarefw.png"
-theme.code_icon = themes_path.."glass/taglist/submenu.png"
-theme.titlebar_close_button_normal = themes_path.."glass/titlebar/close_normal.png"
-theme.titlebar_close_button_focus  = themes_path.."glass/titlebar/close_focus.png"
-
-theme.titlebar_minimize_button_normal = themes_path.."glass/titlebar/minimize_normal.png"
-theme.titlebar_minimize_button_focus  = themes_path.."glass/titlebar/minimize_focus.png"
-
-theme.titlebar_maximized_button_normal_inactive = themes_path.."glass/titlebar/maximized_normal_inactive.png"
-theme.titlebar_maximized_button_focus_inactive  = themes_path.."glass/titlebar/maximized_focus_inactive.png"
-theme.titlebar_maximized_button_normal_active = themes_path.."glass/titlebar/maximized_normal_active.png"
-theme.titlebar_maximized_button_focus_active  = themes_path.."glass/titlebar/maximized_focus_active.png"
+--theme.titlebar_bgimage = "/home/glass/rotated.png"
+--theme.titlebar_bgimage_normal = "/home/glass/freetime/picture/lock/lockIcon.png"
 
 -- Generate Awesome icon:
 theme.awesome_icon = theme_assets.awesome_icon(
@@ -120,6 +107,11 @@ theme.awesome_icon = theme_assets.awesome_icon(
 -- Define the icon theme for application icons. If not set then the icons
 -- from /usr/share/icons and /usr/share/icons/hicolor will be used.
 theme.icon_theme = nil
+
+theme.battery_icon = themes_path .. "glass/icons/battery-full-solid.svg"
+theme.cpu_icon = themes_path .. "glass/icons/gauge-solid.svg"
+theme.harddrive_icon = themes_path .. "glass/icons/hard-drive-solid.svg"
+theme.ram_icon = themes_path .. "glass/icons/memory-solid.svg"
 
 return theme
 

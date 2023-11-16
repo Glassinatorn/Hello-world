@@ -14,14 +14,60 @@ local function ensure_placement(c)
     end
 end
 
+
+-- buttons for the titlebar
+local buttons = gears.table.join(
+    awful.button({ }, 1, function()
+        client.focus = c
+        c:raise()
+        awful.mouse.client.move(c)
+    end),
+    awful.button({ }, 3, function()
+        client.focus = c
+        c:raise()
+        awful.mouse.client.resize(c)
+    end)
+)
+
 -- creating the titlebar
 local function create_titlebar(c)
-    awful.titlebar(c):setup {
-	{
-	    layout = wibox.layout.fixed.horizontal(),
-	},
-	layout = wibox.layout.align.horizontal
-    }
+    awful.titlebar(c):setup
+    {
+	    -- trying to create new config
+{ -- Left
+        awful.titlebar.widget.iconwidget(c),
+        layout  = wibox.layout.fixed.horizontal
+    },
+    { -- Middle
+        { -- Title
+            align  = 'center',
+            widget = awful.titlebar.widget.titlewidget(c)
+        },
+        buttons = buttons,
+        layout  = wibox.layout.flex.horizontal
+    },
+    { -- Right
+	    --bgimage = test,
+	    --layout = wibox.layout.fixed.horizontal()
+
+    awful.titlebar.widget.closebutton    (c),
+    layout = wibox.layout.fixed.horizontal()
+    },
+    layout = wibox.layout.align.horizontal}
+
+
+    -- the original config
+    -- awful.titlebar(c):setup {
+    -- {
+    --     awful.titlebar.iconwidget(c),
+    --     layout = wibox.layout.fixed.horizontal
+    -- },
+
+	-- {
+	--     layout = wibox.layout.fixed.horizontal(),
+	-- },
+	-- layout = wibox.layout.align.vertical
+    -- }
 end
 
 -- toggle titlebar

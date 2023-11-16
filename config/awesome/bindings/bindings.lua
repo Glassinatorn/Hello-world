@@ -2,9 +2,13 @@ local gears = require("gears")
 local awful = require("awful")
 local vars = require("main.variables")
 local hotkeys_popup = require("awful.hotkeys_popup")
+require("bindings.custom_hotkeytips")
+local debugging = require("debugging")
+local os = require("os")
 
 local mysides = require("widgets.widgets").mysides
-     
+local debugging_str = 'notify-send "' .. debugging.dump_table(mysides) .. '"'
+
 -- wrapper for client focus
 local function focus_tag_wrapper(direction)
     awful.client.focus.global_bydirection(direction)
@@ -28,8 +32,8 @@ end
 
 -- toggle fullscreen for selected client
 local function toggle_fullscreen(c)
-    c.fullscreen = not 
-    c.fullscreen 
+    c.fullscreen = not
+    c.fullscreen
     c:raise()
 end
 
@@ -45,10 +49,10 @@ end
 -- send client to tag
 local function send_to_tag(i)
     if client.focus then
-	local tag = client.focus.screen.tags[i]
-	if tag then
-	    client.focus:move_to_tag(tag)
-	end
+        local tag = client.focus.screen.tags[i]
+        if tag then
+            client.focus:move_to_tag(tag)
+        end
     end
 end
 
@@ -91,20 +95,22 @@ Globalkeys = gears.table.join(
 
     -- Standard program
     awful.key({vars.MODKEY, "Control"}, "r", awesome.restart, {description = "reload awesome", group = "awesome"}),
-    awful.key({vars.MODKEY, "Shift"}, "q", awesome.quit, {description = "quit awesome", group = "awesome"})
+    awful.key({vars.MODKEY, "Shift"}, "q", awesome.quit, {description = "quit awesome", group = "awesome"}),
+    awful.key({vars.MODKEY, "Control"}, "q", awful.spawn(debugging_str), {description = "debugging", group = "awesome"})
 )
 
 -- clientkeys
-Clientkeys =
-    gears.table.join(
+Clientkeys = gears.table.join(
     awful.key({vars.MODKEY}, "f", function(c) toggle_fullscreen(c) end, {description = "toggle fullscreen", group = "client"}),
     awful.key({vars.MODKEY}, "q", function(c) c:kill() end, {description = "close", group = "client"}),
     awful.key({vars.MODKEY, "Control"}, "space", awful.client.floating.toggle, {description = "toggle floating", group = "client"}),
     awful.key({vars.MODKEY}, "t", function(c) c.ontop = not c.ontop end, {description = "toggle keep on top", group = "client"})
 )
 
+
 -- make taglist clickable
 local taglist_buttons = awful.button({}, 1, function(t) t:view_only() end)
+
 
 -- Clientbuttons
 Clientbuttons =
@@ -123,23 +129,23 @@ local function setup()
 	    -- view tag
 	    awful.key({vars.MODKEY}, "#" .. i + 9,
 		function() move_to_tag(i) end,
-		{description = "view tag #" .. i, group = "tag"}
+            {description = "view tag #" .. i, group = "tag"}
 	    ),
 	    -- send to tag
 	    awful.key({vars.MODKEY, "Shift"}, "#" .. i + 9,
 		function() send_to_tag(i) end,
-		{description = "move focused client to tag #" .. i, group = "tag"}
+            {description = "move focused client to tag #" .. i, group = "tag"}
 	    )
 	)
     end
 
     -- Mouse bindings
     root.buttons(
-	gears.table.join(
-	    awful.button({}, 3, function() Mymainmenu:toggle() end),
-	    awful.button({}, 4, awful.tag.viewnext),
-	    awful.button({}, 5, awful.tag.viewprev)
-	)
+        gears.table.join(
+            awful.button({}, 3, function() Mymainmenu:toggle() end),
+            awful.button({}, 4, awful.tag.viewnext),
+            awful.button({}, 5, awful.tag.viewprev)
+        )
     )
 
     -- Set keys

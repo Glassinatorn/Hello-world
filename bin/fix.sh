@@ -12,10 +12,16 @@
 #     ::        ::   ::  :::
 #     :        :     :   ::
 
+# getting ID for touchpad
+ID=$(xinput \
+    | grep Touchpad \
+    | cut -d '=' -f 2 \
+    | cut -b 1-2)
+
 # settings for laptop touchpad
-xinput --set-prop 10 "libinput Accel Speed" 0.2
-xinput --set-prop 10 "libinput Tapping Enabled" 1
-xinput --set-prop 10 "libinput Disable While Typing Enabled" 0
+xinput --set-prop $ID "libinput Accel Speed" 0.2
+xinput --set-prop $ID "libinput Tapping Enabled" 1
+xinput --set-prop $ID "libinput Disable While Typing Enabled" 0
 
 # counting connected screens
 NUM_MONITORS=$(xrandr \
@@ -68,18 +74,3 @@ unclutter -idle 0.5 -root &
 ~/.fehbg
 killall picom
 picom
-# killing old sxhkd processes
-killall sxkhd
-sxhkd
-
-# starting keybinding daemon
-if [ $GDMSESSION = "awesome" ]; then
-    sxhkd -c ~/.config/sxhkd/sxhkdrc \
-             ~/.config/sxhkd/awesome_sxhkdrc
-elif [ $GDMSESSION = "bspwm" ]; then
-    sxhkd -c ~/.config/sxhkd/sxhkdrc \
-             ~/.config/sxhkd/bspwm_sxhkdrc
-elif [ $GDMSESSION = "dwm" ]; then
-    sxhkd -c ~/.config/sxhkd/sxhkdrc \
-             ~/.config/sxhkd/dwm_sxhkdrc
-fi
