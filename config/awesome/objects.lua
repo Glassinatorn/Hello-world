@@ -69,67 +69,6 @@ end)
 --                  widgets                    --
 -------------------------------------------------
 
-Swedish_CPI_pic = wibox.widget {
-    image = "/home/glass/.config/awesome/data/pictures/swedish_cpi.png",
-    resize = true,
-    widget = wibox.widget.imagebox,
-}
-
-USA_CPI_pic = wibox.widget {
-    image = "/home/glass/.config/awesome/data/pictures/usa_cpi.png",
-    resize = true,
-    widget = wibox.widget.imagebox,
-}
-
-HW_info = {
-    {
-        {
-            {
-                HW_info_bars,
-                widget = wibox.container.background
-            },
-            margins = dpi(5),
-            widget = wibox.container.margin,
-        },
-        bg = beautiful.color1,
-        widget = wibox.container.background,
-    },
-    color = beautiful.color0,
-    left = dpi(5),
-    bottom = dpi(5),
-    right = dpi(1),
-    top = dpi(1),
-    widget = wibox.container.margin,
-}
-
-Swedish_CPI = {
-    {
-        Swedish_CPI_pic,
-        bg = beautiful.color4,
-        widget = wibox.container.background
-    },
-    color = beautiful.color0,
-    left = dpi(5),
-    bottom = dpi(5),
-    right = dpi(5),
-    top = dpi(5),
-    widget = wibox.container.margin,
-}
-
-USA_CPI = {
-    {
-        USA_CPI_pic,
-        bg = beautiful.color4,
-        widget = wibox.container.background
-    },
-    color = beautiful.color0,
-    left = dpi(5),
-    bottom = dpi(5),
-    right = dpi(1),
-    top = dpi(1),
-    widget = wibox.container.margin,
-}
-
 Myawesomemenu = {
     {
         "hotkeys",
@@ -178,12 +117,6 @@ return {
     Taglist = Taglist,
     Taglist_buttons = Taglist_buttons,
     Titlebar_buttons = Titlebar_buttons,
-    Sidepanel = Sidepanel,
-    Nameplate = Nameplate,
-    HW_info_bars = HW_info_bars,
-    HW_info = HW_info,
-    Swedish_CPI = Swedish_CPI,
-    USA_CPI = USA_CPI,
     Myawesomemenu = Myawesomemenu,
     Mymainmenu = Mymainmenu,
     Mylauncher = Mylauncher

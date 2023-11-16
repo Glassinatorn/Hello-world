@@ -12,7 +12,6 @@ local naughty = require("naughty")
 
 local objects = require("objects")
 local info_panel = require("info_panel")
-local economy_panel = require("economy_panel")
 
 
 ----------------------------------------------------------------------------------

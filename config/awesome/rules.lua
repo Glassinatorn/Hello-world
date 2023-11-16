@@ -43,7 +43,6 @@ local rules = {
         },
         properties = { titlebars_enabled = false }
     }
-
 }
 
 -- setup rules
