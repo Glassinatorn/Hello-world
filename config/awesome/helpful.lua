@@ -1,5 +1,6 @@
 local io = require("io")
 local awful = require("awful")
+local naughty = require("naughty")
 
 function deep_copy(original)
     if type(original) ~= "table" then
@@ -15,6 +16,14 @@ end
 function sleep(time)
     local timer = io.popen("sleep " .. time)
     timer:close()
+end
+
+local function cmd_get_output(cmd)
+    local handle = io.popen(cmd)
+    local result = handle:read("*a")
+    handle:close()
+
+    return result
 end
 
 local function cmd_to_file(cmd, filename)
@@ -58,5 +67,6 @@ return {
     deep_copy = deep_copy,
     sleep = sleep,
     run_shell_script = run_shell_script,
+    cmd_get_output = cmd_get_output,
     split_string = split_string,
 }

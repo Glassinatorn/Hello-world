@@ -36,15 +36,17 @@ gnuplot -persist << EOF
 
     set object 1 rectangle from screen 0,0 to screen 2,2 behind fillcolor rgb color_background fillstyle solid noborder
 
+    set key textcolor rgb textcolor
     set style fill solid
     set terminal png size $width, $height
     set terminal png 
     set output "$output_name"
 
-    plot 'SE.txt' using 1:2 with lines lc rgb line1 title 'Sweden', \
-        'US.txt' using 1:2 with lines lc rgb line2 title 'USA', \
-        'EU.txt' using 1:2 with lines lc rgb line3 title 'EU', \
-        'CN.txt' using 1:2 with lines lc rgb line4 title 'China', \
-        'DE.txt' using 1:2 with lines lc rgb line5 title 'Germany'
+    plot 'SE.txt' using 1:2 with lines lw 3 lc rgb line1 title 'Sweden', \
+        'US.txt' using 1:2 with lines lw 3 lc rgb line2 title 'USA', \
+        'EU.txt' using 1:2 with lines lw 3 lc rgb line3 title 'EU', \
+        'CN.txt' using 1:2 with lines lw 3 lc rgb line4 title 'China', \
+        'DE.txt' using 1:2 with lines lw 3 lc rgb line5 title 'Germany'
 EOF
 
+rm SE.txt US.txt EU.txt CN.txt DE.txt

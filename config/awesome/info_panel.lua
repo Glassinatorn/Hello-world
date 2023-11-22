@@ -114,7 +114,7 @@ local function create_centered_box(widgets, margins, spacing, width, height)
 end
 
 local function create_hw_bar(image, fill_color)
-    local bar = { -- battery
+    local bar = wibox.widget { -- battery
         {
             image = image,
             resize = true,
@@ -122,12 +122,10 @@ local function create_hw_bar(image, fill_color)
             forced_width = dpi(22),
             widget = wibox.widget.imagebox
         },
-        wibox.widget {
+        {
             id = "value",
             max_value       = 100,
             value           = 20,
-            --forced_height   = dpi(20),
-            --forced_width    = dpi(350),
             shape           = gears.shape.rectangle,
             color           = fill_color,
             background_color = beautiful.color4,
@@ -195,8 +193,7 @@ local function get_wallpaper(screen)
 end
 
 local nameplate = create_underlined_text("Archbox", 23)
-local date_text = helpful_functions.run_shell_script("date")
-local date_text = helpful_functions.split_string(date_text)
+local date_text = helpful_functions.split_string(helpful_functions.cmd_get_output("date"))
 local weekday = "<span size='100%'>" .. date_text[1] .. "</span>"
 local day_number = "<span size='350%'>" .. date_text[2] .. "</span>"
 local month = "<span size='150%'>" .. date_text[3] .. "</span>"
@@ -206,8 +203,7 @@ local date_box = create_centered_box({wibox.widget.textbox(weekday),
                         wibox.widget.textbox(day_number),
                         wibox.widget.textbox(month),
                         wibox.widget.textbox(year)},
-                        dpi(10), dpi(10), dpi(150), dpi(150))
-
+                        dpi(10), dpi(0), dpi(150), dpi(150))
 
 local battery_bar = create_hw_bar(beautiful.battery_icon, beautiful.color1)
 local cpu_bar = create_hw_bar(beautiful.cpu_icon, beautiful.color9)
@@ -220,13 +216,12 @@ HW_info_bars = create_centered_box({battery_bar,
                                     ram_bar},
                                     dpi(10), dpi(10), dpi(400), dpi(150))
 
-local electricity_price_text = helpful_functions.run_shell_script("python " .. CONFDIR .. "scripts/get_electricity_price.py")
+local electricity_price_text = helpful_functions.cmd_get_output("python " .. CONFDIR .. "scripts/get_electricity_price.py")
 local electricity_price_text = wibox.widget.textbox("<span size='300%'> " .. electricity_price_text .. "</span>")
 
 local electricity_box = create_centered_box({electricity_price_text,
                                             wibox.widget.textbox("Öre/Kwh")},
                                             dpi(10), dpi(0), dpi(150), dpi(150))
-
 
 local docker_title = create_centered_line(create_underlined_text("Docker"))
 local docker_not_running_list = create_uncentered_list("Available")
@@ -249,6 +244,7 @@ local docker_box = {
 local vm_title = create_centered_line(create_underlined_text("Virtual Machines"))
 local vm_not_running_list = create_uncentered_list("Available")
 local vm_running_list = create_uncentered_list("Running")
+
 local vm_lists = create_generic_box({
     vm_not_running_list,
     create_seperator(),
@@ -269,30 +265,19 @@ local economy_panel_link = create_centered_line(create_underlined_text("Economy 
 -- function that binds a info panel to primary screen
 local function setup(s)
     ----- info panel
-    -- fetching information
-    -- date_box_text.markup = "" ..
-    -- "<span size='100%'>" .. helpful_functions.run_shell_script("date | cut -d ' ' -f 1") .. "</span>" ..
-    -- "<span size='200%'>" .. helpful_functions.run_shell_script("date | cut -d ' ' -f 2") .. "</span>" ..
-    -- "<span size='200%'>" .. helpful_functions.run_shell_script("date | cut -d ' ' -f 3") .. "</span>" ..
-    -- "<span size='100%'>" .. helpful_functions.run_shell_script("date | cut -d ' ' -f 6") .. "</span>"
-    -- electricity_price[1][1][1][1].markup = "" ..
-    --     "<span size='300%'>" .. helpful_functions.run_shell_script("python " .. CONFDIR .. "scripts/get_electricity_price.py") .. "</span>" .. "     Öre/kwh"
+    docker_not_running_list["list"]:set_markup(helpful_functions.cmd_get_output("docker ps -a --filter 'status=exited' --format 'table {{.Names}}'")) 
+    docker_running_list["list"]:set_markup(helpful_functions.cmd_get_output("docker ps --format 'table {{.Names}}'"))
+    vm_not_running_list["list"]:set_markup(helpful_functions.cmd_get_output("virsh list -all --name"))
+    vm_running_list["list"]:set_markup(helpful_functions.cmd_get_output("virsh list --name"))
 
-    docker_not_running_list["list"]:set_markup(helpful_functions.run_shell_script("docker ps -a --filter 'status=exited' --format 'table {{.Names}}'")) 
-    docker_running_list["list"]:set_markup(helpful_functions.run_shell_script("docker ps --format 'table {{.Names}}'"))
-    vm_not_running_list["list"]:set_markup(helpful_functions.run_shell_script("virsh list -all --name"))
-    vm_running_list["list"]:set_markup(helpful_functions.run_shell_script("virsh list --name"))
-
-
-    -- TODO: find a way to update the values
-    -- HW_info_bars[1][1][1][1][2].value = tonumber(helpful_functions.run_shell_script("acpi -b | grep Discharging | cut -d ' ' -f 4 | sed 's/%,//'")) -- battery left
-    -- HW_info_bars[1][1][1][1][3].markup = tonumber(helpful_functions.run_shell_script("acpi -b | grep Discharging | cut -d ' ' -f 4 | sed 's/%,//'")) -- battery left
-    -- HW_info_bars[1][1][1][2][2].value = tonumber(helpful_functions.run_shell_script("top -b -n1 | grep Cpu | tail -n 1 | awk '{print $3 + $4}'")) -- cpu load
-    -- HW_info_bars[1][1][1][2][3].markup = tonumber(helpful_functions.run_shell_script("top -b -n1 | grep Cpu | tail -n 1 | awk '{print $3 + $4}'")) -- cpu load
-    -- HW_info_bars[1][1][1][3][2].value = tonumber(helpful_functions.run_shell_script("df -h / | grep / | cut -d ' ' -f 9 | sed 's/%//'")) -- storage utilization
-    -- HW_info_bars[1][1][1][3][3].markup = tonumber(helpful_functions.run_shell_script("df -h / | grep / | cut -d ' ' -f 9 | sed 's/%//'")) -- storage utilization
-    -- HW_info_bars[1][1][1][4][2].value = tonumber(helpful_functions.run_shell_script("free -h | sed 's/Gi//' | awk '/Mem:/ {print ($3 / $2) * 100}' | sed 's/\\.[0-9]*//'")) -- used ram
-    -- HW_info_bars[1][1][1][4][3].markup = tonumber(helpful_functions.run_shell_script("free -h | sed 's/Gi//' | awk '/Mem:/ {print ($3 / $2) * 100}' | sed 's/\\.[0-9]*//'")) -- used ram
+    battery_bar:get_children_by_id("value")[1].value = tonumber(helpful_functions.run_shell_script("acpi -b | grep Discharging | cut -d ' ' -f 4 | sed 's/%,//'")) -- battery left
+    -- battery_bar:get_children_by_id("text")[1].value = helpful_functions.run_shell_script("acpi -b | grep Discharging | cut -d ' ' -f 4 | sed 's/%,//'") -- battery left
+    cpu_bar:get_children_by_id("value")[1].value = tonumber(helpful_functions.run_shell_script("top -b -n1 | grep Cpu | tail -n 1 | awk '{print $3 + $4}'")) -- cpu load
+    -- cpu_bar:get_children_by_id("text")[1].value = helpful_functions.run_shell_script("top -b -n1 | grep Cpu | tail -n 1 | awk '{print $3 + $4}'") -- cpu load
+    storage_bar:get_children_by_id("value")[1].value = tonumber(helpful_functions.run_shell_script("df -h | grep /dev/sda1 | awk '{print $5}' | sed 's/%//'")) -- storage left
+    -- storage_bar:get_children_by_id("text")[1].value = helpful_functions.run_shell_script("df -h | grep /dev/sda1 | awk '{print $5}' | sed 's/%//'") -- storage left
+    ram_bar:get_children_by_id("value")[1].value = tonumber(helpful_functions.run_shell_script("free | grep Mem | awk '{print $3/$2 * 100.0}'")) -- ram left
+    -- ram_bar:get_children_by_id("text")[1].value = helpful_functions.run_shell_script("free | grep Mem | awk '{print $3/$2 * 100.0}'") -- ram left
 
     Info_panel = wibox {
         screen = s,
@@ -344,13 +329,6 @@ local function setup(s)
         widget = wibox.container.background
     }
 
-    ---- end of info panel
-
-
-
-
-    ------ economu panel
-
 
     local indicators = {
         inflation = { indicator = "FP.CPI.TOTL.ZG", picture = "cpi.png" },
@@ -367,14 +345,12 @@ local function setup(s)
         net_migration = { indicator =  "SM.POP.NETM", picture = "net_migration.png" },
     }
 
-
     for key, values in pairs(indicators) do
-        --helpful_functions.run_shell_script(CONFDIR .. "scripts/tmp.sh" .. " " .. 
+        --helpful_functions.run_shell_script(CONFDIR .. "scripts/countries_indicators.sh" .. " " .. 
                                             --dpi(2000) .. " " .. dpi(500) .. " " .. 
                                             --values.indicator .. " " .. 
                                             --CONFDIR .. "pictures/" .. values.picture)
     end
-
 
 
     local top_graph_image = {
@@ -425,7 +401,6 @@ local function setup(s)
         net_migration_button = CONFDIR .. "pictures/net_migration.png"
     }
 
-
     Economy_panel = wibox {
         screen = s,
         width = s.geometry.width,
@@ -458,6 +433,12 @@ local function setup(s)
         layout = wibox.layout.flex.horizontal,
     }
 
+
+    local population_graph_image = {
+        image = gears.surface.load_uncached(CONFDIR .. "pictures/chart.png"),
+        widget = wibox.widget.imagebox
+    }
+    local population_graph = create_generic_box(population_graph_image, 0, dpi(500), dpi(250))
     -- putting widgets into place
     Economy_panel:setup {
         {
@@ -465,12 +446,17 @@ local function setup(s)
             {
                 create_empty_space(),
                 {
-                    top_buttons_list,
-                    top_graph_box,
-                    bottom_buttons_list,
-                    bottom_graph_box,
+                    population_graph,
+                    {
+                        top_buttons_list,
+                        top_graph_box,
+                        bottom_buttons_list,
+                        bottom_graph_box,
+                        spacing = dpi(20),
+                        layout = wibox.layout.fixed.vertical,
+                    },
                     spacing = dpi(20),
-                    layout = wibox.layout.fixed.vertical,
+                    layout = wibox.layout.fixed.horizontal,
                 },
                 create_empty_space(),
                 expand = "outside",
@@ -497,13 +483,6 @@ local function setup(s)
             Economy_panel:get_children_by_id("bottom_graph")[1].image = image
         end)
     end
-
-
-    ------ end of economu panel
-
-
-
-
 
     ---- keybindings
     economy_panel_link:connect_signal("button::press", function()
