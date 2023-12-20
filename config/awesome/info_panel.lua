@@ -1,3 +1,7 @@
+-- importing installed modules
+package.path = package.path .. ';/usr/share/lua/5.3/?.lua'
+local http_request = require("http.request")
+
 local wibox = require("wibox")
 local beautiful = require("beautiful")
 local CONFDIR = awesome.conffile:match("(.*/)")
@@ -90,7 +94,7 @@ local function create_centered_column(widget)
         widget = wibox.widget.background
     }
 
-    return centered_line
+    return centered_column
 end
 
 local function create_centered_box(widgets, margins, spacing, width, height)
@@ -216,7 +220,35 @@ HW_info_bars = create_centered_box({battery_bar,
                                     ram_bar},
                                     dpi(10), dpi(10), dpi(400), dpi(150))
 
-local electricity_price_text = helpful_functions.cmd_get_output("python " .. CONFDIR .. "scripts/get_electricity_price.py")
+local function fetch_electricity_price()
+    local htmlparser = require("htmlparser")
+    local http_request = require("http.request")
+
+    -- Make the HTTP request
+    local headers, stream = http_request.new_from_uri("https://www.elbruk.se/"):go()
+    local numbers = 0 -- price to return
+
+    -- Check the status code
+    if headers:get(":status") == "200" then
+        -- Get the body as a string
+        local body = stream:get_body_as_string()
+
+        -- Parse the HTML
+        local root = htmlparser.parse(body)
+        local nummbers = root:select(".info-box-number")
+        numbers = nummbers[3]:getcontent()
+
+    else
+        error("HTTP request failed. Status code: " .. headers:get(":status"))
+    end
+
+    return numbers
+end
+
+
+-- local tmp = testtmp()
+
+local electricity_price_text = fetch_electricity_price()
 local electricity_price_text = wibox.widget.textbox("<span size='300%'> " .. electricity_price_text .. "</span>")
 
 local electricity_box = create_centered_box({electricity_price_text,
@@ -264,20 +296,16 @@ local economy_panel_link = create_centered_line(create_underlined_text("Economy 
 
 -- function that binds a info panel to primary screen
 local function setup(s)
-    ----- info panel
+    -- info panel
     docker_not_running_list["list"]:set_markup(helpful_functions.cmd_get_output("docker ps -a --filter 'status=exited' --format 'table {{.Names}}'")) 
     docker_running_list["list"]:set_markup(helpful_functions.cmd_get_output("docker ps --format 'table {{.Names}}'"))
     vm_not_running_list["list"]:set_markup(helpful_functions.cmd_get_output("virsh list -all --name"))
     vm_running_list["list"]:set_markup(helpful_functions.cmd_get_output("virsh list --name"))
 
-    battery_bar:get_children_by_id("value")[1].value = tonumber(helpful_functions.run_shell_script("acpi -b | grep Discharging | cut -d ' ' -f 4 | sed 's/%,//'")) -- battery left
-    -- battery_bar:get_children_by_id("text")[1].value = helpful_functions.run_shell_script("acpi -b | grep Discharging | cut -d ' ' -f 4 | sed 's/%,//'") -- battery left
-    cpu_bar:get_children_by_id("value")[1].value = tonumber(helpful_functions.run_shell_script("top -b -n1 | grep Cpu | tail -n 1 | awk '{print $3 + $4}'")) -- cpu load
-    -- cpu_bar:get_children_by_id("text")[1].value = helpful_functions.run_shell_script("top -b -n1 | grep Cpu | tail -n 1 | awk '{print $3 + $4}'") -- cpu load
-    storage_bar:get_children_by_id("value")[1].value = tonumber(helpful_functions.run_shell_script("df -h | grep /dev/sda1 | awk '{print $5}' | sed 's/%//'")) -- storage left
-    -- storage_bar:get_children_by_id("text")[1].value = helpful_functions.run_shell_script("df -h | grep /dev/sda1 | awk '{print $5}' | sed 's/%//'") -- storage left
-    ram_bar:get_children_by_id("value")[1].value = tonumber(helpful_functions.run_shell_script("free | grep Mem | awk '{print $3/$2 * 100.0}'")) -- ram left
-    -- ram_bar:get_children_by_id("text")[1].value = helpful_functions.run_shell_script("free | grep Mem | awk '{print $3/$2 * 100.0}'") -- ram left
+    battery_bar:get_children_by_id("value")[1].value = tonumber(helpful_functions.cmd_get_output("acpi -b | grep Discharging | cut -d ' ' -f 4 | sed 's/%,//'")) -- battery left
+    cpu_bar:get_children_by_id("value")[1].value = tonumber(helpful_functions.cmd_get_output("top -b -n1 | grep Cpu | tail -n 1 | awk '{print $3 + $4}'")) -- cpu load
+    storage_bar:get_children_by_id("value")[1].value = tonumber(helpful_functions.cmd_get_output("df -h | grep /dev/sda1 | awk '{print $5}' | sed 's/%//'")) -- storage left
+    ram_bar:get_children_by_id("value")[1].value = tonumber(helpful_functions.cmd_get_output("free | grep Mem | awk '{print $3/$2 * 100.0}'")) -- ram left
 
     Info_panel = wibox {
         screen = s,
@@ -331,25 +359,28 @@ local function setup(s)
 
 
     local indicators = {
-        inflation = { indicator = "FP.CPI.TOTL.ZG", picture = "cpi.png" },
-        gdp = { indicator =  "NY.GDP.MKTP.CD", picture = "gdp.png" },
-        gdp_per_capita = { indicator =  "NY.GDP.PCAP.CD", picture = "gdp_per_capita.png" },
-        foreign_investments = { indicator =  "BX.KLT.DINV.WD.GD.ZS", picture = "foreign_investments.png" },
-        education_expenditure = { indicator =  "SE.XPD.TOTL.GD.ZS", picture = "education_expenditure.png" },
-        interest_rates = { indicator =  "FR.INR.RINR", picture = "interest_rates.png" },
-        cpi = { indicator =  "FP.CPI.TOTL", picture = "cpi.png" },
-        unemployment_rate = { indicator =  "SL.UEM.TOTL.ZS", picture = "unemployment_rate.png" },
-        gini_coefficient = { indicator =  "SI.POV.GINI", picture = "gini_coefficient.png" },
-        poverty = { indicator =  "SI.POV.DDAY", picture = "poverty.png" },
-        population = { indicator =  "SP.POP.TOTL", picture = "population.png" },
-        net_migration = { indicator =  "SM.POP.NETM", picture = "net_migration.png" },
+        inflation = { indicator = "FP.CPI.TOTL.ZG", picture = "cpi.png", width = dpi(2000) , height = dpi(500) },
+        gdp = { indicator =  "NY.GDP.MKTP.CD", picture = "gdp.png", width = dpi(2000) , height = dpi(500) },
+        gdp_per_capita = { indicator =  "NY.GDP.PCAP.CD", picture = "gdp_per_capita.png", width = dpi(2000) , height = dpi(500) },
+        foreign_investments = { indicator =  "BX.KLT.DINV.WD.GD.ZS", picture = "foreign_investments.png", width = dpi(2000) , height = dpi(500) },
+        education_expenditure = { indicator =  "SE.XPD.TOTL.GD.ZS", picture = "education_expenditure.png", width = dpi(2000) , height = dpi(500) },
+        interest_rates = { indicator =  "FR.INR.RINR", picture = "interest_rates.png", width = dpi(2000) , height = dpi(500) },
+        cpi = { indicator =  "FP.CPI.TOTL", picture = "cpi.png", width = dpi(2000) , height = dpi(500) },
+        unemployment_rate = { indicator =  "SL.UEM.TOTL.ZS", picture = "unemployment_rate.png", width = dpi(2000) , height = dpi(500) },
+        gini_coefficient = { indicator =  "SI.POV.GINI", picture = "gini_coefficient.png", width = dpi(2000) , height = dpi(500) },
+        poverty = { indicator =  "SI.POV.DDAY", picture = "poverty.png", width = dpi(2000) , height = dpi(500) },
+        population = { indicator =  "SP.POP.TOTL", picture = "population.png", width = dpi(2000) , height = dpi(500) },
+        net_migration = { indicator =  "SM.POP.NETM", picture = "net_migration.png", width = dpi(2000) , height = dpi(500)  },
+        young_ratio = { indicator =  "SP.POP.DPND.YG", picture = "young_ratio.png", width = dpi(500) , height = dpi(500) },
+        working_ratio = { indicator =  "SP.POP.DPN", picture = "working_ratio.png", width = dpi(500) , height = dpi(500) },
+        old_ratio = { indicator =  "SP.POP.DPND.OL", picture = "old_ratio.png", width = dpi(500) , height = dpi(500) },
     }
 
     for key, values in pairs(indicators) do
-        --helpful_functions.run_shell_script(CONFDIR .. "scripts/countries_indicators.sh" .. " " .. 
-                                            --dpi(2000) .. " " .. dpi(500) .. " " .. 
-                                            --values.indicator .. " " .. 
-                                            --CONFDIR .. "pictures/" .. values.picture)
+        helpful_functions.run_shell_script(CONFDIR .. "scripts/countries_indicators.sh" .. " " ..
+                                            values.width .. " " .. values.height .. " " ..
+                                            values.indicator .. " " ..
+                                            CONFDIR .. "pictures/" .. values.picture)
     end
 
 

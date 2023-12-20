@@ -154,6 +154,16 @@ alias pe="if [ -d env/ ]; then
 	pip install pynvim
 	touch requirement.txt
     fi"
+alias luadev="luarocks init && echo '{ 
+    \"workspace.library\": [\"$PWD/lua_modules\"],
+    \"runtime.version\": \"Lua 5.4\",
+    \"hint.enable\": true
+}' >> .luarc.json && 
+    luarocks install --tree lua_modules debugger &&
+    luarocks install --tree lua_modules dump &&
+    echo \"package.path = package.path .. ';$PWD/lua_modules/share/lua/5.4/?.lua;/usr/share/lua/5.4/?.lua'
+local debugger = require('"'debugger'"')
+debugger()\" >> main.lua"
 alias pipup="pip3 list --outdated --format=freeze 
     | grep -v '^\-e' 
     | cut -d = -f 1 

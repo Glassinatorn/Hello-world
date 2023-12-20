@@ -1,4 +1,3 @@
-local debugging = require("debugging")
 local helpful = require("helpful")
 --local http = require("socket.http")
 
