@@ -359,12 +359,12 @@ local function setup(s)
 
 
     local indicators = {
-        inflation = { indicator = "FP.CPI.TOTL.ZG", picture = "cpi.png", width = dpi(2000) , height = dpi(500) },
+        inflation = { indicator = "FP.CPI.TOTL.ZG", picture = "inflation.png", width = dpi(2000) , height = dpi(500) },
         gdp = { indicator =  "NY.GDP.MKTP.CD", picture = "gdp.png", width = dpi(2000) , height = dpi(500) },
         gdp_per_capita = { indicator =  "NY.GDP.PCAP.CD", picture = "gdp_per_capita.png", width = dpi(2000) , height = dpi(500) },
         foreign_investments = { indicator =  "BX.KLT.DINV.WD.GD.ZS", picture = "foreign_investments.png", width = dpi(2000) , height = dpi(500) },
         education_expenditure = { indicator =  "SE.XPD.TOTL.GD.ZS", picture = "education_expenditure.png", width = dpi(2000) , height = dpi(500) },
-        interest_rates = { indicator =  "FR.INR.RINR", picture = "interest_rates.png", width = dpi(2000) , height = dpi(500) },
+        interest_rates = { indicator =  "FR.INR.LEND", picture = "interest_rates.png", width = dpi(2000) , height = dpi(500) },
         cpi = { indicator =  "FP.CPI.TOTL", picture = "cpi.png", width = dpi(2000) , height = dpi(500) },
         unemployment_rate = { indicator =  "SL.UEM.TOTL.ZS", picture = "unemployment_rate.png", width = dpi(2000) , height = dpi(500) },
         gini_coefficient = { indicator =  "SI.POV.GINI", picture = "gini_coefficient.png", width = dpi(2000) , height = dpi(500) },
@@ -372,7 +372,7 @@ local function setup(s)
         population = { indicator =  "SP.POP.TOTL", picture = "population.png", width = dpi(2000) , height = dpi(500) },
         net_migration = { indicator =  "SM.POP.NETM", picture = "net_migration.png", width = dpi(2000) , height = dpi(500)  },
         young_ratio = { indicator =  "SP.POP.DPND.YG", picture = "young_ratio.png", width = dpi(500) , height = dpi(500) },
-        working_ratio = { indicator =  "SP.POP.DPN", picture = "working_ratio.png", width = dpi(500) , height = dpi(500) },
+        working_ratio = { indicator =  "SP.POP.DPND", picture = "working_ratio.png", width = dpi(500) , height = dpi(500) },
         old_ratio = { indicator =  "SP.POP.DPND.OL", picture = "old_ratio.png", width = dpi(500) , height = dpi(500) },
     }
 
@@ -386,7 +386,7 @@ local function setup(s)
 
     local top_graph_image = {
         id = "top_graph",
-        image = gears.surface.load_uncached(CONFDIR .. "pictures/gdp.png"),
+        image = gears.surface.load_uncached(CONFDIR .. "pictures/cpi.png"),
         widget = wibox.widget.imagebox
     }
     local top_graph_box = create_generic_box(top_graph_image, 0, dpi(500), dpi(250))
@@ -413,7 +413,7 @@ local function setup(s)
         gdp_per_capita_button = CONFDIR .. "pictures/gdp_per_capita.png",
         education_expenditure_button = CONFDIR .. "pictures/education_expenditure.png",
         interest_rates_button = CONFDIR .. "pictures/interest_rates.png",
-        foreign_investments_button = CONFDIR .. "pictures/foreign_direct_investments.png",
+        foreign_investments_button = CONFDIR .. "pictures/foreign_investments.png",
         cpi_button = CONFDIR .. "pictures/cpi.png",
     }
 
