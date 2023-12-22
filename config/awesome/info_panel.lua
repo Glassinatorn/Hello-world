@@ -358,32 +358,6 @@ local function setup(s)
     }
 
 
-    local indicators = {
-        inflation = { indicator = "FP.CPI.TOTL.ZG", picture = "inflation.png", width = dpi(2000) , height = dpi(500) },
-        gdp = { indicator =  "NY.GDP.MKTP.CD", picture = "gdp.png", width = dpi(2000) , height = dpi(500) },
-        gdp_per_capita = { indicator =  "NY.GDP.PCAP.CD", picture = "gdp_per_capita.png", width = dpi(2000) , height = dpi(500) },
-        foreign_investments = { indicator =  "BX.KLT.DINV.WD.GD.ZS", picture = "foreign_investments.png", width = dpi(2000) , height = dpi(500) },
-        education_expenditure = { indicator =  "SE.XPD.TOTL.GD.ZS", picture = "education_expenditure.png", width = dpi(2000) , height = dpi(500) },
-        interest_rates = { indicator =  "FR.INR.LEND", picture = "interest_rates.png", width = dpi(2000) , height = dpi(500) },
-        cpi = { indicator =  "FP.CPI.TOTL", picture = "cpi.png", width = dpi(2000) , height = dpi(500) },
-        unemployment_rate = { indicator =  "SL.UEM.TOTL.ZS", picture = "unemployment_rate.png", width = dpi(2000) , height = dpi(500) },
-        gini_coefficient = { indicator =  "SI.POV.GINI", picture = "gini_coefficient.png", width = dpi(2000) , height = dpi(500) },
-        poverty = { indicator =  "SI.POV.DDAY", picture = "poverty.png", width = dpi(2000) , height = dpi(500) },
-        population = { indicator =  "SP.POP.TOTL", picture = "population.png", width = dpi(2000) , height = dpi(500) },
-        net_migration = { indicator =  "SM.POP.NETM", picture = "net_migration.png", width = dpi(2000) , height = dpi(500)  },
-        young_ratio = { indicator =  "SP.POP.DPND.YG", picture = "young_ratio.png", width = dpi(500) , height = dpi(500) },
-        working_ratio = { indicator =  "SP.POP.DPND", picture = "working_ratio.png", width = dpi(500) , height = dpi(500) },
-        old_ratio = { indicator =  "SP.POP.DPND.OL", picture = "old_ratio.png", width = dpi(500) , height = dpi(500) },
-    }
-
-    for key, values in pairs(indicators) do
-        helpful_functions.run_shell_script(CONFDIR .. "scripts/countries_indicators.sh" .. " " ..
-                                            values.width .. " " .. values.height .. " " ..
-                                            values.indicator .. " " ..
-                                            CONFDIR .. "pictures/" .. values.picture)
-    end
-
-
     local top_graph_image = {
         id = "top_graph",
         image = gears.surface.load_uncached(CONFDIR .. "pictures/cpi.png"),
