@@ -74,3 +74,4 @@ unclutter -idle 0.5 -root &
 ~/.fehbg
 killall picom
 picom
+systemctl --user restart sxhkd

@@ -6,6 +6,7 @@ local dpi = beautiful.xresources.apply_dpi
 local CONFDIR = awesome.conffile:match("(.*/)")
 local naughty = require("naughty")
 local CONST = require("constants")
+local helpful = require("helpful")
 
 -------------------------------------------------
 --                  taglist                    --
@@ -100,6 +101,7 @@ Mymainmenu = awful.menu({
         },
         {
             "Start",
+            helpful.cmd_get_output("systemctl --user restart sxhkd"),
             CONST.SETUP,
         },
         {

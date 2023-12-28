@@ -46,7 +46,7 @@ map('n', '<C-s>',           	':w<CR>',						                        { noremap = 
 map('n', '<leader>fo',      	':Neoformat<CR>',				                        { noremap = true })	-- formatting
 map('n', '<leader>ma',      	':MaximizerToggle<CR>',		                        	{ noremap = true })	-- maximized buffer
 map('n', '<leader>re',	    	':w<CR> :so ~/.config/nvim/init.lua<CR>',		    	{ noremap = true })	-- source config
-map('n', '<leader>ff',	    	':lua require("fzf-commands").files()<CR>',		    	{ noremap = true })	-- open file
+map('n', '<leader>ff',	    	':lua require("telescope.builtin").find_files()<cr>',		    	{ noremap = true })	-- open file
 map('n', '<leader>fr',	    	':FlutterRun<CR>',					                    { noremap = true })	-- run flutter instance
 map('n', '<leader>\\\\',	    ':VimtexCompile<CR>',					                { noremap = true })	-- compile latex document
 

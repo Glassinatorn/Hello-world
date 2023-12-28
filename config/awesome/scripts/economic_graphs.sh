@@ -1,3 +1,7 @@
+# repositioning
+start_dir=$PWD
+cd $HOME/.config/awesome/scripts
+
 width=2000
 height=500
 countries="SE US DE CN"
@@ -10,7 +14,11 @@ for indicator in $economical_indicators; do
         curl -s "https://api.worldbank.org/v2/country/$country_code/indicator/$indicator?date=1970:2030&format=json" | jq -r '.[1][] | "\(.date) \(.value)"' > $country_code".txt"
     done
 
+    echo $PWD
+    echo $(ls)
     ./graph.sh $width $height ../pictures/$1
     shift 1
 
 done
+
+cd $start_dir

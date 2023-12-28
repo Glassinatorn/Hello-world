@@ -225,8 +225,10 @@ local function fetch_electricity_price()
     local http_request = require("http.request")
 
     -- Make the HTTP request
-    local headers, stream = http_request.new_from_uri("https://www.elbruk.se/"):go()
+    local headers = ""
+    local stream = ""
     local numbers = 0 -- price to return
+    headers, stream = http_request.new_from_uri("https://www.elbruk.se/"):go()
 
     -- Check the status code
     if headers:get(":status") == "200" then

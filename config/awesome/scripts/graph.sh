@@ -32,6 +32,6 @@ gnuplot -persist << EOF
         'US.txt' using 1:2 with lines lw 3 lc rgb line2 title 'USA', \
         'CN.txt' using 1:2 with lines lw 3 lc rgb line4 title 'China', \
         'DE.txt' using 1:2 with lines lw 3 lc rgb line5 title 'Germany'
-
-    rm SE.txt US.txt CN.txt DE.txt
 EOF
+
+rm SE.txt US.txt CN.txt DE.txt
