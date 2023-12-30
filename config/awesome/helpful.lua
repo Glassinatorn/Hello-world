@@ -63,10 +63,22 @@ local function split_string(input_string)
     return words
 end
 
+local function read_file(filename)
+    local file = io.open(filename, "rb") -- r read mode and b binary mode
+
+    if not file then return nil end
+
+    local content = file:read "*a" -- *a or *all reads the whole file
+    file:close()
+
+    return content
+end
+
 return {
     deep_copy = deep_copy,
     sleep = sleep,
     run_shell_script = run_shell_script,
     cmd_get_output = cmd_get_output,
     split_string = split_string,
+    read_file = read_file,
 }

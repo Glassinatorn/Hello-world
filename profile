@@ -148,11 +148,11 @@ alias py="python"
 alias pe="if [ -d env/ ]; then
         source env/bin/activate
     else
-	printf 'Creating a new enviroment\n'
-	python3 -m venv env
+        printf 'Creating a new enviroment\n'
+        python3 -m venv env
         source env/bin/activate
-	pip install pynvim
-	touch requirement.txt
+        pip install pynvim
+        touch requirement.txt
     fi"
 alias luadev="luarocks init && echo '{ 
     \"workspace.library\": [\"$PWD/lua_modules\"],
