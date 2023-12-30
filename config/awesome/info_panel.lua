@@ -220,37 +220,8 @@ HW_info_bars = create_centered_box({battery_bar,
                                     ram_bar},
                                     dpi(10), dpi(10), dpi(400), dpi(150))
 
-local function fetch_electricity_price()
-    local htmlparser = require("htmlparser")
-    local http_request = require("http.request")
 
-    -- Make the HTTP request
-    local headers = ""
-    local stream = ""
-    local numbers = 0 -- price to return
-    headers, stream = http_request.new_from_uri("https://www.elbruk.se/"):go()
-
-    -- Check the status code
-    if headers:get(":status") == "200" then
-        -- Get the body as a string
-        local body = stream:get_body_as_string()
-
-        -- Parse the HTML
-        local root = htmlparser.parse(body)
-        local nummbers = root:select(".info-box-number")
-        numbers = nummbers[3]:getcontent()
-
-    else
-        error("HTTP request failed. Status code: " .. headers:get(":status"))
-    end
-
-    return numbers
-end
-
-
--- local tmp = testtmp()
-
-local electricity_price_text = fetch_electricity_price()
+local electricity_price_text = helpful_functions.read_file(CONFDIR .. "data/electricity_price.txt")
 local electricity_price_text = wibox.widget.textbox("<span size='300%'> " .. electricity_price_text .. "</span>")
 
 local electricity_box = create_centered_box({electricity_price_text,
@@ -441,11 +412,25 @@ local function setup(s)
     }
 
 
-    local population_graph_image = {
-        image = gears.surface.load_uncached(CONFDIR .. "pictures/chart.png"),
+    local population_working = {
+        image = gears.surface.load_uncached(CONFDIR .. "pictures/working_ratio.png"),
         widget = wibox.widget.imagebox
     }
-    local population_graph = create_generic_box(population_graph_image, 0, dpi(500), dpi(250))
+    local population_young = {
+        image = gears.surface.load_uncached(CONFDIR .. "pictures/young_ratio.png"),
+        widget = wibox.widget.imagebox
+    }
+    local population_old = {
+        image = gears.surface.load_uncached(CONFDIR .. "pictures/old_ratio.png"),
+        widget = wibox.widget.imagebox
+    }
+    local pop_graphs = wibox.layout {
+        population_young,
+        population_working,
+        population_old,
+        layout = wibox.layout.fixed.vertical
+    }
+    local population_graphs = create_generic_box(pop_graphs, 0, dpi(500), dpi(250))
     -- putting widgets into place
     Economy_panel:setup {
         {
@@ -453,7 +438,7 @@ local function setup(s)
             {
                 create_empty_space(),
                 {
-                    population_graph,
+                    population_graphs,
                     {
                         top_buttons_list,
                         top_graph_box,
