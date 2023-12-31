@@ -60,6 +60,7 @@ require("lazy").setup({
     'github/copilot.vim',
     'nvim-telescope/telescope.nvim',
     'eandrju/cellular-automaton.nvim',                  -- make the code melt
+    'MunifTanjim/nui.nvim',
     {
     "jackMort/ChatGPT.nvim",
       config = function()
