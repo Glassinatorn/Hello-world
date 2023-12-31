@@ -24,7 +24,7 @@ gnuplot -persist << EOF
 
     set key textcolor rgb color_text
     set style fill solid
-    set terminal png size 500, 500
+    set terminal png size $width, $height
     set terminal png 
     set output "$output_file"
 
