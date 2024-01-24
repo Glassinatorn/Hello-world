@@ -13,7 +13,4 @@ result = tree.xpath('//span[@class = "info-box-number"]')
 result = result[3].text
 
 # Print the result
-print(f'results: {result}')
-file = open("../data/electricity_price.txt", "w+")
-file.write(result)
-file.close()
+print(result)

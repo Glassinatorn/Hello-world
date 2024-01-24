@@ -240,9 +240,9 @@ end
 local function setup_signals(c)
     -- make sure clients are placed correctly
     client.connect_signal("manage", function(c) ensure_placement(c) end)
+
     --client.connect_signal("manage", function(c) ensure_placement(c) end)
     client.connect_signal("request::titlebars", function(c) create_titlebar(c) end)
-    --client.connect_signal("request::titlebars", function(c) create_titlebar(c) end)
 
     -- focus client on mouse enter
     client.connect_signal("focus", function(c) awful.titlebar.show(c) beautiful.titlebar_bg = beautiful.color8 end)

@@ -1,6 +1,5 @@
 -- importing installed modules
 package.path = package.path .. ';/usr/share/lua/5.3/?.lua'
-local http_request = require("http.request")
 
 local wibox = require("wibox")
 local beautiful = require("beautiful")
@@ -12,20 +11,22 @@ local gears = require("gears")
 local helpful_functions = require("helpful")
 local naughty = require("naughty")
 
-local function create_underlined_text(text, size)
+local function create_underlined_text(text, color, size)
     local underlined_text = wibox.widget {
         {
             {
                 {
                     markup = text,
-                    font = "monospace bold " .. tostring(size),
+                    font = "monospace bold " .. (tostring(size) or "10"),
+                    id = "text",
                     widget = wibox.widget.textbox,
                 },
                 bg = beautiful.transparent,
                 widget = wibox.container.background,
             },
-            color = beautiful.color4,
+            color = color or beautiful.color4,
             bottom = dpi(5),
+            id = "underline",
             widget = wibox.container.margin,
         },
         layout = wibox.layout.fixed.horizontal
@@ -34,30 +35,53 @@ local function create_underlined_text(text, size)
     return underlined_text
 end
 
+
 local function create_generic_box(widget, margins, width, height)
-    local generic_box = {
+    local generic_box = wibox.widget {
         {
             {
                 {
-                    widget,
-                    bg = beautiful.background,
-                    widget = wibox.container.background,
+                    {
+                        widget,
+                        bg = beautiful.background,
+                        widget = wibox.container.background,
+                    },
+                    color = beautiful.background,
+                    margins = margins,
+                    widget = wibox.container.margin,
                 },
-                color = beautiful.background,
-                margins = margins,
+                color = beautiful.color0,
+                margins = dpi(5),
                 widget = wibox.container.margin,
             },
-            color = beautiful.color0,
-            margins = dpi(5),
-            widget = wibox.container.margin,
+            bg = beautiful.background,
+            forced_height = height,
+            forced_width = width,
+            widget = wibox.container.background,
         },
-        bg = beautiful.background,
-        forced_height = height,
-        forced_width = width,
-        widget = wibox.container.background,
+        layout = wibox.layout.fixed.horizontal
     }
 
     return generic_box
+end
+
+local function create_generic_button(text, size)
+    local text = wibox.widget {
+        {
+            {
+                markup = text,
+                font = "monospace bold " .. tostring(size),
+                widget = wibox.widget.textbox,
+            },
+            bg = beautiful.transparent,
+            widget = wibox.container.background,
+        },
+        layout = wibox.layout.fixed.horizontal
+    }
+
+    local button = create_generic_box(text, 0, size + dpi(100), size + dpi(50))
+
+    return button
 end
 
 local function create_empty_space()
@@ -101,9 +125,11 @@ local function create_centered_box(widgets, margins, spacing, width, height)
     local centered_box = wibox.layout.flex.vertical()
     centered_box.spacing = spacing
     centered_box.expand = "none"
+
     if width ~= nil then
         centered_box.forced_width = width
     end
+
     if height ~= nil then
         centered_box.forced_width = width
     end
@@ -196,7 +222,7 @@ local function get_wallpaper(screen)
     end
 end
 
-local nameplate = create_underlined_text("Archbox", 23)
+local nameplate = create_underlined_text("Archbox", beautiful.color4, 23)
 local date_text = helpful_functions.split_string(helpful_functions.cmd_get_output("date"))
 local weekday = "<span size='100%'>" .. date_text[1] .. "</span>"
 local day_number = "<span size='350%'>" .. date_text[2] .. "</span>"
@@ -331,53 +357,6 @@ local function setup(s)
     }
 
 
-    local top_graph_image = {
-        id = "top_graph",
-        image = gears.surface.load_uncached(CONFDIR .. "pictures/cpi.png"),
-        widget = wibox.widget.imagebox
-    }
-    local top_graph_box = create_generic_box(top_graph_image, 0, dpi(500), dpi(250))
-
-    local bottom_graph_image = {
-        id = "bottom_graph",
-        image = gears.surface.load_uncached(CONFDIR .. "pictures/gdp.png"),
-        widget = wibox.widget.imagebox
-    }
-    local bottom_graph_box = create_generic_box(bottom_graph_image, 0, dpi(500), dpi(250))
-
-    local top_buttons = {
-        inflation_button = create_underlined_text("Inflation", 10),
-        GDP_button = create_underlined_text("GDP", 10),
-        gdp_per_capita_button = create_underlined_text("GDP per capita", 10),
-        foreign_investments_button = create_underlined_text("Foreign investments", 10),
-        education_expenditure_button = create_underlined_text("Education", 10),
-        interest_rates_button = create_underlined_text("Interest rates", 10),
-        cpi_button = create_underlined_text("CPI", 10),
-    }
-    local top_buttons_bindings = {
-        inflation_button = CONFDIR .. "pictures/inflation.png",
-        gdp_button = CONFDIR .. "pictures/gdp.png",
-        gdp_per_capita_button = CONFDIR .. "pictures/gdp_per_capita.png",
-        education_expenditure_button = CONFDIR .. "pictures/education_expenditure.png",
-        interest_rates_button = CONFDIR .. "pictures/interest_rates.png",
-        foreign_investments_button = CONFDIR .. "pictures/foreign_investments.png",
-        cpi_button = CONFDIR .. "pictures/cpi.png",
-    }
-
-    local bottom_buttons = {
-        unemployement_rate_button = create_underlined_text("Unemployment", 10),
-        gini_coefficient_button = create_underlined_text("Gini", 10),
-        poverty_button = create_underlined_text("Poverty", 10),
-        population_button = create_underlined_text("Population", 10),
-        net_migration_button = create_underlined_text("Net migration", 10),
-    }
-    local bottom_buttons_bindings = {
-        unemployement_rate_button = CONFDIR .. "pictures/unemployment_rate.png",
-        gini_coefficient_button = CONFDIR .. "pictures/gini_coefficient.png",
-        poverty_button = CONFDIR .. "pictures/poverty.png",
-        population_button = CONFDIR .. "pictures/population.png",
-        net_migration_button = CONFDIR .. "pictures/net_migration.png"
-    }
 
     Economy_panel = wibox {
         screen = s,
@@ -390,69 +369,148 @@ local function setup(s)
         bg = beautiful.color8,
     }
 
-    local top_buttons_list = {
-        top_buttons.inflation_button,
-        top_buttons.GDP_button,
-        top_buttons.gdp_per_capita_button,
-        top_buttons.foreign_investments_button,
-        top_buttons.education_expenditure_button,
-        top_buttons.interest_rates_button,
-        top_buttons.cpi_button,
-        spacing = dpi(50),
-        layout = wibox.layout.flex.horizontal
-    }
-    local bottom_buttons_list = {
-        bottom_buttons.unemployement_rate_button,
-        bottom_buttons.gini_coefficient_button,
-        bottom_buttons.poverty_button,
-        bottom_buttons.population_button,
-        bottom_buttons.net_migration_button,
-        spacing = dpi(50),
-        layout = wibox.layout.flex.horizontal,
+    local function create_shaped_box(widget, height, width, shape)
+        local shaped_box = wibox.widget {
+            {
+                    widget,
+                    bg = beautiful.background,
+                    shape = shape or gears.shape.rounded_rect,
+                    forced_width = height or dpi(100),
+                    forced_height = width or dpi(100),
+                    widget = wibox.container.background,
+            },
+            layout = wibox.layout.fixed.horizontal,
+        }
+
+        return shaped_box
+    end
+
+    local population_graph = {
+        id = "top_graph",
+        image = gears.surface.load_uncached(CONFDIR .. "pictures/tmp.png"),
+        widget = wibox.widget.imagebox
     }
 
+    local population_box = create_generic_box(population_graph)
 
-    local population_working = {
-        image = gears.surface.load_uncached(CONFDIR .. "pictures/working_ratio.png"),
-        widget = wibox.widget.imagebox
+    local function num_to_words(number)
+        if tonumber(number) > 1000000000000 then
+            return tostring(helpful_functions.round(number / 1000000000000)) .. " T"
+        elseif tonumber(number) > 1000000000 then
+            return tostring(helpful_functions.round(number / 1000000000)) .. " B"
+        elseif tonumber(number) > 1000000  then
+            return tostring(helpful_functions.round(number / 1000000)) .. " M"
+        end
+
+        return number
+    end
+
+    local function get_economic_data(title, filename)
+        local non_formated_data = helpful_functions.read_file(filename)
+        non_formated_data = helpful_functions.split_string(non_formated_data)
+
+        local first_line = create_centered_line(wibox.widget.textbox(title))
+        local second_line = create_centered_line(wibox.widget.textbox(tostring(non_formated_data[1])))
+        local third_line = create_centered_line(wibox.widget ({
+            markup = num_to_words(helpful_functions.round(non_formated_data[2], 2)),
+            font = "monospace bold " .. dpi(9),
+            widget = wibox.widget.textbox,
+        }))
+
+        local list = wibox.widget {
+            create_empty_space(),
+            first_line,
+            second_line,
+            third_line,
+            create_empty_space(),
+            spacing = dpi(20),
+            layout = wibox.layout.fixed.vertical
+        }
+
+        return list
+    end
+
+    local economy_grid = wibox.widget {
+        homogeneous = true,
+        spacing = dpi(20),
+        min_cols_size = 4,
+        min_rows_size = 4,
+        forced_height = dpi(700),
+        layout = wibox.layout.grid
     }
-    local population_young = {
-        image = gears.surface.load_uncached(CONFDIR .. "pictures/young_ratio.png"),
-        widget = wibox.widget.imagebox
-    }
-    local population_old = {
-        image = gears.surface.load_uncached(CONFDIR .. "pictures/old_ratio.png"),
-        widget = wibox.widget.imagebox
-    }
-    local pop_graphs = wibox.layout {
-        population_young,
-        population_working,
-        population_old,
-        layout = wibox.layout.fixed.vertical
-    }
-    local population_graphs = create_generic_box(pop_graphs, 0, dpi(500), dpi(250))
-    -- putting widgets into place
+
+    local sweden_line = create_underlined_text("Sweden", beautiful.transparent)
+    local germany_line = create_underlined_text("Germany", beautiful.transparent)
+    local china_line = create_underlined_text("China", beautiful.transparent)
+    local usa_line = create_underlined_text("USA", beautiful.color4)
+
+    local country_list = wibox.widget ({
+        sweden_line,
+        germany_line,
+        china_line,
+        usa_line,
+        spacing = dpi(10),
+        layout = wibox.layout.fixed.horizontal,
+    })
+
+    local centered_country_list = create_centered_line(country_list)
+
+    local function place_economy_boxes(country_code)
+        economy_grid:reset()
+
+        economy_grid:add_widget_at(population_box, 1, 1, 5, 3)
+        economy_grid:add_widget_at(create_shaped_box(get_economic_data("GDP ($)", CONFDIR .. "data/" .. country_code .. "_gdp.txt")), 1, 4)
+        economy_grid:add_widget_at(create_shaped_box(get_economic_data("GDP Cap ($)", CONFDIR .. "data/" .. country_code .. "_gdp_capita.txt")), 1, 5)
+        economy_grid:add_widget_at(create_shaped_box(get_economic_data("Inflation (%)", CONFDIR .. "data/" .. country_code .. "_inflation.txt")), 1, 6)
+        economy_grid:add_widget_at(create_shaped_box(get_economic_data("Gini", CONFDIR .. "data/" .. country_code .. "_gini.txt")), 1, 7)
+        economy_grid:add_widget_at(create_shaped_box(get_economic_data("Outer inv", CONFDIR .. "data/" .. country_code .. "_foreign_investments.txt")), 2, 4)
+        economy_grid:add_widget_at(create_shaped_box(get_economic_data("Edu cost (% GDP)", CONFDIR .. "data/" .. country_code .. "_education_expenditure.txt")), 2, 5)
+        economy_grid:add_widget_at(create_shaped_box(get_economic_data("Unemplotment (%)", CONFDIR .. "data/" .. country_code .. "_unemployment_rate.txt")), 2, 6)
+        economy_grid:add_widget_at(create_shaped_box(get_economic_data("Poverty (%)", CONFDIR .. "data/" .. country_code .. "_poverty.txt")), 2, 7)
+        economy_grid:add_widget_at(create_shaped_box(get_economic_data("Population", CONFDIR .. "data/" .. country_code .. "_population.txt")), 3, 4)
+        economy_grid:add_widget_at(create_shaped_box(get_economic_data("Net Migration", CONFDIR .. "data/" .. country_code .. "_net_migration.txt")), 3, 5)
+    end
+
+    place_economy_boxes("US")
+
+    sweden_line:connect_signal("button::press", function ()
+        place_economy_boxes("SE")
+        sweden_line["underline"]:set_color(beautiful.color4)
+        germany_line["underline"]:set_color(beautiful.transparent)
+        china_line["underline"]:set_color(beautiful.transparent)
+        usa_line["underline"]:set_color(beautiful.transparent)
+    end)
+    germany_line:connect_signal("button::press", function ()
+        place_economy_boxes("DE")
+        sweden_line["underline"]:set_color(beautiful.transparent)
+        germany_line["underline"]:set_color(beautiful.color4)
+        china_line["underline"]:set_color(beautiful.transparent)
+        usa_line["underline"]:set_color(beautiful.transparent)
+    end)
+    china_line:connect_signal("button::press", function ()
+        place_economy_boxes("CN")
+        sweden_line["underline"]:set_color(beautiful.transparent)
+        germany_line["underline"]:set_color(beautiful.transparent)
+        china_line["underline"]:set_color(beautiful.color4)
+        usa_line["underline"]:set_color(beautiful.transparent)
+    end)
+    usa_line:connect_signal("button::press", function ()
+        place_economy_boxes("US")
+        sweden_line["underline"]:set_color(beautiful.transparent)
+        germany_line["underline"]:set_color(beautiful.transparent)
+        china_line["underline"]:set_color(beautiful.transparent)
+        usa_line["underline"]:set_color(beautiful.color4)
+    end)
+    local box = create_centered_line(economy_grid)
+
     Economy_panel:setup {
         {
             create_empty_space(),
-            {
-                create_empty_space(),
                 {
-                    population_graphs,
-                    {
-                        top_buttons_list,
-                        top_graph_box,
-                        bottom_buttons_list,
-                        bottom_graph_box,
-                        spacing = dpi(20),
-                        layout = wibox.layout.fixed.vertical,
-                    },
-                    spacing = dpi(20),
-                    layout = wibox.layout.fixed.horizontal,
-                },
-                create_empty_space(),
-                expand = "outside",
-                layout = wibox.layout.align.horizontal,
+                    centered_country_list,
+                    box,
+                    spacing = dpi(30),
+                    layout = wibox.layout.fixed.vertical,
             },
             create_empty_space(),
             expand = "outside",
@@ -462,19 +520,6 @@ local function setup(s)
         widget = wibox.container.background
     }
 
-    -- binding buttons
-    for key, button in pairs(top_buttons) do
-        button:connect_signal("button::press", function ()
-            local image = gears.surface.load_uncached(top_buttons_bindings[key])
-            Economy_panel:get_children_by_id("top_graph")[1].image = image
-        end)
-    end
-    for key, button in pairs(bottom_buttons) do
-        button:connect_signal("button::press", function ()
-            local image = gears.surface.load_uncached(bottom_buttons_bindings[key])
-            Economy_panel:get_children_by_id("bottom_graph")[1].image = image
-        end)
-    end
 
     ---- keybindings
     economy_panel_link:connect_signal("button::press", function()

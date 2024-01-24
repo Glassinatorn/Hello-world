@@ -74,6 +74,12 @@ local function read_file(filename)
     return content
 end
 
+local function round(number, nr_of_decimals)
+  local mult = 10^(nr_of_decimals or 0)
+
+  return math.floor(number * mult + 0.5) / mult
+end
+
 return {
     deep_copy = deep_copy,
     sleep = sleep,
@@ -81,4 +87,5 @@ return {
     cmd_get_output = cmd_get_output,
     split_string = split_string,
     read_file = read_file,
+    round = round,
 }

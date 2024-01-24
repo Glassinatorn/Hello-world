@@ -11,5 +11,4 @@ else
 fi
 
 # running the actual script
-python electricity_price.py
-
+python get_electricity_price.py > ../data/electricity_price.txt

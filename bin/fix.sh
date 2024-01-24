@@ -27,6 +27,7 @@ xinput --set-prop $ID "libinput Disable While Typing Enabled" 0
 NUM_MONITORS=$(xrandr \
     | grep connected \
     | grep -v disconnected \
+    | grep -v None \
     | wc -l)
 
 # setup for screens
