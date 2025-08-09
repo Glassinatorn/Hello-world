@@ -82,7 +82,7 @@ Myawesomemenu = {
         CONST.TERMINAL .. " -e man awesome",
     },
     {
-        "edit config",
+        "edit conconfigfig",
         CONST.EDITOR_CMD .. " " .. awesome.conffile,
     },
     {

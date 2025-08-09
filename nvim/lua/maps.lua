@@ -6,17 +6,18 @@ g.mapleader = ' '
 
 
 -- cmp bindings
-local cmp = require("cmp")
-cmp.setup({
-    mapping = cmp.mapping.preset.insert({
-	["<S-k>"] = cmp.mapping.select_prev_item(),
-	["<S-j>"] = cmp.mapping.select_next_item(),
-	["<CR>"] = cmp.mapping.confirm {
-	    behavior = cmp.ConfirmBehavior.Replace,
-	    select = true,
-      },
-    })
-})
+-- local cmp = require("cmp")
+-- cmp.setup({
+--    mapping = cmp.mapping.preset.insert({
+--
+--	["<S-k>"] = cmp.mapping.select_prev_item(),
+--	["<S-j>"] = cmp.mapping.select_next_item(),
+--	["<CR>"] = cmp.mapping.confirm {
+--	    behavior = cmp.ConfirmBehavior.Replace,
+--	    select = true,
+ --     },
+  --  })
+--})
 
 -- vsnip
 vim.cmd[[ imap <expr> jk   vsnip#jumpable(1)   ? '<Plug>(vsnip-jump-next)' : 'jk' ]]	    			-- jumping to and expanding snippet

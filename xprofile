@@ -5,6 +5,17 @@ export TERMINAL=st
 
 # starting backround programs
 fix.sh &
-picom --experimental-backend &
+#picom --experimental-backend &
 unclutter &
-rclone mount google_drive:/ --vfs-cache-mode full $HOME/google_drive &
+
+# making a new pane to get access to universal clipboard
+tmux attach-session -t freetime <<EOF
+# Split the pane
+split-window -h
+
+# Close the first pane
+kill-pane -t 0
+
+# Detach from the session
+detach-client
+EOF

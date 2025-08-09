@@ -10,7 +10,6 @@
 -- ::    :      :      :     :      :
 
 -- starting plugin manager
---vim.cmd [[packadd packer.nvim]]
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
   vim.fn.system({
@@ -25,15 +24,10 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
-    'wbthomason/packer.nvim',
     'nvim-treesitter/nvim-treesitter',
-    'hrsh7th/nvim-cmp',
-    'hrsh7th/cmp-buffer',
-    'hrsh7th/cmp-nvim-lsp',
     'windwp/nvim-autopairs',
     'rafamadriz/friendly-snippets',
     'sbdchd/neoformat',
-    'hrsh7th/cmp-vsnip',
     'hrsh7th/vim-vsnip',
     'hrsh7th/vim-vsnip-integ',
     'mattn/emmet-vim',
@@ -57,26 +51,9 @@ require("lazy").setup({
     'dstein64/vim-startuptime',
     'roxma/vim-tmux-clipboard',                         -- clipboard integration with tmux
     'daeyun/vim-matlab',
-    'github/copilot.vim',
     'nvim-telescope/telescope.nvim',
-    'eandrju/cellular-automaton.nvim',                  -- make the code melt
     'MunifTanjim/nui.nvim',
-    {
-    "jackMort/ChatGPT.nvim",
-      config = function()
-        require("chatgpt").setup({
-      -- optional configuration
-         keymaps = {
-             submit = "<C-e>",
-           },
-        })
-      end,
-      requires = {
-        "MunifTanjim/nui.nvim",
-        "nvim-lua/plenary.nvim",
-        "nvim-telescope/telescope.nvim"
-      }
-    }
+    'chomosuke/typst-preview.nvim',
 })
 
 
@@ -85,5 +62,4 @@ require('settings')                     -- general settings
 require('maps')                         -- keybindings
 require('lsp_config')                   -- config for lsp
 require('treesitter_config')            -- treesitter config
-require('cmp_config')
 require("flutter-tools").setup{} -- use defaults

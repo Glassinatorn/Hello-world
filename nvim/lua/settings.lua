@@ -8,8 +8,9 @@ cmd [[ filetype plugin indent on ]]
 cmd [[ syntax on ]]
 o.hlsearch = false			-- multiple highlight for search
 o.updatetime = 300			-- ms between swap is written
-cmd [[ set clipboard=unnamedplus ]]	-- enables clipboard
+o.clipboard = "unnamedplus"
 cmd [[ let g:vimspector_base_dir=expand( '$HOME/.config/nvim/vimspector-config' ) ]]
+
 
 -- tabbing settings
 bo.tabstop = 4

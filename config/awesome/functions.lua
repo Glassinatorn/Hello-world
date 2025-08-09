@@ -4,13 +4,16 @@ local helpful = require("helpful")
 local awful = require("awful")
 local beautiful = require("beautiful")
 local dpi = beautiful.xresources.apply_dpi
+local CONFDIR = awesome.conffile:match("(.*/)")
 local lain = require("lain")
 local gears = require("gears")
 local wibox = require("wibox")
 local naughty = require("naughty")
+local cairo = require("lgi").cairo
 
 local objects = require("objects")
 local info_panel = require("info_panel")
+local create_centered_line = require("widgets.centered_line")
 
 
 ----------------------------------------------------------------------------------
@@ -45,6 +48,14 @@ local function toggle_fullscreen(c)
     c.fullscreen = not
     c.fullscreen
     c:raise()
+end
+
+local function get_wallpaper(screen)
+    if screen.geometry.width == 1920 then
+        return CONFDIR .. "pictures/" .. "info_panel_1920.png"
+    else
+        return CONFDIR .. "pictures/" .. "info_panel_3440.png"
+    end
 end
 
 -- go to tag
@@ -89,16 +100,50 @@ local function ensure_placement(c)
     end
 end
 
+local function create_empty_space()
+    local widget = {
+        markup = "", forced_width = dpi(1), widget = wibox.widget.textbox
+    }
+    return widget
+end
+
+local image_pic = wibox.widget.imagebox("/home/glass/.config/awesome/pictures/top_left.png")
+local image_pic2 = wibox.widget.imagebox("/home/glass/.config/awesome/pictures/top_middle.png")
+image_pic2.resize = false
+local image_pic3 = wibox.widget.imagebox("/home/glass/.config/awesome/pictures/top_right.png")
+local left_bar = wibox.widget.imagebox("/home/glass/.config/awesome/pictures/left_bar.png", false)
+left_bar.resize = false
+local right_bar = wibox.widget.imagebox("/home/glass/.config/awesome/pictures/right_bar.png", false)
+right_bar.resize = false
 -- create titlebar
 local function create_titlebar(c)
-    awful.titlebar(c):setup {
-        { -- left widgets
+    awful.titlebar(c, { position = "top", size = 50 }):setup {
+        --image_pic,
+        --image_pic2,
+        --image_pic3,N
+        {
+            widget = awful.titlebar(c, {
+                size = 20,
+                bg_normal = beautiful.titlebar_bg,
+                bg_focus = beautiful.color10,
+            })
         },
-        { -- middle widgets
-        },
-        { -- right widgets
-        }
+        layout = wibox.layout.align.horizontal
     }
+
+    -- awful.titlebar(c, { position = "left", size = 50 }):setup {
+    --     { -- Middle
+    --         widget = left_bar
+    --     },
+    --     layout = wibox.layout.flex.horizontal
+    -- }
+
+    -- awful.titlebar(c, { position = "right", size = 50 }):setup {
+    --     { -- Middle
+    --         widget = right_bar
+    --     },
+    --     layout = wibox.layout.align.horizontal
+    -- }
 end
 
 local function execute_command(command)
@@ -238,6 +283,7 @@ end
 
 -- setup signals
 local function setup_signals(c)
+
     -- make sure clients are placed correctly
     client.connect_signal("manage", function(c) ensure_placement(c) end)
 
@@ -245,10 +291,11 @@ local function setup_signals(c)
     client.connect_signal("request::titlebars", function(c) create_titlebar(c) end)
 
     -- focus client on mouse enter
-    client.connect_signal("focus", function(c) awful.titlebar.show(c) beautiful.titlebar_bg = beautiful.color8 end)
     --client.connect_signal("focus", function(c) awful.titlebar.show(c) beautiful.titlebar_bg = beautiful.color8 end)
+    --client.connect_signal("focus", function(c) beautiful.titlebar_bg = beautiful.color8 end)
 
-    client.connect_signal("unfocus", function(c) beautiful.titlebar_bg = beautiful.color10 end)
+    -- make thing work on focus unfocus for colours
+    -- client.connect_signal("unfocus", function(c) awful.titlebar.show(c) beautiful.titlebar_bg = beautiful.color10 end)
     --client.connect_signal("unfocus", function(c) beautiful.titlebar_bg = beautiful.color10 end)
 end
 
@@ -303,6 +350,34 @@ local function setup_taglist(s)
     )
 end
 
+local function get_economic_data(title, filename)
+    local data = helpful.read_file(filename)
+    if data == "" then
+        data = "0.0 0.0"
+    end
+
+    data = helpful.split_string(data)
+
+    local first_line = create_centered_line(wibox.widget.textbox(title))
+    local second_line = create_centered_line(wibox.widget.textbox(tostring(data[1])))
+    local third_line = create_centered_line(wibox.widget ({
+        markup = helpful.num_to_words(helpful.round(data[2], 2)),
+        font = "monospace bold " .. dpi(9),
+        widget = wibox.widget.textbox,
+    }))
+
+    local list = wibox.widget {
+        create_empty_space(),
+        first_line,
+        second_line,
+        third_line,
+        create_empty_space(),
+        spacing = dpi(20),
+        layout = wibox.layout.fixed.vertical
+    }
+
+    return list
+end
 
 
 return {
@@ -310,6 +385,7 @@ return {
     swap_tag_wrapper = swap_tag_wrapper,
     history_focus = history_focus,
     toggle_fullscreen = toggle_fullscreen,
+    get_wallpaper = get_wallpaper,
     move_to_tag = move_to_tag,
     send_to_tag = send_to_tag,
     mouse_move_client = mouse_move_client,
@@ -322,4 +398,5 @@ return {
     get_cpu_load = get_cpu_load,
     get_storage_utilization = get_storage_utilization,
     get_battery_left = get_battery_left,
+    get_economic_data = get_economic_data,
 }

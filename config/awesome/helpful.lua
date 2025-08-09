@@ -80,6 +80,19 @@ local function round(number, nr_of_decimals)
   return math.floor(number * mult + 0.5) / mult
 end
 
+local function num_to_words(number)
+    if tonumber(number) > 1000000000000 then
+        return tostring(round(number / 1000000000000)) .. " T"
+    elseif tonumber(number) > 1000000000 then
+        return tostring(round(number / 1000000000)) .. " B"
+    elseif tonumber(number) > 1000000  then
+        return tostring(round(number / 1000000)) .. " M"
+    end
+
+    return number
+end
+
+
 return {
     deep_copy = deep_copy,
     sleep = sleep,
@@ -88,4 +101,5 @@ return {
     split_string = split_string,
     read_file = read_file,
     round = round,
+    num_to_words = num_to_words,
 }

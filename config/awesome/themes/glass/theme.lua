@@ -95,7 +95,7 @@ theme.menu_border_color = theme.color0
 theme.menu_border_width = dpi(5)
 
 -- titlebar
-theme.titlebar_bg   = theme.color10
+theme.titlebar_bg   = theme.color8
 --theme.titlebar_bgimage = "/home/glass/rotated.png"
 --theme.titlebar_bgimage_normal = "/home/glass/freetime/picture/lock/lockIcon.png"
 

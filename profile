@@ -1,5 +1,8 @@
 #! /bin/sh
 
+# sourcing secrets
+source ~/.secrets
+
 # colors in less
 export LESS_TERMCAP_mb=$'\E[01;31m'
 export LESS_TERMCAP_md=$'\E[01;31m'
@@ -46,6 +49,32 @@ alias gb='CHOICE=$( \
             git checkout $CHOICE
             ;;
     esac'
+alias git_setup_deploy_key='CHOICE=$(printf "NEW\nDELETE" | fzf)
+    case $CHOICE in
+        "NEW")
+            GIT_EMAIL=$(git config user.email)
+            GIT_USER=$(git config user.name)
+            if [ -z $(git status | grep -q "not a git repository") ]; then
+                REPO_NAME=$(basename $(git rev-parse --show-toplevel))
+                ssh-keygen -t ed25519 -C "deploy key" -N "" -f ~/.ssh/$REPO_NAME && cat ~/.ssh/$REPO_NAME.pub
+                ssh-add ~/.ssh/$REPO_NAME
+                #echo "# github $REPO_NAME repo\nHOST github.com-$REPO_NAME\nHOSTNAME github.com\n\nIdentityFile ~/.ssh/$REPO_NAME\nPreferredAuthentications publickey\nIdentityFile ~/.ssh/$REPO_NAME\n" >> ~/.ssh/config
+                git remote add origin git@github.com:$GIT_USER/$REPO_NAME.git
+                git remote add origin git@github.com-$REPO_NAME:$GIT_USER/$REPO_NAME.git
+                git push -u origin master
+            else
+                printf "Not a git repo, please run in a git repo\n"
+            fi
+            ;;
+        "DELETE")
+            KEY=$(ls ~/.ssh | grep -v .pub | fzf -m)
+            ssh-add -d ~/.ssh/$KEY
+            rm ~/.ssh/$KEY
+            rm ~/.ssh/$KEY.pub
+            sed -i "/$KEY/,+5d" ~/.ssh/config
+            ;;
+    esac'
+
 
 # docker
 alias dl="docker ps -a"
@@ -184,6 +213,18 @@ alias r2="r2 -AAA"
 alias sc="sc-im"
 alias f="find 2>/dev/null / -name"
 
+# script to update cc_tweaked scripts for mc_server
+update_cc_script() {
+  if [ -z "$1" ]; then
+    echo "Usage: update_cc_script <number>"
+    return 1
+  fi
+
+  local number=$1
+  rsync -r ~/freetime/code/various/cc_scripts "$SERVER_USER@$SERVER_IP:/home/$SERVER_USER/mc_fabric/Automatomanza/computercraft/computer/$number/"
+}
+alias update_cc_script="update_cc_script" 
+
 # loading nnn config
 source ~/.config/nnn/rc
 stty -ixon
@@ -203,5 +244,3 @@ export JAVA_OPTS='-XX:+IgnoreUnrecognizedVMOptions --add-modules java.se.ee'
 export ANDROID_SDK_ROOT='/opt/android-sdk'
 export CHROME_EXECUTABLE=/usr/bin/google-chrome-stable
 
-# sourcing secrets
-source ~/.secrets
