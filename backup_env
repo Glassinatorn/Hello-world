@@ -1,0 +1,15 @@
+CONFIG_FOLDER="$HOME/.config/"
+BIN_FOLDER="$HOME/.local/bin/own/"
+HOME_SHARED_FOLDER="$HOME/.local/share/"
+NVIM_RUNTIME="/usr/share/nvim/runtime"
+BACKUP_FOLDER="$HOME/freetime/code/various/Hello-world"
+SUCKLESS_FOLDER="$HOME/freetime/code/c/git/suckless"
+
+# config folder backups
+CONFIG_FOLDER_BACKUPS="\
+  $CONFIG_FOLDER/i3 \
+  $CONFIG_FOLDER/bspwm \
+  $CONFIG_FOLDER/awesome \
+  $CONFIG_FOLDER/sxhkd \
+  $CONFIG_FOLDER/gtk-3.0 \
+  $"
