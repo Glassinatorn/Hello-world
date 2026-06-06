@@ -21,15 +21,14 @@ SD="$HOME/freetime/code/c/git/suckless"
 CMD="sudo rsync -razzPR --del"
 
 # various from .config
-$CMD $CD/i3 \
-  $CD/bspwm \
-  $CD/awesome \
-  $CD/sxhkd \
-  $CD/gtk-3.0 \
-  $CD/polybar \
-  $CD/termite \
-  $CD/picom.conf \
-  $CD/gtk-3.0 \
+$CMD $CD/i3/ \
+  $CD/bspwm/ \
+  $CD/awesome/ \
+  $CD/sxhkd/ \
+  $CD/polybar/ \
+  $CD/termite/ \
+  $CD/picom.conf/ \
+  $CD/gtk-3.0/ \
   $BD/config/
 
 # nnn
